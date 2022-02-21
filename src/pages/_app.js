@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
     </AuthProvider>
   );
 }
+<<<<<<< HEAD
 
 export default MyApp;
 =======
@@ -25,3 +26,6 @@ export default MyApp;
 }
 export default MyApp
 >>>>>>> 011b8a4 ([web] ESlint (#49))
+=======
+export default MyApp
+>>>>>>> dc86f28 (designed folder structure)
