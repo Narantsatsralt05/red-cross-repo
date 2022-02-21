@@ -1,21 +1,16 @@
 import React from 'react'
-import { StackQueue, Image } from '../styled-component/styled-component'
-const Stack = () => {
+import Stack from '../styled-component/stack'
+const Stack1 = () => {
   return (
     <div>
-      <StackQueue justifyContent='space-between' direction='row'>
-        <div className="">
-          hello
-        </div>
-        <div className="">
-          my name is
-        </div>
-        <div className="">
-          my name is
-        </div>
-      </StackQueue>
-    </div>
+        <Stack>
+            <div className="">hello</div>
+            <div className="">hello</div>
+            <div className="">hello</div>
+
+        </Stack>
+    </div> 
   )
 }
 
-export default Stack
+export default Stack1
