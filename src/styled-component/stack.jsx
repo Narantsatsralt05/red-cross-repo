@@ -13,4 +13,4 @@ const Stack = style.div`
 
 
 
-export default Stack    
+export default Stack
