@@ -1,5 +1,4 @@
 import '../../styles/globals.css'
-import Test from '../test';
 import { ThemeProvider } from '../components/theme';
 
 function MyApp({ Component, pageProps }) {

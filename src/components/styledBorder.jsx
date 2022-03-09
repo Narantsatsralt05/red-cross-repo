@@ -7,6 +7,5 @@ export const StyledBorder = styled.div`
   border-radius: ${({ radius }) => radius};
   overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
 `;
