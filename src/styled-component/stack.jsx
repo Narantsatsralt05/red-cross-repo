@@ -1,6 +1,9 @@
 import style from 'styled-components'
 
 const Stack = style.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
     display: flex;
     flex-wrap:wrap;
     flex-direction:${({ direction }) => direction};
