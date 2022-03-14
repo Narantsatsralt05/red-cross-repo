@@ -26,3 +26,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.text {
+  background-color: #0066B3;
+  border-radius: 30px;
+}
