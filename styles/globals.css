@@ -11,6 +11,23 @@ a {
   text-decoration: none;
 }
 
+.font {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.bg {
+  background-color: #F9F9F9;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.text {
+  background-color: #0066B3;
+  border-radius: 30px;
 }
