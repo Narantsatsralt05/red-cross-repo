@@ -1,6 +1,6 @@
 import style from 'styled-components'
 
-const Stack = style.div`
+export const Stack = style.div`
     display: flex;
     flex-wrap:wrap;
     width:${({ width }) => width};
@@ -8,8 +8,5 @@ const Stack = style.div`
     flex-direction:${({ direction }) => direction};
     justify-content: ${({ justifyContent }) => justifyContent};
     align-items:${({ alignItems }) => alignItems};
+    gap: ${({gap}) => gap}px;
 `
-
-
-
-export default Stack

@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const NotificationModalStyle = styled.div`
@@ -18,3 +19,14 @@ const NotificationModalStyle = styled.div`
   background-color: ${({ bg }) => bg};
 `;
 export { NotificationModalStyle };
+
+
+const NotificationModal = ({ bc, bg, title, description, color, isVisible }) => {
+    return (
+        <NotificationModalStyle isVisible={isVisible} bg={bg} bc={bc} color={color}>
+            <div style={{ color: "green" }}>{title}</div>
+            <div>{description}</div>
+        </NotificationModalStyle>
+    );
+};
+export { NotificationModal };

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import yup from "yup";
 export const StyledInput = styled.input`
   width: ${(props) => props.width};
   border: ${(props) => props.border};

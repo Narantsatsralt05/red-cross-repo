@@ -1,6 +1,6 @@
 import style from 'styled-components'
 
-const Text = style.div`
+export const Text = style.div`
  color:${({ color }) => color};
  font-size:${({ FontSize }) => FontSize};
  font-family:${({ FontFamily }) => FontFamily};
@@ -8,7 +8,3 @@ const Text = style.div`
  font-weight: ${({ FontWeight }) => FontWeight};
  line-height:${({ LineHeight }) => LineHeight};
 `
-
-
-
-export default Text

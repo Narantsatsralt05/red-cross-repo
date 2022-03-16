@@ -1,5 +1,4 @@
 import { createTheme} from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
 import {ThemeProvider as MuiThemeProvider ,useTheme as muiUseTheme} from '@mui/system'
 const Theme = createTheme({
  palette :{ 
