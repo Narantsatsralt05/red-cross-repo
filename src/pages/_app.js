@@ -1,5 +1,5 @@
-import '../../styles/globals.css';
-// import Test from '../test';
+/* eslint-disable */
+import '../../styles/globals.css'
 import { ThemeProvider } from '../theme/theme';
 import { AuthProvider } from '../providers/authContext';
 

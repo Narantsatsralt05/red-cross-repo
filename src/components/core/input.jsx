@@ -6,7 +6,7 @@ export const StyledInput = styled.input`
   font-size: ${(props) => props.size ? props.size : '17px'};
   height: ${(props) => props.height ? props.height : '40px'};
   color: ${(props) => props.color};
-  font: ${(props) => props.font};
+  font-family: ${(props) => props.font};
   animation-name: ${(props)=>props.animation};
   padding-left: 1vw;
   padding-right: 1vw;

@@ -1,9 +1,10 @@
 import React from "react";
+import LeftBar from "./test/left-bar";
 
 const Home = () => {
 
-    return <>
-    Thats home 
+    return < >
+        <LeftBar />
     </>
 }
 export default Home;

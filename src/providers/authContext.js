@@ -5,17 +5,17 @@ import firebase from 'firebase/compat/app';
 
 export const AuthContext = createContext({
   user: {},
-  login: () => {},
-  signUp: () => {},
-  logOut: () => {},
-  forgetPass: () => {},
+  login: () => { },
+  signUp: () => { },
+  logOut: () => { },
+  forgetPass: () => { },
 });
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [signUpError, setSignUpError] = useState('');
-
+  const [saveError, setsaveError] = useState(false)
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
@@ -66,7 +66,9 @@ export const AuthProvider = ({ children }) => {
         signUp,
         logOut,
         user,
-        loginError
+        loginError,
+        setsaveError,
+        saveError
       }}
     >
       {children}

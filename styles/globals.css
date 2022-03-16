@@ -31,3 +31,19 @@ a {
   background-color: #0066B3;
   border-radius: 30px;
 }
+
+input[type="text"] {
+  font-size: 1px;
+  font-family: monospace;
+}
+
+::placeholder {
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 12px;
+  line-height: 85%;
+  vertical-align: top;
+  display: flex;
+}
