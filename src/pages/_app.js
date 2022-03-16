@@ -1,8 +1,16 @@
-/* eslint-disable */
-import '../../styles/globals.css'
+import '../../styles/globals.css';
+// import Test from '../test';
 import { ThemeProvider } from '../theme/theme';
+import { AuthProvider } from '../providers/authContext';
 
 function MyApp({ Component, pageProps }) {
-  return <ThemeProvider ><Component {...pageProps} /></ThemeProvider>
+  return (
+    <AuthProvider>
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </AuthProvider>
+  );
 }
-export default MyApp
+
+export default MyApp;
