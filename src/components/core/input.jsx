@@ -6,6 +6,8 @@ export const StyledInput = styled.input`
   font-size: ${(props) => props.size};
   height: ${(props) => props.height};
   color: ${(props) => props.color};
+  font: ${(props) => props.font};
+  animation-name: ${(props)=>props.animation};
   display: flex;
   align-items: center;
   ::-webkit-inner-spin-button{
@@ -26,3 +28,16 @@ export const Styledoneletter = styled.input`
   text-align: center;
   text-transform: uppercase;
 `;
+
+
+
+const Styledinput =({label,height,width,border,borderradius,fontSize,color,animationName,font ,placeholder})=>{
+  return(
+    <div className="InputContainer">
+      <span style={{"fontSize":{fontSize},'font':{font}}}  >{label}</span>
+      <StyledInput placeholder={placeholder} height={height} width={width} border={border} borderradius={borderradius} size={fontSize} color={color} animation={animationName} font={font} />
+    </div>
+  )
+}
+
+export default Styledinput
