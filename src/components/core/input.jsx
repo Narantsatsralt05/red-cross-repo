@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
 export const StyledInput = styled.input`
   width: ${(props) => props.width};
   border: ${(props) => props.border};
@@ -14,7 +13,6 @@ export const StyledInput = styled.input`
         margin: 0; 
     }
 `;
-
 export const Styledoneletter = styled.input`
   width: ${(props) => props.width};
   border: ${(props) => props.border};

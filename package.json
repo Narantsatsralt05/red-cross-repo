@@ -20,8 +20,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.17.0",
     "eslint": "8.9.0",
     "eslint-config-next": "12.1.0",
+    "eslint-plugin-react": "^7.29.4",
     "husky": "^7.0.4",
     "prettier": "2.5.1",
     "pretty-quick": "^3.1.3"
