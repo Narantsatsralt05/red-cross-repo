@@ -1,5 +1,4 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const NotificationModalStyle = styled.div`
   position: fixed;
@@ -12,7 +11,7 @@ const NotificationModalStyle = styled.div`
   border-top: 2px solid ${({ bc }) => bc};
   border-bottom: 2px solid ${({ bc }) => bc};
   border-right: 2px solid ${({ bc }) => bc};  
-  display: ${({ isVisible }) => isVisible ? 'flex' : 'none'};
+  display: ${({ isVisible }) => { isVisible ? 'flex' : 'none' }};
   flex-direction: column;
   justify-content: center;
   align-items: center;
