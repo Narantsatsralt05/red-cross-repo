@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Stack from '../styled-component/stack'
 import Logo from '../assest/image/logo.svg'
 import Image from 'next/image'
@@ -11,9 +11,6 @@ import { Button } from '../components/button'
 import sainDurrin from '../assest/icon/sainDuriin.svg'
 import gishuun from '../assest/icon/gishuun.svg'
 import tuslamj from '../assest/icon/tuslamj.svg'
-
-
-
 
 const Login = () => {
     return (
