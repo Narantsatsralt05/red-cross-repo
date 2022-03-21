@@ -8,7 +8,7 @@ import {
   Padding,
   Position,
   Stack,
-  StyledBorder,
+  Border,
   Text,
   StyledInput,
   Styledoneletter,
@@ -21,18 +21,18 @@ const Test = () => {
         <Text FontSize="1.5rem">INPUT</Text>
         <div className="" style={{ width: '500px' }}>
           <Margin size={[10, 0, 0, 0]}>
-            <StyledBorder radius="10px" color="rgba(0, 0, 0, 0.1);">
+            <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
               <Margin size={[35, 0, 35, 150]}>
                 <StyledInput />
               </Margin>
-            </StyledBorder>
+            </Border>
           </Margin>
         </div>
         <Margin size={[50, 0, 0, 0]}>
           <Text FontSize="1.5rem">Buttons</Text>
           <div className="" style={{ width: '500px' }}>
             <Margin size={[10, 0, 0, 0]}>
-              <StyledBorder radius="10px" color="rgba(0, 0, 0, 0.1);">
+              <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
                 <Margin size={[35, 0, 35, 100]}>
                   <Stack direction="row">
                     <Button bc="1px solid grey" Color="rgb(25, 118, 210)" width="100px" height="30px" radius="8px">
@@ -52,7 +52,7 @@ const Test = () => {
                     </Margin>
                   </Stack>
                 </Margin>
-              </StyledBorder>
+              </Border>
             </Margin>
           </div>
         </Margin>
@@ -60,7 +60,7 @@ const Test = () => {
           <Text FontSize="1.5rem">Style done letter</Text>
           <div className="" style={{ width: '500px' }}>
             <Margin size={[10, 0, 0, 0]}>
-              <StyledBorder radius="10px" color="rgba(0, 0, 0, 0.1);">
+              <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
                 <Margin size={[35, 0, 35, 150]}>
                   <Stack direction="row">
                     <Styledoneletter width="30px" height="30px" />
@@ -69,7 +69,7 @@ const Test = () => {
                     </Margin>
                   </Stack>
                 </Margin>
-              </StyledBorder>
+              </Border>
             </Margin>
           </div>
         </Margin>
@@ -77,12 +77,12 @@ const Test = () => {
           <Text FontSize="1.5rem">Image</Text>
           <div className="" style={{ width: '500px' }}>
             <Margin size={[10, 0, 0, 0]}>
-              <StyledBorder radius="10px" color="rgba(0, 0, 0, 0.1);">
+              <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
                 <Picture
                   src="https://www.directivegroup.com/wp-content/uploads/2017/03/smile-9047-9380-hd-wallpapers-1.jpg"
                   width="500px"
                 />
-              </StyledBorder>
+              </Border>
             </Margin>
           </div>
         </Margin>
@@ -90,8 +90,8 @@ const Test = () => {
           <Text FontSize="1.5rem">Position</Text>
           <div className="" style={{ width: '500px' }}>
             <Margin size={[10, 0, 0, 0]}>
-              <StyledBorder radius="10px" color="rgba(0, 0, 0, 0.1);">
-              </StyledBorder>
+              <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
+              </Border>
             </Margin>
           </div>
         </Margin>
