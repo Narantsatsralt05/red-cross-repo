@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 export const StyledInput = styled.input`
-  width: ${(props) => props.width};
-  border: ${(props) => props.border};
-  border-radius: ${(props) => props.borderradius};
-  font-size: ${(props) => props.size};
-  height: ${(props) => props.height};
+  width: ${(props) => props.width ? props.width : '400px' };
+  border: ${(props) => props.border ? props.border : '0.5px solid rgba(0, 0, 0, 0.3);'};
+  border-radius: ${(props) => props.borderradius ? props.borderradius : '5px'};
+  font-size: ${(props) => props.size ? props.size : '17px'};
+  height: ${(props) => props.height ? props.height : '40px'};
   color: ${(props) => props.color};
   font: ${(props) => props.font};
   animation-name: ${(props)=>props.animation};
@@ -17,7 +17,7 @@ export const StyledInput = styled.input`
 `;
 export const Styledoneletter = styled.input`
   width: ${(props) => props.width};
-  border: ${(props) => props.border};
+  border: ${(props) => props.border}; 
   border-radius: ${(props) => props.borderradius};
   font-size: ${(props) => props.size};
   height: ${(props) => props.height};
@@ -31,13 +31,14 @@ export const Styledoneletter = styled.input`
 
 
 
-const Styledinput =({label,height,width,border,borderradius,fontSize,color,animationName,font ,placeholder})=>{
+const Styledinput =({label,height,width,border,borderradius,size,color,animationName,font,placeholder})=>{
   return(
-    <div className="InputContainer">
-      <span style={{"fontSize":{fontSize},'font':{font}}}  >{label}</span>
-      <StyledInput placeholder={placeholder} height={height} width={width} border={border} borderradius={borderradius} size={fontSize} color={color} animation={animationName} font={font} />
+    <div>
+      <span style={{"fontSize":'19px','font':{font},'gap':'5px'}}  >{label}</span>
+      <StyledInput placeholder={placeholder} height={height} width={width} border={border} borderradius={borderradius} size={size} color={color} animation={animationName} font={font} />
     </div>
   )
+  
 }
 
 export default Styledinput
