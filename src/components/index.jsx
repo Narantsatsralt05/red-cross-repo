@@ -2,7 +2,7 @@ export * from "./common/notificationModal";
 export * from "./core/button";
 export * from "./core/input";
 export * from "./core/position";
-export * from "./core/styledBorder";
+export * from "./core/border";
 export * from "./core/image";
 export * from "./core/center";
 export * from "./core/input";
