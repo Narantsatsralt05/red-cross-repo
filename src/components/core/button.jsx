@@ -4,8 +4,8 @@ export const Button = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   border:  ${({ bc }) => bc};
-  border-radius: ${({ radius }) => radius};
+  border-radius: ${({ borderRadius }) => borderRadius};
   background-color: ${({ bgColor }) => bgColor};
-  color:${({ Color }) => Color};
+  color:${({ color }) => color};
   cursor:pointer;
 `;
