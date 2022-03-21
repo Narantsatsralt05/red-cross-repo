@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { db } from '.';
 
-export const UseCollection = (path) => {
+export const useCollection = (path) => {
   const [data, setData] = useState([]);
   const arrData = [];
   useEffect(() => {
