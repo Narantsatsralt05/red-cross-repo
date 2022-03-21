@@ -34,7 +34,7 @@ export const Styledoneletter = styled.input`
 const Styledinput =({label,height,width,border,borderradius,size,color,animationName,font,placeholder})=>{
   return(
     <div>
-      <span style={{"fontSize":'19px','font':{font},'gap':'5px'}}  >{label}</span>
+      <span style={{"fontSize":'19px','font':{font}}}  >{label}</span>
       <StyledInput placeholder={placeholder} height={height} width={width} border={border} borderradius={borderradius} size={size} color={color} animation={animationName} font={font} />
     </div>
   )
