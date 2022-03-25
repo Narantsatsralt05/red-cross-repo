@@ -9,4 +9,8 @@ export * from "./core/margin";
 export * from "./core/stack";
 export * from "./core/text";
 export * from "./core/padding";
+<<<<<<< HEAD:src/components/index.js
+=======
+export * from "./common/userCard";
+>>>>>>> 3607013 (userCard component):src/components/index.jsx
 export * from "./core/box";
