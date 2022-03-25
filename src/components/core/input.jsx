@@ -8,6 +8,7 @@ export const StyledInput = styled.input`
   color: ${(props) => props.color};
   font: ${(props) => props.font};
   animation-name: ${(props)=>props.animation};
+  padding-left: 1vw;
   display: flex;
   align-items: center;
   ::-webkit-inner-spin-button{
