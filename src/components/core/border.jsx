@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import _ from 'lodash';
 
 export const Border = styled.div`
+  border-color: ${(props)=>props.borderColor};
   border-style: ${({ borderType }) => (borderType ? borderType : 'solid')};
   border-width: ${({ borderWidth }) =>
     _.flow((borderWidth) =>
@@ -9,7 +10,7 @@ export const Border = styled.div`
         return `${value}px`;
       }).join(' '),
     )(borderWidth)};
-  border-radius: ${({ radius }) => (radius ? radius : 0)}px;
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 0)}px;
   position: relative;
-  overflow: ${({ overflow }) => overflow};
+  overflow: ${({ overFlow }) => overFlow};
 `;
