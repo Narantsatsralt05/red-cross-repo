@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // window.location = '/';
+        window.location = '/';
         console.log('login amjilttai XD');
       })
       .catch((error) => {

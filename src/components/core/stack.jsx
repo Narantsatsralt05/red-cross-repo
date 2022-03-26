@@ -2,7 +2,7 @@ import style from 'styled-components';
 
 export const Stack = style.div`
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: ${({ flexWrap }) => flexWrap};
     width:${({ width }) => width};
     height:${({ height }) => height};
     flex-direction:${({ direction }) => direction};
