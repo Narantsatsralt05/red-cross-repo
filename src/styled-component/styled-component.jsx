@@ -29,6 +29,9 @@ const Text = styled.text`
     font-size: ${props => props.number ? '36px' : '12px'};
     font-weight: 700;
     color: white;
+    width: 50%;
+    text-align: left;
+    padding-left: ${props => props.number ? '10px' : '2px'}
 `
 
 const DataCon = styled.div`

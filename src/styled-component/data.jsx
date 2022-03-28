@@ -4,7 +4,7 @@ const Data = ({color, text, value}) => {
     return <div>
         <DataCon color={color} >
             <Text>{text ? text : 'xxx'}</Text>
-            <div style={{height: '41px', border: '0.5px solid white'}}></div>
+            <div style={{height: '41px', border: '0.2px solid white', position: 'absolute'}}></div>
             <Text number>{value ? value : '###'}</Text>
         </DataCon>
     </div>
