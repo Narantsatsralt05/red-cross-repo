@@ -87,18 +87,20 @@ const Test = () => {
           </div>
         </Margin>
         <Margin size={[50, 0, 0, 0]}>
-          <Text FontSize="1.5rem">Position</Text>
+          <Text FontSize="1.5rem">Padding</Text>
           <div className="" style={{ width: '500px' }}>
             <Margin size={[10, 0, 0, 0]}>
               <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
+                <Margin size={[35, 0, 35, 100]}>
+                  <Border color="rgba(0, 0, 0, 0.1);">
+                    <Padding size={100}>Padding</Padding>
+                  </Border>
+                </Margin>
               </Border>
             </Margin>
           </div>
         </Margin>
       </Stack>
-      <Position position="absolute">Absolute</Position>
-      <Position position="relative">relative</Position>
-      <Position position="fixed">Fixed</Position>
     </Center>
   );
 };
