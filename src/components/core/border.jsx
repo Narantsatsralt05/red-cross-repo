@@ -10,7 +10,7 @@ export const Border = styled.div`
         return `${value}px`;
       }).join(' '),
     )(borderWidth)};
-  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : 0)}px;
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '1px')};
   position: relative;
   overflow: ${({ overFlow }) => overFlow};
 `;
