@@ -11,9 +11,10 @@ export const AuthContext = createContext({
   forgetPass: () => {},
 });
 
-
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const [signUpError, setSignUpError] = useState('');
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -24,29 +25,30 @@ export const AuthProvider = ({ children }) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // window.location = '/';
+        window.location = '/home';
         console.log('login amjilttai XD');
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+        setLoginError(error.message)
       });
   };
 
   const signUp = (email, password1, password2) => {
     if (password1 === password2) {
       auth
-      .createUserWithEmailAndPassword(email, password1)
-      .then(() => {
-        // window.location = '/';
-        console.log('signUp amjilttai XD');
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+        .createUserWithEmailAndPassword(email, password1)
+        .then(() => {
+          // window.location = '/';
+          console.log('signUp amjilttai XD');
+        })
+        .catch((error) => {
+          console.log(error.message);
+          setSignUpError(error.message)
+        });
     } else {
       console.log('repeat pass buruu bn!!!');
-    };
-
+    }
   };
   const logOut = () => {
     auth.signOut();
@@ -64,6 +66,7 @@ export const AuthProvider = ({ children }) => {
         signUp,
         logOut,
         user,
+        loginError
       }}
     >
       {children}

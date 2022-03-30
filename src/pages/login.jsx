@@ -1,127 +1,155 @@
-
-import Stack from '../styled-component/stack'
-import Logo from '../assest/image/logo.svg'
-import Image from 'next/image'
-import { Center } from '../styled-component/center'
-import Text from '../styled-component/text'
-import { Margin } from '../styled-component/margin'
-import { StyledBorder } from '../components/styledBorder'
-import { StyledInput } from '../components/input'
-import { Button } from '../components/button'
-import sainDurrin from '../assest/icon/sainDuriin.svg'
-import gishuun from '../assest/icon/gishuun.svg'
-import tuslamj from '../assest/icon/tuslamj.svg'
+import { Button, Margin, NotificationModal, Position, Stack, StyledInput, Text } from '../components';
+import React, { useState } from 'react';
+import Background from '../assets/image/loginBg.png';
+import Image from 'next/image';
+import Logo from '../assets/icon/logo.svg';
+import { useAuthContext } from '../providers/authContext';
 
 const Login = () => {
-    return (
-        <Stack direction='row'>
-            <Stack width='32%' justifyContent='center' direction='column' >
-                <Margin size={[77, 0, 0, 0]}>
-                    <Stack justifyContent='center'  >
-                        <Image src={Logo} width={61} height={62} />
-                    </Stack>
-                </Margin>
-                <Margin size={[17, 0, 0, 0]}>
-                    <Stack justifyContent='center'>
-                        <Text color='#0066B3' FontSize='12px' FontWeight='500' LineHeight='12px' FontFamily='Roboto' FontStyle='normal'>
-                            МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
-                        </Text>
-                    </Stack>
-                </Margin>
-                <Margin size={[10, 0, 0, 0]}>
-                    <Stack justifyContent='center'>
-                        <Text color='#7A7A7A' FontSize='11px' FontWeight='100' LineHeight='13px' FontFamily='Roboto' FontStyle='normal'>
-                            <StyledBorder BordeerBottom='1px solid #F5F5F5' width='315px'>
-                                <Margin size={[0, 0, 20, 90]}>
-                                    Цахим мэдээллийн систем
-                                </Margin>
-                            </StyledBorder>
-                        </Text>
-                    </Stack>
-                </Margin>
-                <Center>
-                    <Margin size={[30, 0, 0, 0]}>
-                        <Text color='black' FontSize='22px' FontWeight='400' LineHeight='26px' FontFamily='Roboto' FontStyle='normal'>
-                            НЭВТРЭХ
-                        </Text>
-                    </Margin>
-                </Center>
-                <Center>
-                    <label>
-                        <Margin size={[0, 0, 5, 2]}>
-                            <Text color='#1B1B1B' FontSize='10px' FontWeight='300' LineHeight='12px' FontFamily='Roboto' FontStyle='normal'>
-                                И-мэйл хаяг
-                            </Text>
-                        </Margin>
-                        <StyledInput width='294px' height='30px' border='1px solid #D0D0D0' borderradius='5px' placeholder='и-мэйл' />
-                    </label>
-                </Center>
-                <Center>
-                    <Margin size={[30, 0, 0, 0]}>
-                        <label>
-                            <Margin size={[0, 0, 5, 2]}>
-                                <Text color='#1B1B1B' FontSize='10px' FontWeight='300' LineHeight='12px' FontFamily='Roboto' FontStyle='normal'>
-                                    Нууц үг
-                                </Text>
-                            </Margin>
-                            <StyledInput width='294px' height='30px' border='1px solid #D0D0D0' borderradius='5px' placeholder='Нууц үг' />
-                        </label>
-                    </Margin>
-                </Center>
-                <Center>
-                    <Margin size={[25, 0, 0, 0]}>
-                        <Button bgColor='#0066B3' width='294px' height='30px' radius='5px'>
-                            <Stack justifyContent='center' >
-                                <Margin size={[7, 0, 0, 0]}>
-                                    <Text color='white' FontSize='14px' FontWeight='500' LineHeight='16px' FontFamily='Roboto' FontStyle='normal'>
-                                        НЭВТРЭХ
-                                    </Text>
-                                </Margin>
-                            </Stack>
-                        </Button>
-                    </Margin>
-                </Center>
-                <Center>
-                    <Stack height='33vh' alignItems='end'>
-                        <Text color='#7A7A7A' FontSize='7px' FontWeight='300' LineHeight='8px' FontFamily='Roboto' FontStyle='normal'>
-                            @ 2018-2021 Монголын улаан загалмай нийгэмлэг
-                        </Text>
-                    </Stack>
-                </Center>
+  const [form, setForm] = useState({
+    email: '',
+    password: '',
+  });
+  const [event, setEvent] = useState('');
+
+  const handler = (event) => {
+    // changing the state to the name of the key
+    // which is pressed
+    setEvent(event.key);
+  };
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+  const { login, loginError } = useAuthContext();
+
+  if (event === 'Enter') {
+    login(form.email, form.password);
+  }
+  return (
+    <Stack direction="row" width="100%" height="100vh">
+      <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
+        <Stack height="15vh" width="35%" />
+        <Image src={Logo} width={90} height={90} />
+        <Margin size={[30, 0, 0, 0]}>
+          <Text color="#0066B3" fontSize="0.9vw" cursor="pointer">
+            МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
+          </Text>
+        </Margin>
+        <Margin size={[10, 0, 0, 0]}>
+          <Text color="#7A7A7A" fontSize="0.9vw" cursor="pointer">
+            Цахим мэдээллийн систем
+          </Text>
+        </Margin>
+        <Margin size={[10, 0, 0, 0]}>
+          <Stack width="30vw" height="2px" bg="#F5F5F5" />
+        </Margin>
+        <Margin size={[30, 0, 0, 0]}>
+          <Text color="black" fontSize="1.8vw" cursor="pointer">
+            НЭВТРЭХ
+          </Text>
+        </Margin>
+        <>
+          <Stack width="67%" justifyContent="flex-start">
+            <Text color="#1B1B1B" fontSize="0.8vw" cursor="pointer">
+              И-мэйл хаяг
+            </Text>
+          </Stack>
+          <Margin size={[10, 0, 0, 0]}>
+            <StyledInput
+              color="#1B1B1B"
+              border="2px solid #D0D0D0"
+              width="23.5vw"
+              height="4.3vh"
+              size="1.2vw"
+              placeholder="и-мэйл"
+              onChange={handleChange}
+              value={form.email}
+              id="email"
+              type="text"
+            />
+            {form.email.length >= 10 ? (
+              loginError ===
+              'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
+                <Text color="red">и-мэйл бүртгэлгүй байна.</Text>
+              ) : (
+                ''
+              )
+            ) : (
+              ''
+            )}
+            {form.email.length >= 10 ? (
+              loginError ===
+              'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' ? (
+                <Text color="red">хэт олон буруу оролдлого</Text>
+              ) : (
+                ''
+              )
+            ) : (
+              ''
+            )}
+          </Margin>
+        </>
+        <Margin size={[20, 0, 0, 0]}>
+          <>
+            <Stack direction="row" justifyContent="space-between">
+              <Text color="#1B1B1B" fontSize="0.8vw" cursor="pointer">
+                Нууц үг
+              </Text>
+              <Text color="#757575" fontSize="0.8vw" cursor="pointer">
+                Нууц үг мартсан?
+              </Text>
             </Stack>
+            <Margin size={[10, 0, 0, 0]}>
+              <StyledInput
+                color="#1B1B1B"
+                border="2px solid #D0D0D0"
+                width="23.5vw"
+                height="4.3vh"
+                size="1.2vw"
+                onChange={handleChange}
+                value={form.password}
+                id="password"
+                type="password"
+                placeholder="нууц үг"
+                onKeyPress={(e) => handler(e)}
+              />
+              {loginError ===
+              'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).' ? (
+                <Text color="red">нууц үг буруу байна</Text>
+              ) : (
+                ''
+              )}
+            </Margin>
+          </>
+        </Margin>
+        <Margin size={[30, 0, 0, 0]}>
+          <Button
+            width="23.5vw"
+            height="4.3vh"
+            bc="1px solid #0066B3"
+            borderRadius="5px"
+            bgColor="#0066B3"
+            color="#fff"
+            onClick={() => login(form.email, form.password)}
+          >
+            <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={() => login(form.email, form.password)}>
+              НЭВТРЭХ
+            </Text>
+          </Button>
+        </Margin>
+      </Stack>
+      <Position position="fixed" bottom="3vh" left="4vw">
+        <Text color="#757575" fontFamily="Roboto" fontSize="0.8vw">
+          @ 2018-2021 Монголын улаан загалмай нийгэмлэг
+        </Text>
+      </Position>
+      <NotificationModal bg="#fff" />
+      <Stack width="65%" height="100vh">
+        <Image src={Background} width={1700} height={300} />
+      </Stack>
+    </Stack>
+  );
+};
 
-
-            <Stack width='68%' alignItems='end' height='95vh' justifyContent='center'>
-                <Stack width='700px' justifyContent='space-around' className='text' height='67px' >
-                    <Stack direction='row' alignItems='center' >
-                        <Image src={sainDurrin} width='50px' height='50px'></Image>
-                        <Text color='white' FontSize='12px' FontWeight='500' LineHeight='14px' FontFamily='Roboto' FontStyle='normal'>
-                            <Margin size={[0, 0, 0, 10]}>
-                                САЙН ДУРЫН <br />ИДЭВХТНИЙ БҮРТГЭЛ
-                            </Margin>
-                        </Text>
-                    </Stack>
-
-                    <Stack direction='row' alignItems='center' >
-                        <Image src={gishuun} width='50px' height='50px'></Image>
-                        <Text color='white' FontSize='12px' FontWeight='500' LineHeight='14px' FontFamily='Roboto' FontStyle='normal'>
-                            <Margin size={[0, 0, 0, 10]}>
-                                ГИШҮҮН, ДЭМЖЭГЧДИЙН <br /> БҮРТГЭЛ
-                            </Margin>
-                        </Text>
-                    </Stack>
-                    <Stack direction='row' alignItems='center' >
-                        <Image src={tuslamj} width='50px' height='50px'></Image>
-                        <Text color='white' FontSize='12px' FontWeight='500' LineHeight='14px' FontFamily='Roboto' FontStyle='normal'>
-                            <Margin size={[0, 0, 0, 10]}>
-                                ТУСЛАМЖ ХҮРТЭГЧИЙН <br /> БҮРТГЭЛ
-                            </Margin>
-                        </Text>
-                    </Stack>
-                </Stack>
-            </Stack>
-        </Stack>
-    )
-}
-
-export default Login
+export default Login;
