@@ -1,9 +1,9 @@
 import React from "react";
-
+import Page from "../components/common/pagination"
 const Home = () => {
 
     return <>
-    Thats home 
+        <Page/>
     </>
 }
 export default Home;
