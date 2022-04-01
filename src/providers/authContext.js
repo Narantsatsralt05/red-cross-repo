@@ -15,7 +15,12 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [signUpError, setSignUpError] = useState('');
+<<<<<<< HEAD
   const [saveError, setsaveError] = useState(false)
+=======
+  const [forgotPassError, setForgotPassError] = useState('');
+
+>>>>>>> 97f0427a17711f0d61dea10fb929f93b142919bb
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
@@ -30,7 +35,7 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         console.log(error.message);
-        setLoginError(error.message)
+        setLoginError(error.message);
       });
   };
 
@@ -44,7 +49,7 @@ export const AuthProvider = ({ children }) => {
         })
         .catch((error) => {
           console.log(error.message);
-          setSignUpError(error.message)
+          setSignUpError(error.message);
         });
     } else {
       console.log('repeat pass buruu bn!!!');
@@ -55,8 +60,16 @@ export const AuthProvider = ({ children }) => {
     console.log('logOut amjilttai XD');
   };
   const forgetPass = (email) => {
-    auth.sendPasswordResetEmail(email);
-    console.log('forgotPass amjilttai XD');
+    auth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        console.log('forgotPass amjilttai XD');
+        window.location = '/login';
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setForgotPassError(error.message);
+      });
   };
   return (
     <AuthContext.Provider
@@ -67,8 +80,12 @@ export const AuthProvider = ({ children }) => {
         logOut,
         user,
         loginError,
+<<<<<<< HEAD
         setsaveError,
         saveError
+=======
+        forgotPassError
+>>>>>>> 97f0427a17711f0d61dea10fb929f93b142919bb
       }}
     >
       {children}
