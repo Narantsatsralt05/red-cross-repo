@@ -15,6 +15,7 @@ export default function Home() {
   }, [user]);
   return <>Redirecting...</>;
 =======
+<<<<<<< HEAD
 import styles from '../../styles/Home.module.css'
 import Head from 'next/head';
 import Image from 'next/image';
@@ -81,3 +82,17 @@ export default function Home() {
   );
 }
 >>>>>>> 46f8794 (test)
+=======
+import React, { useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../../styles/Home.module.css';
+import Header from '../components/common/header';
+
+export default function Home() {
+  return (
+  <Header/>
+  );
+}
+>>>>>>> eb653c9 (header)
+>>>>>>> 3287be2 (header)
