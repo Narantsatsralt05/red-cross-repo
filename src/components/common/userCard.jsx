@@ -1,8 +1,8 @@
 import { Stack, Border, Box, Padding, Picture, Text, Margin } from '..';
 import blue from '../../assets/icon/blue.svg';
-import grey from '../../assets/icon/grey.svg';
-import green from '../../assets/icon/green.svg';
-import female from "../../assets/icon/female.svg"
+// import grey from '../../assets/icon/grey.svg';
+// import green from '../../assets/icon/green.svg';
+// import female from "../../assets/icon/female.svg"
 import Image from 'next/image';
 
 export const Usercard = ({  firstName, lastName, register, age, gender ,bluebadge,greenbadge,greybadge }) => {
@@ -14,7 +14,7 @@ export const Usercard = ({  firstName, lastName, register, age, gender ,bluebadg
             <Stack direction="row" borderColor="#E3E3E3" width="100%" alignItems="center" gap="10">
               <Border borderRadius="50%" overFlow="hidden" borderColor="#E3E3E3">
                 <Stack bg="#E3E3E3" height="65px" width="65px" justifyContent="center" alignItems="center">
-                  <Image src={female} height="45%" width="45%"></Image>
+                  {/* <Image src={female} height="45%" width="45%"></Image> */}
                 </Stack>
               </Border>
               <Stack direction="column" gap="10">
@@ -59,18 +59,18 @@ export const Usercard = ({  firstName, lastName, register, age, gender ,bluebadg
                   {
                       greybadge ? <Border borderRadius="5px" borderColor="#626262">
                     <Stack height={'35px'} width={'35px'} bg="#626262" justifyContent="center" alignItems="center">
-                      <Image src={grey} height={'65%'} width={'65%'} ></Image>
+                      {/* <Image src={grey} height={'65%'} width={'65%'} ></Image> */}
                     </Stack>
                   </Border> : ""
                   }
                   {
                       greenbadge ? <Border borderRadius="5px" borderColor="#1A9461">
                     <Stack height={'35px'} width={'35px'} bg="#1A9461" justifyContent="center" alignItems="center">
-                      <Image src={green} height={'65%'} width={'65%'} ></Image>
+                      {/* <Image src={green} height={'65%'} width={'65%'} ></Image> */}
                     </Stack>
                   </Border> : ""
                   }
-                  
+                    
                 
               </Stack>
               </Padding>

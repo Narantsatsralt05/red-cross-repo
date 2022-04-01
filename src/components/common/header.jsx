@@ -20,86 +20,31 @@ import { Border } from "../core/border";
 
 
 const Header = ({Where , user}) => {
-    return <Stack width="100vw"height="7vh" bg="red">
-        <Stack bg="#0066B3" width="100vw" height="7vh">
-            <Center>
-            <Stack width="6vw" height="4vh" justifyContent='center'>
-               <Image src={Arrow}></Image>
-            </Stack>
-            <Stack width="4vw" height="8vh" justifyContent='center'>
-                <Button><Image src={hamburger}></Image></Button>
-            </Stack>
-            <Stack width="10vw" height="4vh"  justifyContent='space-evenly' alignItems="center" >
-                <Image src={Logo} ></Image>
-                <Text fontWeight="500"  fontSize="19px" color="white">МУЗН</Text>
-            </Stack>
-            <Stack width="4vw" height="4vh" justifyContent='center'>
-                <Image src={line}></Image>
-            </Stack>
-            <Stack width="65vw" height="4vh" alignItems="center">
-                
-                    <Text fontStyle="bold" fontWeight="700" fontSize="17px" color="white">{Where}АЙМГИЙН УЛААН ЗАГАЛМАЙ ХОРОО</Text>
-               
-            </Stack>
-            <Stack>{user}</Stack>
-            <Stack></Stack>
-            </Center>
-        </Stack>
-        <Margin size={[10, 0, 0, 3]}>
-        <Border borderColor="#E5E5E5" >
-
-    
-        <Stack height="90vh" width="15vw" >
-                                <Stack >
-                                    <Text fontWeight='300' fontSize='10px' lineHeight='12px' color='#484848'>
-                                        <Padding size={[10, 0, 6, 7]}  >
-                                            <Stack direction='row'>
-                                                <Image src={Pic}></Image>
-                                                <Margin size={[2, 0, 0, 3]}>
-                                                    <Button>
-                                                        <Text fontSize="15px"> Хувь хүний мэдээлэл</Text>
-                                                    </Button>
-                                                </Margin>
-                                            </Stack>
-                                        </Padding>
-                                        <Padding size={[10, 0, 6, 7]}>
-                                            <Stack direction='row'>
-                                                <Image src={Help}></Image>
-                                                <Margin size={[2, 0, 0, 3]}>
-                                                <Button>
-                                                        <Text fontSize="15px">  Сайн дурын ажлын мэдээлэл</Text>
-                                                    </Button>
-                                                    
-                                                </Margin>
-                                            </Stack>
-                                        </Padding >
-                                        <Padding size={[10, 0, 6, 7]}>
-                                            <Stack direction='row'>
-                                                <Image src={gishuunInfo}></Image>
-                                                <Margin size={[2, 0, 0, 3]}>
-                                                <Button>
-                                                        <Text fontSize="15px">  Гишүүнчлэлийн мэдээлэл</Text>
-                                                    </Button>
-                                                   
-                                                </Margin>
-                                            </Stack>
-                                        </Padding>
-                                        <Padding size={[10, 0, 6, 7]}>
-                                            <Stack direction='row'>
-                                                <Image src={tuslamjInfo}></Image>
-                                                <Margin size={[2, 0, 0, 3]}>
-                                                <Button>
-                                                        <Text fontSize="15px">   Тусламжийн мэдээлэл</Text>
-                                                    </Button>
-                                                  
-                                                </Margin>
-                                            </Stack>
-                                        </Padding>
-                                    </Text>
-                                </Stack>
+    return <Stack width="100vw"height="7vh" >
+                <Stack bg="#0066B3" width="110vw" height="7vh">
+                    <Center>
+                        <Stack width="6vw" height="4vh" justifyContent='center'>
+                        <Image src={Arrow}></Image>
                         </Stack>
-                        </Border>
-                        </Margin>
+                        <Stack width="4vw" height="8vh" justifyContent='center'>
+                            <Button><Image src={hamburger}></Image></Button>
+                        </Stack>
+                        <Stack width="8vw" height="4vh"  justifyContent='space-evenly' alignItems="center" >
+                            <Image src={Logo} ></Image>
+                            <Text fontWeight="500"  fontSize="19px" color="white">МУЗН</Text>
+                        </Stack>
+                        <Stack width="4vw" height="4vh" justifyContent='center'>
+                            <Image src={line}></Image>
+                        </Stack>
+                        <Stack width="65vw" height="4vh" alignItems="center">
+                                <Text fontStyle="bold" fontWeight="700" fontSize="17px" color="white">{Where}АЙМГИЙН УЛААН ЗАГАЛМАЙ ХОРОО</Text>
+                        
+                        </Stack>
+                        <Stack>{user}</Stack>
+                        <Stack></Stack>
+                    </Center>
+                </Stack>
+       
     </Stack>
     
 }

@@ -1,13 +1,15 @@
-<<<<<<< HEAD
 import React from 'react';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { Text } from "../components/core/text";
+import Header from '../components/common/header';
 
 export default function Home() {
   const { user } = useAuthContext();
   const router = useRouter();
 
+<<<<<<< HEAD
   useEffect(() => {
     if (!user) {
       router.push('/login');
@@ -88,11 +90,24 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import Header from '../components/common/header';
+=======
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push('/login');
+  //   }
+  // }, [user]);
+>>>>>>> f04ba8f (HeaderComponent-55)
 
-export default function Home() {
   return (
+<<<<<<< HEAD
   <Header/>
   );
 }
 >>>>>>> eb653c9 (header)
 >>>>>>> 3287be2 (header)
+=======
+    
+    <Header></Header>
+  )
+}
+>>>>>>> f04ba8f (HeaderComponent-55)
