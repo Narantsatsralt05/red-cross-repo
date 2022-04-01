@@ -2,19 +2,21 @@ import React from 'react';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { Text } from "../components/core/text";
-import Header from '../components/common/header';
 
 export default function Home() {
   const { user } = useAuthContext();
   const router = useRouter();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2fe733b (HeaderComponent-55)
   useEffect(() => {
     if (!user) {
       router.push('/login');
     }
   }, [user]);
+<<<<<<< HEAD
   return <>Redirecting...</>;
 =======
 <<<<<<< HEAD
@@ -97,6 +99,8 @@ import Header from '../components/common/header';
   //   }
   // }, [user]);
 >>>>>>> f04ba8f (HeaderComponent-55)
+=======
+>>>>>>> 2fe733b (HeaderComponent-55)
 
   return (
 <<<<<<< HEAD
@@ -107,7 +111,7 @@ import Header from '../components/common/header';
 >>>>>>> 3287be2 (header)
 =======
     
-    <Header></Header>
+    <div></div>
   )
 }
 >>>>>>> f04ba8f (HeaderComponent-55)
