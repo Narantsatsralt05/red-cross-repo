@@ -4,6 +4,7 @@ import Background from '../assets/image/loginBg.png';
 import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../providers/authContext';
+import { useRouter } from 'next/router';
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -26,6 +27,7 @@ const Login = () => {
   if (event === 'Enter') {
     login(form.email, form.password);
   }
+  const router = useRouter();
   return (
     <Stack direction="row" width="100%" height="100vh">
       <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
@@ -96,7 +98,7 @@ const Login = () => {
               <Text color="#1B1B1B" fontSize="0.8vw" cursor="pointer">
                 Нууц үг
               </Text>
-              <Text color="#757575" fontSize="0.8vw" cursor="pointer">
+              <Text color="#757575" fontSize="0.8vw" cursor="pointer" onClick={() => router.push('/forgotPass')}>
                 Нууц үг мартсан?
               </Text>
             </Stack>
