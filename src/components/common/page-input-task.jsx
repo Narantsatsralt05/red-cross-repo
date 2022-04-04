@@ -23,11 +23,10 @@ const InputTask = ({ input, placeholder, label, ...props }) => {
                             placeholder={placeholder} autoComplete='off'
                             {...field} {...props} type={field.name} id={field.name}
                             name={field.name} className={`form-control shadow-none ${meta.touched && meta.error && 'is-invalid'}`} />
-                        <Text color='red' fontSize='12px' fontWeight='400' lineHeight='12px' >
+                        <Text color='red' fontSize='12px' fontWeight='400' lineHeight='12px' style={{ height: '12px' }}>
                             <ErrorMessage name={field.name}>{(msg) => {
-                                return <div>{msg}</div>
+                                return <div >{msg}</div>
                             }}</ErrorMessage>
-
                         </Text>
                     </Margin>
 

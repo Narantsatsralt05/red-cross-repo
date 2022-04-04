@@ -72,7 +72,7 @@ const LeftBar = () => {
                                 <Stack width="100%">
                                     <Stack direction='column' width='100%' height='100%' >
                                         <Margin size={[20, 0, 0, 0]}>
-                                            <Stack direction='row' justifyContent='space-between'  >
+                                            <Stack direction='row' justifyContent='space-between' >
                                                 <Margin size={[3, 0, 0, 15]}>
                                                     <Text fontWeight='400' fontSize='12px' lineHeight='12px' color='#000000'>
                                                         ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ
@@ -94,7 +94,7 @@ const LeftBar = () => {
                                                 </Margin>
                                             </Stack>
                                         </Margin>
-                                        <Stack direction='row' justifyContent='space-between' style={{ marginRight: '10px' }} flexWrap='wrap'>
+                                        <Stack direction='row' justifyContent='space-between' style={{ marginRight: '10px' }} flexWrap='wrap' justifyContent='left'>
                                             <Stack direction='column' >
                                                 <InputTask name='register' input='Регистрийн дугаар' placeholder='УК94092597' type='text'></InputTask>
                                                 <InputTask name='lastName' input='Нэр' placeholder='Нямсамбуу'></InputTask>
@@ -125,7 +125,7 @@ const LeftBar = () => {
                                                 <Margin size={[52, 0, 0, 0]}>
                                                     <InputTask name='province' input='Аймаг, хот' placeholder=''></InputTask>
                                                 </Margin>
-                                                <Margin size={[120, 0, 0, 0]}>
+                                                <Margin size={[132, 0, 0, 0]}>
                                                     <InputTask name='phone' input='Утас' placeholder=''>
                                                     </InputTask>
                                                 </Margin>
