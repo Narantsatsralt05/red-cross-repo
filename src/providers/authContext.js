@@ -15,12 +15,9 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [signUpError, setSignUpError] = useState('');
-<<<<<<< HEAD
   const [saveError, setsaveError] = useState(false)
-=======
   const [forgotPassError, setForgotPassError] = useState('');
 
->>>>>>> 97f0427a17711f0d61dea10fb929f93b142919bb
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
@@ -80,12 +77,9 @@ export const AuthProvider = ({ children }) => {
         logOut,
         user,
         loginError,
-<<<<<<< HEAD
         setsaveError,
-        saveError
-=======
+        saveError,
         forgotPassError
->>>>>>> 97f0427a17711f0d61dea10fb929f93b142919bb
       }}
     >
       {children}

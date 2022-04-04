@@ -1,9 +1,10 @@
 import React from "react";
+import LeftBar from "../components/home/userInformation";
 
 const Home = () => {
 
     return < >
-        Home
+        <LeftBar />
     </>
 }
 export default Home;

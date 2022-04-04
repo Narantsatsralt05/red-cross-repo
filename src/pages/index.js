@@ -12,4 +12,5 @@ export default function Home() {
       router.push('/login');
     }
   }, [user]);
-  return <>Redirecting...</>;
+  return <>Redirecting...</>
+}
