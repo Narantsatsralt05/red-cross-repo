@@ -22,7 +22,8 @@ const InputTask = ({ input, placeholder, label, ...props }) => {
                             border='1px solid #D0D0D0' borderradius='5px'
                             placeholder={placeholder} autoComplete='off'
                             {...field} {...props} type={field.name} id={field.name}
-                            name={field.name} className={`form-control shadow-none ${meta.touched && meta.error && 'is-invalid'}`} style={{border:`1px solid ${meta.touched && meta.error && 'red'}`}} />
+                            name={field.name} style={{ border: `1px solid ${meta.touched && meta.error ? 'red' : '#D0D0D0'} ` }} />
+                        {/* style={{border : '1px solid #D0D0D0'}} */}
                         <Text color='red' fontSize='12px' fontWeight='400' lineHeight='12px' style={{ height: '12px' }}>
                             <ErrorMessage name={field.name}>{(msg) => {
                                 return <div >{msg}</div>
