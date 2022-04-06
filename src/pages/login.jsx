@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Button, Margin, NotificationModal, Position, Stack, StyledInput, Text } from '../components';
 import React, { useState } from 'react';
 import Background from '../assets/image/loginBg.png';
@@ -6,21 +5,6 @@ import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
-=======
-
-import Stack from '../styled-component/stack'
-import Logo from '../assest/image/logo.svg'
-import Image from 'next/image'
-import { Center } from '../styled-component/center'
-import Text from '../styled-component/text'
-import { Margin } from '../styled-component/margin'
-import { StyledBorder } from '../components/styledBorder'
-import { StyledInput } from '../components/input'
-import { Button } from '../components/button'
-import sainDurrin from '../assest/icon/sainDuriin.svg'
-import gishuun from '../assest/icon/gishuun.svg'
-import tuslamj from '../assest/icon/tuslamj.svg'
->>>>>>> 011b8a4 ([web] ESlint (#49))
 
 const Login = () => {
   const [form, setForm] = useState({
