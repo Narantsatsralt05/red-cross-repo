@@ -11,3 +11,4 @@ export * from "./core/text";
 export * from "./core/padding";
 export * from "./common/userCard";
 export * from "./core/box";
+export * from "./common/informationSection";
