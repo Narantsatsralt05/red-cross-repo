@@ -19,46 +19,50 @@ import { Border } from "../core/border";
 
 const Leftbar = () => {
     return (
-             <Stack>
-                   <Stack>
-                        <Stack >
-                            <Text fontWeight='300' fontSize='10px' lineHeight='12px' color='#484848'>
-                                <Padding size={[6, 0, 6, 7]}  >
-                                    <Stack direction='row'>
-                                        <Image src={Pic}></Image>
-                                        <Margin size={[2, 0, 0, 3]}>
-                                            Хувь хүний мэдээлэл
-                                        </Margin>
-                                    </Stack>
-                                </Padding>
-                                <Padding size={[6, 0, 6, 7]}>
-                                    <Stack direction='row'>
-                                        <Image src={Help}></Image>
-                                        <Margin size={[2, 0, 0, 3]}>
-                                            Сайн дурын ажлын мэдээлэл
-                                        </Margin>
-                                    </Stack>
-                                </Padding >
-                                <Padding size={[6, 0, 6, 7]}>
-                                    <Stack direction='row'>
-                                        <Image src={gishuunInfo}></Image>
-                                        <Margin size={[2, 0, 0, 3]}>
-                                            Гишүүнчлэлийн мэдээлэл
-                                        </Margin>
-                                    </Stack>
-                                </Padding>
-                                <Padding size={[6, 0, 6, 7]}>
-                                    <Stack direction='row'>
-                                        <Image src={tuslamjInfo}></Image>
-                                        <Margin size={[2, 0, 0, 3]}>
-                                            Тусламжийн мэдээлэл
-                                        </Margin>
-                                    </Stack>
-                                </Padding>
-                            </Text>
+        <Border borderColor="#E5E5E5" borderRadius="10px" >
+             <Stack height="90vh" width="100%" direction="column"  >
+                    <Padding size={[6, 0, 6, 0]}  >
+                        <Stack direction='row'  height="140%" >
+                            <Margin size={[2, 0, 0, 10]}>
+                                <Image src={Pic}></Image>
+                            </Margin>
+                            <Margin size={[2, 0, 0, 15]}>
+                                Хувь хүний мэдээлэл
+                            </Margin>
                         </Stack>
-                    </Stack>
+                    </Padding>
+                    <Padding size={[6, 0, 6, 0]}>
+                        <Stack direction='row' height="140%">
+                        <Margin size={[2, 0, 0, 10]}>
+                                <Image src={tuslamjInfo}></Image>
+                            </Margin>
+                            <Margin size={[2, 0, 0, 15]}>
+                            Сайн дурын ажлын мэдээлэл
+                            </Margin>
+                        </Stack>
+                    </Padding >
+                    <Padding size={[6, 0, 6, 0]}>
+                        <Stack direction='row' height="140%">
+                             <Margin size={[2, 0, 0, 10]}>
+                                <Image src={ gishuunInfo}></Image>
+                            </Margin>
+                            <Margin size={[2, 0, 0, 15]}>
+                            Гишүүнчлэлийн мэдээлэл
+                            </Margin>
+                        </Stack>
+                    </Padding>
+                    <Padding size={[6, 0, 6, 0]}>
+                        <Stack direction='row'  height="140%" >
+                        <Margin size={[2, 0, 0, 10]}>
+                                <Image src={Help}></Image>
+                            </Margin>
+                            <Margin size={[2, 0, 0, 15]}>
+                            Тусламжийн мэдээлэл
+                            </Margin>
+                        </Stack>
+                    </Padding>
              </Stack>
+        </Border>
     )
 }
 
