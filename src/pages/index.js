@@ -8,9 +8,11 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
+    if (user === null) {
       router.push('/login');
+    } else if (user != null) {
+      router.push('/home');
     }
   }, [user]);
-  return <>Redirecting...</>
+  return <>Redirecting...</>;
 }

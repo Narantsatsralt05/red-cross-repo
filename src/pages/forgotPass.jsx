@@ -1,4 +1,4 @@
-import { Button, Margin, NotificationModal, Position, Stack, StyledInput, Text } from '../components';
+import { Button, Margin, Position, Stack, StyledInput, Text } from '../components';
 import React, { useState } from 'react';
 import Background from '../assets/image/forgotPassBg.png';
 import Image from 'next/image';
@@ -101,7 +101,7 @@ const Login = () => {
           @ 2018-2021 Монголын улаан загалмай нийгэмлэг
         </Text>
       </Position>
-      <NotificationModal bg="#fff" />
+
       <Stack width="65%" height="100vh">
         <Image src={Background} width={1700} height={300} />
       </Stack>

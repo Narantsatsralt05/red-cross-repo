@@ -1,5 +1,5 @@
-import { Button, Margin, NotificationModal, Position, Stack, StyledInput, Text } from '../components';
-import React, { useState } from 'react';
+import { Button, Margin, Position, Stack, StyledInput, Text } from '../components';
+import React, { useEffect, useState } from 'react';
 import Background from '../assets/image/loginBg.png';
 import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
@@ -12,7 +12,7 @@ const Login = () => {
     password: '',
   });
   const [event, setEvent] = useState('');
-
+  const router = useRouter();
   const handler = (event) => {
     // changing the state to the name of the key
     // which is pressed
@@ -22,12 +22,18 @@ const Login = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
-  const { login, loginError } = useAuthContext();
+  const { user, login, loginError } = useAuthContext();
 
   if (event === 'Enter') {
     login(form.email, form.password);
   }
-  const router = useRouter();
+
+  useEffect(() => {
+    if (user != null) {
+      router.push('/home');
+    }
+  }, [user]);
+
   return (
     <Stack direction="row" width="100%" height="100vh">
       <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
@@ -146,7 +152,7 @@ const Login = () => {
           @ 2018-2021 Монголын улаан загалмай нийгэмлэг
         </Text>
       </Position>
-      <NotificationModal bg="#fff" />
+
       <Stack width="65%" height="100vh">
         <Image src={Background} width={1700} height={300} />
       </Stack>
