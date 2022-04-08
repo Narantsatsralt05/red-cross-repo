@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         window.location = '/home';
+        alert('login successfully');
         console.log('login amjilttai XD');
       })
       .catch((error) => {
@@ -40,7 +41,8 @@ export const AuthProvider = ({ children }) => {
       auth
         .createUserWithEmailAndPassword(email, password1)
         .then(() => {
-          // window.location = '/';
+          window.location = '/home';
+          alert('signUp successfully');
           console.log('signUp amjilttai XD');
         })
         .catch((error) => {
@@ -52,14 +54,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
   const logOut = () => {
-    auth.signOut();
-    console.log('logOut amjilttai XD');
+    auth
+      .signOut()
+      .then(() => {
+        window.location = '/login';
+        alert("logOut successfully")
+        setUser(null);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   const forgetPass = (email) => {
     auth
       .sendPasswordResetEmail(email)
       .then(() => {
-        console.log('forgotPass amjilttai XD');
+        alert("та имэйлээ шалгана уу!")
         window.location = '/login';
       })
       .catch((error) => {
@@ -76,7 +86,7 @@ export const AuthProvider = ({ children }) => {
         logOut,
         user,
         loginError,
-        forgotPassError
+        forgotPassError,
       }}
     >
       {children}
