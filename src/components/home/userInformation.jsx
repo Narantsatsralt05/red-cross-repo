@@ -21,6 +21,7 @@ const LeftBar = () => {
             .required('Хоосон байна бөглөнө үү')
 
     }
+
     const validate = Yup.object({
         register: Yup.string()
             .matches(/[а-яА-Я]/, 'Та монголоор бичнэ үү')
@@ -68,7 +69,7 @@ const LeftBar = () => {
                 return <Form>
                     <Border borderRadius='10px' borderColor='rgb(245, 247, 249)' style={{ backgroundColor: 'rgb(245, 247, 249)' }} >
                         <Text fontFamily='Roboto' font-style='normal'>
-                            <Stack direction='row' width="100%" justifyContent='end' >
+                            <Stack direction='row' width="100%" justifyContent='end'  >
                                 <Stack width="100%">
                                     <Stack direction='column' width='100%' height='100%' >
                                         <Margin size={[20, 0, 0, 0]}>
@@ -84,7 +85,6 @@ const LeftBar = () => {
                                                 <Margin size={[0, 10, 0, 0]}>
                                                     <Button bgColor='#0066B3' width='98px' height='23px' radius='3px'
                                                         type="submit" border='none' color='white'
-                                                        className={!(dirty && isValid) ? "disabled-btn" : ""}
                                                         disabled={!(dirty && isValid)}
                                                         style={{ cursor: (dirty && isValid) ? 'pointer' : 'not-allowed' }}
                                                     >
