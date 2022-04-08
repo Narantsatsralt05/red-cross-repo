@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
+import Loading from '../components/common/Loading';
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -18,7 +19,7 @@ const Login = () => {
     // which is pressed
     setEvent(event.key);
   };
-
+  
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
@@ -72,7 +73,7 @@ const Login = () => {
             />
             {form.email.length >= 10 ? (
               loginError ===
-              'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
+                'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
                 <Text color="red">и-мэйл бүртгэлгүй байна.</Text>
               ) : (
                 ''
@@ -82,7 +83,7 @@ const Login = () => {
             )}
             {form.email.length >= 10 ? (
               loginError ===
-              'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' ? (
+                'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' ? (
                 <Text color="red">хэт олон буруу оролдлого</Text>
               ) : (
                 ''
@@ -117,11 +118,12 @@ const Login = () => {
                 onKeyPress={(e) => handler(e)}
               />
               {loginError ===
-              'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).' ? (
+                'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).' ? (
                 <Text color="red">нууц үг буруу байна</Text>
               ) : (
                 ''
               )}
+            
             </Margin>
           </>
         </Margin>
