@@ -24,7 +24,7 @@ const Test = () => {
           <Margin size={[10, 0, 0, 0]}>
             <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
               <Margin size={[35, 0, 35, 150]}>
-                <StyledInput />
+                <StyledInput width={200} />
               </Margin>
             </Border>
           </Margin>
@@ -36,7 +36,13 @@ const Test = () => {
               <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
                 <Margin size={[35, 0, 35, 100]}>
                   <Stack direction="row">
-                    <Button bc="1px solid grey" Color="rgb(25, 118, 210)" width="100px" height="30px" radius="8px">
+                    <Button
+                      bc="1px solid grey"
+                      Color="rgb(25, 118, 210)"
+                      width="100px"
+                      height="30px"
+                      borderRadius="8px"
+                    >
                       <Center>Button</Center>
                     </Button>
                     <Margin size={[0, 0, 0, 30]}>
@@ -45,7 +51,7 @@ const Test = () => {
                         Color="white"
                         width="100px"
                         height="30px"
-                        radius="8px"
+                        borderRadius="8px"
                         bgColor="rgb(25, 118, 210)"
                       >
                         <Center>Button</Center>
@@ -75,26 +81,37 @@ const Test = () => {
           </div>
         </Margin>
         <Margin size={[50, 0, 0, 0]}>
-          <Text FontSize="1.5rem">Image</Text>
+          <Text FontSize="1.5rem">Padding</Text>
           <div className="" style={{ width: '500px' }}>
             <Margin size={[10, 0, 0, 0]}>
               <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
-                <Picture
-                  src="https://www.directivegroup.com/wp-content/uploads/2017/03/smile-9047-9380-hd-wallpapers-1.jpg"
-                  width="500px"
-                />
+                <Margin size={[35, 130, 35, 100]}>
+                  <Border color="rgba(0, 0, 0, 0.1);" borderRadius="8px">
+                    <Padding size={100}>Padding</Padding>
+                  </Border>
+                </Margin>
               </Border>
             </Margin>
           </div>
         </Margin>
         <Margin size={[50, 0, 0, 0]}>
-          <Text FontSize="1.5rem">Padding</Text>
+          <Text FontSize="1.5rem">Position</Text>
           <div className="" style={{ width: '500px' }}>
             <Margin size={[10, 0, 0, 0]}>
               <Border radius="10px" color="rgba(0, 0, 0, 0.1);">
-                <Margin size={[35, 0, 35, 100]}>
+                <Margin size={[35, 130, 35, 100]}>
                   <Border color="rgba(0, 0, 0, 0.1);">
-                    <Padding size={100}>Padding</Padding>
+                    <Position position="relative">
+                      <Border color="rgba(0, 0, 0, 0.1);">
+                        <Margin size={[35, 130, 80, 100]}>
+                          <Position position="absolute">
+                            <Margin size={[10, 0, 0, 0]}>
+                              <Text>MY MAN idk my brain isn't braining rn</Text>
+                            </Margin>
+                          </Position>
+                        </Margin>
+                      </Border>
+                    </Position>
                   </Border>
                 </Margin>
               </Border>

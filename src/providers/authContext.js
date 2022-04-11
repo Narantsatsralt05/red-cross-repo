@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }) => {
       auth
         .createUserWithEmailAndPassword(email, password1)
         .then(() => {
-          window.location = '/home';
           // window.location = '/home';
           console.log('signUp amjilttai XD');
         })
