@@ -1,104 +1,64 @@
+The steps of the make contribution on red-cross project in github:
+
+1. **Writing an issue guidance**
+2. **Branch naming convention**
+3. **Commit messages**
+4. **Pull request format**
+
 # Writing an issue guidance
-
 ## Issue title format
-
-```
-[type] Short title
-```
-
-Task title formats:
-
-- <verb/action> [activity] (e.g. “Perform backup”)
-- <verb/action> [thing] (e.g. “Research new javascript framework”)
-
-When implementing new features:
-
-- Implement (e.g. Implement search engine)
-- Create (e.g. Create card component)
-
-Updates:
-
-- Make [feature] run faster
-- Improve the performance of [feature/screen/endpoint]
-- Update [feature] with/to [update]
-- Rename [feature/text] to [new name]
 
 In example:
 
+`[page] Create contact page`
+
 `[component] Create card component`
 
-`[page] Create contact page`
+`[research] Firebase collection structure`
+
+`[bug] Fix checkbox component`
 
 `[doc] Update readme.md`
 
 ## Issue label format
 
-Each issue must be have a label.
-
-> **First label** is to indicate to what kind of work this job is intended to do.
-- `enhancement`
-  New feature or request
-- `dependencies`
-  Pull requests that update a dependency file
-- `documentation`
-  Improvements or additions to documentation
-- `research`
-  Research or work that does not create pull request
-- `bug`
-  Something isn't working
-
-> **Second label** is to indicate to what the current state of affairs is. (optional)
-- `blocked`
-  blocked by other task or design
-- `help wanted`
-  Extra attention is needed
-- `question`
-  Further information is requested
-- `wontfix`
-  This will not be worked on
-- `question-in-design`
-  Further design information is requested
+Each issue must be have a label:
+> **The label** is to indicate to what type of the task is
+- `enhancement`: new feature
+- `research`: research or work that does not create pull request
+- `bug`: something isn't working
+- `documentation`: Improvements or additions to documentation
 
 ## Issue description format
 
-- **Requirements**:
-  - Please Keep titles short and descriptive.
-  - Include/tag the right people in your discussion.
-  - Format your messages. Use markdown syntax. Steps of work can be described with checkboxes.
-  - Add useful links to you references.
+Requirements:
+ - In description, make it descriptive of the task that you received (ex: Create search function based on people register ID)
+ - Create checkbox to divide your task
 
 # Branch naming convention
 
-Branch name consists of 3 parts with following format:
-
-- ID of the issue (number)
+Branch name consists of 2 parts with following format:
+- ID of the issue
 - Short description
-- Hyphens must be seperators
 
-For example: `12-api-endpont-add-content`
-
+**For example:** `74-create-register-search`
 # Commit messages
 
-Please keep commit message short but explicit. Prepend your action before commit message.
+Please keep commit message short but explicit.
 
 For example:
 
-`Bug - Fix app crash during login`
+`Fix search component`
 
-`Feature - Implement firebase config`
+`Implement faster performance on search`
 
-`Feature - Create contact page`
-
+`Create contact page`
 # Pull request format
-
-**Naming convention**:
-
+Naming convention:
 - Title - Short informative summary of the pull request
 
-**Description**:
+Description:
+- Must take screen shot or record of completed task 
+- Description: describing the task in more detailed way
 
-- IssueID must be provided with `#`. For example: `#12`
-- Must take screen shot or record of completed task  
-- Description: More detailed explanatory text describing the PR for the reviewer. What did you solve/fixed.
-
-Source: Gansukh
+##### Source: Gansukh
