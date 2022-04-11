@@ -41,12 +41,8 @@ export const AuthProvider = ({ children }) => {
       auth
         .createUserWithEmailAndPassword(email, password1)
         .then(() => {
-<<<<<<< HEAD
           window.location = '/home';
           alert('signUp successfully');
-=======
-          // window.location = '/home';
->>>>>>> e05ac75 (display component test fixed)
           console.log('signUp amjilttai XD');
         })
         .catch((error) => {
