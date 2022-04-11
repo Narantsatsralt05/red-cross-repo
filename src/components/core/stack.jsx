@@ -9,5 +9,6 @@ export const Stack = style.div`
     justify-content: ${({ justifyContent }) => justifyContent};
     align-items:${({ alignItems }) => alignItems};
     gap: ${({ gap }) => gap}px;
-    background-color: ${({ bg }) => bg}
+    background-color: ${({ bg }) => bg};
+    cursor:${({cursor}) => cursor}
 `;
