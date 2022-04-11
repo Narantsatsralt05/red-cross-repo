@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       .then(() => {
         window.location = '/home';
         alert('login successfully');
-        console.log('login amjilttai XD');
+
       })
       .catch((error) => {
         console.log(error.message);
