@@ -49,15 +49,15 @@ const Leftbar = () => {
     }
     return (
         <Border borderColor="#E5E5E5" borderRadius="10px" >
-             <Stack height="90vh" width="100%" direction="column"  >
-                <Padding size={[6, 0, 6, 0]}  >
+             <Stack height="90vh" width="280px" direction="column"  >
+                <Padding size={[6, 0, 7, 0]}  >
                     <Border borderWidth={info.length > 1 ? [0, 0, 0, 1] : [0, 0, 0, 0]} borderColor={info[1]}>
-                        <Stack direction='row'  height="140%" onClick={Info}cursor="pointer" alignItems="center">
+                        <Stack direction='row'  width="120%"height="100%" onClick={Info}cursor="pointer" alignItems="center">
                             <Margin size={[2, 0, 0, 10]}>
                                 <Image src={Pic}></Image>
                             </Margin>
-                            <Margin size={[2, 0, 0, 15]}>
-                                <Text fontWeight="300" color={info[0]}>Хувь хүний мэдээлэл</Text>
+                            <Margin size={[2, 0, 4, 10]}>
+                                <Text fontWeight={info.length > 1 ? "400" : "200"} color={info[0]}>Хувь хүний мэдээлэл</Text>
                             </Margin>
                         </Stack>
                     </Border>
@@ -66,10 +66,10 @@ const Leftbar = () => {
                     <Border borderWidth={work.length > 1 ? [0, 0, 0, 1] : [0, 0, 0, 0]} borderColor={work[1]}>
                         <Stack direction='row' height="140%" onClick={Work} cursor="pointer" alignItems="center">
                             <Margin size={[2, 0, 0, 10]}>
-                                <Image src={tuslamjInfo}></Image>
+                                <Image src={tuslamj}></Image>
                             </Margin>
-                            <Margin size={[2, 0, 0, 15]}>
-                                <Text fontWeight="300"  color={work[0]}>Сайн дурын ажлын мэдээлэл</Text>
+                            <Margin size={[2, 0, 4, 10]}>
+                                <Text fontWeight={work.length > 1 ? "400" : "200"} color={work[0]}>Сайн дурын ажлын мэдээлэл</Text>
                             </Margin>
                         </Stack>
                     </Border>
@@ -80,8 +80,8 @@ const Leftbar = () => {
                              <Margin size={[2, 0, 0, 10]}>
                                 <Image src={ gishuunInfo}></Image>
                             </Margin>
-                            <Margin size={[2, 0, 0, 15]}>
-                                <Text fontWeight="300"  color={per[0 ]}>Гишүүнчлэлийн мэдээлэл</Text>
+                            <Margin size={[2, 0, 4, 10]}>
+                                <Text fontWeight={per.length > 1 ? "400" : "200"} color={per[0 ]}>Гишүүнчлэлийн мэдээлэл</Text>
                             </Margin>
                         </Stack>
                     </Border>
@@ -90,10 +90,10 @@ const Leftbar = () => {
                     <Border borderWidth={help.length > 1 ? [0, 0, 0, 1] : [0, 0, 0, 0]} borderColor={help[1]}>
                         <Stack direction='row'  height="140%" onClick={Help}  cursor="pointer" alignItems="center" >
                             <Margin size={[2, 0, 0, 10]}>
-                                <Image src={tuslamj}></Image>
+                                <Image src={tuslamjInfo}></Image>
                             </Margin>
-                            <Margin size={[2, 0, 0, 15]}>
-                                <Text fontWeight="300"  color={help[0]}>Тусламжийн мэдээлэл</Text>
+                            <Margin size={[2, 0, 4, 10]}>
+                                <Text fontWeight={help.length > 1 ? "400" : "200"}  color={help[0]}>Тусламжийн мэдээлэл</Text>
                             </Margin>
                         </Stack>  
                     </Border>
