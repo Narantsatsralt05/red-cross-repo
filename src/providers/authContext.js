@@ -26,7 +26,16 @@ export const AuthProvider = ({ children }) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
+<<<<<<< HEAD
         window.location = '/';
+=======
+<<<<<<< HEAD
+        window.location = '/home';
+        alert('login successfully');
+=======
+        window.location = '/';
+>>>>>>> 32ef143 (update)
+>>>>>>> 0835158 (update)
         console.log('login amjilttai XD');
       })
       .catch((error) => {
@@ -40,7 +49,16 @@ export const AuthProvider = ({ children }) => {
       auth
         .createUserWithEmailAndPassword(email, password1)
         .then(() => {
+<<<<<<< HEAD
           // window.location = '/home';
+=======
+<<<<<<< HEAD
+          window.location = '/home';
+          alert('signUp successfully');
+=======
+          // window.location = '/home';
+>>>>>>> 32ef143 (update)
+>>>>>>> 0835158 (update)
           console.log('signUp amjilttai XD');
         })
         .catch((error) => {
@@ -85,7 +103,14 @@ export const AuthProvider = ({ children }) => {
         user,
         loginError,
         forgotPassError,
+<<<<<<< HEAD
         signUpError
+=======
+<<<<<<< HEAD
+=======
+        signUpError
+>>>>>>> 32ef143 (update)
+>>>>>>> 0835158 (update)
       }}
     >
       {children}
