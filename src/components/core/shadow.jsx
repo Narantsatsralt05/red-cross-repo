@@ -1,26 +1,20 @@
 import styled from "styled-components";
 
-export const ShadowDown = styled.div`
-    border: 0.5px solid;
-    padding: 5px;
-    box-shadow: 0px 2px #d8d7d8;
-    border-radius: 4px;
+export const ShadowBottom = styled.div`
+    box-shadow: 0px 15px 10px -15px #111; 
 `
 export const ShadowTop = styled.div`
-    border: 0.5px solid;
-    padding: 5px;
-    box-shadow: 0px 2px #d8d7d8;
-    border-radius: 4px;
+    box-shadow: 0px -15px 10px -15px #111; 
 `
 export const ShadowRight = styled.div`
-    border: 0.5px solid;
-    padding: 5px;
-    box-shadow: 0px 2px #d8d7d8;
-    border-radius: 4px;
+    box-shadow: 15px 0px 10px -15px #111; 
 `
 export const ShadowLeft = styled.div`
-    border: 0.5px solid;
-    padding: 5px;
-    box-shadow: 0px 2px #d8d7d8;
-    border-radius: 4px;
+    box-shadow: -15px 0px 10px -15px #111;
+`
+export const FullShadow = styled.div`
+    box-shadow: 0px 0px 40px 0px #00000040;
+`
+export const WarningShadow = styled.div`
+    box-shadow: 4px 4px 4px 4px #00000040;
 `
