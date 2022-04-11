@@ -8,4 +8,5 @@ export const Text = style.div`
  font-weight: ${({ fontWeight }) => fontWeight};
  line-height:${({ lineHeight }) => lineHeight};
  cursor: ${({ cursor }) => cursor};
+ text-transform: ${({textTransform}) => textTransform};
 `;
