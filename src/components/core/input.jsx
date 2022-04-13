@@ -1,15 +1,28 @@
 import styled from 'styled-components';
+import { theme } from '../../theme/theme';
 export const StyledInput = styled.input`
-  width: ${(props) => props.width ? props.width : '400px'};
-  border: ${(props) => props.border ? props.border : '0.5px solid rgba(0, 0, 0, 0.3);'};
-  border-radius: ${(props) => props.borderRadius ? props.borderRadius : '5px'};
+  width: ${(props) => props.width ? props.width : '400px' };
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${(props)=> {
+    
+    if(props.status=='error'){
+      return 'red'
+    }else if(props.status=='success'){
+      console.log('hahah')
+      return 'green'
+    }else{
+      return 'black'
+    }
+  }};
+  border-radius: ${(props) => props.borderRadius ? props.borderRadius : '4px'};
   font-size: ${(props) => props.size ? props.size : '17px'};
   height: ${(props) => props.height ? props.height : '40px'};
   color: ${(props) => props.color};
   font: ${(props) => props.font};
-  animation-name: ${(props) => props.animation};
-  padding-left: 1vw;
-  padding-right: 1vw;
+  animation-name: ${(props)=>props.animation};
+  padding-left: 0.25vw;
+  padding-right: 0.25vw;
   display: flex;
   align-items: center;
   ::-webkit-inner-spin-button{
@@ -32,12 +45,15 @@ export const Styledoneletter = styled.input`
 `;
 
 
+//status = error | success | undefined
 
-const Styledinput = ({ label, height, width, border, borderRadius, size, color, animationName, font, placeholder, type, value }) => {
-  return (
+const Styledinput =({label,height,width, status, statusText, ...props})=>{
+  
+  return(
     <div>
-      <span style={{ "fontSize": '19px', 'font': { font } }}  >{label}</span>
-      <StyledInput type={type} placeholder={placeholder} value={value} height={height} width={width} border={border} borderRadius={borderRadius} size={size} color={color} animation={animationName} font={font} />
+      <span style={{"fontSize":'19px'}}  >{label}</span>
+      <StyledInput height={height} width={width} status={status} {...props} />
+      {status && statusText}
     </div>
   )
 

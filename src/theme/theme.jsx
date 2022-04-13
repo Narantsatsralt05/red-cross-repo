@@ -31,7 +31,7 @@ export const theme = {
   //   fontFamily: {
   //     mainFont: 'Roboto',
   //   },
-  //   weight: {
+  //   weight: {  
   //     heavy: '700',
   //     light: '400',
   //     headlineheavy: '700',
