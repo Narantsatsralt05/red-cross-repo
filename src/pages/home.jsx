@@ -1,18 +1,12 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useAuthContext } from '../providers/authContext';
+import React from "react";
+import { InformationSection } from "../components";
+import RightBar from "../components/common/rightBar";
+import LeftBar from "../components/home/userInformation";
 
 const Home = () => {
-  const { user } = useAuthContext();
 
-  const router = useRouter();
-
-  useEffect(() => {
-    if (user === null) {
-      router.push('/login');
-    }
-  }, [user]);
-
-  return <>Thats home</>;
-};
+    return <>
+        <InformationSection path='/user/Y2Aiw9KPlijMFfTHIpsy/helpType' />
+    </>
+}
 export default Home;

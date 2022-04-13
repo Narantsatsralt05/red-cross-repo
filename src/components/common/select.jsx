@@ -1,8 +1,8 @@
 import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
-import ArrowDown from "./icons/ArrowDown.jsx";
-import { Stack, Text } from "../components";
+import ArrowDown from "../icons/ArrowDown.jsx";
+import { Stack, Text } from '../index';
 
 const DropDownContent = styled.div`
     display: block;
@@ -38,7 +38,7 @@ const ToUseOptions = styled(StyledATag)`
     };
 `;
 const StyledSelect = styled.div`
-    width: 300px;
+    width: 311px;
     height: 25px;
     background-color: white;
     border: 0.4px solid gray;
@@ -79,15 +79,15 @@ const Menu = (props) => {
 
             </div>
             {state &&
-                    <DropDownContent onClick={Click} >
-                        {
-                            props.arr.map(Element =>
-                                <ToUseOptions onClick={() => handleClick(Element)}>
-                                    {Element.text}
-                                </ToUseOptions>
-                            )
-                        }
-                    </DropDownContent > }
+                <DropDownContent onClick={Click} >
+                    {
+                        props.arr.map(Element =>
+                            <ToUseOptions onClick={() => handleClick(Element)}>
+                                {Element.text}
+                            </ToUseOptions>
+                        )
+                    }
+                </DropDownContent >}
         </>
     )
 }
