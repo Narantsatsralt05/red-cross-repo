@@ -1,15 +1,18 @@
-import React from "react";
-import { InformationSection, Stack } from "../components";
-import Delete from "../components/common/delete";
-import RightBar from "../components/common/rightBar";
-import LeftBar from "../components/home/userInformation";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useAuthContext } from '../providers/authContext';
 
 const Home = () => {
+    const { user } = useAuthContext();
 
-    return <>
-        <Stack width='100vw' direction='column'>
-            <InformationSection path='/user/Y2Aiw9KPlijMFfTHIpsy/helpType' />
-        </Stack>
-    </>
-}
+    const router = useRouter();
+
+    useEffect(() => {
+        if (user === null) {
+            router.push('/login');
+        }
+    }, [user]);
+
+    return <>Thats home</>;
+};
 export default Home;

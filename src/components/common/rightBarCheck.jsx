@@ -50,7 +50,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fi
                             <Stack height='100vh' bg='white' direction='column' className='media' bg='white'>
                                 <Padding size={[10, 50, 0, 50]}>
                                     <Margin size={[20, 0, 0, 0]}>
-                                        <Stack direction='row' justifyContent='space-around' >
+                                        <Stack direction='row' justifyContent='space-between' width='100%'>
                                             <Margin size={[4, 40, 0, 0]}>
                                                 ХАМРАГДСАН СУРГАЛТ ЗАСАХ
                                             </Margin>
@@ -101,7 +101,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fi
                                         </Center>
                                     </Margin>
                                     <Position position='fixed' bottom='50px'>
-                                        <Margin size={[0, 0, 0, 30]}>
+                                        <Margin size={[0, 0, 0, 0]}>
                                             <Border borderWidth={[1, 0, 0, 0]} borderColor='#DCDCDC' style={{ width: '340px' }} >
                                                 <Margin size={[0, 0, 0, 0]}>
                                                     <Padding size={[20, 0, 0, 0]}>

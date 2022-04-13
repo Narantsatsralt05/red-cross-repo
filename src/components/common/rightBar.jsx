@@ -96,7 +96,7 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar }) => {
                                         </Center>
                                     </Margin>
                                     <Position position='fixed' bottom='50px'>
-                                        <Margin size={[0, 0, 0, 30]}>
+                                        <Margin size={[0, 0, 0, 0]}>
                                             <Border borderWidth={[1, 0, 0, 0]} borderColor='#DCDCDC' style={{ width: '314px' }}>
                                                 <Margin size={[0, 0, 0, 40]}>
                                                     <Padding size={[20, 0, 0, 0]}>

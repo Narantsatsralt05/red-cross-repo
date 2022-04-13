@@ -12,6 +12,7 @@ import {
   Text,
   StyledInput,
   Styledoneletter,
+  InformationSection,
 } from '../components';
 
 const Test = () => {
@@ -100,6 +101,9 @@ const Test = () => {
             </Margin>
           </div>
         </Margin>
+        <Stack width='100vw' direction='column'>
+          <InformationSection path='/user/Y2Aiw9KPlijMFfTHIpsy/helpType' />
+        </Stack>
       </Stack>
     </Center>
   );
