@@ -47,7 +47,6 @@ export const InformationSection = ({ path }) => {
   const [bar, setBar] = useState(false)
   const [checkBar, setCheckBar] = useState(false)
 
-
   return (
     <Margin size={[35, 30, 10, 30]}>
       <Stack justifyContent="flex-start" direction="column">
@@ -69,7 +68,7 @@ export const InformationSection = ({ path }) => {
             <Border borderType="solid" borderColor="#7A7A7A" borderWidth={[30, 0.5, 30, 0.5]} />
           </Margin>
           <Margin size={[0, 0, 5, 0]}>
-            <Text color="#818181" fontSize="50px" onClick={() => { setBar(!bar) }} style={{cursor:'pointer'}}>
+            <Text color="#818181" fontSize="50px" onClick={() => { setBar(!bar) }} style={{ cursor: 'pointer' }}>
               +
             </Text>
           </Margin>
@@ -112,16 +111,22 @@ export const InformationSection = ({ path }) => {
                               : 'Эхэлсэн'}
                     </Text>
                   </Stack>
-                  {bar ? <RightBar bar={bar} setBar={setBar} /> : ''}
+                  {bar ? <RightBar checkBar={checkBar}
+                    bar={bar} setBar={setBar}
+                    setCheckBar={setCheckBar} /> : ''}
                   {data.map((el, index) => {
                     return (
-                      checkBar ? <RightBarCheck checkBar={checkBar} setCheckBar={setCheckBar}
-                        first={el.first}
-                        second={el.second}
-                        key={index}
-                        third={el.third}
-                        fourth={el.fourth}
-                        fifth={el.fifth} /> : ''
+                      checkBar ?
+                        <RightBarCheck
+                          checkBar={checkBar}
+                          bar={bar} setBar={setBar}
+                          setCheckBar={setCheckBar}
+                          first={el.first}
+                          second={el.second}
+                          key={index}
+                          third={el.third}
+                          fourth={el.fourth}
+                          fifth={el.fifth} /> : ''
                     );
                   })}
 

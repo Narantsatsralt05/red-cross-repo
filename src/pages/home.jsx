@@ -6,9 +6,10 @@ import LeftBar from "../components/home/userInformation";
 
 const Home = () => {
 
-    return <Stack width='100vw' direction='column'>
-        <InformationSection path='/user/Y2Aiw9KPlijMFfTHIpsy/helpType' />
-        <Delete />
-    </Stack>
+    return <>
+        <Stack width='100vw' direction='column'>
+            <InformationSection path='/user/Y2Aiw9KPlijMFfTHIpsy/helpType' />
+        </Stack>
+    </>
 }
 export default Home;
