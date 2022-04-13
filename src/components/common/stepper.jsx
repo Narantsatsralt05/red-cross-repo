@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-import { Border, Box, Button, Margin, Stack, Text } from '..';
-
-const Media = styled.div`
-  @media (max-width: 1000px) {
+import { Border, Box, Button, Margin, Position, Stack, Text } from '..';
+import theme from "../../theme/theme"
+const OnDesktop = styled.div`
+  @media (max-width: 1050px) {
+    display: none;
+  }
+`;
+const OnMobile = styled.div`
+  @media (max-width: 460px) {
+    display: none;
+  }
+`;
+const OnMobileText = styled.div`
+  @media (min-width: 1050px) {
     display: none;
   }
 `;
 
-export const Stepper = () => {
+export const Stepper = ({ data }) => {
   const [step, setStep] = useState(1);
   const next = () => {
     setStep(step + 1);
@@ -18,101 +28,98 @@ export const Stepper = () => {
   }
   return (
     <Box>
-      <Border borderColor="#E5E5E5" width="1" borderRadius="10px" overFlow="hidden">
+      <Border borderColor="#E5E5E5" borderRadius="10px" overFlow="hidden">
         <Stack direction="column" width="99.9vw" bg="#FAFAFA">
           <Margin size={[20, 0, 0, 20]}>
             <Text color="#000" fontSize="1.5vw" textTransform="uppercase">
-              Хэрэглэгчийн дэлгэрэнгүй мэдээлэл бүртгэх
+              {data.header}
             </Text>
           </Margin>
-          <Margin size={[20, 0, 20, 20]}>
+          <Margin size={[20, 0, 20, 0]}>
             <Stack direction="row" alignItems="center">
-              <Stack direction="row" alignItems="center" flexWrap="wrap">
-                <Border borderRadius="50%" borderColor={step === 1 ? '#0066B3' : '#D0D0D0'} overFlow="hidden">
-                  <Stack
-                    width="40px"
-                    height="40px"
-                    justifyContent="center"
-                    alignItems="center"
-                    bg={step === 1 ? '#0066B3' : '#fff'}
-                  >
-                    <Text color={step === 1 ? '#fff' : 'black'}>1</Text>
+              {data.headers.map((item, key) => {
+                return (
+                  <Stack direction="row" alignItems="center" flexWrap="wrap">
+                    <Margin size={[0, 20, 0, 20]}>
+                      <Border
+                        borderRadius="50%"
+                        borderColor={step === key + 1 ? '#0066B3' : '#D0D0D0'}
+                        overFlow="hidden"
+                      >
+                        <Stack
+                          width="40px"
+                          height="40px"
+                          justifyContent="center"
+                          alignItems="center"
+                          bg={step === key + 1 ? '#0066B3' : '#fff'}
+                        >
+                          <Text color={step === key + 1 ? '#fff' : 'black'}>{key + 1}</Text>
+                        </Stack>
+                      </Border>
+                    </Margin>
+                    <OnDesktop>
+                      <Margin size={[0, 20, 0, 0]}>
+                        <Text fontSize="1vw" fontWeight="300">
+                          {item}
+                        </Text>
+                      </Margin>
+                    </OnDesktop>
+                    <OnMobile>
+                      {key === data.headers.length - 1 ? <></> : <Stack width="30px" height="2px" bg="#0066B3" />}
+                    </OnMobile>
                   </Stack>
-                </Border>
-                <Margin size={[0, 20, 0, 20]}>
-                  <Media>
-                    <Text fontSize="1vw" fontWeight="300">ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ</Text>
-                  </Media>
-                </Margin>
-                <Stack width="30px" height="2px" bg="#0066B3" />
-              </Stack>
-              <Stack direction="row" alignItems="center" flexWrap="wrap">
-                <Margin size={[0, 20, 0, 20]}>
-                  <Border borderRadius="50%" borderColor={step === 2 ? '#0066B3' : '#D0D0D0'} overFlow="hidden">
-                    <Stack
-                      width="40px"
-                      height="40px"
-                      justifyContent="center"
-                      alignItems="center"
-                      bg={step === 2 ? '#0066B3' : '#fff'}
-                    >
-                      <Text color={step === 2 ? '#fff' : 'black'}>2</Text>
-                    </Stack>
-                  </Border>
-                </Margin>
-                <Media>
-                  <Text fontSize="1vw" fontWeight="300">Сайн дурын ажлын туршлага</Text>
-                </Media>
-                <Margin size={[0, 20, 0, 20]}>
-                  <Stack width="30px" height="2px" bg="#0066B3" />
-                </Margin>
-              </Stack>
-              <Stack direction="row" alignItems="center" flexWrap="wrap">
-                <Border borderRadius="50%" borderColor={step === 3 ? '#0066B3' : '#D0D0D0'} overFlow="hidden">
-                  <Stack
-                    width="40px"
-                    height="40px"
-                    justifyContent="center"
-                    alignItems="center"
-                    bg={step === 3 ? '#0066B3' : '#fff'}
-                  >
-                    <Text color={step === 3 ? '#fff' : 'black'}>3</Text>
-                  </Stack>
-                </Border>
-                <Margin size={[0, 20, 0, 20]}>
-                  <Media>
-                    <Text fontSize="1vw" fontWeight="300">Хамрагдсан сургалт</Text>
-                  </Media>
-                </Margin>
-                <Stack width="30px" height="2px" bg="#0066B3" />
-              </Stack>
-              <Stack direction="row" alignItems="center" flexWrap="wrap">
-                <Margin size={[0, 20, 0, 20]}>
-                  <Border borderRadius="50%" borderColor={step === 4 ? '#0066B3' : '#D0D0D0'} overFlow="hidden">
-                    <Stack
-                      width="40px"
-                      height="40px"
-                      justifyContent="center"
-                      alignItems="center"
-                      bg={step === 4 ? '#0066B3' : '#fff'}
-                    >
-                      <Text color={step === 4 ? '#fff' : 'black'}>4</Text>
-                    </Stack>
-                  </Border>
-                </Margin>
-                <Media>
-                  <Text fontSize="1vw" fontWeight="300">УР ЧАДВАР</Text>
-                </Media>
-              </Stack>
+                );
+              })}
             </Stack>
           </Margin>
+          <OnMobileText>
+            <Margin size={[0, 0, 20, 20]}>
+              <Text fontSize="1.5vw" fontWeight="300">
+                {data.headers[step - 1]}
+              </Text>
+            </Margin>
+          </OnMobileText>
         </Stack>
       </Border>
-      {/* <Button width="126px" height="50px" bgColor="#0066B3" borderRadius="2px" onClick={next}>
-        <Text cursor="pointer" color="#fff">
-          Дараагийн алхам
-        </Text>
-      </Button> */}
+      <Position position="fixed" left="0" bottom="0">
+        <Border borderColor="#E5E5E5" borderRadius="10px" overFlow="hidden">
+          <Stack width="99.9vw" bg="#FAFAFA" direction="column">
+            {step === 1 ? (
+              <div>{data.body[0]}</div>
+            ) : step === 2 ? (
+              <div>{data.body[1]}</div>
+            ) : step === 3 ? (
+              <div>{data.body[2]}</div>
+            ) : step === 4 ? (
+              <div>{data.body[3]}</div>
+            ) : (
+              ''
+            )}
+            <Button width="126px" height="50px" bgColor="#0066B3" borderRadius="2px" onClick={next}>
+              <Text cursor="pointer" color="#fff">
+                Дараагийн алхам
+              </Text>
+            </Button>
+          </Stack>
+        </Border>
+      </Position>
     </Box>
   );
 };
+
+
+// const data = {
+//   header: 'ХЭРЭГЛЭГЧИЙН ДЭЛГЭРЭНГҮЙ МЭДЭЭЛЭЛ БҮРТГЭХ',
+//   headers: ['ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ', 'САЙН ДУРЫН АЖЛЫН ТУРШЛАГА', 'ХАМРАГДСАН СУРГАЛТ', 'УР ЧАДВАР'],
+//   body: [
+//     <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/helpType" />,
+//     <div>ene bol 2r step</div>,
+//     <div>
+//       <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/memberType" />
+//     </div>,
+//     <div>ene bol 4r step</div>,
+//   ],
+// };
+
+//ingej ashiglana aa
+//<Stepper data={data} />
