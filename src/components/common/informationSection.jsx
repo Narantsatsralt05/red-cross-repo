@@ -1,54 +1,25 @@
-import React, { useState } from 'react';
-import { Border, Stack, Text, Margin } from '..';
+import * as React from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 import { useCollection } from '../../hooks';
+import { useTheme } from '../../theme/theme';
+import { Margin, Text, Stack } from '../../components';
 
-const HalfInformationSection = ({ first, second, third, fourth, fifth }) => {
-  return (
-    <>
-      <Border borderType="solid" borderColor="rgba(0, 0, 0, 0.1);" borderWidth={[0.5, 1, 0.5, 1]} />
-      <Margin size={[15, 15, 15, 15]}>
-        <Stack direction="row">
-          <Stack width="20vw">
-            <Text color="#0085FF" fontSize="15px">
-              {first}
-            </Text>
-          </Stack>
-          <Stack width="20vw">
-            <Text color="#000000" fontSize="15px">
-              {second}
-            </Text>
-          </Stack>
-          <Stack width="20vw">
-            <Text color="#000000" fontSize="15px">
-              {third}
-            </Text>
-          </Stack>
-          <Stack width="20vw">
-            <Text color="#000000" fontSize="15px">
-              {fourth}
-            </Text>
-          </Stack>
-          <Stack width="20vw">
-            <Text color="#000000" fontSize="15px">
-              {fifth}
-            </Text>
-          </Stack>
-        </Stack>
-      </Margin>
-    </>
-  );
-};
-
-export const InformationSection = ({ path }) => {
+const InformationSection = ({ path, admin }) => {
+  const { color, font } = useTheme();
   const { data } = useCollection(path);
   const type = path.split('/').slice(-1)[0];
 
   return (
-    <Margin size={[35, 30, 10, 30]}>
+    <Margin size={[35, 30, 10, 10]}>
       <Stack justifyContent="flex-start" direction="column">
         <Stack justifyContent="flex-start" direction="row" alignItems="center">
-          <Margin size={[20, 10, 20, 10]}>
-            <Text color="#000000" fontSize="20px">
+          <Margin size={[20, 10, 20, 5]}>
+            <Text color={color.primary.black} fontSize="20px">
               {type === 'sainDur'
                 ? 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ'
                 : type === 'surgalt'
@@ -57,115 +28,272 @@ export const InformationSection = ({ path }) => {
                 ? 'УР ЧАДВАР'
                 : type === 'memberType'
                 ? 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ'
-                : 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ'}
+                : type === 'helpType'
+                ? 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ'
+                : type === 'helpInformation'
+                ? 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ'
+                : ''}
             </Text>
           </Margin>
-          <Margin size={[0, 20, 0, 20]}>
-            <Border borderType="solid" borderColor="#7A7A7A" borderWidth={[30, 0.5, 30, 0.5]} />
-          </Margin>
-          <Margin size={[0, 0, 5, 0]}>
-            <Text color="#818181" fontSize="50px">
-              +
-            </Text>
-          </Margin>
-          <Margin size={[0, 0, 0, 20]}>
-            <Text color="#000000" fontSize="22px">
-              Нэмэх
-            </Text>
-          </Margin>
-        </Stack>
-        <Margin size={[25, 0, 0, 0]}>
-          <Border borderType="solid" borderColor="rgba(0, 0, 0, 0.1);" borderWidth={[1, 1, 1, 1]} borderRadius="5">
-            <Stack direction="column">
-              <Margin size={[15, 15, 15, 15]}>
-                <Stack direction="row">
-                  <Stack width="20vw">
-                    <Text color="#2C2C2C" fontSize="15px">
-                      {type === 'sainDur'
-                        ? 'Сайн дурын ажил'
-                        : type === 'surgalt'
-                        ? 'Сургалтын төрөл'
-                        : type === 'urChadvar'
-                        ? 'Ур чадвар'
-                        : type === 'memberType'
-                        ? 'Гишүүнчлэлийн төрөл'
-                        : 'Тусламжийн төрөл'}
-                    </Text>
-                  </Stack>
-                  <Stack width="20vw">
-                    <Text color="#2C2C2C" fontSize="15px">
-                      {type === 'sainDur'
-                        ? 'Хугацаа'
-                        : type === 'surgalt'
-                        ? 'Хэзээ'
-                        : type === 'urChadvar'
-                        ? 'Ур чадварын түвшин'
-                        : type === 'memberType'
-                        ? 'Эхэлсэн'
-                        : 'Эхэлсэн'}
-                    </Text>
-                  </Stack>
-                  <Stack width="20vw">
-                    <Text color="#2C2C2C" fontSize="15px">
-                      {type === 'sainDur'
-                        ? 'Он сар өдөр'
-                        : type === 'surgalt'
-                        ? 'Хаана'
-                        : type === 'urChadvar'
-                        ? 'Тайлбар'
-                        : type === 'memberType'
-                        ? 'Дууссан'
-                        : 'Дууссан'}
-                    </Text>
-                  </Stack>
-                  <Stack width="20vw">
-                    <Text color="#000000">
-                      {type === 'sainDur'
-                        ? 'Нэмэлт мэдээлэл'
-                        : type === 'surgalt'
-                        ? 'Сургалтын хугацаа /цагаар/'
-                        : type === 'urChadvar'
-                        ? ''
-                        : type === 'memberType'
-                        ? 'Нэмэлт мэдээлэл'
-                        : 'Нэмэлт мэдээлэл'}
-                    </Text>
-                  </Stack>
-                  <Stack width="20vw">
-                    <Text color="#000000">
-                      {type === 'sainDur'
-                        ? ''
-                        : type === 'surgalt'
-                        ? 'Нэмэлт мэдээлэл'
-                        : type === 'urChadvar'
-                        ? ''
-                        : type === 'memberType'
-                        ? ''
-                        : ''}
-                    </Text>
-                  </Stack>
-                </Stack>
+          {admin === true ? (
+            <>
+              <Margin size={[0, 20, 0, 20]}>
+                <Stack width="1px" height="40px" bg={color.secondary.black} />
               </Margin>
-              {data.map((el, index) => {
-                return (
-                  <HalfInformationSection
-                    first={el.first}
-                    second={el.second}
-                    key={index}
-                    third={el.third}
-                    fourth={el.fourth}
-                    fifth={el.fifth}
-                  />
-                );
-              })}
-            </Stack>
-          </Border>
-        </Margin>
+              <Margin size={[0, 0, 10, 0]}>
+                <Text color={color.primary.blue} fontSize="50px">
+                  +
+                </Text>
+              </Margin>
+              <Margin size={[0, 0, 0, 20]}>
+                <Text color={color.primary.black} fontSize="22px">
+                  Нэмэх
+                </Text>
+              </Margin>
+            </>
+          ) : (
+            <></>
+          )}
+        </Stack>
       </Stack>
+      <TableContainer
+        style={{
+          border: `1px solid ${color.secondary.white}`,
+          borderRadius: '5px',
+          width: '95%',
+          width: '95vw',
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <Table>
+          <Margin size={[10, 0, 5, 10]}>
+            <TableHead style={{ fontSize: '12px' }}>
+              <TableRow>
+                <TableCell
+                  style={{
+                    border: 'none',
+                    color: color.primary.black,
+                    fontWeight: '400',
+                    fontStyle: 'normal',
+                    fontSize: '20px',
+                    padding: '10px',
+                    width: '20vw',
+                  }}
+                  align="left"
+                >
+                  {type === 'sainDur'
+                    ? 'Сайн дурын ажил'
+                    : type === 'surgalt'
+                    ? 'Сургалтын төрөл'
+                    : type === 'urChadvar'
+                    ? 'Ур чадвар'
+                    : type === 'memberType'
+                    ? 'Гишүүнчлэлийн төрөл'
+                    : type === 'helpType'
+                    ? 'Тусламжийн төрөл'
+                    : type === 'helpInformation'
+                    ? 'Тусламжийн төрөл'
+                    : ''}
+                </TableCell>
+                <TableCell
+                  style={{
+                    border: 'none',
+                    color: color.primary.black,
+                    fontWeight: '400',
+                    fontStyle: 'normal',
+                    fontSize: '20px',
+                    padding: '10px',
+                    width: '20vw',
+                  }}
+                  align="left"
+                >
+                  {type === 'sainDur'
+                    ? 'Хугацаа'
+                    : type === 'surgalt'
+                    ? 'Хэзээ'
+                    : type === 'urChadvar'
+                    ? 'Ур чадварын түвшин'
+                    : type === 'memberType'
+                    ? 'Эхэлсэн'
+                    : type === 'helpType'
+                    ? 'Эхэлсэн'
+                    : type === 'helpInformation'
+                    ? 'Төслийн нэр'
+                    : ''}
+                </TableCell>
+                <TableCell
+                  style={{
+                    border: 'none',
+                    color: color.primary.black,
+                    fontWeight: '400',
+                    fontStyle: 'normal',
+                    fontSize: '20px',
+                    padding: '10px',
+                    width: '20vw',
+                  }}
+                  align="left"
+                >
+                  {type === 'sainDur'
+                    ? 'Он сар өдөр'
+                    : type === 'surgalt'
+                    ? 'Хаана'
+                    : type === 'urChadvar'
+                    ? 'Тайлбар'
+                    : type === 'memberType'
+                    ? 'Дууссан'
+                    : type === 'helpType'
+                    ? 'Дууссан'
+                    : type === 'helpInformation'
+                    ? 'Он/сар/өдөр'
+                    : ''}
+                </TableCell>
+                <TableCell
+                  style={{
+                    border: 'none',
+                    color: color.primary.black,
+                    fontWeight: '400',
+                    fontStyle: 'normal',
+                    fontSize: '20px',
+                    padding: '10px',
+                    width: '20vw',
+                  }}
+                  align="left"
+                >
+                  {type === 'sainDur'
+                    ? 'Нэмэлт мэдээлэл'
+                    : type === 'surgalt'
+                    ? 'Сургалтын хугацаа /цагаар/'
+                    : type === 'urChadvar'
+                    ? ''
+                    : type === 'memberType'
+                    ? 'Нэмэлт мэдээлэл'
+                    : type === 'helpType'
+                    ? 'Нэмэлт мэдээлэл'
+                    : type === 'helpInformation'
+                    ? 'Нэмэлт мэдээлэл'
+                    : ''}
+                </TableCell>
+                <TableCell
+                  style={{
+                    border: 'none',
+                    color: color.primary.black,
+                    fontWeight: '400',
+                    fontStyle: 'normal',
+                    fontSize: '20px',
+                    padding: '10px',
+                    width: '20vw',
+                  }}
+                  align="left"
+                >
+                  {type === 'sainDur'
+                    ? ''
+                    : type === 'surgalt'
+                    ? 'Нэмэлт мэдээлэл'
+                    : type === 'urChadvar'
+                    ? ''
+                    : type === 'memberType'
+                    ? ''
+                    : type === 'helpType'
+                    ? ''
+                    : type === 'helpInformation'
+                    ? ''
+                    : ''}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+          </Margin>
+          <Stack width="100%" height="1px" bg={color.secondary.white} />
+          <TableBody>
+            {data.map((el, index) => (
+              
+              <Margin size={[0, 0, 10, 10]}>
+                <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell
+                    style={{
+                      border: 'none',
+                      color: color.secondary.blue,
+                      fontWeight: '300',
+                      fontStyle: 'normal',
+                      fontSize: '15px',
+                      padding: '10px',
+                      width: '20vw',
+                    }}
+                  >
+                    {el.first}
+                    
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      border: 'none',
+                      fontWeight: '300',
+                      fontStyle: 'normal',
+                      fontSize: '15px',
+                      padding: '10px',
+                      width: '20vw',
+                    }}
+                    align="left"
+                  >
+                    {el.second}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      border: 'none',
+                      fontWeight: '300',
+                      fontStyle: 'normal',
+                      fontSize: '15px',
+                      padding: '10px',
+                      width: '20vw',
+                    }}
+                    align="left"
+                  >
+                    {el.third}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      border: 'none',
+                      fontWeight: '300',
+                      fontStyle: 'normal',
+                      fontSize: '15px',
+                      padding: '10px',
+                      width: '20vw',
+                    }}
+                    align="left"
+                  >
+                    {el.fourth}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      border: 'none',
+                      fontWeight: '300',
+                      fontStyle: 'normal',
+                      fontSize: '15px',
+                      padding: '10px',
+                      width: '20vw',
+                    }}
+                    align="left"
+                  >
+                    {el.fifth}
+                  </TableCell>
+                </TableRow>
+              </Margin>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Margin>
   );
 };
 
+export { InformationSection };
 
-{/* <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/sainDur"/> */}
-//ingej ashiglana
+{/* <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/helpType" admin={true} /> */}
+      //  <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/memberType" admin={true} />
+      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/urChadvar" admin={true} />
+      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/sainDur" admin={true} />
+      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/surgalt" admin={true} />
+      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation" admin={false} /> 
+// //ingej ashiglana
+  
