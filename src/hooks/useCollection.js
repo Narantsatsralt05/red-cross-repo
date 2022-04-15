@@ -9,8 +9,8 @@ export const useCollection = (path) => {
         db.collection(`${path}`).onSnapshot((querySnapshot) => {
             querySnapshot.forEach((doc) => {
               arrData.push(doc.data());
-              setData(arrData);
             });
+            setData(arrData);
           });
     }
   }, [path, db]);
