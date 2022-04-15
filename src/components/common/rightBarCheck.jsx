@@ -14,9 +14,9 @@ import {
 } from '../index';
 import Select from '../common/select'
 import Image from 'next/image';
-import exit from '../icons/Group 5 (1).svg'
+import exit from '../../assets/icon/icons/Group 5 (1).svg'
 import Styledinput from '../core/input';
-import Trash from '../icons/image 1.svg'
+import Trash from '../../assets/icon/icons/image 1.svg'
 import Modal from '@mui/material/Modal';
 import { useEffect } from 'react';
 import Delete from './delete';

@@ -14,7 +14,7 @@ import {
 } from '../index';
 import Select from '../common/select'
 import styled from 'styled-components';
-import exit from '../icons/Group 5 (1).svg'
+import exit from '../../assets/icon/icons/Group 5 (1).svg'
 import Image from 'next/image';
 import Styledinput from '../core/input';
 import Modal from '@mui/material/Modal';

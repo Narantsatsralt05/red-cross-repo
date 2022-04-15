@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
-import ArrowDown from "../icons/ArrowDown.jsx";
+import ArrowDown from "../../assets/icon/ArrowDown.jsx";
 import { Stack, Text } from '../index';
 
 const DropDownContent = styled.div`
