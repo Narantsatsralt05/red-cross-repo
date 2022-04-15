@@ -209,3 +209,10 @@ a {
     opacity: 0;
   }
 }
+
+
+@media (max-width: 768px) {
+  .media {
+    width: 100vw;
+  }
+}

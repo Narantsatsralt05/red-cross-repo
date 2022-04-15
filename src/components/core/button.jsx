@@ -7,7 +7,7 @@ export const Button = styled.div`
   border-radius: ${({ borderRadius }) => borderRadius};
   background-color: ${({ bgColor }) => bgColor};
   color:${({ color }) => color};
-  font-size: ${({fontSize}) => fontSize}
+  font-size: ${({ fontSize }) => fontSize};
   cursor:pointer;
   display: flex;
   justify-content: center;

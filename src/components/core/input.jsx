@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 export const StyledInput = styled.input`
-  width: ${(props) => props.width ? props.width : '400px' };
+  width: ${(props) => props.width ? props.width : '400px'};
   border: ${(props) => props.border ? props.border : '0.5px solid rgba(0, 0, 0, 0.3);'};
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : '5px'};
   font-size: ${(props) => props.size ? props.size : '17px'};
   height: ${(props) => props.height ? props.height : '40px'};
   color: ${(props) => props.color};
   font: ${(props) => props.font};
-  animation-name: ${(props)=>props.animation};
+  animation-name: ${(props) => props.animation};
   padding-left: 1vw;
   padding-right: 1vw;
   display: flex;
@@ -33,14 +33,14 @@ export const Styledoneletter = styled.input`
 
 
 
-const Styledinput =({label,height,width,border,borderRadius,size,color,animationName,font,placeholder})=>{
-  return(
+const Styledinput = ({ label, height, width, border, borderRadius, size, color, animationName, font, placeholder, type, value }) => {
+  return (
     <div>
-      <span style={{"fontSize":'19px','font':{font}}}  >{label}</span>
-      <StyledInput placeholder={placeholder} height={height} width={width} border={border} borderRadius={borderRadius} size={size} color={color} animation={animationName} font={font} />
+      <span style={{ "fontSize": '19px', 'font': { font } }}  >{label}</span>
+      <StyledInput type={type} placeholder={placeholder} value={value} height={height} width={width} border={border} borderRadius={borderRadius} size={size} color={color} animation={animationName} font={font} />
     </div>
   )
-  
+
 }
 
 export default Styledinput
