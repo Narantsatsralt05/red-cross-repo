@@ -1,17 +1,59 @@
 import Menu from '../components/common/select';
 import { Stack, Text, StyledInput, Padding } from '../components';
-import useTheme from '../theme/theme';
-
 const UserInfo = () => {
-  const sain = [{ text: 'Tiim' }, { text: 'Ugui' }];
-  const member = [{ text: 's' }, { text: 's' }, { text: 's' }, { text: 's' }, { text: 's' }];
-  const donor = [{ text: 'd' }, { text: 'd' }, { text: 'd' }, { text: 'd' }, { text: 'd' }];
-  const kid = [{ text: 'k' }, { text: 'k' }, { text: 'k' }, { text: 'k' }, { text: 'k' }];
-  const blood = [{ text: 'b' }, { text: 'b' }, { text: 'b' }, { text: 'b' }, { text: 'b' }];
-  const city = [{ text: 'ub' }, { text: 'ub' }, { text: 'ub' }, { text: 'ub' }, { text: 'ub' }];
+  const sain = [{ text: 'Тийм' }, { text: 'Үгүй' }];
+  const member = [{ text: 'Алтан гишүүн' }];
+  const donor = [{ text: 'Тийм' }, { text: 'Үгүй' }];
+  const duureg = [
+    { text: 'Багануур' },
+    { text: 'Багахангай' },
+    { text: 'Баянгол' },
+    { text: 'Баянзүрх' },
+    { text: 'Налайх' },
+    { text: 'Сонгинохайрхан' },
+    { text: 'Сүхбаатар' },
+    { text: 'Хан-Уул' },
+    { text: 'Чингэлтэй' },
+  ];
+  const hugjil = [{ text: 'Тийм' }, { text: 'Үгүй' }];
+  const kid = [{ text: 'Тийм' }, { text: 'Үгүй' }];
+  const blood = [
+    { text: 'A+' },
+    { text: 'O+' },
+    { text: 'B+' },
+    { text: 'AB+' },
+    { text: 'A-' },
+    { text: 'O-' },
+    { text: 'B-' },
+    { text: 'AB-' },
+  ];
+  const city = [
+    { text: 'Улаанбаатар' },
+    { text: 'Архангай' },
+    { text: 'Баян-Өлгий' },
+    { text: 'Баянхонгор' },
+    { text: 'Булган' },
+    { text: 'Говь-Алтай' },
+    { text: 'Говьсүмбэр' },
+    { text: 'Дархан-Уул' },
+    { text: 'Дорноговь' },
+    { text: 'Дорнод' },
+    { text: 'Дундговь' },
+    { text: 'Завхан' },
+    { text: 'Орхон' },
+    { text: 'Өвөрхангай' },
+    { text: 'Өмнөговь' },
+    { text: 'Сүхбаатар' },
+    { text: 'Сэлэнгэ' },
+    { text: 'Төв' },
+    { text: 'Увс' },
+    { text: 'Ховд' },
+    { text: 'Хөвсгөл' },
+    { text: 'Хэнтий' },
+  ];
   return (
-    <Stack width="100%">
-      <Padding size="10">
+    <Stack width="100%" height="83.7vh" justifyContent="center">
+      <Padding size="30">
         <Stack width="100%" direction="column" gap="25">
           <Stack direction="row">
             <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ</Text>
@@ -45,17 +87,17 @@ const UserInfo = () => {
             </Stack>
             <Stack direction="column" gap="5">
               <Text fontSize="12px">Сум/дүүрэг</Text>
-              <Menu arr={city} />
+              <Menu arr={duureg} />
             </Stack>
             <Stack direction="column" gap="5">
               <Text fontSize="12px">Байр, орц, гудамж</Text>
-              <StyledInput height="30px" width="300px"></StyledInput>
+              <StyledInput></StyledInput>
             </Stack>
           </Stack>
           <Stack direction="row" gap="25">
             <Stack direction="column" gap="5">
               <Text fontSize="12px">Хөгжлийн бэрхшээлтэй иргэн эсэх</Text>
-              <Menu arr={city} />
+              <Menu arr={hugjil} />
             </Stack>
           </Stack>
         </Stack>

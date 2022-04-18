@@ -24,7 +24,7 @@ export const StyledInput = styled.input`
   }};
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : '4px'};
   font-size: ${(props) => props.size ? props.size : '17px'};
-  height: ${(props) => props.height ? props.height : '40px'};
+  height: ${(props) => props.height ? props.height : '35px'};
   color: ${(props) => props.color};
   font: ${(props) => props.font};
   animation-name: ${(props)=>props.animation};
