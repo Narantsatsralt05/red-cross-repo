@@ -11,5 +11,6 @@ export * from "./core/text";
 export * from "./core/padding";
 export * from "./common/userCard";
 export * from "./core/box";
-export * from "./common/informationSection";
 export * from "./common/stepper";
+export * from "./common/informationSections/table";
+export * from "./common/informationSections/sections";
