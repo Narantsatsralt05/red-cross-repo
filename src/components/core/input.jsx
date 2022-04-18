@@ -1,18 +1,25 @@
 import styled from 'styled-components';
 import { theme } from '../../theme/theme';
 export const StyledInput = styled.input`
-  width: ${(props) => props.width ? props.width : '400px' };
+  width: ${(props) => props.width ? props.width : '400px'};
   border-width: 1px;
   border-style: solid;
-  border-color: ${(props)=> {
-    
-    if(props.status=='error'){
+  border-color: ${(props) => {
+
+    if (props.status == 'error') {
       return 'red'
-    }else if(props.status=='success'){
+    } else if (props.status == 'success') {
       console.log('hahah')
       return 'green'
-    }else{
+    } else {
       return 'black'
+    }
+  }};
+  background-color: ${(props) => {
+    if (props.disabled) {
+      return 'rgba(196, 196, 196, 0.5);';
+    } else {
+      return '#FFFFFF';
     }
   }};
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : '4px'};
@@ -47,12 +54,12 @@ export const Styledoneletter = styled.input`
 
 //status = error | success | undefined
 
-const Styledinput =({label,height,width, status, statusText, ...props})=>{
-  
-  return(
+const Styledinput = ({ label, height, width, status, statusText, disabled, ...props }) => {
+
+  return (
     <div>
-      <span style={{"fontSize":'19px'}}  >{label}</span>
-      <StyledInput height={height} width={width} status={status} {...props} />
+      <span style={{ "fontSize": '19px' }}  >{label}</span>
+      <StyledInput height={height} width={width} status={status} {...props} disabled={disabled}/>
       {status && statusText}
     </div>
   )
