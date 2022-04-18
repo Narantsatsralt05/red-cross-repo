@@ -42,8 +42,8 @@ const ToUseOptions = styled(StyledATag)`
     };
 `;
 const StyledSelect = styled.div`
-    width: ${({ width }) => width};
-    height: ${({ height }) => height};
+    width: ${({ width }) => width ? width : '300px'};
+    height:  ${({ height }) => height ? height : '30px'};
     background-color: white;
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 2px;
