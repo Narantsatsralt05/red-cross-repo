@@ -5,6 +5,21 @@ import ArrowDown from "../../assets/icon/ArrowDown.jsx";
 import { Stack, Text } from '../index';
 import ArrowDownSecond from "../../assets/icon/arrDown.jsx";
 
+const OnDesktop = styled.div`
+  @media (max-width: 1050px) {
+    display: none;
+  }
+`;
+const OnMobile = styled.div`
+  @media (max-width: 460px) {
+    display: none;
+  }
+`;
+const OnMobileText = styled.div`
+  @media (min-width: 1050px) {
+    display: none;
+  }
+`;
 const DropDownContent = styled.div`
     display: block;
     position: absolute;
@@ -43,6 +58,9 @@ const ToUseOptions = styled(StyledATag)`
 `;
 const StyledSelect = styled.div`
     width: ${({ width }) => width ? width : '400px'};
+    @media (max-width: 460px) {
+        width: 80vw;
+    }
     height:  ${({ height }) => height ? height : '35px'};
     background-color: white;
     border: 0.5px solid rgba(0, 0, 0, 0.5);

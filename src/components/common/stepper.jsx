@@ -81,7 +81,7 @@ export const Stepper = ({ data }) => {
           </OnMobileText>
         </Stack>
       </Border>
-      <Position position="fixed" left="0" bottom="0">
+      <Margin size={[10,0,0,0]}>
         <Border borderColor="#E5E5E5" borderRadius="10px" overFlow="hidden">
           <Stack width="99.9vw" bg="#FAFAFA" direction="column">
             {step === 1 ? (
@@ -102,7 +102,7 @@ export const Stepper = ({ data }) => {
             </Button>
           </Stack>
         </Border>
-      </Position>
+        </Margin>
     </Box>
   );
 };
@@ -122,4 +122,4 @@ export const Stepper = ({ data }) => {
 // };
 
 //ingej ashiglana aa
-//<Stepper data={data} />
+//<Stepper data={data} />=

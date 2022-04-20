@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { theme } from '../../theme/theme';
 export const StyledInput = styled.input`
   width: ${(props) => props.width ? props.width : '400px'};
+  @media (max-width: 460px) {
+        width: 80vw;
+    }
   border-width: 1px;
   border-style: solid;
   border-color: ${(props) => {

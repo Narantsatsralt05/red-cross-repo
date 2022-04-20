@@ -11,7 +11,7 @@ const UserInfo = () => {
   const [cityred,setcityred]=useState(false)
   const [duuregred,setduuregred]=useState(false)
   const [bairred,setbairred]=useState(false)
-  const [hugjilred,sethugjilred]=useState(fa) 
+  const [hugjilred,sethugjilred]=useState(false) 
   const sain = [{ text: 'Тийм' }, { text: 'Үгүй' }];
   const member = [{ text: 'Алтан гишүүн' }];
   const donor = [{ text: 'Тийм' }, { text: 'Үгүй' }];
@@ -63,13 +63,13 @@ const UserInfo = () => {
     { text: 'Хэнтий' },
   ];
   return (
-    <Stack width="100%" height="83.7vh" justifyContent="center">
+    <Stack width="100%" justifyContent="center" alignItems="center">
       <Padding size="30">
-        <Stack width="100%" direction="column" gap="25">
+        <Stack width="100%" direction="column" gap="25" >
           <Stack direction="row">
             <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ  </Text>
           </Stack>
-          <Stack direction="row" gap="25">
+          <Stack direction="row" gap="25" flexWrap="wrap">
             <Stack direction="column" gap="12">
               <Text fontSize="12px">Сайн дурын идэвхтэн{sainred ? <Text color="red">*</Text> :''} </Text>
               <Menu arr={sain} />
@@ -84,10 +84,12 @@ const UserInfo = () => {
             </Stack>
             <Stack direction="column" gap="12">
               <Text fontSize="12px">Хүүхэд залуучуудын хөдөлгөөний гишүүн{kidred ? <Text color="red">*</Text> :''}</Text>
-              <Menu arr={kid} />
+              <Menu arr={kid} width="30px" />
             </Stack>
+             
           </Stack>
-          <Stack direction="row" gap="25">
+         
+          <Stack direction="row" gap="25" flexWrap="wrap">
             <Stack direction="column" gap="12">
               <Text fontSize="12px">Цусны бүлэг{bloodred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={blood} />
@@ -111,9 +113,11 @@ const UserInfo = () => {
               <Menu arr={hugjil} />
             </Stack>
           </Stack>
+          
         </Stack>
       </Padding>
     </Stack>
+    
   );
 };
 export default UserInfo;
