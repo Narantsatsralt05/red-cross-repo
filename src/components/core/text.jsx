@@ -9,4 +9,6 @@ export const Text = style.div`
  line-height:${({ lineHeight }) => lineHeight};
  cursor: ${({ cursor }) => cursor};
  text-transform: ${({textTransform}) => textTransform};
+ flex-direction: row;
+ display: flex;
 `;

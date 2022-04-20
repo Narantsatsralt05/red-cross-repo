@@ -1,6 +1,17 @@
 import Menu from '../components/common/select';
+import {useState} from 'react'
 import { Stack, Text, StyledInput, Padding } from '../components';
+
 const UserInfo = () => {
+  const [sainred,setsainred]=useState(false)
+  const [memberred,setmemberred]=useState(false)
+  const [donorred,setdonorred]=useState(false)
+  const [kidred,setkidred]=useState(false)
+  const [bloodred,setbloodred]=useState(false)
+  const [cityred,setcityred]=useState(false)
+  const [duuregred,setduuregred]=useState(false)
+  const [bairred,setbairred]=useState(false)
+  const [hugjilred,sethugjilred]=useState(fa) 
   const sain = [{ text: 'Тийм' }, { text: 'Үгүй' }];
   const member = [{ text: 'Алтан гишүүн' }];
   const donor = [{ text: 'Тийм' }, { text: 'Үгүй' }];
@@ -56,47 +67,47 @@ const UserInfo = () => {
       <Padding size="30">
         <Stack width="100%" direction="column" gap="25">
           <Stack direction="row">
-            <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ</Text>
+            <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ  </Text>
           </Stack>
           <Stack direction="row" gap="25">
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Сайн дурын идэвхтэн</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Сайн дурын идэвхтэн{sainred ? <Text color="red">*</Text> :''} </Text>
               <Menu arr={sain} />
             </Stack>
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Гишүүнчлэл</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Гишүүнчлэл{memberred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={member} />
             </Stack>
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Цусны донор</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Цусны донор{donorred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={donor} />
             </Stack>
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Хүүхэд залуучуудын хөдөлгөөний гишүүн</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Хүүхэд залуучуудын хөдөлгөөний гишүүн{kidred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={kid} />
             </Stack>
           </Stack>
           <Stack direction="row" gap="25">
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Цусны бүлэг</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Цусны бүлэг{bloodred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={blood} />
             </Stack>
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Амьдарч буй, аймаг/хот</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Амьдарч буй, аймаг/хот{cityred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={city} />
             </Stack>
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Сум/дүүрэг</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Сум/дүүрэг{duuregred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={duureg} />
             </Stack>
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Байр, орц, гудамж</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Байр, орц, гудамж{bairred ? <Text color="red">*</Text> :''}</Text>
               <StyledInput></StyledInput>
             </Stack>
           </Stack>
           <Stack direction="row" gap="25">
-            <Stack direction="column" gap="5">
-              <Text fontSize="12px">Хөгжлийн бэрхшээлтэй иргэн эсэх</Text>
+            <Stack direction="column" gap="12">
+              <Text fontSize="12px">Хөгжлийн бэрхшээлтэй иргэн эсэх{hugjilred ? <Text color="red">*</Text> :''}</Text>
               <Menu arr={hugjil} />
             </Stack>
           </Stack>
