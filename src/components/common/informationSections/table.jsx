@@ -8,8 +8,19 @@ import { useTheme } from '../../../theme/theme';
 import { Margin, Text, Stack } from '../..';
 import TableCell from '@mui/material/TableCell';
 import styled from 'styled-components';
+import { Add, Details } from 'material-ui-icons';
+import RightBarCheck from '../rightBarCheck';
+import RightBar from '../rightBar';
+import { useCollection } from '../../../hooks';
 
-export const InformationTable = ({ admin, title, row, body }) => {
+export const InformationTable = ({ admin, title, row, body, el, headers }) => {
+  // console.log(body[0].props.children.props.children.map((el) => {
+  //   return el.props;
+  // }))
+  console.log('hello', el, title, headers)
+  const [checkBar, setCheckBar] = React.useState(false)
+  const [bar, setBar] = React.useState(false)
+
   const { color } = useTheme();
   const tableContainerStyle = {
     border: `1px solid ${color.secondary.white}`,
@@ -37,6 +48,7 @@ export const InformationTable = ({ admin, title, row, body }) => {
               <Text color={color.primary.blue} type="Quote">
                 +
               </Text>
+              {checkBar ? <RightBarCheck checkBar={checkBar} setCheckBar={setCheckBar} el={el} headers={headers} title={title} /> : ''}
             </Margin>
             <Margin size={[0, 0, 0, 20]}>
               <Text color={color.primary.black} type="H3">
@@ -109,8 +121,8 @@ export const InformationTable = ({ admin, title, row, body }) => {
       color: ${color.disabled.blue};
     }
   `;
-  const haha = () => {
-    console.log('nasaa teneg');
+  const Details = (element) => {
+    console.log(element);
     //nasaa onClick bichih tul tur turshiltaar yvuulav
     //nasaa function ner edree uurchluurei
   };
@@ -137,9 +149,10 @@ export const InformationTable = ({ admin, title, row, body }) => {
                   <Margin size={[0, 0, 5, 10]}>
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                       {el.map((element, index) => {
+                        console.log(element)
                         return (
-                          <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell}>
-                            <Text type={index === 0 ? 'T2Caps' : 'T2'} onClick={index === 0 ? haha : null}>
+                          <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell} onClick={ () => Details(element)}>
+                            <Text type={index === 0 ? 'T2Caps' : 'T2'} >
                               {index === 0 ? <Hover>{element}</Hover> : element}
                             </Text>
                           </TableCell>
@@ -158,6 +171,4 @@ export const InformationTable = ({ admin, title, row, body }) => {
 };
 
 //<SkillTable admin={true} />
-{
-  /* <SkillTable admin={false} /> */
-}
+{/* <SkillTable admin={false} /> */ }

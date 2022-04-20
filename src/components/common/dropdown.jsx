@@ -70,8 +70,42 @@ const StyledSelect = styled.div`
   align-items: center;
 `;
 
+const Select = ({ value, onClick }) => {
+    return (
+        <Stack>
+            <StyledSelect onClick={onClick} width='311px' height='25px' >
+                <Text style={{ marginLeft: '10px' }}>{value}</Text>
+                <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <ArrowDown />
+                </div>
+            </StyledSelect>
+        </Stack>
+    )
+}
 const Dropdown = (props) => {
-  const Select = ({ value, onClick }) => {
+    const Select = ({value, onClick }) => {
+        return (
+            <Stack>
+                <StyledSelect onClick={onClick} width={props.width ? props.width : '311px'} height='25px'>
+                    <Text style={{ marginLeft: '10px' }}>{value}</Text>
+                    <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <ArrowDown />
+                    </div>
+                </StyledSelect>
+            </Stack>
+        )
+    }
+    const [state, setState] = useState(false);
+    const Click = () => {
+        setState(!state)
+    }
+    const [options, setOptions] = useState('')
+    const handleClick = (action) => {
+        setOptions(action)
+        if (!action) return;
+        if (props.onClick) props.onClick(action);
+        props.setSkillValue(action.text)
+    }
     return (
       <Stack>
         <StyledSelect

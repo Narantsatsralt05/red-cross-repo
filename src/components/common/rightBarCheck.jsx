@@ -12,17 +12,17 @@ import {
     StyledInput,
     Styledoneletter
 } from '../index';
-import Select from '../common/select'
+import Select from '../common/dropdown'
 import Image from 'next/image';
-import exit from '../../assets/icon/icons/Group 5 (1).svg'
+import exit from '../../assets/icon/Group 5 (1).svg'
 import Styledinput from '../core/input';
-import Trash from '../../assets/icon/icons/image 1.svg'
+import Trash from '../../assets/icon/image 1.svg'
 import Modal from '@mui/material/Modal';
 import { useEffect } from 'react';
 import Delete from './delete';
 
-const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fifth, bar, setBar }) => {
-    const newSecond = second.split('.').join('-')
+const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers }) => {
+    // const newSecond = second.split('.').join('-')
     const style = {
         position: 'absolute',
         top: '50%',
@@ -52,7 +52,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fi
                                     <Margin size={[20, 0, 0, 0]}>
                                         <Stack direction='row' justifyContent='space-between' width='100%'>
                                             <Margin size={[4, 40, 0, 0]}>
-                                                ХАМРАГДСАН СУРГАЛТ ЗАСАХ
+                                                {title}
                                             </Margin>
                                             <Image src={exit} onClick={() => setCheckBar(!checkBar)} />
                                         </Stack>
@@ -60,10 +60,9 @@ const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fi
                                     <Margin size={[30, 0, 0, 0]}>
                                         <Center>
                                             <label>
-                                                Сургалтын нэр
+                                                {headers[0]}
                                                 <Margin size={[10, 0, 0, 0]}>
-                                                    <Styledinput width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={first} />
-
+                                                    <Select arr={{ text: 'hello' }}></Select>
                                                 </Margin>
                                             </label>
                                         </Center>
@@ -71,10 +70,10 @@ const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fi
                                     <Margin size={[30, 0, 0, 0]}>
                                         <Center>
                                             <label>
-                                                Он/сар/өдөр
+                                                {headers[1]}
                                                 <Margin size={[10, 0, 0, 0]}>
                                                     <Text fontFamily='Roboto' font-style='normal' >
-                                                        <Styledinput type='date' width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={newSecond} style={{ fontSize: '12px' }} />
+                                                        <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} type='date' width='311px' height='25px' borderRadius='3px' />
                                                     </Text>
                                                 </Margin>
                                             </label>
@@ -83,23 +82,35 @@ const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fi
                                     <Margin size={[30, 0, 0, 0]}>
                                         <Center>
                                             <label>
-                                                Байршил
+                                                {headers[2]}
                                                 <Margin size={[10, 0, 0, 0]}>
-                                                    <Styledinput width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={third} />
+                                                    <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px' borderRadius='3px' />
                                                 </Margin>
                                             </label>
                                         </Center>
                                     </Margin>
-                                    <Margin size={[30, 0, 0, 0]}>
-                                        <Center>
-                                            <label>
-                                                Нэмэлт мэдээлэл
-                                                <Margin size={[10, 0, 0, 0]}>
-                                                    <Styledinput width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={fourth} />
-                                                </Margin>
-                                            </label>
-                                        </Center>
-                                    </Margin>
+                                    {headers[3] ?
+                                        <Margin size={[30, 0, 0, 0]}>
+                                            <Center>
+                                                <label>
+                                                    {headers[3]}
+                                                    <Margin size={[10, 0, 0, 0]}>
+                                                        <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px' borderRadius='3px' />
+                                                    </Margin>
+                                                </label>
+                                            </Center>
+                                        </Margin> : ''}
+                                    {headers[4] ?
+                                        <Margin size={[30, 0, 0, 0]}>
+                                            <Center>
+                                                <label>
+                                                    {headers[3]}
+                                                    <Margin size={[10, 0, 0, 0]}>
+                                                        <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px' borderRadius='3px' />
+                                                    </Margin>
+                                                </label>
+                                            </Center>
+                                        </Margin> : ''}
                                     <Position position='fixed' bottom='50px'>
                                         <Margin size={[0, 0, 0, 0]}>
                                             <Border borderWidth={[1, 0, 0, 0]} borderColor='#DCDCDC' style={{ width: '340px' }} >
@@ -108,7 +119,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fi
                                                         <Stack direction='row' width='21vw' >
                                                             <Image width='20px' height='20px' src={Trash} onClick={() => setDeleteDoc(!deleteDoc)} />
                                                             <Position position='absolute' bottom='30px' left='-110px'>
-                                                                {deleteDoc ? <Delete /> : ''}
+                                                                {deleteDoc ? <Delete  /> : ''}
                                                             </Position>
                                                             <Margin size={[0, 0, 0, 10]}>
                                                                 <Button width='60px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={() => setCheckBar(!checkBar)}  >Болих</Button>

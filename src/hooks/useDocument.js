@@ -49,17 +49,17 @@ export const deleteData = (colPath, docPath) => {
 //geed collection iin doc iig ustgana
 //delete gedeg ugee oilgojoogo bizde te XD
 
-export const addDocument = (colPath, data) => {
-  useEffect(() => {
-    db.collection(colPath)
-      .add(data)
-      .then((docRef) => {
-        console.log('Document written with ID: ', docRef.id);
-      })
-      .catch((error) => {
-        console.error('Error adding document: ', error);
-      });
-  }, []);
+export const addDocument = (colPath, data, setSucces) => {
+  db.collection(colPath)
+    .add(data)
+    .then((docRef) => {
+      setSucces(true)
+      console.log('Document written with ID: ', docRef.id);
+    })
+    .catch((error) => {
+      setSucces(false)
+      console.error('Error adding document: ', error);
+    });
 };
 
 //data add hiine
