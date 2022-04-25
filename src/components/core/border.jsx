@@ -11,6 +11,5 @@ export const Border = styled.div`
       }).join(' '),
     )(borderWidth)};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '1px')};
-  position: relative;
   overflow: ${({ overFlow }) => overFlow};
 `;

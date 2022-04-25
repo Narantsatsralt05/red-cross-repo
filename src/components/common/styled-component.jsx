@@ -38,10 +38,10 @@ const DataCon = styled.div`
     padding: 5px;
     padding-right: 0px;
     padding-right: 1px;
-    height: 50px;
-    width: 200px;
+    height: 75px;
+    width: 270px;
     border-radius: 5px;
-    background-color: ${props => props.color ? Color[props.color] : Color['blue']};
+    background-color: ${(props) => props ? props.color : "blue"};
     display: flex;
     flex-direction: row;
     align-items: center;

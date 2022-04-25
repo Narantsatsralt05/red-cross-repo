@@ -3,9 +3,9 @@ import { DataCon, Text } from "./styled-component";
 const Data = ({color, text, value}) => {
     return <div>
         <DataCon color={color} >
-            <Text>{text ? text : 'xxx'}</Text>
-            <div style={{height: '41px', border: '0.2px solid white', position: 'absolute'}}></div>
-            <Text number>{value ? value : '###'}</Text>
+            <Text fontSize="15px">{text ? text : 'xxx'}</Text>
+            <div style={{height: '60px', border: '0.2px solid white', position: 'absolute' , opacity:"0.3"}}></div>
+            <Text fontSize="40px" number>{value ? value : '###'}</Text>
         </DataCon>
     </div>
 }
