@@ -94,7 +94,7 @@ const LeftBar = () => {
                                                 </Margin>
                                             </Stack>
                                         </Margin>
-                                        <Stack direction='row' justifyContent='space-between' style={{ marginRight: '10px' }} flexWrap='wrap' justifyContent='left'>
+                                        <Stack direction='row' justifyContent='space-between' style={{ marginRight: '10px' }} flexWrap='wrap'>
                                             <Stack direction='column' >
                                                 <InputTask name='register' input='Регистрийн дугаар' placeholder='УК94092597' type='text'></InputTask>
                                                 <InputTask name='lastName' input='Нэр' placeholder='Нямсамбуу'></InputTask>
