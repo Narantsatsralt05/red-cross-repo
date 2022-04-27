@@ -1,186 +1,147 @@
-import { Button, Margin, NotificationModal, Position, Stack, StyledInput, Text } from '../components';
 import React, { useState } from 'react';
-import Background from '../assets/image/loginBg.png';
-import Image from 'next/image';
+import { Text, Margin, Button, Stack, Center } from '../components';
+import InputTask from '../components/common/page-input-task';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { Border } from '../components';
 import Logo from '../assets/icon/logo.svg';
-import { useAuthContext } from '../providers/authContext';
-import { useRouter } from 'next/router';
+import Image from 'next/image';
+import SignUpBg from '../assets/image/SignUpBg.png';
+import { Padding } from '../components';
+import Info from '../assets/icon/info.svg';
 
 const SignUp = () => {
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
-    passwordConfirm: ''
+  const [check, setCheck] = useState(false);
+  const YupShape = ({ max, match, min = 0, mongol }) => {
+    return Yup.string()
+      .max(max, `Дээд хязгаар нь ${max} үсэг`)
+      .min(min, `Та ${min} ийг л оруулах естой`)
+      .matches(Number.isInteger(mongol) ? /[а-яА-Я]/ : '', Number.isInteger(mongol) ? 'Та монголоор бичнэ үү' : '')
+      .matches(
+        Number.isInteger(match) ? /[1-9]/ : /[А-Я]/,
+        Number.isInteger(match) ? 'Та заавал тоо оруулна уу.' : 'Та эхний 1-ийг заавал том үсэг оруулна уу.',
+      )
+      .required('Хоосон байна бөглөнө үү');
+  };
+
+  const validate = Yup.object({
+    register: Yup.string()
+      .matches(/[а-яА-Я]/, 'Та монголоор бичнэ үү')
+      .matches(
+        /[а-яА-Я][а-яА-Я][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/,
+        'Та эхний 2 ийг үсэг, сүүлийн 8 ийг заавал  тоо оруулна уу.',
+      )
+      .max(10, 'Дээд хязгаар нь 10 үсэг')
+      .required('Хоосон байна бөглөнө үү'),
+    lastName: YupShape({ max: 15, mongol: 1 }),
+    firstName: YupShape({ max: 15, mongol: 1 }),
+    sex: YupShape({ max: 2, min: 2, mongol: 1 }),
+    date: YupShape({ max: 10, match: 1 }),
+    duureg: YupShape({ max: 100, mongol: 1 }),
+    phone: YupShape({ max: 8, min: 8, match: 1 }),
+    password: YupShape({ max: 100, min: 6 }),
   });
-  const [event, setEvent] = useState('');
-
-  const handler = (event) => {
-    // changing the state to the name of the key
-    // which is pressed
-    setEvent(event.key);
-    console.log(event)
+  const checker = () => {
+    setCheck(!check);
   };
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value });
-  };
-  const { signUp, signUpError } = useAuthContext();
-
-  if (event === 'Enter') {
-    signUp(form.email, form.password);
-  }
-  const router = useRouter();
+  console.log(check);
   return (
-    <Stack direction="row" width="100%" height="100vh">
-      <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
-        <Stack height="15vh" width="35%" />
-        <Image src={Logo} width={90} height={90} />
-        <Margin size={[30, 0, 0, 0]}>
-          <Text color="#0066B3" fontSize="0.9vw" cursor="pointer">
-            МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
-          </Text>
-        </Margin>
-        <Margin size={[10, 0, 0, 0]}>
-          <Text color="#7A7A7A" fontSize="0.9vw" cursor="pointer" fontWeight="100">
-            Цахим мэдээллийн систем
-          </Text>
-        </Margin>
-        <Margin size={[10, 0, 0, 0]}>
-          <Stack width="30vw" height="2px" bg="#F5F5F5" />
-        </Margin>
-        <Margin size={[30, 0, 0, 0]}>
-          <Text color="black" fontSize="1.8vw" cursor="pointer">
-            БҮРТГЭЛ ҮҮСГЭХ
-          </Text>
-        </Margin>
-        <>
-          <Stack width="67%" justifyContent="flex-start">
-            <Text color="#1B1B1B" fontSize="0.8vw" cursor="pointer" fontWeight="100">
-              И-мэйл хаяг
-            </Text>
-          </Stack>
-          <Margin size={[10, 0, 0, 0]}>
-            <StyledInput
-              color="#1B1B1B"
-              border="2px solid #D0D0D0"
-              width="23.5vw"
-              height="4.3vh"
-              size="1.2vw"
-              placeholder="и-мэйл"
-              onChange={handleChange}
-              value={form.email}
-              id="email"
-              type="text"
-            />
-            {/* {form.email.length >= 10 ? (
-              loginError ===
-              'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
-                <Text color="red">и-мэйл бүртгэлгүй байна.</Text>
-              ) : (
-                ''
-              )
-            ) : (
-              ''
-            )} */}
-            {/* {form.email.length >= 10 ? (
-              singUpError ===
-              'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' ? (
-                <Text color="red">хэт олон буруу оролдлого</Text>
-                
-              ) : (
-                ''
-              )
-            ) : (
-              ''
-            )} */}
-            {console.log(signUpError)}
-          </Margin>
-        </>
-        <Margin size={[20, 0, 0, 0]}>
-          <>
-            <Stack direction="row" justifyContent="space-between">
-              <Text color="#1B1B1B" fontSize="0.8vw" cursor="pointer" fontWeight="100">
-                Нууц үг
-              </Text>
+    <Formik
+      initialValues={{
+        register: '',
+        lastName: '',
+        firstName: '',
+        sex: '',
+        date: '',
+        duureg: '',
+        phone: '',
+        email: '',
+        password: '',
+        passwordConfirm: '',
+      }}
+      validationSchema={validate}
+    >
+      {(formik) => {
+        const { isValid, dirty } = formik;
+        return (
+          <Form>
+            <Stack width="100%">
+              <Stack direction="column" width="100%" height="100%" alignItems="center">
+                <Stack height="15vh" width="35%" />
+                <Image src={Logo} width={90} height={90} />
+                <Margin size={[30, 0, 0, 0]}>
+                  <Text color="#0066B3" fontSize="0.9vw" cursor="pointer">
+                    МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
+                  </Text>
+                </Margin>
+                <Margin size={[10, 0, 0, 0]}>
+                  <Text color="#7A7A7A" fontSize="0.9vw" cursor="pointer" fontWeight="100">
+                    Цахим мэдээллийн систем
+                  </Text>
+                </Margin>
+                <Margin size={[10, 0, 0, 0]}>
+                  <Stack width="30vw" height="2px" bg="#F5F5F5" />
+                </Margin>
+                <Margin size={[30, 0, 20, 0]}>
+                  <Text color="black" fontSize="1.8vw" cursor="pointer" fontWeight="300">
+                    БҮРТГЭЛ ҮҮСГЭХ
+                  </Text>
+                </Margin>
+                <Stack direction="row" justifyContent="space-between" style={{ marginRight: '10px' }} flexWrap="wrap">
+                  <Stack direction="column">
+                    <InputTask name="firstName" input="Эцэг/эх-ийн нэр"></InputTask>
+                    <InputTask name="sex" input="Хүйс"></InputTask>
+                    <InputTask name="date" input="Төрсөн он/сар/өдөр"></InputTask>
+                    <InputTask name="phone" input="Утасны дугаар"></InputTask>
+                    <InputTask name="password" input="Нууц үг" type="password"></InputTask>
+                  </Stack>
+                  <Stack direction="column">
+                    <InputTask name="lastName" input="Нэр"></InputTask>
+                    <InputTask name="register" input="Регистрийн дугаар" type="text"></InputTask>
+                    <InputTask name="email" input="И-мэйл хаяг" type="email"></InputTask>
+                    <InputTask name="duureg" input="Аймаг/Дүүрэг"></InputTask>
+                    <InputTask name="passwordConfirm" input="Нууц үг давтах" type="password"></InputTask>
+                  </Stack>
+                </Stack>
+                <Margin size={[30, 0, 20, 0]}>
+                  <Stack width="850px" bg="#1890FF1A">
+                    <Border borderColor="#1890FF" borderRadius="8px">
+                      <Stack direction="row">
+                        <Padding size={[22, 0, 0, 15]}>
+                          <Image src={Info} />
+                        </Padding>
+                        <Padding size={[20, 10, 10, 10]}>
+                          <Text fontWeight="200" fontSize="20px">
+                            Үйлчилгээний нөхцөл
+                          </Text>
+                        </Padding>
+                      </Stack>
+                      <Padding size={[0, 20, 25, 50]}>
+                        <Text fontWeight="100">
+                          Бүртгүүлэгч таны хувийн мэдээлэл зөвхөн албан хэрэгцээнд ашиглагдах ба Хүний хувийн мэдээлэл
+                          хамгаалах тухай хуулийн 3.1, 3.2, 7, 16 дугаар зүйл (Хууль хүчин төгөлдөр болох 2022 оны 05-р
+                          сарын 1), Кибер аюулгүй байдлын тухай хуулийн 18 дугаар зүйл (Хууль хүчин төгөлдөр болох 2022
+                          оны 05-р сарын 1), Хүүхэд хамгааллын тухай хуулийн 2, 3, 9 дүгээр зүйлээр тус тус баталгаажан
+                          хамгаалагдсан болно.
+                        </Text>
+                      </Padding>
+                    </Border>
+                  </Stack>
+                </Margin>
+                <Stack width="20px" height="20px" bg={check === true ? '#1890FF' : '#fff'} onClick={checker}>
+                  <Border borderColor="#1890FF">
+                    <Text>✓</Text>
+                  </Border>
+                </Stack>
+              </Stack>
+              <Stack height="100vh">
+                <Image src={SignUpBg} height={1200} width={1700} />
+              </Stack>
             </Stack>
-            <Margin size={[10, 0, 0, 0]}>
-              <StyledInput
-                color="#1B1B1B"
-                border="2px solid #D0D0D0"
-                width="23.5vw"
-                height="4.3vh"
-                size="1.2vw"
-                onChange={handleChange}
-                value={form.password}
-                id="password"
-                type="password"
-                placeholder="нууц үг"
-                onKeyPress={(e) => handler(e)}
-              />
-              {signUpError ===
-              'Firebase: Password should be at least 6 characters (auth/weak-password).' ? (
-                <Text color="red">хамгийн багадаа 6н оронтой байх.</Text>
-              ) : (
-                ''
-              )}
-            </Margin>
-          </>
-        </Margin>
-        <Margin size={[20, 0, 0, 0]}>
-          <>
-            <Stack direction="row" justifyContent="space-between">
-              <Text color="#1B1B1B" fontSize="0.8vw" cursor="pointer" fontWeight="100">
-                Нууц үг давтах
-              </Text>
-            </Stack>
-            <Margin size={[10, 0, 0, 0]}>
-              <StyledInput
-                color="#1B1B1B"
-                border="2px solid #D0D0D0"
-                width="23.5vw"
-                height="4.3vh"
-                size="1.2vw"
-                // onChange={handleChange}
-                // value={form.passwordConfirm}
-                id="password"
-                type="password"
-                placeholder="нууц үг давтах"
-                onKeyPress={(e) => handler(e)}
-              />
-              {/* {signUpError ===
-              'Firebase: Password should be at least 6 characters (auth/weak-password).' ? (
-                <Text color="red">хамгийн багадаа 6н оронтой байх.</Text>
-              ) : (
-                ''
-              )} */}
-            </Margin>
-          </>
-        </Margin>
-        <Margin size={[30, 0, 0, 0]}>
-          <Button
-            width="23.5vw"
-            height="4.3vh"
-            bc="1px solid #0066B3"
-            borderRadius="5px"
-            bgColor="#0066B3"
-            color="#fff"
-            onClick={() => signUp(form.email, form.password)}
-          >
-            <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={() => signUp(form.email, form.password)}>
-              БҮРТГҮҮЛЭХ
-            </Text>
-          </Button>
-        </Margin>
-      </Stack>
-      <Position position="fixed" bottom="3vh" left="4vw">
-        <Text color="#757575" fontFamily="Roboto" fontSize="0.8vw" fontWeight="100">
-          @ 2018-2021 Монголын улаан загалмай нийгэмлэг
-        </Text>
-      </Position>
-      <Stack width="65%" height="100vh">
-        <Image src={Background} width={1700} height={300} />
-      </Stack>
-    </Stack>
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };
 
