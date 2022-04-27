@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled, { ThemeProvider } from "styled-components";
 import ArrowDown from "../../assets/icon/ArrowDown.jsx";
 import { Stack, Text } from '../index';
+import ArrowDownSecond from "../../assets/icon/arrDown.jsx";
 
 const DropDownContent = styled.div`
     display: block;
@@ -10,9 +11,12 @@ const DropDownContent = styled.div`
     min-width: 160px;
     z-index: 1;
     background-color: black;
-    border: 0.4px solid gray;
-    border-radius: 5px;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    box-sizing: border-box;
     background-color: white;
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
 `;
 
 
@@ -29,29 +33,31 @@ const ToUseOptions = styled(StyledATag)`
     background-color: white;
     padding: 10px;
     color: black;
-    width: 300px;
+    width: ${({ width }) => width};
     border-radius: 10%;
     &:hover {
         background-color: #d9e6f2;
         border-radius: 4px;
-        border: 0.4px solid ##d9e6f2;
+        border: 0.4px solid #d9e6f2;
     };
 `;
 const StyledSelect = styled.div`
-    width: 311px;
-    height: 25px;
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
     background-color: white;
-    border: 0.4px solid gray;
-    border-radius: 4px;
+    border: 0.5px solid rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 100px;
 `;
 
 const Select = ({ value, onClick }) => {
     return (
         <Stack>
-            <StyledSelect onClick={onClick}>
+            <StyledSelect onClick={onClick} width='311px' height='25px' >
                 <Text style={{ marginLeft: '10px' }}>{value}</Text>
                 <div style={{ width: '30px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ArrowDown />
@@ -60,7 +66,7 @@ const Select = ({ value, onClick }) => {
         </Stack>
     )
 }
-const Menu = (props) => {
+const Dropdown = (props) => {
     const [state, setState] = useState(false);
     const Click = () => {
         setState(!state)
@@ -74,12 +80,10 @@ const Menu = (props) => {
     return (
         <>
             <div>
-                <Select type="button" placeholder={options} value={options} onClick={Click} rightIcon={ArrowDown}>
+                <Select type="button" placeholder={options} value={options} onClick={Click} rightIcon={ArrowDownSecond}>
                 </Select>
-
-            </div>
-            {state &&
-                <DropDownContent onClick={Click} >
+                {state &&
+                <DropDownContent onClick={Click} width='311px'>
                     {
                         props.arr.map(Element =>
                             <ToUseOptions onClick={() => handleClick(Element)}>
@@ -88,8 +92,9 @@ const Menu = (props) => {
                         )
                     }
                 </DropDownContent >}
+            </div>
         </>
     )
 }
 
-export default Menu;
+export default Dropdown;
