@@ -5,6 +5,21 @@ import ArrowDown from "../../assets/icon/ArrowDown.jsx";
 import { Stack, Text } from '../index';
 import ArrowDownSecond from "../../assets/icon/arrDown.jsx";
 
+const OnDesktop = styled.div`
+  @media (max-width: 1050px) {
+    display: none;
+  }
+`;
+const OnMobile = styled.div`
+  @media (max-width: 460px) {
+    display: none;
+  }
+`;
+const OnMobileText = styled.div`
+  @media (min-width: 1050px) {
+    display: none;
+  }
+`;
 const DropDownContent = styled.div`
     display: block;
     position: absolute;
@@ -42,8 +57,11 @@ const ToUseOptions = styled(StyledATag)`
     };
 `;
 const StyledSelect = styled.div`
-    width: ${({ width }) => width};
-    height: ${({ height }) => height};
+    width: ${({ width }) => width ? width : '400px'};
+    @media (max-width: 460px) {
+        width: 80vw;
+    }
+    height:  ${({ height }) => height ? height : '35px'};
     background-color: white;
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 2px;
@@ -51,15 +69,14 @@ const StyledSelect = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 100px;
 `;
 
 const Select = ({ value, onClick }) => {
     return (
         <Stack>
-            <StyledSelect onClick={onClick} width='311px' height='25px' >
+            <StyledSelect onClick={onClick} width='400px' height='35px' >
                 <Text style={{ marginLeft: '10px' }}>{value}</Text>
-                <div style={{ width: '30px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ArrowDown />
                 </div>
             </StyledSelect>
@@ -73,7 +90,7 @@ const Dropdown = (props) => {
     }
     const [options, setOptions] = useState('')
     const handleClick = (action) => {
-        setOptions(action.text)
+        setOptions(action)
         if (!action) return;
         if (props.onClick) props.onClick(action);
     }
@@ -87,7 +104,7 @@ const Dropdown = (props) => {
                     {
                         props.arr.map(Element =>
                             <ToUseOptions onClick={() => handleClick(Element)}>
-                                {Element.text}
+                                {Element}
                             </ToUseOptions>
                         )
                     }

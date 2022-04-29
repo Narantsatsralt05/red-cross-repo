@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { theme } from '../../theme/theme';
 export const StyledInput = styled.input`
   width: ${(props) => props.width ? props.width : '400px'};
+  @media (max-width: 460px) {
+        width: 80vw;
+    }
   border-width: 1px;
   border-style: solid;
   border-color: ${(props) => {
@@ -24,7 +27,7 @@ export const StyledInput = styled.input`
   }};
   border-radius: ${(props) => props.borderRadius ? props.borderRadius : '4px'};
   font-size: ${(props) => props.size ? props.size : '17px'};
-  height: ${(props) => props.height ? props.height : '40px'};
+  height: ${(props) => props.height ? props.height : '35px'};
   color: ${(props) => props.color};
   font: ${(props) => props.font};
   animation-name: ${(props)=>props.animation};
