@@ -69,15 +69,14 @@ const StyledSelect = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 100px;
 `;
 
 const Select = ({ value, onClick }) => {
     return (
         <Stack>
-            <StyledSelect onClick={onClick} width='311px' height='25px' >
+            <StyledSelect onClick={onClick} width='400px' height='35px' >
                 <Text style={{ marginLeft: '10px' }}>{value}</Text>
-                <div style={{ width: '30px', height: '25px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <ArrowDown />
                 </div>
             </StyledSelect>
@@ -91,7 +90,7 @@ const Dropdown = (props) => {
     }
     const [options, setOptions] = useState('')
     const handleClick = (action) => {
-        setOptions(action.text)
+        setOptions(action)
         if (!action) return;
         if (props.onClick) props.onClick(action);
     }
@@ -105,7 +104,7 @@ const Dropdown = (props) => {
                     {
                         props.arr.map(Element =>
                             <ToUseOptions onClick={() => handleClick(Element)}>
-                                {Element.text}
+                                {Element}
                             </ToUseOptions>
                         )
                     }
