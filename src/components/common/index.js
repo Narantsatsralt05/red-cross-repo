@@ -1,6 +1,5 @@
 export * from "./notificationModal";
 export * from "./userCard";
-export * from "./informationSection";
 export * from "./stepper";
 export * from "./animation";
 export * from "./dashSideBar";
