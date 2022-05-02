@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import Leftbar from '../components/common/leftbar';
+import { Loading } from '../components';
 
 export default function Home() {
   const { user } = useAuthContext();
@@ -12,8 +12,8 @@ export default function Home() {
     if (user === null) {
       router.push('/login');
     } else if (user != null) {
-      router.push('/home');
+      router.push('/checker');
     }
   }, [user]);
-  return <>Redirecting...</>;
+  return <Loading/>;
 }
