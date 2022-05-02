@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../providers/authContext';
+import ProfileHome from "./ProfileHome"
 
 const Home = () => {
   const { user } = useAuthContext();
@@ -13,6 +14,6 @@ const Home = () => {
     }
   }, [user]);
 
-  return <>Thats home</>;
+  return <ProfileHome/>;
 };
 export default Home;
