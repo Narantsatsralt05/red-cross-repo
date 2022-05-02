@@ -18,7 +18,7 @@ const DataTable = () => {
   const rows = data
   
   return (
-    <TableContainer style={{ border: '1px solid #EDEDED', borderRadius: '5px', height: '350px', width: '80%', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', flexDirection: 'column' }}>
+    <TableContainer style={{  backgroundColor:"#FFFFFF",border: '1px solid #EDEDED', borderRadius: '5px', height: '350px', width: '83vw', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', flexDirection: 'column' }}>
       <div style={{ fontWeight: '300', fontStyle: 'light', fontSize: 'px', width: '250px', marginTop: '9px', marginLeft: '11px', marginBottom: '12px' }} align="left">СҮҮЛД НЭМЭГДСЭН ХҮН</div>
       <Table>
         <TableHead style={{ fontSize: '12px' }}>
