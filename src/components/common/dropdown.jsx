@@ -57,11 +57,8 @@ const ToUseOptions = styled(StyledATag)`
     };
 `;
 const StyledSelect = styled.div`
-    width: ${({ width }) => width ? width : '400px'};
-    @media (max-width: 460px) {
-        width: 80vw;
-    }
-    height:  ${({ height }) => height ? height : '35px'};
+    width: ${({ width }) => width};
+    height: 25px;
     background-color: white;
     border: 0.5px solid rgba(0, 0, 0, 0.5);
     border-radius: 2px;
@@ -71,19 +68,19 @@ const StyledSelect = styled.div`
     align-items: center;
 `;
 
-const Select = ({ value, onClick }) => {
-    return (
-        <Stack>
-            <StyledSelect onClick={onClick} width='400px' height='35px' >
-                <Text style={{ marginLeft: '10px' }}>{value}</Text>
-                <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <ArrowDown />
-                </div>
-            </StyledSelect>
-        </Stack>
-    )
-}
 const Dropdown = (props) => {
+    const Select = ({value, onClick }) => {
+        return (
+            <Stack>
+                <StyledSelect onClick={onClick} width={props.width ? props.width : '311px'}>
+                    <Text style={{ marginLeft: '10px' }}>{value}</Text>
+                    <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <ArrowDown />
+                    </div>
+                </StyledSelect>
+            </Stack>
+        )
+    }
     const [state, setState] = useState(false);
     const Click = () => {
         setState(!state)
@@ -100,7 +97,7 @@ const Dropdown = (props) => {
                 <Select type="button" placeholder={options} value={options} onClick={Click} rightIcon={ArrowDownSecond}>
                 </Select>
                 {state &&
-                <DropDownContent onClick={Click} width='311px'>
+                <DropDownContent onClick={Click} width={props.width ? props.width : "311px"}>
                     {
                         props.arr.map(Element =>
                             <ToUseOptions onClick={() => handleClick(Element)}>
