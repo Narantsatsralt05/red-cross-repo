@@ -7,7 +7,6 @@ import TableRow from '@mui/material/TableRow';
 import { useTheme } from '../../../theme/theme';
 import { Margin, Text, Stack } from '../..';
 import styled from 'styled-components';
-import { Add } from 'material-ui-icons';
 
 export const InformationTable = ({ admin, title, row, body }) => {
   const { color } = useTheme();
@@ -24,7 +23,7 @@ export const InformationTable = ({ admin, title, row, body }) => {
     return (
       <Stack justifyContent="flex-start" direction="row" alignItems="center">
         <Margin size={[20, 10, 20, 5]}>
-          <Text color={color.primary.black} fontSize="20px">
+          <Text color={color.primary.black} type="H3">
             {title}
           </Text>
         </Margin>
@@ -34,12 +33,12 @@ export const InformationTable = ({ admin, title, row, body }) => {
               <Stack width="1px" height="40px" bg={color.secondary.black} />
             </Margin>
             <Margin size={[0, 0, 10, 0]}>
-              <Text color={color.primary.blue} fontSize="50px">
+              <Text color={color.primary.blue} type="Quote">
                 +
               </Text>
             </Margin>
             <Margin size={[0, 0, 0, 20]}>
-              <Text color={color.primary.black} fontSize="22px">
+              <Text color={color.primary.black} type="H3">
                 Нэмэх
               </Text>
             </Margin>
@@ -52,7 +51,7 @@ export const InformationTable = ({ admin, title, row, body }) => {
     return (
       <Stack width="100%" justifyContent="flex-start" direction="column">
         <Margin size={[20, 10, admin ? 0 : 20, 5]}>
-          <Text color={color.primary.black} fontSize="20px">
+          <Text color={color.primary.black} type="H3">
             {title}
           </Text>
         </Margin>
@@ -60,12 +59,12 @@ export const InformationTable = ({ admin, title, row, body }) => {
           <>
             <Stack justifyContent="flex-start" direction="row" alignItems="center">
               <Margin size={[0, 0, 10, 0]}>
-                <Text color={color.primary.blue} fontSize="50px">
+                <Text color={color.primary.blue} type="Quote">
                   +
                 </Text>
               </Margin>
               <Margin size={[0, 0, 0, 20]}>
-                <Text color={color.primary.black} fontSize="22px">
+                <Text color={color.primary.black} type="H3">
                   Нэмэх
                 </Text>
               </Margin>
