@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useCollection } from '../hooks';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../providers/authContext';
-import { Loading } from '../components';
+import { loading } from '../components';
 
 const Checker = () => {
   const { user } = useAuthContext();
@@ -25,6 +25,6 @@ const Checker = () => {
     }
   });
 
-  return <Loading />;
+  return <loading />;
 };
 export default Checker;

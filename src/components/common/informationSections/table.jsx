@@ -7,7 +7,6 @@ import TableRow from '@mui/material/TableRow';
 import { useTheme } from '../../../theme/theme';
 import { Margin, Text, Stack } from '../..';
 import styled from 'styled-components';
-import { Add } from 'material-ui-icons';
 
 export const InformationTable = ({ admin, title, row, body }) => {
   const { color } = useTheme();
