@@ -1,11 +1,13 @@
-import { Button, Margin, Position, Stack, StyledInput, Text } from '../components';
+import { Border, Button, Margin, Position, Stack, StyledInput, Text } from '../components';
 import React, { useEffect, useState } from 'react';
 import Background from '../assets/image/loginBg.png';
+import Login1 from "../assets/icon/login1.png";
+import Login2 from "../assets/icon/login2.png";
+import Login3 from "../assets/icon/login3.png";
 import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
-import Loading from '../components/common/Loading';
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -157,6 +159,18 @@ const Login = () => {
 
       <Stack width="65%" height="100vh">
         <Image src={Background} width={1700} height={300} />
+        <Position position="absolute" bottom="3vh" right="3.5vw">
+          <Border borderColor="#0066B3" borderRadius="20px" overFlow="hidden">
+          <Stack bg="#0066B3" direction="row" width="60vw" alignItems="center" justifyContent="space-around" heigth="5vh">
+                <Image src={Login1} width={80} height={80} />
+                <Text color="#fff" type="T2">САЙН ДУРЫН ИДЭВХТНИЙ БҮРТГЭЛ</Text>
+                <Image src={Login2} width={80} height={80} />
+                <Text color="#fff" type="T2">ГИШҮҮН, ДЭМЖЭГЧДИЙН БҮРТГЭЛ</Text>
+                <Image src={Login3} width={80} height={80} />
+                <Text color="#fff" type="T2">ТУСЛАМЖ ХҮРТЭГЧИЙН БҮРТГЭЛ</Text>
+          </Stack>
+          </Border>
+        </Position>
       </Stack>
     </Stack>
   );
