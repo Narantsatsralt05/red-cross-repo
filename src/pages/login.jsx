@@ -31,7 +31,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user != null) {
-      router.push('/home');
+      router.push('/checker');
     }
   }, [user]);
 

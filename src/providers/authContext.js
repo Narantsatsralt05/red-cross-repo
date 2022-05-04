@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        window.location = '/home';
+        window.location = '/checker';
         alert('login successfully');
         console.log('login amjilttai XD');
       })
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       auth
         .createUserWithEmailAndPassword(email, password1)
         .then(() => {
-          window.location = '/home';
+          window.location = '/checker';
           alert('signUp successfully');
           console.log('signUp amjilttai XD');
         })
