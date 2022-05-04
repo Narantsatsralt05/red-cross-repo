@@ -13,6 +13,8 @@ export const color = {
       white:'#D1D1D1',
       black:'#424242',
       blue:'#0085FF',
+      lightblue:"rgba(0, 102, 179, 0.3)",
+      lightgreen:"rgba(26, 148, 97, 0.3)"
      },
      disabled: {
         black:'#A9A9A9',
