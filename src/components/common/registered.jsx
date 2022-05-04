@@ -8,15 +8,16 @@ import excel from "../../assets/icon/excel.svg"
 import Image from 'next/image';
 import Styledinput from "../core/input";
 import { useTheme } from "../../theme/theme";
-const Registered = ({e}) => {
+
+export const Registered = ({e}) => {
     const {color} = useTheme();
     let a = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
     return (
         <Stack width="90vw" height="86vh" bg="#E5E5E5"justifyContent="space-between"  direction="column">
             <Stack width="100%" height="7%" justifyContent="space-between" alignItems="center">
                 <Stack width="24%" justifyContent="space-between" alignItems="center">
-                    <Text fontWeight="400" type="H2" lineHeight="16px" fontStyle="regular">
-                        Бүртгэлтэй хэрэглэгчийн жагсаалт ({e})
+                    <Text fontWeight="400" type="T2" lineHeight="16px" fontStyle="regular" style={{textAlign:"center"}}>
+                    БҮРТГЭЛТЭЙ ХЭРЭГЛЭГЧИЙН ЖАГСААЛТ ({e})
                     </Text>
                     <Image src={line}></Image>
                     <Image src={plus}></Image>
@@ -24,58 +25,60 @@ const Registered = ({e}) => {
                         Нэмэх
                     </Text>
                 </Stack>
-                <Stack width="30%" justifyContent="space-evenly">
-                    <Image src={shape}></Image>
-                    <Styledinput width="350px" placeholder="хайх"></Styledinput>
-                    <Image src={excel}></Image>
-                </Stack>
+                <Margin size={[0,80,0,0]}> 
+                    <Stack justifyContent="space-evenly" gap="25">
+                        <Image src={shape}></Image>
+                            <Styledinput width="350px" placeholder="хайх"></Styledinput>
+                        <Image src={excel}></Image>
+                    </Stack>
+                </Margin>
             </Stack>
             <Image src={upline}></Image>
-            <Stack width="100%" height="6%" bg="#D9D9D9" justifyContent="space-evenly" alignItems="center"> 
-                <Stack width="10%" justifyContent="center">
-                    <Text type="H3">
+            <Stack width="100%" height="6%" bg="#D9D9D9" justifyContent="space-evenly" alignItems="center" justifyContent="center"> 
+                <Stack width="14%" >
+                    <Text type="T1">
                         Регистрийн дугаар
                     </Text>
                 </Stack>
-                <Stack width="15%" >
-                    <Margin size={[0,0,0,30]}>
-                        <Text type="H3">
+                <Stack width="12%" >
+                    <Margin size={[0,0,0,23]}>
+                        <Text type="T1">
                             Овог
                         </Text>
                     </Margin>
                 </Stack>
-                <Stack  width="12%">
-                    <Text type="H3">
+                <Stack  width="11%">
+                    <Text type="T1">
                         Нэр
                     </Text>
                 </Stack>
                 <Stack  width="5%">
-                    <Text type="H3">
+                    <Text type="T1">
                         Нас
                     </Text>
                 </Stack>
                 <Stack  width="7%">
-                    <Text type="H3">
+                    <Text type="T1">
                         Хүйс
                     </Text>
                 </Stack>
                 <Stack  width="18%">
-                    <Text type="H3">
+                    <Text type="T1">
                         Төрөл
                     </Text>
                 </Stack>
                 <Stack  width="11%">
-                    <Text type="H3">
+                    <Text type="T1">
                         Утас
                     </Text>
                 </Stack>
                 <Stack  width="11%">
-                    <Text type="H3">
+                    <Text type="T1">
                         Элссэн огноо
                     </Text>
                 </Stack>
                 <Stack  width="10%">
-                    <Text type="H3">
+                    <Text type="T1" style={{textAlign:"center"}}>
                         Гишүүнчлэл огноо 
                     </Text>
                 </Stack>
@@ -84,21 +87,21 @@ const Registered = ({e}) => {
                 {a.map((el) => {
                     return  <Margin size={[0,0,25,0]}>
                                 <Stack width="100%" height="190%" bg="white"justifyContent="space-between"> 
-                                    <Stack width="10%"alignItems="center">
-                                        <Margin size={[0,0,0,15]}>
+                                    <Stack width="14%"alignItems="center">
+                                        <Margin size={[0,0,0,10]}>
                                             <Text type="T2" color={color.primary.blue}>
                                                 УК94092597
                                             </Text>
                                         </Margin>
                                     </Stack>
-                                    <Stack width="15%" alignItems="center" >
+                                    <Stack width="12%" alignItems="center" >
                                         <Margin size={[0,0,0,30]}>
                                             <Text type="T2">
                                                 Нямсамбуу-Cайхан
                                             </Text>
                                         </Margin>
                                     </Stack>
-                                    <Stack  width="12%" alignItems="center">
+                                    <Stack  width="11%" alignItems="center">
                                         <Text type="T2">
                                             Даваа-Самбуу
                                         </Text>
@@ -160,4 +163,3 @@ const Registered = ({e}) => {
         </Stack>
     )
 }
-export default Registered;
