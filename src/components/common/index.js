@@ -12,5 +12,5 @@ export * from "./page-input-task";
 export * from "./paginationtext";
 export * from "./select";
 export * from "./status";
-
+export * from "./informationSections/sections";
 

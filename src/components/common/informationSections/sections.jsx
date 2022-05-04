@@ -1,9 +1,10 @@
 import React from 'react';
-import { InformationTable, Margin } from '../..';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { useTheme } from '../../../theme/theme';
 import { useCollection } from '../../../hooks';
+import { InformationTable } from './table';
+import { Margin, Text } from '../..';
 
 export const SkillTable = ({ admin }) => {
   const { color } = useTheme();
@@ -12,17 +13,13 @@ export const SkillTable = ({ admin }) => {
   const title = 'УР ЧАДВАР';
   const tableBodyCell = {
     border: 'none',
-    fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '15px',
     padding: '10px',
     width: '20vw',
     align: 'left',
     first: {
       border: 'none',
-      fontWeight: '300',
       fontStyle: 'normal',
-      fontSize: '15px',
       padding: '10px',
       width: '20vw',
       align: 'left',
@@ -32,23 +29,31 @@ export const SkillTable = ({ admin }) => {
   const tableHeadCell = {
     border: 'none',
     color: color.primary.black,
-    fontWeight: '400',
     fontStyle: 'normal',
-    fontSize: '20px',
     padding: '10px',
     width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
-    return <TableCell style={tableHeadCell}>{el}</TableCell>;
+    return (
+      <TableCell style={tableHeadCell}>
+        <Text type="T1">{el}</Text>
+      </TableCell>
+    );
   });
   const body = data.map((el) => {
     return (
       <Margin size={[0, 0, 5, 10]}>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-          <TableCell style={tableBodyCell.first}>{el.skill}</TableCell>
-          <TableCell style={tableBodyCell}>{el.skillLevel}</TableCell>
-          <TableCell style={tableBodyCell}>{el.explanation}</TableCell>
+          <TableCell style={tableBodyCell.first}>
+            <Text type="T2Caps">{el.skill}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.skillLevel}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.explanation}</Text>
+          </TableCell>
         </TableRow>
       </Margin>
     );
@@ -64,17 +69,13 @@ export const CoveredTrainingTable = ({ admin }) => {
   const title = 'СУРГАЛТ';
   const tableBodyCell = {
     border: 'none',
-    fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '15px',
     padding: '10px',
     width: '20vw',
     align: 'left',
     first: {
       border: 'none',
-      fontWeight: '300',
       fontStyle: 'normal',
-      fontSize: '15px',
       padding: '10px',
       width: '20vw',
       align: 'left',
@@ -84,25 +85,37 @@ export const CoveredTrainingTable = ({ admin }) => {
   const tableHeadCell = {
     border: 'none',
     color: color.primary.black,
-    fontWeight: '400',
     fontStyle: 'normal',
-    fontSize: '20px',
     padding: '10px',
     width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
-    return <TableCell style={tableHeadCell}>{el}</TableCell>;
+    return (
+      <TableCell style={tableHeadCell}>
+        <Text type="T1">{el}</Text>
+      </TableCell>
+    );
   });
   const body = data.map((el) => {
     return (
       <Margin size={[0, 0, 5, 10]}>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-          <TableCell style={tableBodyCell.first}>{el.trainingType}</TableCell>
-          <TableCell style={tableBodyCell}>{el.when}</TableCell>
-          <TableCell style={tableBodyCell}>{el.where}</TableCell>
-          <TableCell style={tableBodyCell}>{el.trainingTime}</TableCell>
-          <TableCell style={tableBodyCell}>{el.additionalInformation}</TableCell>
+          <TableCell style={tableBodyCell.first}>
+            <Text type="T2Caps">{el.trainingType}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.when}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.where}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.trainingTime}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.additionalInformation}</Text>
+          </TableCell>
         </TableRow>
       </Margin>
     );
@@ -118,17 +131,13 @@ export const MembershipInformationTable = ({ admin }) => {
   const title = 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ';
   const tableBodyCell = {
     border: 'none',
-    fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '15px',
     padding: '10px',
     width: '20vw',
     align: 'left',
     first: {
       border: 'none',
-      fontWeight: '300',
       fontStyle: 'normal',
-      fontSize: '15px',
       padding: '10px',
       width: '20vw',
       align: 'left',
@@ -138,24 +147,34 @@ export const MembershipInformationTable = ({ admin }) => {
   const tableHeadCell = {
     border: 'none',
     color: color.primary.black,
-    fontWeight: '400',
     fontStyle: 'normal',
-    fontSize: '20px',
     padding: '10px',
     width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
-    return <TableCell style={tableHeadCell}>{el}</TableCell>;
+    return (
+      <TableCell style={tableHeadCell}>
+        <Text type="T1">{el}</Text>
+      </TableCell>
+    );
   });
   const body = data.map((el) => {
     return (
       <Margin size={[0, 0, 5, 10]}>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-          <TableCell style={tableBodyCell.first}>{el.membershipType}</TableCell>
-          <TableCell style={tableBodyCell}>{el.startDate}</TableCell>
-          <TableCell style={tableBodyCell}>{el.endDate}</TableCell>
-          <TableCell style={tableBodyCell}>{el.additionalInformation}</TableCell>
+          <TableCell style={tableBodyCell.first}>
+            <Text type="T2Caps">{el.membershipType}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.startDate}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.endDate}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.additionalInformation}</Text>
+          </TableCell>
         </TableRow>
       </Margin>
     );
@@ -171,17 +190,13 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
   const title = 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ';
   const tableBodyCell = {
     border: 'none',
-    fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '15px',
     padding: '10px',
     width: '20vw',
     align: 'left',
     first: {
       border: 'none',
-      fontWeight: '300',
       fontStyle: 'normal',
-      fontSize: '15px',
       padding: '10px',
       width: '20vw',
       align: 'left',
@@ -191,24 +206,34 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
   const tableHeadCell = {
     border: 'none',
     color: color.primary.black,
-    fontWeight: '400',
     fontStyle: 'normal',
-    fontSize: '20px',
     padding: '10px',
     width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
-    return <TableCell style={tableHeadCell}>{el}</TableCell>;
+    return (
+      <TableCell style={tableHeadCell}>
+        <Text type="T1">{el}</Text>
+      </TableCell>
+    );
   });
   const body = data.map((el) => {
     return (
       <Margin size={[0, 0, 5, 10]}>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-          <TableCell style={tableBodyCell.first}>{el.volunteering}</TableCell>
-          <TableCell style={tableBodyCell}>{el.time}</TableCell>
-          <TableCell style={tableBodyCell}>{el.date}</TableCell>
-          <TableCell style={tableBodyCell}>{el.additionalInformation}</TableCell>
+          <TableCell style={tableBodyCell.first}>
+            <Text type="T2Caps">{el.volunteering}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.time}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.date}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.additionalInformation}</Text>
+          </TableCell>
         </TableRow>
       </Margin>
     );
@@ -224,17 +249,13 @@ export const HelpInformationTable = ({ admin }) => {
   const title = 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ';
   const tableBodyCell = {
     border: 'none',
-    fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '15px',
     padding: '10px',
     width: '20vw',
     align: 'left',
     first: {
       border: 'none',
-      fontWeight: '300',
       fontStyle: 'normal',
-      fontSize: '15px',
       padding: '10px',
       width: '20vw',
       align: 'left',
@@ -244,24 +265,34 @@ export const HelpInformationTable = ({ admin }) => {
   const tableHeadCell = {
     border: 'none',
     color: color.primary.black,
-    fontWeight: '400',
     fontStyle: 'normal',
-    fontSize: '20px',
     padding: '10px',
     width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
-    return <TableCell style={tableHeadCell}>{el}</TableCell>;
+    return (
+      <TableCell style={tableHeadCell}>
+        <Text type="T1">{el}</Text>
+      </TableCell>
+    );
   });
   const body = data.map((el) => {
     return (
       <Margin size={[0, 0, 5, 10]}>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-          <TableCell style={tableBodyCell.first}>{el.typeOfAssistance}</TableCell>
-          <TableCell style={tableBodyCell}>{el.startDate}</TableCell>
-          <TableCell style={tableBodyCell}>{el.endDate}</TableCell>
-          <TableCell style={tableBodyCell}>{el.additionalInformation}</TableCell>
+          <TableCell style={tableBodyCell.first}>
+            <Text type="T2Caps">{el.typeOfAssistance}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.startDate}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.endDate}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.additionalInformation}</Text>
+          </TableCell>
         </TableRow>
       </Margin>
     );
@@ -277,17 +308,13 @@ export const EmergencyContactPersonTable = ({ admin }) => {
   const title = 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл';
   const tableBodyCell = {
     border: 'none',
-    fontWeight: '300',
     fontStyle: 'normal',
-    fontSize: '15px',
     padding: '10px',
     width: '20vw',
     align: 'left',
     first: {
       border: 'none',
-      fontWeight: '300',
       fontStyle: 'normal',
-      fontSize: '15px',
       padding: '10px',
       width: '20vw',
       align: 'left',
@@ -297,23 +324,31 @@ export const EmergencyContactPersonTable = ({ admin }) => {
   const tableHeadCell = {
     border: 'none',
     color: color.primary.black,
-    fontWeight: '400',
     fontStyle: 'normal',
-    fontSize: '20px',
     padding: '10px',
     width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
-    return <TableCell style={tableHeadCell}>{el}</TableCell>;
+    return (
+      <TableCell style={tableHeadCell}>
+        <Text type="T1">{el}</Text>
+      </TableCell>
+    );
   });
   const body = data.map((el) => {
     return (
       <Margin size={[0, 0, 5, 10]}>
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-          <TableCell style={tableBodyCell.first}>{el.information}</TableCell>
-          <TableCell style={tableBodyCell}>{el.name}</TableCell>
-          <TableCell style={tableBodyCell}>{el.phoneNumber}</TableCell>
+          <TableCell style={tableBodyCell.first}>
+            <Text type="T2Caps">{el.information}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.name}</Text>
+          </TableCell>
+          <TableCell style={tableBodyCell}>
+            <Text type="T2">{el.phoneNumber}</Text>
+          </TableCell>
         </TableRow>
       </Margin>
     );
