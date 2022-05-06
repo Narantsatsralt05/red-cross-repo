@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
+import Dropdown from '../components/common/dropdown';
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -39,6 +40,7 @@ const Login = () => {
 
   return (
     <Stack direction="row" width="100%" height="100vh">
+      <Dropdown arr={['123', '123']} width={'411px'}></Dropdown>
       <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
         <Stack height="15vh" width="35%" />
         <Image src={Logo} width={90} height={90} />
