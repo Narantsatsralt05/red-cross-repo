@@ -10,7 +10,7 @@ export * from "./leftbar";
 export * from "./loading";
 export * from "./page-input-task";
 export * from "./paginationtext";
-export * from "./select";
+export * from "./dropdown";
 export * from "./status";
 export * from "./informationSections/sections";
 
