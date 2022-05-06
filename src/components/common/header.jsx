@@ -13,7 +13,7 @@ import hamburger from "../../assets/icon/hamburger.svg"
 import Pic from "../../assets/icon/profile.svg"
 import Help from "../../assets/icon/saindur.svg"
 import gishuunInfo from "../../assets/icon/people.svg"
-import tuslamjInfo from "../../assets/icon/help.svg"
+// import tuslamjInfo from "../../assets/icon/help.svg"
 import { Padding } from "../core/padding";
 import { Border } from "../core/border";
 
