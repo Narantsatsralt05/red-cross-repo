@@ -17,14 +17,36 @@ import Image from 'next/image';
 import search from '../assets/icon/search.svg';
 import { useAuthContext } from '../providers/authContext';
 import { useDocument } from '../hooks';
-import { useEffect } from 'react';
+import { useRef } from 'react';
+import { useState } from 'react';
 
 const Admin = () => {
   const { user } = useAuthContext();
+  const [searchValue, setSearchValue] = useState({
+    value1: '',
+    value2: '',
+    value3: '',
+  });
+  const [readySearch, setReadySearch] = useState(false);
+  const handleChange = (e) => {
+    setSearchValue({ ...searchValue, [e.target.id]: e.target.value });
+  };
+  const searchButton = () => {
+    setReadySearch(true);
+  };
+  const firstInput = useRef(null);
+  const secondInput = useRef(null);
+  const thirdInput = useRef(null);
+  if (searchValue.value1.length >= 1) {
+    secondInput.current.focus();
+  }
+  if (searchValue.value2.length >= 1) {
+    thirdInput.current.focus();
+  }
+
   let a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   const userLocation = useDocument(`/user/${user._delegate?.uid}`).data;
-
   return (
     <Stack width="100vw" height="100vh" bg="#FFFFFF">
       <DashSideBar></DashSideBar>
@@ -70,9 +92,36 @@ const Admin = () => {
           <Stack direction="column" height="75px" justifyContent="space-between" width="83vw">
             <Text fontSize="14px">РЕГИСТРИЙН ДУГААР БИЧНЭ ҮҮ.</Text>
             <Stack justifyContent="space-between" width="390px">
-              <StyledInput width="45px" height="45px" type="string"></StyledInput>
-              <StyledInput width="45px" height="45px" type="text"></StyledInput>
-              <StyledInput width="220px" height="45px" type="number"></StyledInput>
+              <StyledInput
+                onChange={handleChange}
+                value={searchValue.value1}
+                id="value1"
+                ref={firstInput}
+                width="45px"
+                height="45px"
+                placeholder="X"
+                type="string"
+              ></StyledInput>
+              <StyledInput
+                onChange={handleChange}
+                value={searchValue.value2}
+                id="value2"
+                ref={secondInput}
+                width="45px"
+                height="45px"
+                placeholder="X"
+                type="text"
+              ></StyledInput>
+              <StyledInput
+                onChange={handleChange}
+                value={searchValue.value3}
+                id="value3"
+                ref={thirdInput}
+                width="220px"
+                height="45px"
+                placeholder="XXXXXXXX"
+                type="number"
+              ></StyledInput>
               <Button
                 width="45px"
                 height="45px"
@@ -80,6 +129,7 @@ const Admin = () => {
                 bgColor="#1890FF"
                 justifyContent="center"
                 alignItems="center"
+                onClick={searchButton}
               >
                 <Image src={search}></Image>
               </Button>
