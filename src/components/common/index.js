@@ -12,10 +12,7 @@ export * from "./page-input-task";
 export * from "./paginationtext";
 export * from "./dropdown";
 export * from "./status";
-<<<<<<< HEAD
 export * from "./informationSections/sections";
-=======
 export * from "./registered";
 
->>>>>>> 11e1142 (registered users)
 
