@@ -7,7 +7,7 @@ export const useDocument = (path) => {
     db.doc(`${path}`).onSnapshot((doc) => {
       setData(doc.data());
     });
-  }, []);
+  }, [path]);
   return { data };
 };
 
