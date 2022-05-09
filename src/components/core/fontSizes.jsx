@@ -1,5 +1,6 @@
 export const FontSizes = {
   onDesktop: {
+    Header:'35px',
     Quote: '64px',
     H1: '30px',
     H2Semi: '24px',
@@ -14,6 +15,7 @@ export const FontSizes = {
     T4: '12px',
   },
   onMobile: {
+    Header:'30px',
     T4Spaced: '10px',
     T4: '10px',
     Quote: '34px',
