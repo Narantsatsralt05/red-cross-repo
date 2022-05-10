@@ -6,6 +6,7 @@ const Delete = () => {
         <Text fontSize='12px' fontFamily='Roboto' lineHeight='12px' fontWeight='300'>
             <Stack width='172px' height='66px' bg='white' direction='column' style={{ boxShadow: '5px 10px 8px  #888888' }}>
                 <Margin size={[8, 0, 0, 13]}>
+
                     Устгах уу?
                 </Margin>
                 <Margin size={[8, 0, 0, 0]}>

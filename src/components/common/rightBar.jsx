@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import {
     Button,
     Center,
-    Picture,
     Margin,
     Padding,
     Position,
     Stack,
     Border,
     Text,
-    StyledInput,
-    Styledoneletter
 } from '../index';
-import Select from '../common/select'
-import styled from 'styled-components';
+import Select from '../common/dropdown'
 import exit from '../../assets/icon/Group 5 (1).svg'
 import Image from 'next/image';
 import Styledinput from '../core/input';
@@ -22,32 +18,39 @@ import { addDocument, useCollection, useDocument } from '../../hooks';
 import { Formik } from "formik";
 import * as Yup from "yup";
 const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) => {
+    const { data } = useDocument("/staticData/skillProps")
+    const propsSelect = useMemo(() => {
+        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') return data.VolunteerNames;
+        if (title === 'СУРГАЛТ') return data.lessonNames
+        if (title === 'УР ЧАДВАР') return data.skillNames
+        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') return data.membershipNames;
+        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') return data.helpNames
+        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') return data.emergencyNames
+    }, [data])
 
-    const data = useDocument("/staticData/lessonNames")
-    const lesson = Object.keys(data.data)
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        p: 4,
-    };
-    const [skillValue, setSkillValue] = useState('')
-    const [dateValue, setdateValue] = useState('')
-    const [WhereValue, setWhereValue] = useState('')
-    const [infoValue, setinfoValue] = useState('')
-    const [succesfly, setSucces] = useState('')
-    const [open, setOpen] = React.useState(true);
+  
+    const [firstValue, setfirstValue] = useState('')
+    const [secondValue, setsecondValue] = useState('')
+    const [thirdValue, setthirdValue] = useState('')
+    const [fourthValue, setfourthValue] = useState('')
+    const [fifthValue, setfifthValue] = useState('')
+    const [isSucces, setSucces] = useState('')
     const New = () => {
         setBar(false)
+        Add()
         setBar(true)
     }
-    const option = lesson?.map((lessonItem) => {
-        return { text: lessonItem }
-    });
+    const Add = () => {
+        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }, setSucces)
+        if (title === 'УР ЧАДВАР') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/skills', { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }, setSucces)
+        if (title === 'СУРГАЛТ') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining', { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }, setSucces)
+        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }, setSucces)
+        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }, setSucces)
+        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson', { information: firstValue, name: secondValue, phoneNumber: thirdValue }, setSucces)
+    }
     return (
         <Modal
-            open={open}
+            open={true}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -58,7 +61,6 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                             <Stack direction='column' bg='white' className='media'>
                                 <Padding size={[10, 50, 0, 50]}>
                                     <Formik
-                                        initialValues={{ text: "" }}
                                         onSubmit={async values => {
                                             await new Promise(resolve => setTimeout(resolve, 500));
                                             alert(JSON.stringify(values, null, 2));
@@ -67,6 +69,10 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                             text: Yup.string()
                                                 .required("Required"),
                                             text1: Yup.string()
+                                                .required("Required"),
+                                            text2: Yup.string()
+                                                .required("Required"),
+                                            text3: Yup.string()
                                                 .required("Required")
                                         })}
                                     >
@@ -86,8 +92,8 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                                 <form onSubmit={handleSubmit}>
                                                     <Margin size={[20, 0, 0, 0]}>
                                                         <Stack direction='row' justifyContent='space-between' width='100%' >
-                                                            <Margin size={[4, 40, 0, 0]}>
-                                                                {title} ЗАСАХ
+                                                            <Margin size={[4, 40, 0, 0]} style={{ width: '280px' }}>
+                                                                {title}
                                                             </Margin>
                                                             <Image src={exit} onClick={() => { setBar(!bar) }} />
                                                         </Stack>
@@ -97,10 +103,7 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                                             <label>
                                                                 {headers[0]}
                                                                 <Margin size={[10, 0, 0, 0]}>
-                                                                    {/* <Select setSkillValue={setSkillValue} skillValue={skillValue} arr={option}></Select> */}
-                                                                    {/* <Select setSkillValue={setSkillValue} skillValue={skillValue} arr={option}></Select> */}
-                                                                    <Select arr={{ text: 'hello' }}></Select>
-
+                                                                    <Select arr={propsSelect} setfirstValue={setfirstValue} firstValue={firstValue}></Select>
                                                                 </Margin>
                                                             </label>
                                                         </Center>
@@ -111,8 +114,17 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                                                 {headers[1]}
                                                                 <Margin size={[10, 0, 0, 0]}>
                                                                     <Text fontFamily='Roboto' font-style='normal' >
-                                                                        <Styledinput type='date' width='311px' height='25px' borderRadius='3px'
-                                                                            style={{ fontSize: '12px', border: '0.4px solid gray' }} onChange={(e) => setdateValue(e.target.value)} />
+                                                                        <Styledinput width='311px' height='25px' borderRadius='3px' style={{ fontSize: '12px', border: '0.4px solid gray' }}
+                                                                            onBlur={handleBlur} value={values.text3} id='text3'
+                                                                            onChange={(e) => {
+                                                                                setsecondValue(e.target.value),
+                                                                                    handleChange(e)
+                                                                            }} />
+                                                                        {errors.text3 && touched.text3 && (
+                                                                            <Text color='red'>
+                                                                                {errors.text3}
+                                                                            </Text>
+                                                                        )}
                                                                     </Text>
                                                                 </Margin>
                                                             </label>
@@ -122,12 +134,11 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                                         <Center>
                                                             <label>
                                                                 {headers[2]}
-
                                                                 <Margin size={[10, 0, 0, 0]}>
                                                                     <Styledinput width='311px' height='25px' borderRadius='3px' style={{ fontSize: '12px', border: '0.4px solid gray' }}
-                                                                        id="text1" type="text" value={values.text1}
+                                                                        id="text1" value={values.text1}
                                                                         onBlur={handleBlur} onChange={(e) => {
-                                                                            setWhereValue(e.target.value);
+                                                                            setthirdValue(e.target.value);
                                                                             handleChange(e);
                                                                         }} />
                                                                     {errors.text1 && touched.text1 && (
@@ -147,7 +158,7 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                                                     <Styledinput width='311px' height='25px' borderRadius='3px' style={{ fontSize: '12px', border: '0.4px solid gray' }}
                                                                         id="text" type="text" value={values.text}
                                                                         onBlur={handleBlur} onChange={(e) => {
-                                                                            setinfoValue(e.target.value);
+                                                                            setfourthValue(e.target.value);
                                                                             handleChange(e);
                                                                         }} />
                                                                     {errors.text && touched.text && (
@@ -165,30 +176,30 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                                                 {headers[4]}
                                                                 <Margin size={[10, 0, 0, 0]}>
                                                                     <Styledinput width='311px' height='25px' borderRadius='3px' style={{ fontSize: '12px', border: '0.4px solid gray' }}
-                                                                        id="text" type="text" value={values.text}
+                                                                        id="text2" type="text" value={values.text2}
                                                                         onBlur={handleBlur} onChange={(e) => {
-                                                                            setinfoValue(e.target.value);
+                                                                            setfifthValue(e.target.value);
                                                                             handleChange(e);
                                                                         }} />
-                                                                    {errors.text && touched.text && (
+                                                                    {errors.text2 && touched.text2 && (
                                                                         <Text color='red'>
-                                                                            {errors.text}
+                                                                            {errors.text2}
                                                                         </Text>
                                                                     )}
                                                                 </Margin>
                                                             </label>
                                                         </Center>
                                                     </Margin> : ''}
-                                                    {succesfly ? 'amjilttai' : ''}
+                                                    {isSucces ? window.location.reload() : setBar(true)}
                                                     <Position position='fixed' bottom='50px'>
                                                         <Margin size={[0, 0, 0, 0]}>
                                                             <Border borderWidth={[1, 0, 0, 0]} borderColor='#DCDCDC' style={{ width: '314px' }}>
                                                                 <Margin size={[0, 0, 0, 40]}>
                                                                     <Padding size={[20, 0, 0, 0]}>
                                                                         <Stack direction='row' width=''>
-                                                                            <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={New}>Хадгалаад шинэ</Button>
-                                                                            <Margin size={[0, 0, 0, 20]}>
-                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' onClick={() => addDocument("/user/Y2Aiw9KPlijMFfTHIpsy/skills", { skill: skillValue, date: dateValue, where: WhereValue, additionalInformation: infoValue }, setSucces)}>Хадгалах</Button>
+                                                                            <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={dirty} style={{ cursor: dirty ? '' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
+                                                                            <Margin size={[0, 0, 0, 20]} >
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={Add}>Хадгалах</Button>
                                                                             </Margin>
                                                                         </Stack>
                                                                     </Padding>

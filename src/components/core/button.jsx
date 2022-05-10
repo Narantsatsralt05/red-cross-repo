@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.div`
+export const Button = styled.button`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   border:  ${({ bc }) => bc};
@@ -8,7 +8,7 @@ export const Button = styled.div`
   background-color: ${({ bgColor }) => bgColor};
   color:${({ color }) => color};
   font-size: ${({ fontSize }) => fontSize};
-  cursor:pointer;
+  cursor :pointer;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -3,19 +3,23 @@ import { db } from '.';
 
 export const useCollection = (path) => {
   const [data, setData] = useState([]);
+  const [dataId, setDataId] = useState([]);
   const arrData = [];
+  const ID = []
   useEffect(() => {
     if (db) {
-        db.collection(`${path}`).onSnapshot((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              arrData.push(doc.data());
-            });
-            setData(arrData);
-          });
+      db.collection(`${path}`).onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          arrData.push(doc.data());
+          ID.push(doc.id)
+        });
+        setData(arrData);
+        setDataId(ID)
+      });
     }
   }, [path, db]);
 
-  return { data };
+  return { data, dataId };
 };
 
 //ingej ashiglaj bolno zuer jishee

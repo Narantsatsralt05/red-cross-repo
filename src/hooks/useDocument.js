@@ -15,7 +15,6 @@ export const useDocument = (path) => {
 //shuud path-d zaasan doc iin datag avch ugnu
 
 export const setDocument = (colPath, docPath, data) => {
-  useEffect(() => {
     db.collection(colPath)
       .doc(docPath)
       .set(data)
@@ -25,14 +24,12 @@ export const setDocument = (colPath, docPath, data) => {
       .catch((error) => {
         console.error('Error writing document: ', error);
       });
-  }, []);
 };
 
 // SetDocument('/user/УлаанБаатар/members', '/ftbFBjVhodRU0VkyL67v', {name: 'NAmuun', address: 'hahah'});
 //ingej colPath, docPath aa hiij uguud doc-iin data gaa set hiih buyu uurchilj bolno
 
 export const deleteData = (colPath, docPath) => {
-  useEffect(() => {
     db.collection(colPath)
       .doc(docPath)
       .delete()
@@ -42,7 +39,6 @@ export const deleteData = (colPath, docPath) => {
       .catch((error) => {
         console.error('Error removing document: ', error);
       });
-  }, []);
 };
 
 // DeleteData("/user/УлаанБаатар/members", "nXwBm9n2SOTbzJcoHM95")
