@@ -8,7 +8,7 @@ export const Stack = style.div`
     flex-direction:${({ direction }) => direction};
     justify-content: ${({ justifyContent }) => justifyContent};
     align-items:${({ alignItems }) => alignItems};
-    gap: ${({ gap }) => gap}px;
+    gap: ${({ gap }) => gap};
     background-color: ${({ bg }) => bg};
     cursor:${({cursor}) => cursor};
     @media (max-width: 460px) {

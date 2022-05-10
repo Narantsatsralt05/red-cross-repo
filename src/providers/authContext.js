@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        window.location = '/checker';
+        window.location = '/home';
         alert('login successfully');
         console.log('login amjilttai XD');
       })
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       auth
         .createUserWithEmailAndPassword(email, password1)
         .then(() => {
-          window.location = '/checker';
+          window.location = '/home';
           alert('signUp successfully');
           console.log('signUp amjilttai XD');
         })
@@ -87,6 +87,7 @@ export const AuthProvider = ({ children }) => {
         user,
         loginError,
         forgotPassError,
+        signUpError
       }}
     >
       {children}
