@@ -8,8 +8,14 @@ import { useTheme } from '../../../theme/theme';
 import { Margin, Text, Stack } from '../..';
 import TableCell from '@mui/material/TableCell';
 import styled from 'styled-components';
+import { Add, Details } from 'material-ui-icons';
+import RightBarCheck from '../rightBarCheck';
+import { useCollection } from '../../../hooks';
 
-export const InformationTable = ({ admin, title, row, body }) => {
+export const InformationTable = ({ admin, title, row, body, data, headers }) => {
+  const [checkBar, setCheckBar] = React.useState(false)
+  const [bar, setBar] = React.useState(false)
+  const [number, setNumber] = React.useState()
   const { color } = useTheme();
   const tableContainerStyle = {
     border: `1px solid ${color.secondary.white}`,
@@ -24,7 +30,7 @@ export const InformationTable = ({ admin, title, row, body }) => {
     return (
       <Stack justifyContent="flex-start" direction="row" alignItems="center">
         <Margin size={[20, 10, 20, 5]}>
-          <Text color={color.primary.black} type="H3">
+          <Text color={color.primary.black} fontSize="20px">
             {title}
           </Text>
         </Margin>
@@ -34,12 +40,13 @@ export const InformationTable = ({ admin, title, row, body }) => {
               <Stack width="1px" height="40px" bg={color.secondary.black} />
             </Margin>
             <Margin size={[0, 0, 10, 0]}>
-              <Text color={color.primary.blue} type="Quote">
+              <Text color={color.primary.blue} fontSize="50px" onClick={() => setBar(true)} style={{ cursor: 'pointer' }} >
                 +
               </Text>
+              {bar ? <RightBarCheck bar={bar} setBar={setBar} headers={headers} title={title}  checkBar={checkBar} setCheckBar={setCheckBar}/> : ''}
             </Margin>
             <Margin size={[0, 0, 0, 20]}>
-              <Text color={color.primary.black} type="H3">
+              <Text color={color.primary.black} fontSize="22px">
                 Нэмэх
               </Text>
             </Margin>
@@ -52,7 +59,7 @@ export const InformationTable = ({ admin, title, row, body }) => {
     return (
       <Stack width="100%" justifyContent="flex-start" direction="column">
         <Margin size={[20, 10, admin ? 0 : 20, 5]}>
-          <Text color={color.primary.black} type="H3">
+          <Text color={color.primary.black} fontSize="20px">
             {title}
           </Text>
         </Margin>
@@ -60,12 +67,12 @@ export const InformationTable = ({ admin, title, row, body }) => {
           <>
             <Stack justifyContent="flex-start" direction="row" alignItems="center">
               <Margin size={[0, 0, 10, 0]}>
-                <Text color={color.primary.blue} type="Quote">
+                <Text color={color.primary.blue} fontSize="50px" >
                   +
                 </Text>
               </Margin>
               <Margin size={[0, 0, 0, 20]}>
-                <Text color={color.primary.black} type="H3">
+                <Text color={color.primary.black} fontSize="22px">
                   Нэмэх
                 </Text>
               </Margin>
@@ -109,10 +116,11 @@ export const InformationTable = ({ admin, title, row, body }) => {
       color: ${color.disabled.blue};
     }
   `;
-  const haha = () => {
-    console.log('nasaa teneg');
-    //nasaa onClick bichih tul tur turshiltaar yvuulav
-    //nasaa function ner edree uurchluurei
+  const [elData, setEl] = React.useState()
+  const Details = ({el, ind}) => {
+    setNumber(ind)
+    setCheckBar(true)
+    setEl(el)
   };
   return (
     <Stack>
@@ -132,14 +140,15 @@ export const InformationTable = ({ admin, title, row, body }) => {
             </Margin>
             <Stack width="100%" height="1px" bg={color.secondary.white} />
             <TableBody>
-              {body.map((el) => {
+              {body.map((el, ind) => {
                 return (
-                  <Margin size={[0, 0, 5, 10]}>
-                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <Margin size={[0, 0, 5, 10]} >
+                    {checkBar ? <RightBarCheck headers={headers} checkBar={checkBar} setCheckBar={setCheckBar} el={elData} ind={number}title={title} bar={bar} setBar={setBar} /> : ''}
+                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} onClick={() => Details({el, ind})}>
                       {el.map((element, index) => {
                         return (
-                          <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell}>
-                            <Text type={index === 0 ? 'T2Caps' : 'T2'} onClick={index === 0 ? haha : null}>
+                          <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell} >
+                            <Text type={index === 0 ? 'T2Caps' : 'T2'}>
                               {index === 0 ? <Hover>{element}</Hover> : element}
                             </Text>
                           </TableCell>
@@ -153,11 +162,11 @@ export const InformationTable = ({ admin, title, row, body }) => {
           </Table>
         </TableContainer>
       </Margin>
-    </Stack>
+
+
+    </Stack >
   );
 };
 
 //<SkillTable admin={true} />
-{
-  /* <SkillTable admin={false} /> */
-}
+{/* <SkillTable admin={false} /> */ }

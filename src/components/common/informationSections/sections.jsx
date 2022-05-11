@@ -29,7 +29,8 @@ export const SkillTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.skill, el.skillLevel, el.explanation];
   });
-  return <InformationTable admin={admin} title={title} row={row} body={body} />;
+ 
+    return <InformationTable admin={admin} title={title} row={row} body={body} data={data} headers={headers} title={title} />
 };
 
 export const CoveredTrainingTable = ({ admin }) => {
@@ -55,7 +56,9 @@ export const CoveredTrainingTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.trainingType, el.when, el.where, el.trainingTime, el.additionalInformation];
   });
-  return <InformationTable admin={admin} title={title} row={row} body={body} />;
+
+ 
+    return <InformationTable admin={admin} title={title} row={row} body={body}  headers={headers} title={title} />
 };
 
 export const MembershipInformationTable = ({ admin }) => {
@@ -81,7 +84,8 @@ export const MembershipInformationTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.membershipType, el.startDate, el.endDate, el.additionalInformation];
   });
-  return <InformationTable admin={admin} title={title} row={row} body={body} />;
+ 
+    return <InformationTable admin={admin} title={title} row={row} body={body}  headers={headers} title={title} data={data} />
 };
 
 export const VolunteerWorkInformationTable = ({ admin }) => {
@@ -107,7 +111,8 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.volunteering, el.time, el.date, el.additionalInformation];
   });
-  return <InformationTable admin={admin} title={title} row={row} body={body} />;
+ 
+    return <InformationTable admin={admin} title={title} row={row} body={body} data={data} headers={headers} title={title} />
 };
 
 export const HelpInformationTable = ({ admin }) => {
@@ -133,7 +138,8 @@ export const HelpInformationTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.typeOfAssistance, el.startDate, el.endDate, el.additionalInformation];
   });
-  return <InformationTable admin={admin} title={title} row={row} body={body} />;
+ 
+    return <InformationTable admin={admin} title={title} row={row} body={body}  headers={headers} title={title} />
 };
 
 export const EmergencyContactPersonTable = ({ admin }) => {
@@ -159,5 +165,5 @@ export const EmergencyContactPersonTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.information, el.name, el.phoneNumber];
   });
-  return <InformationTable admin={admin} title={title} row={row} body={body} />;
+  return <InformationTable admin={admin} title={title} row={row} body={body} headers={headers}/>;
 };

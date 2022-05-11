@@ -1,7 +1,16 @@
 import React from 'react'
 import { Button, Stack, Margin, Text } from '..'
+import { deleteData } from '../../hooks'
 
-const Delete = () => {
+const Delete = ({ DataVolunteer, DataSkill, DataTrain, DataMember, DataHelp, DataEmergency, title }) => {
+    const DeleteDoc = () => {
+        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') deleteData('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', DataVolunteer)
+        if (title === 'УР ЧАДВАР') deleteData('/user/Y2Aiw9KPlijMFfTHIpsy/skills', DataSkill)
+        if (title === 'СУРГАЛТ') deleteData('/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining', DataTrain)
+        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') deleteData('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation', DataMember)
+        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') deleteData('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation', DataHelp)
+        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') deleteData('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson', DataEmergency)
+    }
     return (<>
         <Text fontSize='12px' fontFamily='Roboto' lineHeight='12px' fontWeight='300'>
             <Stack width='172px' height='66px' bg='white' direction='column' style={{ boxShadow: '5px 10px 8px  #888888' }}>
@@ -12,7 +21,7 @@ const Delete = () => {
                 <Margin size={[8, 0, 0, 0]}>
                     <Stack direction='row' justifyContent='space-around'>
                         <Button width='60px' height='23px' borderRadius='2px' bgColor='#33000000' bc='0.5px solid black'>Үгүй</Button>
-                        <Button width='60px' height='23px' borderRadius='2px' bgColor='#0066B3' color='white'> Тийм</Button>
+                        <Button width='60px' height='23px' borderRadius='2px' bgColor='#0066B3' color='white' onClick={DeleteDoc}> Тийм</Button>
                     </Stack>
                 </Margin>
             </Stack>

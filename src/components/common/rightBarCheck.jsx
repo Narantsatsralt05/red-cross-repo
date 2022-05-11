@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import {
     Button,
     Center,
@@ -12,126 +12,258 @@ import {
     StyledInput,
     Styledoneletter
 } from '../index';
-import Select from '../common/select'
+import Select from '../common/dropdown'
 import Image from 'next/image';
-import exit from '../../assets/icon/icons/Group 5 (1).svg'
+import exit from '../../assets/icon/Group 5 (1).svg'
 import Styledinput from '../core/input';
-import Trash from '../../assets/icon/icons/image 1.svg'
+import Trash from '../../assets/icon/image 1.svg'
 import Modal from '@mui/material/Modal';
 import { useEffect } from 'react';
 import Delete from './delete';
+import { addDocument, deleteData, setDocument, useCollection, useDocument } from '../../hooks';
+import { Formik } from 'formik';
+import * as Yup from "yup";
 
-const RightBarCheck = ({ checkBar, setCheckBar, first, second, third, fourth, fifth, bar, setBar }) => {
-    const newSecond = second.split('.').join('-')
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        p: 4,
-    };
-    const [open, setOpen] = React.useState(true);
+const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers, ind }) => {
+    const { data } = useDocument("/staticData/skillProps")
+    const propsSelect = useMemo(() => {
+        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') return data.VolunteerNames;
+        if (title === 'СУРГАЛТ') return data.lessonNames
+        if (title === 'УР ЧАДВАР') return data.skillNames
+        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') return data.membershipNames;
+        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') return data.helpNames
+        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') return data.emergencyNames
+    }, [data])
+
+    const UptadeDoc = () => {
+
+    }
     const [deleteDoc, setDeleteDoc] = useState(false)
     const New = () => {
         setCheckBar(false)
         setBar(true)
     }
+    const [firstValue, setfirstValue] = useState('')
+    const [secondValue, setsecondValue] = useState(el ? el[1] : '')
+    const [thirdValue, setthirdValue] = useState(el ? el[2] : '')
+    const [fourthValue, setfourthValue] = useState(el ? el[3] : '')
+    const [fifthValue, setfifthValue] = useState(el ? el[4] : '')
+
+    const DataVolunteer = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation').dataId[ind]
+    const DataSkill = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/skills').dataId[ind]
+    const DataTrain = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/coveredTraining').dataId[ind]
+    const DataMember = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation').dataId[ind]
+    const DataHelp = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation').dataId[ind]
+    const DataEmergency = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson').dataId[ind]
+
+
+    const [isSucces, setSucces] = useState('')
+    const Add = () => {
+        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', DataVolunteer, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue })
+            : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }, setSucces)
+        if (title === 'УР ЧАДВАР') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/skills', DataSkill, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/skills', { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }, setSucces)
+        if (title === 'СУРГАЛТ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining', DataTrain, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining', { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }, setSucces)
+        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation', DataMember, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }, setSucces)
+        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation', DataHelp, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }, setSucces)
+        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson', DataEmergency, { information: firstValue, name: secondValue, phoneNumber: thirdValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson', { information: firstValue, name: secondValue, phoneNumber: thirdValue }, setSucces)
+    }
+
 
     return (
         <Modal
-            open={open}
+            open={true}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
             <Text fontFamily='Roboto' lineHeight='12px' fontSize='0.7vw' fontWeight='Regular' fontSize='12px' fontWeight='400' lineHeight='12px'>
                 <Border style={{ border: '1px solid black' }}>
                     <Position position='fixed' top='0' right='0' style={{ zIndex: 1 }}>
-                        <Stack justifyContent='right' width='100vw' bg='' height='106vh' >
+                        <Stack justifyContent='right' width='100vw' height='106vh' >
                             <Stack height='100vh' bg='white' direction='column' className='media' bg='white'>
                                 <Padding size={[10, 50, 0, 50]}>
-                                    <Margin size={[20, 0, 0, 0]}>
-                                        <Stack direction='row' justifyContent='space-between' width='100%'>
-                                            <Margin size={[4, 40, 0, 0]}>
-                                                ХАМРАГДСАН СУРГАЛТ ЗАСАХ
-                                            </Margin>
-                                            <Image src={exit} onClick={() => setCheckBar(!checkBar)} />
-                                        </Stack>
-                                    </Margin>
-                                    <Margin size={[30, 0, 0, 0]}>
-                                        <Center>
-                                            <label>
-                                                Сургалтын нэр
-                                                <Margin size={[10, 0, 0, 0]}>
-                                                    <Styledinput width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={first} />
+                                    <Formik
+                                        initialValues={{ text: "" }}
+                                        onSubmit={async values => {
+                                            await new Promise(resolve => setTimeout(resolve, 500));
+                                            alert(JSON.stringify(values, null, 2));
+                                        }}
+                                        validationSchema={Yup.object().shape({
+                                            text: Yup.string()
+                                                .required("Required"),
+                                            text1: Yup.string()
+                                                .required("Required"),
+                                            text2: Yup.string()
+                                                .required("Required"),
+                                            text3: Yup.string()
+                                                .required("Required")
+                                        })}
+                                        initialValues={{ text3: secondValue, text: fourthValue, text1: thirdValue, text2: fifthValue }}
+                                    >
 
-                                                </Margin>
-                                            </label>
-                                        </Center>
-                                    </Margin>
-                                    <Margin size={[30, 0, 0, 0]}>
-                                        <Center>
-                                            <label>
-                                                Он/сар/өдөр
-                                                <Margin size={[10, 0, 0, 0]}>
-                                                    <Text fontFamily='Roboto' font-style='normal' >
-                                                        <Styledinput type='date' width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={newSecond} style={{ fontSize: '12px' }} />
-                                                    </Text>
-                                                </Margin>
-                                            </label>
-                                        </Center>
-                                    </Margin>
-                                    <Margin size={[30, 0, 0, 0]}>
-                                        <Center>
-                                            <label>
-                                                Байршил
-                                                <Margin size={[10, 0, 0, 0]}>
-                                                    <Styledinput width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={third} />
-                                                </Margin>
-                                            </label>
-                                        </Center>
-                                    </Margin>
-                                    <Margin size={[30, 0, 0, 0]}>
-                                        <Center>
-                                            <label>
-                                                Нэмэлт мэдээлэл
-                                                <Margin size={[10, 0, 0, 0]}>
-                                                    <Styledinput width='311px' height='25px' borderRadius='3px' border='0.4px solid gray' value={fourth} />
-                                                </Margin>
-                                            </label>
-                                        </Center>
-                                    </Margin>
-                                    <Position position='fixed' bottom='50px'>
-                                        <Margin size={[0, 0, 0, 0]}>
-                                            <Border borderWidth={[1, 0, 0, 0]} borderColor='#DCDCDC' style={{ width: '340px' }} >
-                                                <Margin size={[0, 0, 0, 0]}>
-                                                    <Padding size={[20, 0, 0, 0]}>
-                                                        <Stack direction='row' width='21vw' >
-                                                            <Image width='20px' height='20px' src={Trash} onClick={() => setDeleteDoc(!deleteDoc)} />
-                                                            <Position position='absolute' bottom='30px' left='-110px'>
-                                                                {deleteDoc ? <Delete /> : ''}
-                                                            </Position>
-                                                            <Margin size={[0, 0, 0, 10]}>
-                                                                <Button width='60px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={() => setCheckBar(!checkBar)}  >Болих</Button>
+                                        {props => {
+                                            const {
+                                                values,
+                                                touched,
+                                                errors,
+                                                dirty,
+                                                isSubmitting,
+                                                handleChange,
+                                                handleBlur,
+                                                handleSubmit,
+                                                handleReset
+                                            } = props;
+                                            return (
+                                                <form onSubmit={handleSubmit}>
+                                                    <Margin size={[20, 0, 0, 0]}>
+                                                        <Stack direction='row' justifyContent='space-between' width='100%'>
+                                                            <Margin size={[4, 40, 0, 0]} style={{ width: '280px' }} >
+                                                                {title} ЗАСАХ
                                                             </Margin>
-                                                            <Margin size={[0, 5, 0, 5]}>
-                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={New}>Хадгалаад шинэ</Button>
-                                                            </Margin>
-                                                            <Margin size={[0, 0, 0, 0]}>
-                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' >Хадгалах</Button>
-                                                            </Margin>
+                                                            <Image src={exit} onClick={() => { setCheckBar(false), setBar(false) }} />
                                                         </Stack>
-                                                    </Padding>
-                                                </Margin>
-                                            </Border>
-                                        </Margin>
-                                    </Position>
+                                                    </Margin>
+                                                    <Margin size={[30, 0, 0, 0]}>
+                                                        <Center>
+                                                            <label>
+                                                                {headers[0]}
+                                                                <Margin size={[10, 0, 0, 0]}>
+                                                                    {() => setfirstValue(el ? el[0] : '')}
+                                                                    <Select value={el ? el[0] : ''} arr={propsSelect} setfirstValue={setfirstValue} firstValue={firstValue} ></Select>
+                                                                </Margin>
+                                                            </label>
+                                                        </Center>
+                                                    </Margin>
+                                                    <Margin size={[30, 0, 0, 0]}>
+                                                        <Center>
+                                                            <label>
+                                                                {headers[1]}
+                                                                <Margin size={[10, 0, 0, 0]}>
+                                                                    <Text fontFamily='Roboto' font-style='normal' >
+                                                                        <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
+                                                                            onBlur={handleBlur} id='text3'
+                                                                            onChange={(e) => {
+                                                                                setsecondValue(e.target.value),
+                                                                                    handleChange(e)
+                                                                            }}
+                                                                            value={secondValue} borderRadius='3px' />
+                                                                        {errors.text3 && touched.text3 && (
+                                                                            <Text color='red'>
+                                                                                {errors.text3}
+                                                                            </Text>
+                                                                        )}
+
+                                                                    </Text>
+                                                                </Margin>
+                                                            </label>
+                                                        </Center>
+                                                    </Margin>
+                                                    <Margin size={[30, 0, 0, 0]}>
+                                                        <Center>
+                                                            <label>
+                                                                {headers[2]}
+                                                                <Margin size={[10, 0, 0, 0]}>
+                                                                    <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
+                                                                        onBlur={handleBlur} id='text1'
+                                                                        onChange={(e) => {
+                                                                            setthirdValue(e.target.value),
+                                                                                handleChange(e)
+                                                                        }} value={thirdValue} borderRadius='3px' />
+                                                                    {errors.text1 && touched.text1 && (
+                                                                        <Text color='red'>
+                                                                            {errors.text1}
+                                                                        </Text>
+                                                                    )}
+                                                                </Margin>
+                                                            </label>
+                                                        </Center>
+                                                    </Margin>
+                                                    {headers[3] ?
+                                                        <Margin size={[30, 0, 0, 0]}>
+                                                            <Center>
+                                                                <label>
+                                                                    {headers[3]}
+                                                                    <Margin size={[10, 0, 0, 0]}>
+                                                                        <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
+                                                                            onBlur={handleBlur} id='text'
+                                                                            onChange={(e) => {
+                                                                                setfourthValue(e.target.value),
+                                                                                    handleChange(e)
+                                                                            }} value={fourthValue} borderRadius='3px' />
+                                                                        {errors.text && touched.text && (
+                                                                            <Text color='red'>
+                                                                                {errors.text}
+                                                                            </Text>
+                                                                        )}
+                                                                    </Margin>
+                                                                </label>
+                                                            </Center>
+                                                        </Margin> : ''}
+                                                    {headers[4] ?
+                                                        <Margin size={[30, 0, 0, 0]}>
+                                                            <Center>
+                                                                <label>
+                                                                    {headers[3]}
+                                                                    <Margin size={[10, 0, 0, 0]}>
+                                                                        <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
+                                                                            onBlur={handleBlur} id='text2'
+                                                                            onChange={(e) => {
+                                                                                setfifthValue(e.target.value),
+                                                                                    handleChange(e)
+                                                                            }} value={fifthValue} borderRadius='3px' />
+                                                                        {errors.text2 && touched.text2 && (
+                                                                            <Text color='red'>
+                                                                                {errors.text2}
+                                                                            </Text>
+                                                                        )}
+                                                                    </Margin>
+                                                                </label>
+                                                            </Center>
+                                                        </Margin> : ''}
+                                                    {isSucces ? window.location.reload() : ''}
+                                                    <Position position='fixed' bottom='50px'>
+                                                        <Margin size={[0, 0, 0, 0]}>
+                                                            <Border borderWidth={[1, 0, 0, 0]} borderColor='#DCDCDC' style={{ width: '340px' }} >
+                                                                <Margin size={[0, 0, 0, 0]}>
+                                                                    <Padding size={[20, 0, 0, 0]}>
+                                                                        {el ? <Stack direction='row' width='21vw' >
+                                                                            <Image width='20px' height='20px' src={Trash} onClick={() => setDeleteDoc(!deleteDoc)} />
+                                                                            <Position position='absolute' bottom='30px' left='-110px'>
+                                                                                {deleteDoc ? <Delete DataVolunteer={DataVolunteer} DataSkill={DataSkill} DataTrain={DataTrain} DataMember={DataMember} DataHelp={DataHelp} DataEmergency={DataEmergency} title={title} /> : ''}
+                                                                            </Position>
+                                                                            <Margin size={[0, 0, 0, 10]}>
+                                                                                <Button width='60px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={() => setCheckBar(false)}>Болих</Button>
+                                                                            </Margin>
+                                                                            <Margin size={[0, 5, 0, 5]}>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
+                                                                            </Margin>
+                                                                            <Margin size={[0, 0, 0, 0]}>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={Add} >Хадгалах</Button>
+                                                                            </Margin>
+                                                                        </Stack>
+                                                                            :
+                                                                            <Stack direction='row' width=''>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
+                                                                                <Margin size={[0, 0, 0, 20]} >
+                                                                                    <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={Add}>Хадгалах</Button>
+                                                                                </Margin>
+                                                                            </Stack>
+                                                                        }
+                                                                    </Padding>
+                                                                </Margin>
+                                                            </Border>
+                                                        </Margin>
+                                                    </Position>
+                                                </form>
+                                            );
+                                        }}
+                                    </Formik>
                                 </Padding>
                             </Stack>
                         </Stack>
                     </Position >
                 </Border >
             </Text >
-        </Modal>
+        </Modal >
     )
 }
 

@@ -2,20 +2,24 @@ import { useState, useEffect } from 'react';
 import { db } from '.';
 
 export const useCollection = (path) => {
+  const [dataId, setDataId] = useState([]);
   const [data, setData] = useState([]);
-  const arrData = [];
   useEffect(() => {
     if (db) {
-        db.collection(`${path}`).onSnapshot((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              arrData.push(doc.data());
-            });
-            setData(arrData);
-          });
+      const arrData = [];
+      const ID = []
+      db.collection(`${path}`).onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          arrData.push(doc.data());
+          ID.push(doc.id)
+        });
+        setData(arrData);
+        setDataId(ID)
+      });
     }
   }, [path, db]);
 
-  return { data };
+  return { data, dataId };
 };
 
 //ingej ashiglaj bolno zuer jishee

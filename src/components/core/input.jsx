@@ -12,7 +12,6 @@ export const StyledInput = styled.input`
     if (props.status == 'error') {
       return 'red'
     } else if (props.status == 'success') {
-      console.log('hahah')
       return 'green'
     } else {
       return 'black'

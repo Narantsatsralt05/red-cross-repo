@@ -9,7 +9,6 @@ const UserInfo = () => {
   const [dist, setDistrict] = useState('Улаанбаатар');
   const { user } = useAuthContext();
 
-  console.log('dist', dist);
   const router = useRouter();
   const disss = () => {
     return 
@@ -22,11 +21,7 @@ const UserInfo = () => {
 
   const StateData = useDocument('/staticData/state');
   const BloodType = useDocument('/staticData/BloodType');
-  const dataOk = () => {
-    // console.log(StateData.data[dist].district);
-    // console.log(dist);
-    // console.log(StateData.data);
-  };
+
   const [sainred, setsainred] = useState(false);
   const [memberred, setmemberred] = useState(false);
   const [donorred, setdonorred] = useState(false);
@@ -42,7 +37,6 @@ const UserInfo = () => {
   const kid = ['Тийм', 'Үгүй'];
   const setdist = (opt) => {
     setDistrict(opt);
-    // console.log(dist);
   };
 
   return (
