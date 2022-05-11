@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { db } from '.';
 
 export const useCollection = (path) => {
-  const [data, setData] = useState([]);
   const [dataId, setDataId] = useState([]);
-  const arrData = [];
-  const ID = []
+  const [data, setData] = useState([]);
   useEffect(() => {
     if (db) {
+      const arrData = [];
+      const ID = []
       db.collection(`${path}`).onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           arrData.push(doc.data());

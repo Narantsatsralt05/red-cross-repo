@@ -28,7 +28,7 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
         if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') return data.emergencyNames
     }, [data])
 
-  
+
     const [firstValue, setfirstValue] = useState('')
     const [secondValue, setsecondValue] = useState('')
     const [thirdValue, setthirdValue] = useState('')
@@ -75,6 +75,7 @@ const RightBar = ({ bar, setBar, checkBar, setCheckBar, title, el, headers }) =>
                                             text3: Yup.string()
                                                 .required("Required")
                                         })}
+                                        initialValues={text3 = { secondValue }, text = { fourthValue }, text1 = { thirdValue }, text2 = { fifthValue }}
                                     >
                                         {props => {
                                             const {

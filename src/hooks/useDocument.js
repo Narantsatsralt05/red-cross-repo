@@ -19,10 +19,10 @@ export const setDocument = (colPath, docPath, data) => {
       .doc(docPath)
       .set(data)
       .then(() => {
-        console.log('Document successfully written!');
+        alert('Document successfully written!');
       })
       .catch((error) => {
-        console.error('Error writing document: ', error);
+        alert('Error writing document: ', error);
       });
 };
 
@@ -34,10 +34,10 @@ export const deleteData = (colPath, docPath) => {
       .doc(docPath)
       .delete()
       .then(() => {
-        console.log('Document successfully deleted!');
+        alert('Document successfully deleted!');
       })
       .catch((error) => {
-        console.error('Error removing document: ', error);
+        alert('Error removing document: ', error);
       });
 };
 

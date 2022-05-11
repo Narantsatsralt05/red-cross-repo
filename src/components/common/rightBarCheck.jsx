@@ -20,7 +20,7 @@ import Trash from '../../assets/icon/image 1.svg'
 import Modal from '@mui/material/Modal';
 import { useEffect } from 'react';
 import Delete from './delete';
-import { addDocument, setDocument, useCollection, useDocument } from '../../hooks';
+import { addDocument, deleteData, setDocument, useCollection, useDocument } from '../../hooks';
 import { Formik } from 'formik';
 import * as Yup from "yup";
 
@@ -48,19 +48,27 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
     const [thirdValue, setthirdValue] = useState(el ? el[2] : '')
     const [fourthValue, setfourthValue] = useState(el ? el[3] : '')
     const [fifthValue, setfifthValue] = useState(el ? el[4] : '')
+
+    const DataVolunteer = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation').dataId[ind]
+    const DataSkill = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/skills').dataId[ind]
+    const DataTrain = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/coveredTraining').dataId[ind]
+    const DataMember = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation').dataId[ind]
+    const DataHelp = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation').dataId[ind]
+    const DataEmergency = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson').dataId[ind]
+
+
     const [isSucces, setSucces] = useState('')
-    //useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation')?.dataId[ind]
-    console.log(useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation')?.dataId[ind])
-    // const data1 = setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation')?.dataId[ind], { additionalInformation: 'fourthValuasdgasjdfgasidfge', date: 'thirdValue', time: 'secondValue', volunteering: 'firstValue' })
     const Add = () => {
-        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ')
-            el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation')?.dataId[ind], { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }, setSucces)
-        if (title === 'УР ЧАДВАР') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/skills', { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }, setSucces)
-        if (title === 'СУРГАЛТ') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining', { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }, setSucces)
-        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }, setSucces)
-        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }, setSucces)
-        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson', { information: firstValue, name: secondValue, phoneNumber: thirdValue }, setSucces)
+        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', DataVolunteer, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue })
+            : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation', { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }, setSucces)
+        if (title === 'УР ЧАДВАР') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/skills', DataSkill, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/skills', { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }, setSucces)
+        if (title === 'СУРГАЛТ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining', DataTrain, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining', { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }, setSucces)
+        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation', DataMember, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }, setSucces)
+        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation', DataHelp, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation', { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }, setSucces)
+        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') el ? setDocument('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson', DataEmergency, { information: firstValue, name: secondValue, phoneNumber: thirdValue }) : addDocument('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson', { information: firstValue, name: secondValue, phoneNumber: thirdValue }, setSucces)
     }
+
+
     return (
         <Modal
             open={true}
@@ -89,7 +97,9 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                             text3: Yup.string()
                                                 .required("Required")
                                         })}
+                                        initialValues={{ text3: secondValue, text: fourthValue, text1: thirdValue, text2: fifthValue }}
                                     >
+
                                         {props => {
                                             const {
                                                 values,
@@ -218,7 +228,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                         {el ? <Stack direction='row' width='21vw' >
                                                                             <Image width='20px' height='20px' src={Trash} onClick={() => setDeleteDoc(!deleteDoc)} />
                                                                             <Position position='absolute' bottom='30px' left='-110px'>
-                                                                                {deleteDoc ? <Delete /> : ''}
+                                                                                {deleteDoc ? <Delete DataVolunteer={DataVolunteer} DataSkill={DataSkill} DataTrain={DataTrain} DataMember={DataMember} DataHelp={DataHelp} DataEmergency={DataEmergency} title={title} /> : ''}
                                                                             </Position>
                                                                             <Margin size={[0, 0, 0, 10]}>
                                                                                 <Button width='60px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={() => setCheckBar(false)}>Болих</Button>
@@ -253,7 +263,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                     </Position >
                 </Border >
             </Text >
-        </Modal>
+        </Modal >
     )
 }
 
