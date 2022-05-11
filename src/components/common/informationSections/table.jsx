@@ -10,7 +10,6 @@ import TableCell from '@mui/material/TableCell';
 import styled from 'styled-components';
 import { Add, Details } from 'material-ui-icons';
 import RightBarCheck from '../rightBarCheck';
-import RightBar from '../rightBar';
 import { useCollection } from '../../../hooks';
 
 export const InformationTable = ({ admin, title, row, body, data, headers }) => {
