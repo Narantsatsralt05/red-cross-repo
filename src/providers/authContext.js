@@ -28,11 +28,6 @@ export const AuthProvider = ({ children }) => {
       .then(() => {
         window.location = '/home';
         alert('login successfully');
-<<<<<<< HEAD
-
-=======
-        console.log('login amjilttai XD');
->>>>>>> 4be5901 (signup saving)
       })
       .catch((error) => {
         console.log(error.message);

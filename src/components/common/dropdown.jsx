@@ -70,18 +70,6 @@ const StyledSelect = styled.div`
   align-items: center;
 `;
 
-const Select = ({ value, onClick }) => {
-  return (
-    <Stack>
-      <StyledSelect onClick={onClick} width='311px' height='25px' >
-        <Text style={{ marginLeft: '10px' }}>{value}</Text>
-        <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <ArrowDown />
-        </div>
-      </StyledSelect>
-    </Stack>
-  )
-}
 const Dropdown = (props) => {
   const Select = ({ value, onClick }) => {
     return (
@@ -124,7 +112,11 @@ const Dropdown = (props) => {
           </DropDownContent >}
       </div>
     </>
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> c8e5fdb (improving signu, but still not done yet.)
 }
 
 export default Dropdown;

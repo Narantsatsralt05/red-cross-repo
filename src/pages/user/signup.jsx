@@ -11,6 +11,7 @@ import Info from '../../assets/icon/info.svg';
 import Input from '../../components/core/input';
 import Dropdown from '../../components/common/dropdown';
 import styled, { ThemeProvider } from 'styled-components';
+import { useAuthContext } from '../providers/authContext';
 
 const Parent = styled.div`
   & > div {
@@ -20,22 +21,35 @@ const Parent = styled.div`
 
 const SignUp = () => {
   const [check, setCheck] = useState(false);
-  const YupShape = ({ max, match, min = 0, mongol, pass }) => {
+  const { user, signUp, signUpError } = useAuthContext();
+
+  const YupShape = ({ max, match, min = 0, mongol, pass, email, number }) => {
     return Yup.string()
       .max(max, `Дээд хязгаар нь ${max} үсэг`)
       .min(min, `Та ${min} ийг л оруулах естой`)
       .matches(Number.isInteger(mongol) ? /[а-яА-Я]/ : '', Number.isInteger(mongol) ? 'Та монголоор бичнэ үү' : '')
-      .matches(Number.isInteger(pass) && /(?=.*?[A-Z])/, Number.isInteger(pass) && 'Ядаж нэг том үсэгтэй байх')
-      .matches(Number.isInteger(pass) && /(?=.*?[0-9])/, Number.isInteger(pass) && 'Ядаж нэг тоотой байх')
       .matches(
-        Number.isInteger(pass) && /(?=.*?[#?!@$%^&*-])/,
-        Number.isInteger(pass) && 'Ядаж нэг онцгой тэмдэгттэй байх',
+        Number.isInteger(pass) && /(?=.*?[A-Z])/ ? ' ' : ' ',
+        Number.isInteger(pass) && 'Ядаж нэг том үсэгтэй байх' ? ' ' : ' ',
       )
-      .required('Хоосон байна бөглөнө үү');
+      .matches(
+        Number.isInteger(pass) && /(?=.*?[0-9])/ ? ' ' : ' ',
+        Number.isInteger(pass) && 'Ядаж нэг тоотой байх' ? ' ' : ' ',
+      )
+      .matches(
+        Number.isInteger(number) && /([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])/ ? 'Та 8 тоо оруулах естой' : ' ',
+      )
+
+      .matches(
+        Number.isInteger(pass) && /(?=.*?[#?!@$%^&*-])/ ? ' ' : ' ',
+        Number.isInteger(pass) && 'Ядаж нэг онцгой тэмдэгттэй байх' ? ' ' : ' ',
+      )
+      .required('Хоосон байна бөглөнө үү')
+      .email(email ? 'ta email oruulnuu' : '');
   };
 
   const validate = Yup.object({
-    register: Yup.string()
+    RD: Yup.string()
       .matches(/[а-яА-Я]/, 'Та монголоор бичнэ үү')
       .matches(
         /[а-яА-Я][а-яА-Я][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/,
@@ -45,30 +59,28 @@ const SignUp = () => {
       .required('Хоосон байна бөглөнө үү'),
     lastName: YupShape({ max: 15, mongol: 1 }),
     firstName: YupShape({ max: 15, mongol: 1 }),
-    sex: YupShape({ max: 2, min: 2, mongol: 1 }),
+    gender: YupShape({ max: 2, min: 2, mongol: 1 }),
     date: YupShape({ max: 10, match: 1 }),
-    duureg: YupShape({ max: 100, mongol: 1 }),
-    phone: YupShape({ max: 8, min: 8, match: 1 }),
+    location: YupShape({ max: 100, mongol: 1 }),
+    phoneNumber: YupShape({ max: 8, min: 8, match: 1 }),
     password: YupShape({ max: 100, min: 6, pass: 1 }),
     passwordConfirm: YupShape({ max: 100, min: 6, pass: 1 }),
-    email: YupShape({ max: 100 }),
+    email: YupShape({ max: 100, email: true }),
   });
   const checker = () => {
     setCheck(!check);
   };
-
   const option = ['Эр', 'Эм'];
-  console.log(check);
   return (
     <Formik
       initialValues={{
-        register: '',
+        RD: '',
         lastName: '',
         firstName: '',
-        sex: '',
+        gender: '',
         date: '',
-        duureg: '',
-        phone: '',
+        location: '',
+        phoneNumber: '',
         email: '',
         password: '',
         passwordConfirm: '',
@@ -77,7 +89,7 @@ const SignUp = () => {
     >
       {(formik) => {
         const { isValid, dirty } = formik;
-        console.log(SignUpBg);
+        console.log(formik.values.RD);
         return (
           <Form>
             <Stack width="100vw" height="100vh" fontFamily="Roboto">
@@ -125,22 +137,22 @@ const SignUp = () => {
                                 width="300px"
                                 height="35px"
                                 borderRadius="8px"
-                                name="sex"
+                                name="gender"
                                 input="Хүйс"
                               ></Dropdown>
                             </Margin>
                           </label>
                           <InputTask name="date" input="Төрсөн он/сар/өдөр"></InputTask>
-                          <InputTask name="phone" input="Утасны дугаар"></InputTask>
+                          <InputTask name="phoneNumber" input="Утасны дугаар"></InputTask>
                           <InputTask name="password" input="Нууц үг" type="password"></InputTask>
                         </Parent>
                       </Stack>
                       <Stack direction="column">
                         <Parent>
                           <InputTask name="lastName" input="Нэр"></InputTask>
-                          <InputTask name="register" input="Регистрийн дугаар" type="text"></InputTask>
+                          <InputTask name="RD" input="Регистрийн дугаар" type="text"></InputTask>
                           <InputTask name="email" input="И-мэйл хаяг" type="email"></InputTask>
-                          <InputTask name="duureg" input="Аймаг/Дүүрэг"></InputTask>
+                          <InputTask name="location" input="Аймаг/Дүүрэг"></InputTask>
                           <InputTask name="passwordConfirm" input="Нууц үг давтах" type="password"></InputTask>
                         </Parent>
                       </Stack>
@@ -151,7 +163,7 @@ const SignUp = () => {
                       <Border borderColor="#1890FF" borderRadius="8px">
                         <Stack direction="row">
                           <Padding size={[22, 0, 0, 15]}>
-                            <Image src={Info} width={35} height="35px"/>
+                            <Image src={Info} width={35} height="35px" />
                           </Padding>
                           <Padding size={[25, 10, 10, 10]}>
                             <Text type="T1">Үйлчилгээний нөхцөл</Text>
@@ -178,8 +190,41 @@ const SignUp = () => {
                   <Margin size={[40, 0, 0, 0]}>
                     <Border borderRadius="8px" overFlow="hidden" borderColor="#0066B3">
                       <Stack width="500px" height="40px" bg="#0066B3" justifyContent="center">
-                        <Button borderRadius="8px">
-                          <Text color="#fff" type="H3">
+                        <Button
+                          borderRadius="8px"
+                          onClick={() =>
+                            signUp(
+                              formik.values.email,
+                              formik.values.password,
+                              formik.values.passwordConfirm,
+                              formik.values.lastName,
+                              formik.values.firstName,
+                              formik.values.gender,
+                              formik.values.RD,
+                              formik.values.date,
+                              formik.values.location,
+                              formik.values.phoneNumber,
+                            )
+                          }
+                        >
+                          <Text
+                            color="#fff"
+                            type="H3"
+                            onClick={() =>
+                              signUp(
+                                formik.values.email,
+                                formik.values.password,
+                                formik.values.passwordConfirm,
+                                formik.values.lastName,
+                                formik.values.firstName,
+                                formik.values.gender,
+                                formik.values.RD,
+                                formik.values.date,
+                                formik.values.location,
+                                formik.values.phoneNumber,
+                              )
+                            }
+                          >
                             БҮРТГҮҮЛЭХ
                           </Text>
                         </Button>
