@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../providers/authContext';
-import { MembershipInformationTable } from '../components';
 
 const UserHome = () => {
     const { user } = useAuthContext();
@@ -12,6 +11,6 @@ const UserHome = () => {
             router.push('/login');
         }
     }, [user]);
-    return <><MembershipInformationTable /></>;
+    return <>thats user home</>;
 };
 export default UserHome;
