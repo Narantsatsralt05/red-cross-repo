@@ -8,11 +8,8 @@ import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
-<<<<<<< HEAD
-=======
 import Loading from '../components/common/Loading';
-import Success from '../pages/succesPage'
->>>>>>> 9c0ae66 (create success page)
+import Success from './successPage'
 
 const Login = () => {
   const [form, setForm] = useState({
