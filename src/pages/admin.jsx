@@ -15,8 +15,8 @@ import {
 import bell from '../assets/icon/ring.svg';
 import Image from 'next/image';
 import search from '../assets/icon/search.svg';
-import { useAuthContext } from '../providers/authContext';
-import { useDocument } from '../hooks';
+import { useAuthContext } from '../common/context/AuthContext';
+import { useDocument } from '../common/services/firebase';
 import { useEffect } from 'react';
 
 const Admin = () => {

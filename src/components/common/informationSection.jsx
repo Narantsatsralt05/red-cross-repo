@@ -5,12 +5,12 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useCollection } from '../../hooks';
+import { useCollection } from '../../common/services/firebase';
 import { useTheme } from '../../theme/theme';
 import { Margin, Text, Stack } from '../../components';
 
 const InformationSection = ({ path, admin }) => {
-  const { color, font } = useTheme(); 
+  const { color, font } = useTheme();
   const { data } = useCollection(path);
   const type = path.split('/').slice(-1)[0];
   const [bar, setBar] = useState(false)

@@ -1,21 +1,23 @@
 import { Button, Margin, Position, Stack, StyledInput, Text } from '../components';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Background from '../assets/image/forgotPassBg.png';
 import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
-import { useAuthContext } from '../providers/authContext';
+import { useAuthContext } from '../common/context/AuthContext';
+import { useLoaderContext } from '../common/context/LoaderContext';
 
 const Login = () => {
   const [form, setForm] = useState({
     email: '',
   });
   const [event, setEvent] = useState('');
-
+  const [isTrue, setTrue] = useState(false)
   const handler = (event) => {
     // changing the state to the name of the key
     // which is pressed
     setEvent(event.key);
   };
+  const { setLoader } = useLoaderContext()
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
@@ -25,6 +27,13 @@ const Login = () => {
   if (event === 'Enter') {
     forgetPass(form.email);
   }
+  const ResetLoading = async () => {
+    setLoader(true)
+    await forgetPass(form.email, setTrue)
+  }
+  useEffect(() => {
+    if (isTrue) setLoader(false)
+  }, [isTrue])
   return (
     <Stack direction="row" width="100%" height="100vh">
       <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
@@ -70,7 +79,7 @@ const Login = () => {
             />
             {form.email.length >= 10 ? (
               forgotPassError ===
-              'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
+                'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
                 <Text color="red">и-мэйл бүртгэлгүй байна.</Text>
               ) : (
                 ''
@@ -88,9 +97,9 @@ const Login = () => {
             borderRadius="5px"
             bgColor="#0066B3"
             color="#fff"
-            onClick={() => forgetPass(form.email)}
+            onClick={ResetLoading}
           >
-            <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={() => forgetPass(form.email)}>
+            <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={ResetLoading}>
               НУУЦ ҮГ СЭРГЭЭХ
             </Text>
           </Button>

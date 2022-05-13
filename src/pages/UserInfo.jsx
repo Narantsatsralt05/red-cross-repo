@@ -2,7 +2,7 @@ import Dropdown from '../components/common/select';
 import { useState, useEffect } from 'react';
 import { Stack, Text, StyledInput, Padding } from '../components';
 import { useDocument } from '../hooks/useDocument';
-import { useAuthContext } from '../providers/authContext';
+import { useAuthContext } from '../common/context/AuthContext';
 import { useRouter } from 'next/router';
 
 const UserInfo = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useAuthContext } from '../providers/authContext';
+import { useAuthContext } from '..';
 import UserInfo from './UserInfo';
 import {Stepper} from '../components/common/stepper'
 const data = {

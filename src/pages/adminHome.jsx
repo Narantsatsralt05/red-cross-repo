@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { useAuthContext } from '../providers/authContext';
+import { useAuthContext } from '../common/context/AuthContext';
 import Admin from './admin';
-import { useCollection } from '../hooks';
+import { useCollection } from '../common/services/firebase';
 
 const AdminHome = () => {
   const { user } = useAuthContext();

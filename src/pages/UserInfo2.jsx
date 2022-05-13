@@ -1,3 +1,4 @@
+import React from "react";;
 import { Button, Margin, Padding, Stack, Text } from "../components"
 import Styledinput from "../components/core/input";
 import styled from 'styled-components';
@@ -28,42 +29,30 @@ const StyledCheckBox = styled.input.attrs({ type: 'checkbox' })`
         background-image: url('${icon.src}');
     }
 `
-
-const CheckLabel = styled.div`
-    display: flex;
-    width: 380px;
-    // border: 1px solid black;
-    display: flex;
-    align-items: ${props => props.Alcenter ? 'center' : 'none'};
-    gap: 20px;
-    width: ${width => width};
-    height: ${height => height};
-    flex-direction: ${direction => direction};
-    position: ${position => position};
-`
-
 export const UserInfo2 = () => {
     return (
         <Stack direction='column' style={{ height: 'fit-content', width: '100vw', backgroundColor: 'rgb(245, 247, 249)', paddingLeft: '30px' }}>
             <Stack style={{ marginBottom: '30px', marginTop: '30px' }} direction='row'><Text type="H4">2. САЙН ДУРЫН АЖЛЫН ТУРШЛАГА</Text></Stack>
             <Styledinput size={'16px'} label={<Stack directoin='row'><Text style={{ marginBottom: '10px' }} type="T2">Жил</Text><Text color="red">*</Text></Stack>} height={'40px'} width={'400px'} />
             <Text style={{ marginTop: '30px' }} type="T2">Сонголт (Олон сонголт сонгох боломжтой)<Text color="red">*</Text></Text>
-            <Margin size={[30, 0, 50, 0]}>
-                <Stack direction='column' gap="20px" style={{flexWrap: 'wrap'}}>
-                    <Stack style={{ width: '100%', flexWrap: 'wrap' }} direction='row' gap="20px" justifyContent={'space-between'}>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text type="T2">Гамшгийн менежментийн чиглэлээр</Text></CheckLabel>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text type="T2">Анхны тусламж</Text></CheckLabel>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text type="T2">Ус, орчны эрүүл ахуй</Text></CheckLabel>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text type="T2">Цусны донор</Text></CheckLabel>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text type="T2">Халдварт болон халдварт бус өвчин</Text></CheckLabel>
+            <Margin size={[30, 0, 60, 0]}>
+                <Stack style={{ width: 'fit-content', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}} direction='row' gap={'50'}>
+                    <Stack style={{width: 'fit-content'}} direction='column' gap="50">
+                        <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}><StyledCheckBox/><Text type="T2"> Гамшгийн менежментийн чиглэлээр</Text></div>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Халамжийн үйлчилгээ (Гэрийн эргэлт)</Text></div>
                     </Stack>
-                    <Stack style={{ width: '100%', flexWrap: 'wrap' }} direction='row' gap="20px" justifyContent={'space-between'}>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text type="T2">Халамжийн үйлчилгээ (Гэрийн эргэлт)</Text></CheckLabel>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text type="T2">Нийгэм сэтгэлзүйн дэмжлэг</Text></CheckLabel>
-                        <CheckLabel Alcenter><StyledCheckBox /><Text style={{display: 'flex', position: 'absolute', marginLeft: '60px'}} type="T2">Хүүхэд, залуучуудын хөдөлгөөний чиглэлээр</Text></CheckLabel>
-                        <CheckLabel></CheckLabel>
-                        <CheckLabel></CheckLabel>
+                    <Stack style={{width: 'fit-content'}} direction='column' gap="50">
+                        <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Анхны тусламж</Text></div>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Нийгэм сэтгэлзүйн дэмжлэг</Text></div>
                     </Stack>
+                    <Stack style={{width: 'fit-content'}} direction='column' gap="50">
+                        <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Ус, орчны эрүүл ахуй</Text></div>
+                        <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Хүүхэд, залуучуудын хөдөлгөөний чиглэлээр</Text></div>
+                    </Stack>
+		    <Stack height={'fit-content'} width={'fit-content'} style={{flexWrap: 'wrap'}} gap={'70'}>
+				<div style={{ width: 'fit-content', height: '30px', display: 'flex', flexDirection: 'row', alignItems: 'center' }}><StyledCheckBox /><Text style={{marginLeft: '10px'}} type="T2"> Цусны донор</Text></div>
+				<div style={{ width: 'fit-content', height: '30px', display: 'flex', flexDirection: 'row', alignItems: 'center' }}><StyledCheckBox /><Text style={{marginLeft: '10px'}} type="T2"> Халдварт болон халдварт бус өвчин</Text></div>
+		    </Stack>
                 </Stack>
             </Margin>
             <Button width='fit-content' bgColor="#0066B3" color="white" borderRadius='3px'><Padding size={[10, 25, 10, 25]}><b>Дараагийн алхам</b></Padding></Button>

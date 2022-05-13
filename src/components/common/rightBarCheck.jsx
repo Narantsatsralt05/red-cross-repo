@@ -2,15 +2,12 @@ import React, { useMemo, useState } from 'react'
 import {
     Button,
     Center,
-    Picture,
     Margin,
     Padding,
     Position,
     Stack,
     Border,
     Text,
-    StyledInput,
-    Styledoneletter
 } from '../index';
 import Select from '../common/dropdown'
 import Image from 'next/image';
@@ -18,9 +15,8 @@ import exit from '../../assets/icon/Group 5 (1).svg'
 import Styledinput from '../core/input';
 import Trash from '../../assets/icon/image 1.svg'
 import Modal from '@mui/material/Modal';
-import { useEffect } from 'react';
 import Delete from './delete';
-import { addDocument, deleteData, setDocument, useCollection, useDocument } from '../../hooks';
+import { addDocument, setDocument, useCollection, useDocument } from '../../common/services/firebase';
 import { Formik } from 'formik';
 import * as Yup from "yup";
 

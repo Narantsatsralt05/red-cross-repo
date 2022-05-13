@@ -6,9 +6,6 @@ import Image from 'next/image';
 import { Stack } from '../core/stack';
 import { AddIcon } from '../../assets/icon/addIcon';
 import { Padding } from '../core/padding';
-import { Center } from '../core/center';
-import { Margin } from '../core/margin';
-import { fontFamily } from '@mui/system';
 
 export const DashSideBar = () => {
     return (

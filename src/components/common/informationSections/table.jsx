@@ -8,9 +8,7 @@ import { useTheme } from '../../../theme/theme';
 import { Margin, Text, Stack } from '../..';
 import TableCell from '@mui/material/TableCell';
 import styled from 'styled-components';
-import { Add, Details } from 'material-ui-icons';
 import RightBarCheck from '../rightBarCheck';
-import { useCollection } from '../../../hooks';
 
 export const InformationTable = ({ admin, title, row, body, data, headers }) => {
   const [checkBar, setCheckBar] = React.useState(false)
@@ -43,7 +41,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
               <Text color={color.primary.blue} fontSize="50px" onClick={() => setBar(true)} style={{ cursor: 'pointer' }} >
                 +
               </Text>
-              {bar ? <RightBarCheck bar={bar} setBar={setBar} headers={headers} title={title}  checkBar={checkBar} setCheckBar={setCheckBar}/> : ''}
+              {bar ? <RightBarCheck bar={bar} setBar={setBar} headers={headers} title={title} checkBar={checkBar} setCheckBar={setCheckBar} /> : ''}
             </Margin>
             <Margin size={[0, 0, 0, 20]}>
               <Text color={color.primary.black} fontSize="22px">
@@ -117,7 +115,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
     }
   `;
   const [elData, setEl] = React.useState()
-  const Details = ({el, ind}) => {
+  const Details = ({ el, ind }) => {
     setNumber(ind)
     setCheckBar(true)
     setEl(el)
@@ -143,8 +141,8 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
               {body.map((el, ind) => {
                 return (
                   <Margin size={[0, 0, 5, 10]} >
-                    {checkBar ? <RightBarCheck headers={headers} checkBar={checkBar} setCheckBar={setCheckBar} el={elData} ind={number}title={title} bar={bar} setBar={setBar} /> : ''}
-                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} onClick={() => Details({el, ind})}>
+                    {checkBar ? <RightBarCheck headers={headers} checkBar={checkBar} setCheckBar={setCheckBar} el={elData} ind={number} title={title} bar={bar} setBar={setBar} /> : ''}
+                    <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} onClick={() => Details({ el, ind })}>
                       {el.map((element, index) => {
                         return (
                           <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell} >

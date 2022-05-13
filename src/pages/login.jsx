@@ -6,9 +6,9 @@ import Login2 from "../assets/icon/login2.png";
 import Login3 from "../assets/icon/login3.png";
 import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
-import { useAuthContext } from '../providers/authContext';
+import { useAuthContext } from '../common/context/AuthContext';
 import { useRouter } from 'next/router';
-import Loading from '../components/common/Loading';
+import { useLoaderContext } from '../common/context/LoaderContext';
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -17,26 +17,42 @@ const Login = () => {
   });
   const [event, setEvent] = useState('');
   const router = useRouter();
+
+  const { user, login, loginError } = useAuthContext();
+  const { setLoader } = useLoaderContext()
+  const [isTrue, setTrue] = useState(false)
   const handler = (event) => {
     // changing the state to the name of the key
     // which is pressed
     setEvent(event.key);
   };
-  
+
+  const test = async () => {
+    setLoader(true)
+    await login(form.email, form.password, setTrue)
+  }
+  useEffect(() => {
+    if (isTrue) {
+      setLoader(false)
+      router.push('/checker')
+    } else {
+      setLoader(false)
+    }
+
+  }, [isTrue])
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value });
   };
-  const { user, login, loginError } = useAuthContext();
 
   if (event === 'Enter') {
     login(form.email, form.password);
   }
 
-  useEffect(() => {
-    if (user != null) {
-      router.push('/checker');
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user != null) {
+  //     router.push('/checker');
+  //   }
+  // }, [user]);
 
   return (
     <Stack direction="row" width="100%" height="100vh">
@@ -132,7 +148,6 @@ const Login = () => {
               ) : (
                 ''
               )}
-            
             </Margin>
           </>
         </Margin>
@@ -144,9 +159,9 @@ const Login = () => {
             borderRadius="5px"
             bgColor="#0066B3"
             color="#fff"
-            onClick={() => login(form.email, form.password)}
+            onClick={test}
           >
-            <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={() => login(form.email, form.password)}>
+            <Text color="#fff" cursor="pointer" fontSize="1.2vw" >
               НЭВТРЭХ
             </Text>
           </Button>
@@ -162,14 +177,14 @@ const Login = () => {
         <Image src={Background} width={1700} height={300} />
         <Position position="absolute" bottom="3vh" right="3.5vw">
           <Border borderColor="#0066B3" borderRadius="20px" overFlow="hidden">
-          <Stack bg="#0066B3" direction="row" width="60vw" alignItems="center" justifyContent="space-around" heigth="5vh">
-                <Image src={Login1} width={80} height={80} />
-                <Text color="#fff" type="T2">САЙН ДУРЫН ИДЭВХТНИЙ БҮРТГЭЛ</Text>
-                <Image src={Login2} width={80} height={80} />
-                <Text color="#fff" type="T2">ГИШҮҮН, ДЭМЖЭГЧДИЙН БҮРТГЭЛ</Text>
-                <Image src={Login3} width={80} height={80} />
-                <Text color="#fff" type="T2">ТУСЛАМЖ ХҮРТЭГЧИЙН БҮРТГЭЛ</Text>
-          </Stack>
+            <Stack bg="#0066B3" direction="row" width="60vw" alignItems="center" justifyContent="space-around" heigth="5vh">
+              <Image src={Login1} width={80} height={80} />
+              <Text color="#fff" type="T2">САЙН ДУРЫН ИДЭВХТНИЙ БҮРТГЭЛ</Text>
+              <Image src={Login2} width={80} height={80} />
+              <Text color="#fff" type="T2">ГИШҮҮН, ДЭМЖЭГЧДИЙН БҮРТГЭЛ</Text>
+              <Image src={Login3} width={80} height={80} />
+              <Text color="#fff" type="T2">ТУСЛАМЖ ХҮРТЭГЧИЙН БҮРТГЭЛ</Text>
+            </Stack>
           </Border>
         </Position>
       </Stack>

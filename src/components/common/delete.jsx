@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Stack, Margin, Text } from '..'
-import { deleteData } from '../../hooks'
+import { deleteData } from '../../common/services/firebase'
 
 const Delete = ({ DataVolunteer, DataSkill, DataTrain, DataMember, DataHelp, DataEmergency, title }) => {
     const DeleteDoc = () => {

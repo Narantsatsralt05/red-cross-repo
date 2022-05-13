@@ -1,13 +1,16 @@
 import '../../styles/globals.css';
 import { ThemeProvider } from '../theme/theme';
-import { AuthProvider } from '../providers/authContext';
+import { AuthProvider } from '../common/context/AuthContext';
+import { LoaderProvider } from '../common/context/LoaderContext';
 
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <ThemeProvider>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <LoaderProvider>
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </LoaderProvider>
     </AuthProvider>
   );
 }
