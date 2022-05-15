@@ -22,7 +22,7 @@ export const Text = styled.text`
     line-height: ${({ type }) => lineHeight.onMobile[type]};
   }
   color: ${({ color }) => color};
-  font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : 'Roboto')};
+  // font-family: ${({ fontFamily }) => (fontFamily ? fontFamily : 'Roboto')};
   font-style: ${({ fontStyle }) => fontStyle ? fontStyle : "normal"};
   cursor: ${({ cursor }) => cursor};
   text-transform: ${({ textTransform }) => textTransform};
