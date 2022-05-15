@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Text, Margin, Button, Stack, Center } from '../components';
-import InputTask from '../components/common/page-input-task';
+import { Text, Margin, Button, Stack, Center } from '../../components';
+import InputTask from '../../components/common/page-input-task';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Border, Position, Padding } from '../components';
-import Logo from '../assets/icon/logo.svg';
+import { Border, Position, Padding } from '../../components';
+import Logo from '../../assets/icon/logo.svg';
 import Image from 'next/image';
-import SignUpBg from '../assets/image/signupBg.png';
-import Info from '../assets/icon/info.svg';
-import Input from '../components/core/input';
-import Dropdown from '../components/common/dropdown';
+import SignUpBg from '../../assets/image/signupBg.png';
+import Info from '../../assets/icon/info.svg';
+import Input from '../../components/core/input';
+import Dropdown from '../../components/common/dropdown';
 import styled, { ThemeProvider } from 'styled-components';
 
 const Parent = styled.div`

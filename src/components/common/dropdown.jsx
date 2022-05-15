@@ -104,12 +104,12 @@ const Dropdown = (props) => {
         setOptions(action)
         if (!action) return;
         if (props.onClick) props.onClick(action);
-        props.setfirstValue(action)
+        props.setfirstValue && props.setfirstValue(action)
     }
     return (
         <>
             <div>
-                <Select type="button" placeholder={options} value={props.firstValue ? props.firstValue : props.value} onClick={Click} rightIcon={ArrowDownSecond}>
+                <Select type="button" placeholder={options} value={options ? options : props.value} onClick={Click} rightIcon={ArrowDownSecond}>
                 </Select>
                 {state &&
                 <DropDownContent onClick={Click} width={props.width ? props.width : "311px"} height='25px'>

@@ -1,8 +1,8 @@
-import Dropdown from '../components/common/select';
+import Dropdown from '../../components/common/dropdown';
 import { useState, useEffect } from 'react';
-import { Stack, Text, StyledInput, Padding } from '../components';
-import { useDocument } from '../hooks/useDocument';
-import { useAuthContext } from '../providers/authContext';
+import { Stack, Text, StyledInput, Padding } from '../../components';
+import { useDocument } from '../../common/services/firebase';
+import { useAuthContext } from '../../common/context/AuthContext';
 import { useRouter } from 'next/router';
 
 const UserInfo = () => {
@@ -11,7 +11,7 @@ const UserInfo = () => {
 
   const router = useRouter();
   const disss = () => {
-    return 
+    return
   };
   useEffect(() => {
     if (user === null) {
@@ -21,6 +21,7 @@ const UserInfo = () => {
 
   const StateData = useDocument('/staticData/state');
   const BloodType = useDocument('/staticData/BloodType');
+  console.log(useDocument('/staticData/BloodType'))
 
   const [sainred, setsainred] = useState(false);
   const [memberred, setmemberred] = useState(false);
@@ -70,7 +71,7 @@ const UserInfo = () => {
           <Stack direction="row" gap="25" flexWrap="wrap">
             <Stack direction="column" gap="12">
               <Text fontSize="12px">Цусны бүлэг{bloodred ? <Text color="red">*</Text> : ''}</Text>
-              <Dropdown arr={BloodType.data.BloodType} />
+              <Dropdown arr={BloodType.data?.BloodType} />
             </Stack>
             <Stack direction="column" gap="12">
               <Text fontSize="12px">Амьдарч буй, аймаг/хот{cityred ? <Text color="red">*</Text> : ''}</Text>

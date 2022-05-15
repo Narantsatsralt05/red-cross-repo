@@ -1,5 +1,6 @@
 import { color, height } from '@mui/system';
 import React from 'react';
+import { useAuthContext } from '../common/context/AuthContext';
 import {
   Button,
   Center,
@@ -16,6 +17,7 @@ import {
 } from '../components';
 
 const Test = () => {
+  const { user } = useAuthContext()
   return (
     <Center>
       <Stack direction="column">
@@ -119,7 +121,7 @@ const Test = () => {
           </div>
         </Margin>
         <Stack width='100vw' direction='column'>
-          <InformationSection path='/user/Y2Aiw9KPlijMFfTHIpsy/helpType' />
+          <InformationSection path={`user/${user.uid}/helpType`} />
         </Stack>
       </Stack>
     </Center>

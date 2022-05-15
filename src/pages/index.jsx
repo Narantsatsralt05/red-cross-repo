@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuthContext } from '../providers/authContext';
+import { useAuthContext } from '../common/context/AuthContext';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Loading } from '../components';
