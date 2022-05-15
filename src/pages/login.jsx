@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../providers/authContext';
 import { useRouter } from 'next/router';
+import Loading from '../components/common/Loading';
 
 const Login = () => {
   const [form, setForm] = useState({
