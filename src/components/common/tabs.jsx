@@ -58,7 +58,7 @@ export const Tabs = ({ type, data }) => {
         <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             {type == 'row' ?
                 <Border borderColor='#E5E5E5' borderRadius='10px' style={{ width: '100%', paddingBottom: '10px', borderTop: 'none', borderLeft: 'none', borderRight: 'none' }}>
-                    <div style={{ width: '100%', height: '40px', display: 'flex', alignItems: 'center', paddingLeft: '20px', paddingBottom: '16px', paddingTop: '25px' }}>  
+                    <div style={{ width: '100vw', height: '40px', display: 'flex', alignItems: 'center', paddingLeft: '20px', paddingBottom: '16px', paddingTop: '25px' }}>  
                         {
                             data.headers.map((item, index) => {
                                 return <RowButton row key={index} onClick={()=>{setactiveTab(index)}}>{item.text}</RowButton>
