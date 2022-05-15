@@ -20,17 +20,11 @@ import { addDocument, setDocument, useCollection, useDocument } from '../../comm
 import { Formik } from 'formik';
 import * as Yup from "yup";
 import { useEffect } from 'react';
+import { useAuthContext } from '../../common/context/AuthContext';
 
 const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers, ind }) => {
-    // const { loading, data } = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/skills');
-    // console.log(data[ind]?.uid)
-    // useEffect(() => {
-    //     console.log(loading)
-    //     if (!loading) {
-    //         console.log('asd')
-    //     }
 
-    // }, [])
+    const { user } = useAuthContext()
     const { data } = useDocument('/staticData/skillProps')
     const propsSelect = useMemo(() => {
         if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') return data?.VolunteerNames;
@@ -56,37 +50,37 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
     const [fourthValue, setfourthValue] = useState(el ? el[3] : '')
     const [fifthValue, setfifthValue] = useState(el ? el[4] : '')
 
-    const DataVolunteer = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation').data[ind]?.uid
-    const DataSkill = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/skills').data[ind]?.uid
-    const DataTrain = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/coveredTraining').data[ind]?.uid
-    const DataMember = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation').data[ind]?.uid
-    const DataHelp = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation').data[ind]?.uid
-    const DataEmergency = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson').data[ind]?.uid
+    const DataVolunteer = useCollection(`/user/${user.uid}/volunteerWorkInformation`).data[ind]?.uid
+    const DataSkill = useCollection(`/user/${user.uid}/skills`).data[ind]?.uid
+    const DataTrain = useCollection(`/user/${user.uid}/coveredTraining`).data[ind]?.uid
+    const DataMember = useCollection(`/user/${user.uid}/membershipInformation`).data[ind]?.uid
+    const DataHelp = useCollection(`/user/${user.uid}/helpInformation`).data[ind]?.uid
+    const DataEmergency = useCollection(`/user/${user.uid}/EmergencyContactPerson`).data[ind]?.uid
     const [isSucces, setSucces] = useState('')
     const Add = () => {
         if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') {
-            el ? setDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation/${DataVolunteer}`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }) : addDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue })
+            el ? setDocument(`/user/${user.uid}/volunteerWorkInformation/${DataVolunteer}`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }) : addDocument(`/user/${user.uid}/volunteerWorkInformation`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue })
             setBar(false)
         }
         if (title === `УР ЧАДВАР`) {
-            el ? setDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/skills/${DataSkill}`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }) : addDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/skills`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue })
+            el ? setDocument(`/user/${user.uid}/skills/${DataSkill}`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }) : addDocument(`/user/${user.uid}/skills`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue })
             setBar(false)
         }
         if (title === `СУРГАЛТ`) {
-            el ? setDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining/${DataTrain}`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/ coveredTraining`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue })
+            el ? setDocument(`/user/${user.uid}/ coveredTraining/${DataTrain}`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument(`/user/${user.uid}/ coveredTraining`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue })
             setBar(false)
         }
 
         if (title === `ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ`) {
-            el ? setDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation/${DataMember}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }) : addDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue })
+            el ? setDocument(`/user/${user.uid}/membershipInformation/${DataMember}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }) : addDocument(`/user/${user.uid}/membershipInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue })
             setBar(false)
         }
         if (title === `ТУСЛАМЖИЙН МЭДЭЭЛЭЛ`) {
-            el ? setDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation/${DataHelp}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }) : addDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue })
+            el ? setDocument(`/user/${user.uid}/helpInformation/${DataHelp}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }) : addDocument(`/user/${user.uid}/helpInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue })
             setBar(false)
         }
         if (title === `Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл`) {
-            el ? setDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson/${DataEmergency}`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }) : addDocument(`/user/Y2Aiw9KPlijMFfTHIpsy/EmergencyContactPerson`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }
+            el ? setDocument(`/user/${user.uid}/EmergencyContactPerson/${DataEmergency}`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }) : addDocument(`/user/${user.uid}/EmergencyContactPerson`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }
             )
             setBar(false)
         }

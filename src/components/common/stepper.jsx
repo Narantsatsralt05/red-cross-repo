@@ -81,7 +81,7 @@ export const Stepper = ({ data }) => {
           </OnMobileText>
         </Stack>
       </Border>
-      <Margin size={[10,0,0,0]}>
+      <Margin size={[10, 0, 0, 0]}>
         <Border borderColor="#E5E5E5" borderRadius="10px" overFlow="hidden">
           <Stack width="99.9vw" bg="#FAFAFA" direction="column">
             {step === 1 ? (
@@ -102,24 +102,8 @@ export const Stepper = ({ data }) => {
             </Button>
           </Stack>
         </Border>
-        </Margin>
+      </Margin>
     </Box>
   );
 };
 
-
-// const data = {
-//   header: 'ХЭРЭГЛЭГЧИЙН ДЭЛГЭРЭНГҮЙ МЭДЭЭЛЭЛ БҮРТГЭХ',
-//   headers: ['ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ', 'САЙН ДУРЫН АЖЛЫН ТУРШЛАГА', 'ХАМРАГДСАН СУРГАЛТ', 'УР ЧАДВАР'],
-//   body: [
-//     <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/helpType" />,
-//     <div>ene bol 2r step</div>,
-//     <div>
-//       <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/memberType" />
-//     </div>,
-//     <div>ene bol 4r step</div>,
-//   ],
-// };
-
-//ingej ashiglana aa
-//<Stepper data={data} />=

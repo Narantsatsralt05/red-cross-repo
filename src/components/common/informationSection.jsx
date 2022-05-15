@@ -291,10 +291,3 @@ const InformationSection = ({ path, admin }) => {
 
 export { InformationSection };
 
-{/* <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/helpType" admin={true} /> */ }
-      //  <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/memberType" admin={true} />
-      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/urChadvar" admin={true} />
-      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/sainDur" admin={true} />
-      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/surgalt" admin={true} />
-      // <InformationSection path="/user/Y2Aiw9KPlijMFfTHIpsy/helpInformation" admin={false} /> 
-// //ingej ashiglana
