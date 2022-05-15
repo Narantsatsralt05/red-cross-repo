@@ -1,4 +1,3 @@
-import React from "react";;
 import { Button, Margin, Padding, Stack, Text } from "../components"
 import Styledinput from "../components/core/input";
 import styled from 'styled-components';
