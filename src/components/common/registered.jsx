@@ -1,4 +1,4 @@
-import { Center , Text , Stack , FontSizes ,Border, Margin, Padding } from "../";
+import { Center , Text , Stack , FontSizes ,Border, Margin, Padding } from "..";
 import upline from "../../assets/icon/upline.svg"
 import line from "../../assets/icon/line.svg"
 import shape from "../../assets/icon/Shape.svg"

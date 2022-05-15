@@ -13,6 +13,7 @@ import {
   serverTimestamp,
   getDoc,
   setDoc,
+  addDoc
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { filter, tap } from 'rxjs';
@@ -30,18 +31,19 @@ const firebaseConfig = {
 
 export const app =
   firebase.getApps().length > 0 ? firebase.getApp() : firebase.initializeApp(firebaseConfig);
-export const auth = getAuth(app); 
+export const auth = getAuth(app);
 export const firestore = getFirestore(app);
 export const storage = getStorage(app);
 
 export const useCollection = (path) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!firestore) {
       return;
     }
-    const subscription = collectionData(collection(firestore, path)).subscribe((documents) => {
+    const subscription = collectionData(collection(firestore, path), { idField: 'uid' }).subscribe((documents) => {
       setData(documents);
       setLoading(false);
     });
@@ -67,7 +69,6 @@ export const useDocument = (path) => {
       subscription.unsubscribe();
     };
   }, [path]);
-
   return { data, loading };
 };
 
@@ -134,8 +135,8 @@ export const useDocumentWithUserOnce = () => {
 };
 
 export const addDocument = (path, data) => {
-  const documentReference = doc(firestore, path);
-  return addDoc(documentReference, { updatedAt: serverTimestamp(), ...data }, { merge: true });
+  const documentReference = collection(firestore, path);
+  return addDoc(documentReference, { adddAt: serverTimestamp(), ...data });
 };
 
 export const setDocument = (path, data) => {

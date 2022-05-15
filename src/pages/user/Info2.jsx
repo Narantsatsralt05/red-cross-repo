@@ -1,8 +1,8 @@
 import React from "react";;
-import { Button, Margin, Padding, Stack, Text } from "../components"
-import Styledinput from "../components/core/input";
+import { Button, Margin, Padding, Stack, Text } from "../../components"
+import Styledinput from "../../components/core/input";
 import styled from 'styled-components';
-import icon from '../assets/icon/checkboxIcon.svg';
+import icon from '../../assets/icon/checkboxIcon.svg';
 
 const StyledCheckBox = styled.input.attrs({ type: 'checkbox' })`
     cursor: pointer;

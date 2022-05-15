@@ -19,9 +19,10 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useAuthContext } from '../common/context/AuthContext';
-import { useLoaderContext } from '../common/context/LoaderContext';
+import { useAuthContext } from '../../common/context/AuthContext';
+import { useLoaderContext } from '../../common/context/LoaderContext';
 import Login from './login';
+import { CoveredTrainingTable, EmergencyContactPersonTable, HelpInformationTable, MembershipInformationTable, SkillTable, VolunteerWorkInformationTable } from '../../components';
 
 const UserHome = () => {
     const { user } = useAuthContext();
@@ -38,7 +39,12 @@ const UserHome = () => {
     }, [user]);
     return <>
         {/* <button onClick={test}>hey</button> */}
-
+        <MembershipInformationTable admin='true' />
+        <CoveredTrainingTable admin='true' />
+        <SkillTable admin='true' />
+        <VolunteerWorkInformationTable admin='true' />
+        <HelpInformationTable admin='true' />
+        <EmergencyContactPersonTable admin='true' />
     </>;
 };
 export default UserHome;

@@ -1,10 +1,10 @@
-import { Button, Margin, Position, Stack, StyledInput, Text } from '../components';
+import { Button, Margin, Position, Stack, StyledInput, Text } from '../../components';
 import React, { useEffect, useState } from 'react';
-import Background from '../assets/image/forgotPassBg.png';
+import Background from '../../assets/image/forgotPassBg.png';
 import Image from 'next/image';
-import Logo from '../assets/icon/logo.svg';
-import { useAuthContext } from '../common/context/AuthContext';
-import { useLoaderContext } from '../common/context/LoaderContext';
+import Logo from '../../assets/icon/logo.svg';
+import { useAuthContext } from '../../common/context/AuthContext';
+import { useLoaderContext } from '../../common/context/LoaderContext';
 
 const Login = () => {
   const [form, setForm] = useState({

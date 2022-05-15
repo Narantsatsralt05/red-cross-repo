@@ -1,14 +1,14 @@
-import { Border, Button, Margin, Position, Stack, StyledInput, Text } from '../components';
+import { Border, Button, Margin, Position, Stack, StyledInput, Text } from '../../components';
 import React, { useEffect, useState } from 'react';
-import Background from '../assets/image/loginBg.png';
-import Login1 from "../assets/icon/login1.png";
-import Login2 from "../assets/icon/login2.png";
-import Login3 from "../assets/icon/login3.png";
+import Background from '../../assets/image/loginBg.png';
+import Login1 from "../../assets/icon/login1.png";
+import Login2 from "../../assets/icon/login2.png";
+import Login3 from "../../assets/icon/login3.png";
 import Image from 'next/image';
-import Logo from '../assets/icon/logo.svg';
-import { useAuthContext } from '../common/context/AuthContext';
+import Logo from '../../assets/icon/logo.svg';
+import { useAuthContext } from '../../common/context/AuthContext';
 import { useRouter } from 'next/router';
-import { useLoaderContext } from '../common/context/LoaderContext';
+import { useLoaderContext } from '../../common/context/LoaderContext';
 
 const Login = () => {
   const [form, setForm] = useState({
