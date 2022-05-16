@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { auth } from '../hooks';
 import { createContext } from 'react';
 import firebase from 'firebase/compat/app';
+import { db } from '../hooks/firebase';
 
 export const AuthContext = createContext({
   user: {},
@@ -35,19 +36,32 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
-  const signUp = (email, password1, password2) => {
-    if (password1 === password2) {
+  const signUp = (values) => {
+    if (values.password === values.passwordConfirm) {
       auth
-        .createUserWithEmailAndPassword(email, password1)
-        .then(() => {
-          window.location = '/home';
-          alert('signUp successfully');
+        .createUserWithEmailAndPassword(values.email, values.password)
+        .then((userCredential) => {
+          console.log(userCredential.user.uid, 'usercred');
           console.log('signUp amjilttai XD');
+            db.collection('user').doc(userCredential.user.uid).set({
+              email: values.email,
+              RD: values.RD,
+              lastName: values.lastName,
+              firstName: values.firstName,
+            // gender: values.gender,
+            // date: values.date,
+            // location: values.location,
+            // phoneNumber: values.phoneNumber,
+          }).then(() => {
+            // window.location = '/';
+            alert('signUp successfully');
+          })
         })
         .catch((error) => {
           console.log(error.message);
           setSignUpError(error.message);
         });
+        
     } else {
       console.log('repeat pass buruu bn!!!');
     }
@@ -57,7 +71,7 @@ export const AuthProvider = ({ children }) => {
       .signOut()
       .then(() => {
         window.location = '/login';
-        alert("logOut successfully")
+        alert('logOut successfully');
         setUser(null);
       })
       .catch((error) => {
@@ -68,7 +82,7 @@ export const AuthProvider = ({ children }) => {
     auth
       .sendPasswordResetEmail(email)
       .then(() => {
-        alert("та имэйлээ шалгана уу!")
+        alert('та имэйлээ шалгана уу!');
         window.location = '/login';
       })
       .catch((error) => {
@@ -86,7 +100,7 @@ export const AuthProvider = ({ children }) => {
         user,
         loginError,
         forgotPassError,
-        signUpError
+        signUpError,
       }}
     >
       {children}
