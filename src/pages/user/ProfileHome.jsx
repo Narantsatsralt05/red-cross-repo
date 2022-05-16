@@ -20,7 +20,7 @@ const ProfileHome = () => {
     headers: [{ text: 'Нүүр' }, { text: 'Үндсэн мэдээлэл' }],
     body: [
       <Stack width="100vw" direction="column">
-        <Padding size={[60, 30, 30, 100]}>
+        <Padding size={[0,0, 0, 0]}>
           <Stack direction="column" gap="40px">
             <Padding size={[20, 20, 20, 20]}>
               <Stack width="100%" direction="row" gap="50px" flexWrap="wrap">
@@ -95,7 +95,7 @@ const ProfileHome = () => {
               </Stack>
             </Padding>
 
-            <Stack direction="column" width="90vw" gap="30">
+            <Stack direction="column" width="100vw" gap="30">
               <VolunteerWorkInformationTable />
               <MembershipInformationTable />
               <HelpInformationTable />
