@@ -1,36 +1,19 @@
-import { useState, useEffect } from 'react';
+
 import { Stack, Text, Padding, Border, Margin } from '../components';
-import { useDocument } from '../hooks/useDocument';
-import { useAuthContext } from '../providers/authContext';
-import { useRouter } from 'next/router';
-import Header from '../components/common/header';
+import {Header} from '../components/common/header';
 import { Tabs } from '../components/common/tabs';
 import {
   MembershipInformationTable,
   VolunteerWorkInformationTable,
   HelpInformationTable,
 } from '../components/common/informationSections/sections';
-import { useCollection } from '../hooks';
+import { useCollection } from '../common/services/firebase';
 
 const ProfileHome = () => {
   const { data: volunteercount } = useCollection(`/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation`);
   const { data: membership } = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation');
-  console.log(membership[0]?.membershipType);
-  // let starAndEnd = [];
-  // membership.map((el) => {
-  //   let startYear = el.startDate.split('.')[0];
-  //   let startMonth = el.startDate.split('.')[1];
-  //   let endYear = el.endDate.split('.')[0];
-  //   let endMonth = el.endDate.split('.')[1];
-  //   startAndEnd.push(startYear, startMonth, endYear, endMonth)
-  // });
-  // console.log(starAndEnd);
-  // // console.log(membership.data[0].startDate.split('.')+ 'member');
-  // console.log('member ->', membership.data[0].membershipType);
   const startDate = membership[0]?.startDate?.split('.').map((e) => parseInt(e, 10));
   const endDate = membership[0]?.endDate?.split('.').map((e) => parseInt(e, 10));
-  // console.log(startDate && startDate[0] + 'year' + startDate[1] + 'month' + startDate[2] + 'day');
-  console.log('startDate', startDate);
 
   const tabData = {
     headers: [{ text: 'Нүүр' }, { text: 'Үндсэн мэдээлэл' }],
@@ -104,7 +87,7 @@ const ProfileHome = () => {
 
             <Stack direction="column" width="90vw" gap="30">
               <VolunteerWorkInformationTable />
-              {/* <MembershipInformationTable /> */}
+              <MembershipInformationTable />
               <HelpInformationTable />
             </Stack>
           </Stack>
