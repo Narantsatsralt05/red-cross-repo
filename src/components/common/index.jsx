@@ -14,5 +14,6 @@ export * from "./dropdown";
 export * from "./status";
 export * from "./informationSections/sections";
 export * from "./registered";
+export * from "./header";
 
 

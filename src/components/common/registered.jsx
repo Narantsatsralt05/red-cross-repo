@@ -13,8 +13,8 @@ export const Registered = ({e}) => {
     const {color} = useTheme();
     let a = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
     return (
-        <Stack width="90vw" height="86vh" bg="#E5E5E5"justifyContent="space-between"  direction="column">
-            <Stack width="100%" height="7%" justifyContent="space-between" alignItems="center">
+        <Stack width="94vw" height="86vh" bg="#E5E5E5"justifyContent="space-between"  direction="column">
+            <Stack width="100%" height="8%" justifyContent="space-between" alignItems="center">
                 <Stack width="24%" justifyContent="space-between" alignItems="center">
                     <Text fontWeight="400" type="T2" lineHeight="16px" fontStyle="regular" style={{textAlign:"center"}}>
                     БҮРТГЭЛТЭЙ ХЭРЭГЛЭГЧИЙН ЖАГСААЛТ ({e})
@@ -25,13 +25,12 @@ export const Registered = ({e}) => {
                         Нэмэх
                     </Text>
                 </Stack>
-                <Margin size={[0,80,0,0]}> 
-                    <Stack justifyContent="space-evenly" gap="25">
-                        <Image src={shape}></Image>
-                            <Styledinput width="350px" placeholder="хайх"></Styledinput>
-                        <Image src={excel}></Image>
-                    </Stack>
-                </Margin>
+                <Stack justifyContent="space-evenly"width="25vw">
+                    <Image src={shape}></Image>
+                    <Styledinput width="350px" placeholder="хайх"></Styledinput>
+                    <Image src={excel}></Image>
+                </Stack>
+
             </Stack>
             <Image src={upline}></Image>
             <Stack width="100%" height="6%" bg="#D9D9D9" justifyContent="space-evenly" alignItems="center" justifyContent="center"> 
@@ -85,7 +84,7 @@ export const Registered = ({e}) => {
             </Stack>
             <Stack width="100%" height="85%" direction="column" justifyContent="space-between" style={{overflow:"auto"}}>
                 {a.map((el) => {
-                    return  <Margin size={[0,0,25,0]}>
+                    return  <Margin size={[0,0,30,0]}>
                                 <Stack width="100%" height="190%" bg="white"justifyContent="space-between"> 
                                     <Stack width="14%"alignItems="center">
                                         <Margin size={[0,0,0,10]}>
