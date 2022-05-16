@@ -1,13 +1,14 @@
 
-import { Stack, Text, Padding, Border, Margin } from '../components';
-import {Header} from '../components/common/header';
-import { Tabs } from '../components/common/tabs';
+import { Stack, Text, Padding, Border, Margin } from '../../components';
+import {FullShadow,WarningShadow} from "../../components/core/shadow"
+import {Header} from '../../components/common/header';
+import { Tabs } from '../../components/common/tabs';
 import {
   MembershipInformationTable,
   VolunteerWorkInformationTable,
   HelpInformationTable,
-} from '../components/common/informationSections/sections';
-import { useCollection } from '../common/services/firebase';
+} from '../../components/common/informationSections/sections';
+import { useCollection } from '../../common/services/firebase';
 
 const ProfileHome = () => {
   const { data: volunteercount } = useCollection(`/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation`);
@@ -23,8 +24,10 @@ const ProfileHome = () => {
           <Stack direction="column" gap="40px">
             <Padding size={[20, 20, 20, 20]}>
               <Stack width="100%" direction="row" gap="50px" flexWrap="wrap">
-                <Border borderRadius="5px" borderWidth="1">
-                  <Stack
+                <FullShadow>
+                <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
+                  
+                    <Stack
                     width="300px"
                     height="170px"
                     direction="column"
@@ -39,8 +42,12 @@ const ProfileHome = () => {
                       <Text type={'ThinH1'}>Сайн дурын ажил хийсэн тоо</Text>
                     </Stack>
                   </Stack>
+                  
+                  
                 </Border>
-                <Border borderRadius="5px" borderWidth="1">
+                </FullShadow>
+                <FullShadow>
+                <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
                   <Stack
                     width="300px"
                     height="170px"
@@ -61,7 +68,9 @@ const ProfileHome = () => {
                     </Stack>
                   </Stack>
                 </Border>
-                <Border borderRadius="5px" borderWidth="1">
+                </FullShadow>
+                <FullShadow>
+                <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
                   <Stack
                     width="300px"
                     height="170px"
@@ -82,6 +91,7 @@ const ProfileHome = () => {
                     </Stack>
                   </Stack>
                 </Border>
+                </FullShadow>
               </Stack>
             </Padding>
 

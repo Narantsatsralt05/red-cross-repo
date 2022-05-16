@@ -5,7 +5,7 @@ export const FontSizes = {
     ThinH1: '30px',
     H1: '30px',
     H2Semi: '24px',
-    H2: '20px',
+    H2: '18px',
     H3: '22px',
     T1: '18px',
     T2Bold: '16px',
@@ -14,9 +14,10 @@ export const FontSizes = {
     T3: '14px',
     T4Spaced: '12px',
     T4: '12px',
-    ThinH2:'18px',
+    ThinH2:'14px',
   },
   onMobile: {
+    ThinH2:'14px',
     Header:'30px',
     T4Spaced: '10px',
     T4: '10px',
@@ -25,7 +26,7 @@ export const FontSizes = {
     H1: '24px',
     H1Bold: '24px',
     H2Semi: '18px',
-    H2: '14px',
+    H2: '12px',
     H3: '16px',
     T1: '16px',
     T1Bold: '16px',
@@ -34,7 +35,7 @@ export const FontSizes = {
     T2Caps: '14px',
     T3: '12px',
     T3Spaced: '12px',
-    ThinH2:'15px',
+    ThinH2:'13px',
   },
 };
 export const fontWeight = {
