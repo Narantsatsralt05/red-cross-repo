@@ -11,6 +11,7 @@ export const Stack = style.div`
     gap: ${({ gap }) => gap};
     background-color: ${({ bg }) => bg};
     cursor:${({cursor}) => cursor};
+    text-align:${({textAlign }) => textAlign};
     @media (max-width: 460px) {
         justify-content: center
     }
