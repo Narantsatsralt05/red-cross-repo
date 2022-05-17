@@ -23,10 +23,6 @@ const AdminHome = () => {
       }
     }
   });
-  return (
-    <>
-      <Admin />
-    </>
-  );
+  return <Admin />
 };
 export default AdminHome;

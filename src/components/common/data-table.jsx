@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { useCollection } from '../../common/services/firebase'
+import { useCollection } from '../../common/services/firebase';
 
 const DataTable = () => {
   const Users = useCollection('/user', true).data;
@@ -31,10 +31,10 @@ const DataTable = () => {
     <TableContainer
       style={{
         backgroundColor: '#FFFFFF',
+        width: '100%',
+        height: '30vh',
         border: '1px solid #EDEDED',
         borderRadius: '5px',
-        height: '350px',
-        width: '83vw',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
@@ -46,7 +46,7 @@ const DataTable = () => {
           fontWeight: '300',
           fontStyle: 'light',
           fontSize: 'px',
-          width: '250px',
+          width: '100%',
           marginTop: '9px',
           marginLeft: '11px',
           marginBottom: '12px',
