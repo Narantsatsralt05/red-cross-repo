@@ -56,14 +56,14 @@ const ToUseOptions = styled(StyledATag)`
   }
 `;
 const StyledSelect = styled.div`
-  width: ${({ width }) => width};
-  @media (max-width: 460px) {
-    width: 80vw;
+  @media (max-width: 400px) {
+    width:'250px'
   }
+  width: ${({ width }) => width};
   height: ${({ height }) => (height ? height : '35px')};
   background-color: white;
   border: 0.5px solid rgba(0, 0, 0, 0.5);
-  border-radius: ${({ borderRadius}) => (borderRadius ? borderRadius : "2px")};
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "2px")};
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -71,59 +71,60 @@ const StyledSelect = styled.div`
 `;
 
 const Select = ({ value, onClick }) => {
-    return (
-        <Stack>
-            <StyledSelect onClick={onClick} width='311px' height='25px' >
-                <Text style={{ marginLeft: '10px' }}>{value}</Text>
-                <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <ArrowDown />
-                </div>
-            </StyledSelect>
-        </Stack>
-    )
+  return (
+    <Stack>
+      <StyledSelect onClick={onClick} width='311px' height='25px' >
+        <Text style={{ marginLeft: '10px' }}>{value}</Text>
+        <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <ArrowDown />
+        </div>
+      </StyledSelect>
+    </Stack>
+  )
 }
 const Dropdown = (props) => {
-    const Select = ({value, onClick }) => {
-        return (
-            <Stack>
-                <StyledSelect onClick={onClick} width={props.width ? props.width : '311px'} height='25px'>
-                    <Text style={{ marginLeft: '10px' }}>{value}</Text>
-                    <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <ArrowDown />
-                    </div>
-                </StyledSelect>
-            </Stack>
-        )
-    }   
-    const [state, setState] = useState(false);
-    const Click = () => {
-        setState(!state)
-    }
-    const [options, setOptions] = useState('')
-    const handleClick = (action) => {
-        setOptions(action)
-        if (!action) return;
-        if (props.onClick) props.onClick(action);
-        props.setfirstValue && props.setfirstValue(action)
-    }
+  const Select = ({ value, onClick }) => {
     return (
-        <>
-            <div>
-                <Select type="button" placeholder={options} value={options ? options : props.value} onClick={Click} rightIcon={ArrowDownSecond}>
-                </Select>
-                {state &&
-                <DropDownContent onClick={Click} width={props.width ? props.width : "311px"} height='25px'>
-                    {
-                        props.arr.map(Element =>
-                            <ToUseOptions onClick={() => handleClick(Element)}>
-                                {Element}
-                            </ToUseOptions>
-                        )
-                    }
-                </DropDownContent >}
-            </div>
-        </>
+      <Stack>
+        <StyledSelect onClick={onClick} width={props.width ? props.width : '311px'} height='25px'>
+          <Text style={{ marginLeft: '10px' }}>{value}</Text>
+          <div style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <ArrowDown />
+          </div>
+        </StyledSelect>
+      </Stack>
     )
+  }
+  const [state, setState] = useState(false);
+  const Click = () => {
+    setState(!state)
+  }
+  const [options, setOptions] = useState('')
+  const handleClick = (action) => {
+    setOptions(action)
+    if (!action) return;
+    if (props.onClick) props.onClick(action);
+    props.setfirstValue && props.setfirstValue(action)
+    props.setdropValue && props.setdropValue({...props.dropValue , [props.id] : action})
+  }
+  return (
+    <>
+      <div>
+        <Select type="button" placeholder={options} value={options ? options : props.value} onClick={Click} rightIcon={ArrowDownSecond}>
+        </Select>
+        {state &&
+          <DropDownContent onClick={Click} width={props.width ? props.width : "311px"} height={'35px'}>
+            {
+              props.arr.map(Element =>
+                <ToUseOptions onClick={() => handleClick(Element)}>
+                  {Element}
+                </ToUseOptions>
+              )
+            }
+          </DropDownContent >}
+      </div>
+    </>
+  )
 }
 
 export default Dropdown;

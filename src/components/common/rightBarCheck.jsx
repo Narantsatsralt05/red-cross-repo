@@ -34,15 +34,11 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
         if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') return data?.helpNames
         if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') return data?.emergencyNames
     }, [data])
-
-    const UptadeDoc = () => {
-
-    }
     const [deleteDoc, setDeleteDoc] = useState(false)
     const New = () => {
-        setCheckBar(false)
-        setBar(true)
+        setBar(false)
         Add()
+        setBar(true)
     }
     const [firstValue, setfirstValue] = useState('')
     const [secondValue, setsecondValue] = useState(el ? el[1] : '')
@@ -60,30 +56,25 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
     const Add = () => {
         if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') {
             el ? setDocument(`/user/${user.uid}/volunteerWorkInformation/${DataVolunteer}`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }) : addDocument(`/user/${user.uid}/volunteerWorkInformation`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue })
-            setBar(false)
         }
         if (title === `УР ЧАДВАР`) {
             el ? setDocument(`/user/${user.uid}/skills/${DataSkill}`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }) : addDocument(`/user/${user.uid}/skills`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue })
-            setBar(false)
         }
         if (title === `СУРГАЛТ`) {
-            el ? setDocument(`/user/${user.uid}/ coveredTraining/${DataTrain}`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument(`/user/${user.uid}/ coveredTraining`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue })
-            setBar(false)
+            el ? setDocument(`/user/${user.uid}/coveredTraining/${DataTrain}`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument(`/user/${user.uid}/coveredTraining`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue })
         }
 
         if (title === `ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ`) {
             el ? setDocument(`/user/${user.uid}/membershipInformation/${DataMember}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }) : addDocument(`/user/${user.uid}/membershipInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue })
-            setBar(false)
         }
         if (title === `ТУСЛАМЖИЙН МЭДЭЭЛЭЛ`) {
             el ? setDocument(`/user/${user.uid}/helpInformation/${DataHelp}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }) : addDocument(`/user/${user.uid}/helpInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue })
-            setBar(false)
         }
         if (title === `Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл`) {
             el ? setDocument(`/user/${user.uid}/EmergencyContactPerson/${DataEmergency}`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }) : addDocument(`/user/${user.uid}/EmergencyContactPerson`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }
             )
-            setBar(false)
         }
+        setBar(false)
     }
 
 
@@ -100,19 +91,19 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                             <Stack height='100vh' bg='white' direction='column' className='media' bg='white'>
                                 <Padding size={[10, 50, 0, 50]}>
                                     <Formik
-                                        initialValues={{ text: "" }}
+                                        initialValues={{ fourthText: '', thirdText: '', fifthText: '', secondText: '' }}
 
                                         validationSchema={Yup.object().shape({
-                                            text: Yup.string()
+                                            fourthText: Yup.string()
                                                 .required("Required"),
-                                            text1: Yup.string()
+                                            thirdText: Yup.string()
                                                 .required("Required"),
-                                            text2: Yup.string()
+                                            fifthText: Yup.string()
                                                 .required("Required"),
-                                            text3: Yup.string()
-                                                .required("Required")
+                                            secondText: Yup.string()
+                                                .required("Required"),
                                         })}
-                                        initialValues={{ text3: secondValue, text: fourthValue, text1: thirdValue, text2: fifthValue }}
+                                        initialValues={{ secondText: secondValue, fourthText: fourthValue, thirdText: thirdValue, fifthText: fifthValue }}
                                     >
 
                                         {props => {
@@ -155,15 +146,15 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                 <Margin size={[10, 0, 0, 0]}>
                                                                     <Text fontFamily='Roboto' font-style='normal' >
                                                                         <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
-                                                                            onBlur={handleBlur} id='text3'
+                                                                            onBlur={handleBlur} id='secondText'
                                                                             onChange={(e) => {
                                                                                 setsecondValue(e.target.value),
                                                                                     handleChange(e)
                                                                             }}
                                                                             value={secondValue} borderRadius='3px' />
-                                                                        {errors.text3 && touched.text3 && (
+                                                                        {errors.secondText && touched.secondText && (
                                                                             <Text color='red'>
-                                                                                {errors.text3}
+                                                                                {errors.secondText}
                                                                             </Text>
                                                                         )}
 
@@ -178,14 +169,14 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                 {headers[2]}
                                                                 <Margin size={[10, 0, 0, 0]}>
                                                                     <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
-                                                                        onBlur={handleBlur} id='text1'
+                                                                        onBlur={handleBlur} id='thirdText'
                                                                         onChange={(e) => {
                                                                             setthirdValue(e.target.value),
                                                                                 handleChange(e)
                                                                         }} value={thirdValue} borderRadius='3px' />
-                                                                    {errors.text1 && touched.text1 && (
+                                                                    {errors.thirdText && touched.thirdText && (
                                                                         <Text color='red'>
-                                                                            {errors.text1}
+                                                                            {errors.thirdText}
                                                                         </Text>
                                                                     )}
                                                                 </Margin>
@@ -199,14 +190,14 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                     {headers[3]}
                                                                     <Margin size={[10, 0, 0, 0]}>
                                                                         <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
-                                                                            onBlur={handleBlur} id='text'
+                                                                            onBlur={handleBlur} id='fourthText'
                                                                             onChange={(e) => {
                                                                                 setfourthValue(e.target.value),
                                                                                     handleChange(e)
                                                                             }} value={fourthValue} borderRadius='3px' />
-                                                                        {errors.text && touched.text && (
+                                                                        {errors.fourthText && touched.fourthText && (
                                                                             <Text color='red'>
-                                                                                {errors.text}
+                                                                                {errors.fourthText}
                                                                             </Text>
                                                                         )}
                                                                     </Margin>
@@ -220,14 +211,14 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                     {headers[3]}
                                                                     <Margin size={[10, 0, 0, 0]}>
                                                                         <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
-                                                                            onBlur={handleBlur} id='text2'
+                                                                            onBlur={handleBlur} id='fifthText'
                                                                             onChange={(e) => {
                                                                                 setfifthValue(e.target.value),
                                                                                     handleChange(e)
                                                                             }} value={fifthValue} borderRadius='3px' />
-                                                                        {errors.text2 && touched.text2 && (
+                                                                        {errors.fifthText && touched.fifthText && (
                                                                             <Text color='red'>
-                                                                                {errors.text2}
+                                                                                {errors.fifthText}
                                                                             </Text>
                                                                         )}
                                                                     </Margin>
@@ -241,25 +232,25 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                 <Margin size={[0, 0, 0, 0]}>
                                                                     <Padding size={[20, 0, 0, 0]}>
                                                                         {el ? <Stack direction='row' width='21vw' >
-                                                                            <Image width='20px' height='20px' src={Trash} onClick={() => setDeleteDoc(!deleteDoc)} />
+                                                                            <Image width='20px' height='20px' src={Trash} onClick={() => setDeleteDoc(true)} />
                                                                             <Position position='absolute' bottom='30px' left='-110px'>
-                                                                                {deleteDoc && <Delete DataVolunteer={DataVolunteer} DataSkill={DataSkill} DataTrain={DataTrain} DataMember={DataMember} DataHelp={DataHelp} DataEmergency={DataEmergency} title={title} ind={ind} setBar={setBar} />}
+                                                                                {deleteDoc && <Delete DataVolunteer={DataVolunteer} setDeleteDoc={setDeleteDoc} DataSkill={DataSkill} DataTrain={DataTrain} DataMember={DataMember} DataHelp={DataHelp} DataEmergency={DataEmergency} title={title} ind={ind} setCheckBar={setCheckBar} />}
                                                                             </Position>
                                                                             <Margin size={[0, 0, 0, 10]}>
                                                                                 <Button width='60px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={() => setCheckBar(false)}>Болих</Button>
                                                                             </Margin>
                                                                             <Margin size={[0, 5, 0, 5]}>
-                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
                                                                             </Margin>
                                                                             <Margin size={[0, 0, 0, 0]}>
-                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={Add} >Хадгалах</Button>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? '' : 'not-allowed' }} onClick={Add} >Хадгалах</Button>
                                                                             </Margin>
                                                                         </Stack>
                                                                             :
                                                                             <Stack direction='row' width=''>
-                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
                                                                                 <Margin size={[0, 0, 0, 20]} >
-                                                                                    <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={errors.text3 && touched.text3 && true} style={{ cursor: errors.text3 && touched.text3 && 'not-allowed' }} onClick={Add}>Хадгалах</Button>
+                                                                                    <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={Add}>Хадгалах</Button>
                                                                                 </Margin>
                                                                             </Stack>
                                                                         }
