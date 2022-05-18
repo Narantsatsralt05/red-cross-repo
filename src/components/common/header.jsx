@@ -26,7 +26,7 @@ export const Header = () => {
           <Image src={Logo}></Image>
         </Margin>
         <Margin size={[0, 20, 0, 10]}>
-          <Text type="H3" color="white">
+          <Text type="T1" color="white">
             МУЗН
           </Text>
         </Margin>
