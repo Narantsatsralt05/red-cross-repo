@@ -11,7 +11,7 @@ import Info from '../../assets/icon/info.svg';
 import Input from '../../components/core/input';
 import Dropdown from '../../components/common/dropdown';
 import styled, { ThemeProvider } from 'styled-components';
-import { useAuthContext } from '../providers/authContext';
+import { useAuthContext } from '../../common/context/AuthContext';
 
 const Parent = styled.div`
   & > div {
@@ -26,7 +26,7 @@ const SignUp = () => {
   const YupShape = ({ max, match, min = 0, mongol, pass, email, number }) => {
     return Yup.string()
       .max(max, `Дээд хязгаар нь ${max} үсэг`)
-      .min(min, `Та ${min} ийг л оруулах естой`)
+      .min(min, `Та хамгийн багадаа ${min}-г оруулах естой`)
       .matches(Number.isInteger(mongol) ? /[а-яА-Я]/ : '', Number.isInteger(mongol) ? 'Та монголоор бичнэ үү' : '')
       .matches(
         Number.isInteger(pass) && /(?=.*?[A-Z])/ ? ' ' : ' ',
@@ -45,7 +45,7 @@ const SignUp = () => {
         Number.isInteger(pass) && 'Ядаж нэг онцгой тэмдэгттэй байх' ? ' ' : ' ',
       )
       .required('Хоосон байна бөглөнө үү')
-      .email(email ? 'ta email oruulnuu' : '');
+      .email(email ? 'Та и-мэйл хаягаа оруулна уу' : '');
   };
 
   const validate = Yup.object({
@@ -53,7 +53,7 @@ const SignUp = () => {
       .matches(/[а-яА-Я]/, 'Та монголоор бичнэ үү')
       .matches(
         /[а-яА-Я][а-яА-Я][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/,
-        'Та эхний 2 ийг үсэг, сүүлийн 8 ийг заавал  тоо оруулна уу.',
+        'Та эхний 2-г үсэг, сүүлийн 8-г заавал  тоо оруулна уу.',
       )
       .max(10, 'Дээд хязгаар нь 10 үсэг')
       .required('Хоосон байна бөглөнө үү'),
@@ -65,7 +65,7 @@ const SignUp = () => {
     phoneNumber: YupShape({ max: 8, min: 8, match: 1 }),
     password: YupShape({ max: 100, min: 6, pass: 1 }),
     passwordConfirm: YupShape({ max: 100, min: 6, pass: 1 }),
-    email: YupShape({ max: 100, email: true }),
+    email: YupShape({ max: 100, email: true}),
   });
   const checker = () => {
     setCheck(!check);
@@ -88,8 +88,7 @@ const SignUp = () => {
       validationSchema={validate}
     >
       {(formik) => {
-        const { isValid, dirty } = formik;
-        console.log(formik.values.RD);
+        const { isValid, dirty, values } = formik;
         return (
           <Form>
             <Stack width="100vw" height="100vh" fontFamily="Roboto">
@@ -143,7 +142,7 @@ const SignUp = () => {
                             </Margin>
                           </label>
                           <InputTask name="date" input="Төрсөн он/сар/өдөр"></InputTask>
-                          <InputTask name="phoneNumber" input="Утасны дугаар"></InputTask>
+                          <InputTask name="phoneNumber" input="Утасны дугаар" type="number"></InputTask>
                           <InputTask name="password" input="Нууц үг" type="password"></InputTask>
                         </Parent>
                       </Stack>
@@ -188,48 +187,30 @@ const SignUp = () => {
                     </Margin>
                   </Stack>
                   <Margin size={[40, 0, 0, 0]}>
-                    <Border borderRadius="8px" overFlow="hidden" borderColor="#0066B3">
-                      <Stack width="500px" height="40px" bg="#0066B3" justifyContent="center">
                         <Button
                           borderRadius="8px"
+                          bgColor="#0066B3"
+                          width="500px"
+                          height="40px"
+                          bc="#0066B3"
                           onClick={() =>
                             signUp(
-                              formik.values.email,
-                              formik.values.password,
-                              formik.values.passwordConfirm,
-                              formik.values.lastName,
-                              formik.values.firstName,
-                              formik.values.gender,
-                              formik.values.RD,
-                              formik.values.date,
-                              formik.values.location,
-                              formik.values.phoneNumber,
+                              values
                             )
                           }
                         >
-                          <Text
+                          {/* <Text
                             color="#fff"
                             type="H3"
                             onClick={() =>
                               signUp(
-                                formik.values.email,
-                                formik.values.password,
-                                formik.values.passwordConfirm,
-                                formik.values.lastName,
-                                formik.values.firstName,
-                                formik.values.gender,
-                                formik.values.RD,
-                                formik.values.date,
-                                formik.values.location,
-                                formik.values.phoneNumber,
+                                values
                               )
                             }
-                          >
+                          > */}
                             БҮРТГҮҮЛЭХ
-                          </Text>
+                          {/* </Text> */}
                         </Button>
-                      </Stack>
-                    </Border>
                   </Margin>
                 </Stack>
                 <Position position="fixed" bottom="3vh" left="4vw">
