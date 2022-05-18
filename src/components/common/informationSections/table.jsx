@@ -18,8 +18,9 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
   const tableContainerStyle = {
     border: `1px solid ${color.secondary.white}`,
     borderRadius: '5px',
+    width: '83vw',
     display: 'flex',
-    overflow: 'scroll',
+    overflow: 'auto',
     alignItems: 'flex-start',
     justifyContent: 'center',
     flexDirection: 'column',
@@ -65,7 +66,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
           <>
             <Stack justifyContent="flex-start" direction="row" alignItems="center">
               <Margin size={[0, 0, 10, 0]}>
-                <Text color={color.primary.blue} fontSize="50px" >
+                <Text color={color.primary.blue} fontSize="50px" onClick={() => setBar(true)} style={{ cursor: 'pointer' }}q >
                   +
                 </Text>
               </Margin>
@@ -94,13 +95,13 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
     border: 'none',
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '200px',
     align: 'left',
     first: {
       border: 'none',
       fontStyle: 'normal',
       padding: '10px',
-      width: '20vw',
+      width: '200px',
       align: 'left',
       color: color.primary.blue,
     },
@@ -121,7 +122,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
     setEl(el)
   };
   return (
-    <Stack>
+    <Stack style={{ overflowX: 'auto' }}>
       <Margin size={[35, 30, 10, 10]}>
         <OnPc>
           <AddSectionOnPc />
@@ -133,20 +134,23 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
           <Table>
             <Margin size={[5, 0, 5, 10]}>
               <TableHead style={{ fontSize: '12px' }}>
-                <TableRow>{row}</TableRow>
+                <TableRow>
+                  <Stack justifyContent='space-between'>
+                    {row}
+                  </Stack>
+                </TableRow>
               </TableHead>
             </Margin>
             <Stack width="100%" height="1px" bg={color.secondary.white} />
             <TableBody>
-              {body.map((el, ind) => {
+              {body[0] ? body.map((el, ind) => {
                 return (
                   <Margin size={[0, 0, 5, 10]} >
-                    {checkBar ? <RightBarCheck headers={headers} checkBar={checkBar} setCheckBar={setCheckBar} el={elData} ind={number} title={title} bar={bar} setBar={setBar} /> : ''}
                     <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} onClick={() => Details({ el, ind })}>
                       {el.map((element, index) => {
                         return (
                           <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell} >
-                            <Text type={index === 0 ? 'T2Caps' : 'T2'}>
+                            <Text type={index === 0 ? 'T2Caps' : 'T2'} style={{ overflow: 'scroll' }}>
                               {index === 0 ? <Hover>{element}</Hover> : element}
                             </Text>
                           </TableCell>
@@ -155,7 +159,9 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
                     </TableRow>
                   </Margin>
                 );
-              })}
+              }) : <Margin size={[20, 20, 20, 20]}> Үүнд мэдээлэл алга та {title} хийнэ үү </Margin>}
+              {checkBar ? <RightBarCheck headers={headers} checkBar={checkBar} setCheckBar={setCheckBar} el={elData} ind={number} title={title} bar={bar} setBar={setBar} /> : ''}
+
             </TableBody>
           </Table>
         </TableContainer>

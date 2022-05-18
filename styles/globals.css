@@ -210,8 +210,23 @@ a {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .media {
     width: 100vw;
   }
+
+  .textHidden {
+    display: none;
+  }
+}
+
+.textHidden {
+  width: 300px;
+}
+
+@media (max-width: 1600px) {
+  .textHidden {
+    width:0;
+  }
+ 
 }

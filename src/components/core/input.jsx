@@ -2,20 +2,20 @@ import styled from 'styled-components';
 import { theme } from '../../theme/theme';
 export const StyledInput = styled.input`
   width: ${(props) => props.width ? props.width : '400px'};
-  @media (max-width: 460px) {
-        width: 80vw;
-    }
   border-width: 1px;
   border-style: solid;
+  @media (max-width: 400px) {
+    width:'200px' !important
+  }
   border-color: ${(props) => {
-
     if (props.status == 'error') {
       return 'red'
     } else if (props.status == 'success') {
       return 'green'
-    } else {
+    } if (props.status == 'undefined') {
       return 'black'
     }
+    return 'rgba(196, 196, 196, 0.5)'
   }};
   background-color: ${(props) => {
     if (props.disabled) {
@@ -29,7 +29,7 @@ export const StyledInput = styled.input`
   height: ${(props) => props.height ? props.height : '35px'};
   color: ${(props) => props.color};
   font: ${(props) => props.font};
-  animation-name: ${(props)=>props.animation};
+  animation-name: ${(props) => props.animation};
   padding-left: 0.25vw;
   padding-right: 0.25vw;
   display: flex;
@@ -61,7 +61,7 @@ const Styledinput = ({ label, height, width, status, statusText, disabled, ...pr
   return (
     <div>
       <span style={{ "fontSize": '19px' }}  >{label}</span>
-      <StyledInput height={height} width={width} status={status} {...props} disabled={disabled}/>
+      <StyledInput height={height} width={width} status={status} {...props} disabled={disabled} />
       {status && statusText}
     </div>
   )

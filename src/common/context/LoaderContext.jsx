@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Position, Stack } from '../../components';
+import { Margin, Position, Stack } from '../../components';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import {Text} from '../../components/core/text'
+import { Text } from '../../components/core/text'
 export const LoaderContext = createContext({});
 
 
@@ -30,19 +30,24 @@ export const LoaderProvider = (props) => {
         >
             {children}
             {loading &&
-                <Stack justifyContent='center' style={{ position: 'absolute', top: '45vh', left: '45vw', zIndex: 1 }} direction='column'>
-                    <Modal
-                        open={true}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                    >
-                        <Box sx={style}>
-                            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                        </Box>
-                    </Modal>
-                    <Text color='white'>
-                        {content}
-                    </Text>
+                <Stack justifyContent='center' alignItems='center' >
+                    <Stack direction='column'>
+                        <Modal
+                            open={true}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                        >
+                            <Box sx={style}>
+                                <Stack direction='column'>
+                                    <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                                    <Margin size={[40, 0, 0, -10]}>
+                                        <Text color='white'>{content}</Text>
+                                    </Margin>
+                                </Stack>
+                            </Box>
+                        </Modal>
+
+                    </Stack>
                 </Stack>
             }
         </LoaderContext.Provider>

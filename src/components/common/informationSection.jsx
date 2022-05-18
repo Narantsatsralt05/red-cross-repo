@@ -82,7 +82,7 @@ const InformationSection = ({ path, admin }) => {
                     fontStyle: 'normal',
                     fontSize: '20px',
                     padding: '10px',
-                    width: '20vw',
+                    width: '200px',
                   }}
                   align="left"
                 >
@@ -108,7 +108,7 @@ const InformationSection = ({ path, admin }) => {
                     fontStyle: 'normal',
                     fontSize: '20px',
                     padding: '10px',
-                    width: '20vw',
+                    width: '200px',
                   }}
                   align="left"
                 >
@@ -134,7 +134,7 @@ const InformationSection = ({ path, admin }) => {
                     fontStyle: 'normal',
                     fontSize: '20px',
                     padding: '10px',
-                    width: '20vw',
+                    width: '200px',
                   }}
                   align="left"
                 >
@@ -160,7 +160,7 @@ const InformationSection = ({ path, admin }) => {
                     fontStyle: 'normal',
                     fontSize: '20px',
                     padding: '10px',
-                    width: '20vw',
+                    width: '200px',
                   }}
                   align="left"
                 >
@@ -186,7 +186,7 @@ const InformationSection = ({ path, admin }) => {
                     fontStyle: 'normal',
                     fontSize: '20px',
                     padding: '10px',
-                    width: '20vw',
+                    width: '200px',
                   }}
                   align="left"
                 >
@@ -221,7 +221,7 @@ const InformationSection = ({ path, admin }) => {
                       fontStyle: 'normal',
                       fontSize: '15px',
                       padding: '10px',
-                      width: '20vw',
+                      width: '200px',
                     }}
                   >
                     {el.first}
@@ -234,7 +234,7 @@ const InformationSection = ({ path, admin }) => {
                       fontStyle: 'normal',
                       fontSize: '15px',
                       padding: '10px',
-                      width: '20vw',
+                      width: '200px',
                     }}
                     align="left"
                   >
@@ -247,7 +247,7 @@ const InformationSection = ({ path, admin }) => {
                       fontStyle: 'normal',
                       fontSize: '15px',
                       padding: '10px',
-                      width: '20vw',
+                      width: '200px',
                     }}
                     align="left"
                   >
@@ -260,7 +260,7 @@ const InformationSection = ({ path, admin }) => {
                       fontStyle: 'normal',
                       fontSize: '15px',
                       padding: '10px',
-                      width: '20vw',
+                      width: '200px',
                     }}
                     align="left"
                   >
@@ -273,7 +273,7 @@ const InformationSection = ({ path, admin }) => {
                       fontStyle: 'normal',
                       fontSize: '15px',
                       padding: '10px',
-                      width: '20vw',
+                      width: '200px',
                     }}
                     align="left"
                   >

@@ -18,7 +18,7 @@ export const SkillTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '200px',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -38,7 +38,7 @@ export const SkillTable = ({ admin }) => {
 export const CoveredTrainingTable = ({ admin }) => {
   const { user } = useAuthContext()
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/ coveredTraining`).data;
+  const data = useCollection(`/user/${user.uid}/coveredTraining`).data;
   const headers = ['Сургалтын төрөл', 'Хэзээ', 'Хаана', 'Сургалтын хугацаа /цагаар/', 'Нэмэлт мэдээлэл'];
   const title = 'СУРГАЛТ';
   const tableHeadCell = {
@@ -46,7 +46,7 @@ export const CoveredTrainingTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '200px',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -75,7 +75,7 @@ export const MembershipInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '200px',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -103,7 +103,7 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '200px',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -131,7 +131,7 @@ export const HelpInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '200px',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -159,7 +159,7 @@ export const EmergencyContactPersonTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '200px',
     align: 'left',
   };
   const row = headers.map((el) => {
