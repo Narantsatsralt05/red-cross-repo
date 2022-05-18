@@ -12,6 +12,7 @@ import Input from '../../components/core/input';
 import Dropdown from '../../components/common/dropdown';
 import styled, { ThemeProvider } from 'styled-components';
 import { useAuthContext } from '../../common/context/AuthContext';
+import { addDocument, setDocument } from '../../common/services/firebase';
 
 const Parent = styled.div`
   & > div {
@@ -22,7 +23,7 @@ const Parent = styled.div`
 const SignUp = () => {
   const [check, setCheck] = useState(false);
   const { user, signUp, signUpError } = useAuthContext();
-
+console.log(user.uid)
   const YupShape = ({ max, match, min = 0, mongol, pass, email, number }) => {
     return Yup.string()
       .max(max, `Дээд хязгаар нь ${max} үсэг`)
@@ -70,6 +71,7 @@ const SignUp = () => {
   const checker = () => {
     setCheck(!check);
   };
+  const [genderValue , setGender] = useState()
   const option = ['Эр', 'Эм'];
   return (
     <Formik
@@ -89,6 +91,11 @@ const SignUp = () => {
     >
       {(formik) => {
         const { isValid, dirty, values } = formik;
+        values.gender = genderValue;
+        // console.log(values)
+        // const AddDoc = () => {
+        // setDocument(`/user/${user.uid}` , values)
+        // }
         return (
           <Form>
             <Stack width="100vw" height="100vh" fontFamily="Roboto">
@@ -116,7 +123,7 @@ const SignUp = () => {
                   <Stack>
                     <Stack
                       direction="row"
-                      gap="200px"
+                      gap="200"
                       justifyItems="space-between"
                       alignItems="space-between"
                       style={{ marginRight: '10px' }}
@@ -138,6 +145,7 @@ const SignUp = () => {
                                 borderRadius="8px"
                                 name="gender"
                                 input="Хүйс"
+                                setfirstValue={setGender}
                               ></Dropdown>
                             </Margin>
                           </label>
@@ -193,11 +201,9 @@ const SignUp = () => {
                           width="500px"
                           height="40px"
                           bc="#0066B3"
-                          onClick={() =>
-                            signUp(
-                              values
-                            )
-                          }
+                          color="white"
+                          fontSize="20px"
+                          onClick={() =>(signUp(values))}
                         >
                           {/* <Text
                             color="#fff"
