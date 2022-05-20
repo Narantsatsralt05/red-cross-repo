@@ -24,12 +24,15 @@ import grey from '../../assets/icon/grey.svg';
 import { useRouter } from 'next/router';
 import textGrammer from '../../assets/icon/textGrammer.svg';
 import { useRef } from 'react';
+import styled from 'styled-components';
+import { useDocument } from '../../common/services/firebase';
+import { useEffect } from 'react';
 
 const Admin = () => {
   let a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const router = useRouter();
   const [activeTab, setactiveTab] = useState();
-
+  const dataValue = useDocument('/count/8npCX1XzMKzfXDmeUlH0').data;
   const [searchValue, setSearchValue] = useState({
     value1: '',
     value2: '',
@@ -42,16 +45,23 @@ const Admin = () => {
   const searchButton = () => {
     setReadySearch(true);
   };
-  const firstInput = useRef(null);
-  const secondInput = useRef(null);
-  const thirdInput = useRef(null);
-  if (searchValue.value1.length >= 1) {
-    secondInput.current.focus();
-  }
-  if (searchValue.value2.length >= 1) {
-    thirdInput.current.focus();
-  }
+  const firstInput = useRef();
+  const secondInput = useRef();
+  const thirdInput = useRef();
+  useEffect(() => {
+    if (searchValue.value1.length >= 1) {
+      secondInput.current.focus();
+    }
+    if (searchValue.value2.length >= 1) {
+      thirdInput.current.focus();
+    }
+  }, [searchValue.value1, searchValue.value2]);
 
+  const ResponseInMobile = styled.div`
+    @media (max-width: 1570px) {
+      display: none;
+    }
+  `;
   const HeadNames = ({ text }) => {
     return (
       <Padding size={[0, 0, 5, 0]}>
@@ -75,26 +85,40 @@ const Admin = () => {
   };
   const tabs = {
     headers: [
-      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: 'admin' },
-      { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, path: 'admin' },
-      { text: 'IDK', photo: grey, path: 'admin' },
-      { text: 'IDK', photo: green, path: 'admin' },
+      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '', headName: '' },
+      { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, path: '', headName: 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ' },
+      { text: 'Гишүүдийн жагсаалт', photo: grey, path: '', headName: 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ' },
+      { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, path: '', headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
     ],
     body: [
-      <></>,
-      <VolunteerInformation />,
-      <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 115px)" direction="column">
-        <HeadNames text="ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ" />
+      <>1</>,
+      <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 130px)" direction="column">
+        <VolunteerInformation />
+      </Stack>,
+      <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 130px)" direction="column">
         <Registered />
       </Stack>,
-      <>4</>,
+      <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 130px)" direction="column">
+        <Registered />
+      </Stack>,
     ],
   };
 
   return (
     <Stack direction="column">
       <Header />
-      <Stack direction="row" justifyContent="space-between" bg="#FAFAFA" height="calc(100vh - 80px)">
+      {activeTab &&
+        tabs.headers.map((el, index) => {
+          if (index === activeTab) {
+            return <HeadNames key={index} text={el.headName} />;
+          }
+        })}
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        bg="#FAFAFA"
+        height={activeTab === undefined ? 'calc(100vh - 80px)' : 'calc(100vh - 160px)'}
+      >
         <Stack height="100%" alignItems="center" width={activeTab === undefined ? '15vw' : '100px'} direction="row">
           <Padding style={{ height: '100%', boxShadow: `0px 0px 8px rgba(0, 0, 0, 0.15)` }} size={[0, 30, 0, 30]}>
             <Stack height="100%" direction="column" justifyContent="space-between" alignItems="center">
@@ -120,7 +144,7 @@ const Admin = () => {
                                 alignItems="center"
                                 bg="#F4F4F4"
                                 direction="row"
-                                gap="5px"
+                                gap="3"
                               >
                                 <Border borderRadius="2px" borderColor="#0358A7">
                                   <Stack bg="#0358A7" height="40px" width="1px" />
@@ -136,15 +160,17 @@ const Admin = () => {
                             </Stack>
                           )}
                         </Margin>
-                        {activeTab === undefined && (
-                          <Margin size={[20, 0, 0, 20]}>
-                            <Stack alignItems="center" justifyContent="flex-start" width="10vw" height="3vh">
-                              <Text cursor="pointer" type="T1">
-                                {item.text}
-                              </Text>
-                            </Stack>
-                          </Margin>
-                        )}
+                        <ResponseInMobile>
+                          {activeTab === undefined && (
+                            <Margin size={[20, 0, 0, 20]}>
+                              <Stack alignItems="center" justifyContent="flex-start" width="10vw" height="3vh">
+                                <Text cursor="pointer" type="T1">
+                                  {item.text}
+                                </Text>
+                              </Stack>
+                            </Margin>
+                          )}
+                        </ResponseInMobile>
                       </Stack>
                     );
                   })}
@@ -168,12 +194,13 @@ const Admin = () => {
           <Stack height="93vh" bg="#F6F6F6" justifyContent="space-evenly" direction="column">
             <Margin size={[0, 30, 0, 40]}>
               <Stack justifyContent="space-between" flexWrap="wrap">
-                <Data text="НИЙТ " color={'#0066B3'}></Data>
-                <Data text="САЙН ДУРЫН ИДЭВХТЭН" color={'#626262'}></Data>
-                <Data text="ТУСЛАМЖ ХҮРТЭГЧ" color={'#DD5D00'}></Data>
-                <Data text="ГИШҮҮН" color={'#D90000'}></Data>
+                <Data value={dataValue?.all} text="НИЙТ " color={'#0066B3'}></Data>
+                <Data value={dataValue?.volunteerActivist} text="САЙН ДУРЫН ИДЭВХТЭН" color={'#626262'}></Data>
+                <Data value={dataValue?.helper} text="ТУСЛАМЖ ХҮРТЭГЧ" color={'#DD5D00'}></Data>
+                <Data value={dataValue?.member} text="ГИШҮҮН" color={'#D90000'}></Data>
               </Stack>
             </Margin>
+
             <Margin size={[0, 0, 0, 40]}>
               <Stack direction="column" height="75px" justifyContent="space-between">
                 <Text fontSize="14px">РЕГИСТРИЙН ДУГААР БИЧНЭ ҮҮ.</Text>
