@@ -32,20 +32,11 @@ const PersonalUserInfo = () => {
             </div>,
         ]
     }
-    const data = {
-        headers: [
-            { text: 'Нүүр' },
-            { text: 'Үндсэн мэдээлэл' }
-        ],
-        body: [
-            <div>nuur</div>,
-            <Tabs type={'column'} data={dataH} />
-        ]
-    }
+
     return (
 
         <Stack justifyContent='start' >
-            <Tabs type='row' data={data} />
+            <Tabs type='column' data={dataH} />
         </Stack>
     )
 }

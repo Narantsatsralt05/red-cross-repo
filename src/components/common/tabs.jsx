@@ -57,6 +57,11 @@ export const Tabs = ({ type, data }) => {
       font-weight: 600;
    
   }`
+  const Hidden = styled.div`
+      @media(max-width : 1000px) {
+        display:none;
+      } 
+  `
   return (
     <Stack direction={type === 'row' ? 'column' : 'row'} justifyContent='start' width='100vw'>
       <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -95,7 +100,7 @@ export const Tabs = ({ type, data }) => {
         ) : type == 'column' ? (
           <div style={{ marginLeft: '10px', marginTop: '1%' }}>
             <Border borderColor="#E5E5E5" borderRadius="10px" >
-              <Stack height="90vh" direction="column" >
+              <Stack height="75vh" direction="column" >
                 {data ? (
                   data.headers.map((item, index) => {
                     return (
@@ -107,7 +112,7 @@ export const Tabs = ({ type, data }) => {
                         }}
                       >
                         <img style={{ marginRight: '10px', width: '25px' }} src={item.icon.src} />
-                        <Hide >{item.text}</Hide>
+                        <Hidden>{item.text}</Hidden>
                       </RowButton>
                     );
                   })

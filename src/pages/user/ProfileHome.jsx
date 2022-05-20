@@ -9,6 +9,7 @@ import {
 } from '../../components/common/informationSections/sections';
 import { useCollection, useDocument } from '../../common/services/firebase';
 import { useAuthContext } from '../../common/context/AuthContext';
+import UserInfo from '../../components/common/userInfo';
 
 const ProfileHome = () => {
   const { user } = useAuthContext();
@@ -96,14 +97,14 @@ const ProfileHome = () => {
             </Padding>
 
             <Stack direction="column" width="100vw" gap="30">
-              <VolunteerWorkInformationTable />
+              <VolunteerWorkInformationTable/>
               <MembershipInformationTable />
               <HelpInformationTable />
             </Stack>
           </Stack>
         </Padding>
       </Stack>,
-      <div>Үндсэн мэдээлэл</div>,
+      <div><UserInfo /></div>,
     ],
   };
   return (
