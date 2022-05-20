@@ -106,7 +106,7 @@ const UserInfo = ({ isStep }) => {
                 <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='disabilities' value={value?.disabilities} setdropValue={setValue} dropValue={value} width='400px' />
               </Stack>
             </Stack>
-            <Button width='140px' height='33px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' onClick={add} >Дараагийн алхам</Button>
+            {/* <Button width='140px' height='33px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' onClick={add} >Дараагийн алхам</Button> */}
           </Stack>
         </Padding>
       </Stack>
@@ -119,10 +119,10 @@ const UserInfo = ({ isStep }) => {
               <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ </Text>2
             </Stack>
 
-            <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='83vw' >
+            <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='97vw' >
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Регистрийн дугаар{<Text color="red">*</Text>} </Text>
-                <StyledInput width='400px' height='35px' width='400px' disabled value={Info?.RD} />
+                <StyledInput width='400px' height='35px' disabled value={Info?.RD} />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Овог{<Text color="red">*</Text>}</Text>
@@ -143,7 +143,7 @@ const UserInfo = ({ isStep }) => {
             <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='100%'>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Төрсөн он/сар/өдөр{<Text color="red">*</Text>} </Text>
-                <StyledInput width='400px' height='35px' onChange={handleChange} id='birthdate' value={value?.birthdate} onChange={(e) => setValue({ ...value, birthdate: e.target.value })} />
+                <StyledInput width='400px' height='35px' id='birthdate' value={value?.birthdate} onChange={(e) => {handleChange ,setValue({ ...value, birthdate: e.target.value })} } />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">И-мэйл хаяг*{<Text color="red">*</Text>}</Text>
@@ -156,12 +156,12 @@ const UserInfo = ({ isStep }) => {
               <Stack direction="column" gap="12">
                 <Stack direction="column" gap="12">
                   <Text fontSize="12px">Амьдарч буй, аймаг/хот{<Text color="red">*</Text>}</Text>
-                  <Dropdown height='35px' arr={StateData && Object.keys(StateData)} width='400px' onClick={setdist} value={value?.city} onClick={(e) => setValue({ ...value, city: e })} />
+                  <Dropdown height='35px' arr={StateData && Object.keys(StateData)} width='400px'  value={value?.city} onClick={(e) => {setValue({ ...value, city: e }) , setdist}} />
                 </Stack>
               </Stack>
             </Stack>
 
-            <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' justifyContent='space-between' width='100%'>
+            <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between'  width='100%'>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Сум/дүүрэг{<Text color="red">*</Text>}</Text>
                 <Dropdown height='35px' arr={StateData && StateData[dist].district} id='district' width='400px' value={value?.district} setdropValue={setValue} dropValue={value} onClick={(e) => setValue({ ...value, district: e })} />

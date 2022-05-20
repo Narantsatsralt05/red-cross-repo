@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Border, Box, Button, Margin, Position, Stack, Text } from '..';
 import theme from "../../theme/theme"
+import Success from '../../pages/successPage';
 const OnDesktop = styled.div`
   @media (max-width: 1050px) {
     display: none;
@@ -24,7 +25,7 @@ export const Stepper = ({ data }) => {
     setStep(step + 1);
   };
   if (step === 5) {
-    setStep(1);
+    return <Success/>;
   }
   return (
     <Box>
@@ -95,7 +96,7 @@ export const Stepper = ({ data }) => {
             ) : (
               ''
             )}
-            <Button width="126px" height="50px" bgColor="#0066B3" borderRadius="2px" onClick={next}>
+            <Button style={{marginLeft: '30px'}} width="180px" height="50px" bgColor="#0066B3" borderRadius="5px" onClick={next}>
               <Text cursor="pointer" color="#fff">
                 Дараагийн алхам
               </Text>
@@ -106,4 +107,3 @@ export const Stepper = ({ data }) => {
     </Box>
   );
 };
-

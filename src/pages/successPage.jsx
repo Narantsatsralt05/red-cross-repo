@@ -2,11 +2,11 @@ import { Button, Margin, Stack, Text, Border } from '../components';
 import React from 'react';
 import {Header} from '../components/common/header'
 import { CorrectIcon } from '../assets/icon/correctIcon'
+import Link from 'next/link';
 
 const Success = () => {
     return (
         <Stack direction="column">
-            <Header/>
             <Margin size={[270, 0, 0, 0]}>
                 <Stack direction="column" justifyContent="center" alignItems="center">
                 <Border overFlow="hidden" borderRadius="50%" borderColor="#4FBF75">
@@ -26,11 +26,13 @@ const Success = () => {
                         borderRadius="2px"
                         bgColor="#0066B3"
                         color="#fff"
-                        // onClick={() => }
+                        onClick={() => {}}
                     >
-                        <Text type="T2Bold" >
-                            Үндсэн хуудас руу шилжих
-                        </Text> 
+                        <Link href="/user/ProfileHome">
+                            <Text type="T2Bold" >
+                                Үндсэн хуудас руу шилжих
+                            </Text> 
+                        </Link>
                     </Button>
                 </Stack>
             </Margin>
