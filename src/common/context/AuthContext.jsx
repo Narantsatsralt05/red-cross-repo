@@ -28,11 +28,11 @@ export const AuthProvider = ({ children }) => {
     const login = (email, password, setTrue) => {
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
-                setTrue(true)
+                // setTrue(true)
             })
             .catch((error) => {
                 setLoginError(error.message);
-                setTrue(false)
+                // setTrue(false)
             });
     };
 

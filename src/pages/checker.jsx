@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useCollection } from '../common/services/firebase';
+import { useCollection, useDocumentWithUserOnce } from '../../common/services/firebase';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../common/context/AuthContext';
 import { Loading } from '../components';
