@@ -173,11 +173,7 @@ console.log(user.uid)
                       <Border borderColor="#1890FF" borderRadius="8px">
                         <Stack direction="row">
                           <Padding size={[22, 0, 0, 15]}>
-<<<<<<< Updated upstream
-                            <Image src={Info} width={35} height="35px" />
-=======
                             <img src={Info.src} width={35} height="35px"/>
->>>>>>> Stashed changes
                           </Padding>
                           <Padding size={[25, 10, 10, 10]}>
                             <Text type="T1">Үйлчилгээний нөхцөл</Text>
