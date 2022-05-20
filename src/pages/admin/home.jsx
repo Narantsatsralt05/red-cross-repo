@@ -9,7 +9,7 @@ const AdminHome = () => {
   const { user } = useAuthContext();
   const router = useRouter();
   const userData = useCollection('/user');
-
+  
   useEffect(() => {
     if (user === null) {
       router.push('/user');
