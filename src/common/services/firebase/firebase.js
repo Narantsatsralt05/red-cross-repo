@@ -18,6 +18,7 @@ import {
 import { getAuth } from 'firebase/auth';
 import { filter, tap } from 'rxjs';
 import { identity } from 'lodash';
+import CommunicationBusiness from 'material-ui/svg-icons/communication/business';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA55oxgyOBRJ1pj_YN5H2d7fPE0yRdEXLE',
@@ -103,6 +104,7 @@ export const useDocumentWithUser = () => {
     if (!firestore || !auth || !user) {
       return;
     }
+    console.log(userData)
     const subscription = docData(doc(firestore, `${USER_HOME}/${user.uid}`), { idField: 'uid' }).subscribe(
       (documentData) => {
         documentData && setUserData(documentData);
@@ -121,17 +123,16 @@ export const useDocumentWithUserOnce = () => {
   const [userData, setUserData] = useState();
   const { user } = useUser();
   useEffect(() => {
-    if (!firestore || !auth || !user || userData) {
-      return;
-    }
-    getDoc(doc(firestore, `${USER_HOME}/${user.uid}`))
-      .then((documentSnap) => {
-        setUserData({ ...documentSnap.data(), uid: user.uid });
-      })
-      .catch((error) => console.log(error));
-  }, [user, userData]);
-
-  return [userData, setUserData];
+      if (!firestore || !auth || !user || userData) {
+        return;
+      }
+      getDoc(doc(firestore, `${USER_HOME}/${user.uid}`))
+        .then((documentSnap) => {
+          setUserData({ ...documentSnap.data(), uid: user.uid });
+        })
+        .catch((error) => console.log(error));
+  }, []);
+  return [userData, auth, user];
 };
 
 export const addDocument = (path, data) => {
