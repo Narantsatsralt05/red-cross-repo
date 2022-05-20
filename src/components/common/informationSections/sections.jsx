@@ -1,13 +1,13 @@
 import React from 'react';
 import TableCell from '@mui/material/TableCell';
 import { useTheme } from '../../../theme/theme';
-import { useCollection } from '../../../common/services/firebase';
+import { useCollection, useDocument } from '../../../common/services/firebase';
 import { InformationTable } from './table';
 import { Text } from '../..';
 import { useAuthContext } from '../../../common/context/AuthContext';
 
 export const SkillTable = ({ admin }) => {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const { color } = useTheme();
   const data = useCollection(`/user/${user.uid}/skills`).data;
   const headers = ['Ур чадвар', 'Ур чадварын түвшин', 'Тайлбар'];
@@ -18,7 +18,7 @@ export const SkillTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '200px',
+    width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -31,14 +31,14 @@ export const SkillTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.skill, el.skillLevel, el.explanation];
   });
- 
-    return <InformationTable admin={admin} title={title} row={row} body={body} data={data} headers={headers} />
+
+  return <InformationTable admin={admin} title={title} row={row} body={body} data={data} headers={headers} />;
 };
 
 export const CoveredTrainingTable = ({ admin }) => {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/coveredTraining`).data;
+  const data = useCollection(`/user/${user.uid}/ coveredTraining`).data;
   const headers = ['Сургалтын төрөл', 'Хэзээ', 'Хаана', 'Сургалтын хугацаа /цагаар/', 'Нэмэлт мэдээлэл'];
   const title = 'СУРГАЛТ';
   const tableHeadCell = {
@@ -46,7 +46,7 @@ export const CoveredTrainingTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '200px',
+    width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -60,12 +60,11 @@ export const CoveredTrainingTable = ({ admin }) => {
     return [el.trainingType, el.when, el.where, el.trainingTime, el.additionalInformation];
   });
 
- 
-    return <InformationTable admin={admin} title={title} row={row} body={body}  headers={headers} />
+  return <InformationTable admin={admin} title={title} row={row} body={body} headers={headers} />;
 };
 
 export const MembershipInformationTable = ({ admin }) => {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const { color } = useTheme();
   const data = useCollection(`/user/${user.uid}/membershipInformation`).data;
   const headers = ['Гишүүнчлэлийн төрөл', 'Эхэлсэн', 'Дууссан', 'Нэмэлт мэдээлэл'];
@@ -75,7 +74,7 @@ export const MembershipInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '200px',
+    width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -88,12 +87,12 @@ export const MembershipInformationTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.membershipType, el.startDate, el.endDate, el.additionalInformation];
   });
- 
-    return <InformationTable admin={admin} title={title} row={row} body={body}  headers={headers}  data={data} />
+
+  return <InformationTable admin={admin} title={title} row={row} body={body} headers={headers} data={data} />;
 };
 
 export const VolunteerWorkInformationTable = ({ admin }) => {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const { color } = useTheme();
   const data = useCollection(`/user/${user.uid}/volunteerWorkInformation`).data;
   const headers = ['Сайн дурын ажил', 'Хугацаа', 'Он сар өдөр', 'Нэмэлт мэдээлэл'];
@@ -103,7 +102,7 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '200px',
+    width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -116,12 +115,12 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.volunteering, el.time, el.date, el.additionalInformation];
   });
- 
-    return <InformationTable admin={admin} title={title} row={row} body={body} data={data} headers={headers}/>
+
+  return <InformationTable admin={admin} title={title} row={row} body={body} data={data} headers={headers} />;
 };
 
 export const HelpInformationTable = ({ admin }) => {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const { color } = useTheme();
   const data = useCollection(`/user/${user.uid}/helpInformation`).data;
   const headers = ['Тусламжийн төрөл', 'Эхэлсэн', 'Дууссан', 'Нэмэлт мэдээлэл'];
@@ -131,7 +130,7 @@ export const HelpInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '200px',
+    width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -144,12 +143,12 @@ export const HelpInformationTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.typeOfAssistance, el.startDate, el.endDate, el.additionalInformation];
   });
- 
-    return <InformationTable admin={admin} title={title} row={row} body={body}  headers={headers}/>
+
+  return <InformationTable admin={admin} title={title} row={row} body={body} headers={headers} />;
 };
 
 export const EmergencyContactPersonTable = ({ admin }) => {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
   const { color } = useTheme();
   const data = useCollection(`/user/${user.uid}/EmergencyContactPerson`).data;
   const headers = ['Таны юу болох', 'Овог, нэр', 'Утасны дугаар'];
@@ -159,7 +158,7 @@ export const EmergencyContactPersonTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-    width: '200px',
+    width: '20vw',
     align: 'left',
   };
   const row = headers.map((el) => {

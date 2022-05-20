@@ -92,9 +92,9 @@ const DataTable = () => {
                   <TableCell style={tableCellStyle}>{el.phoneNumber}</TableCell>
                   <TableCell style={tableCellStyle}>
                     <div style={{ display: 'flex', gap: '5%', fontWeight: '300', fontStyle: 'light' }}>
-                      {el.status.beneficiary === true && <Status role={'green'} />}
-                      {el.status.member === true && <Status role={'grey'} />}
-                      {el.status.volunteer === true && <Status role={'blue'} />}
+                      {el.beneficiary === true && <Status role={'green'} />}
+                      {el.member === true && <Status role={'grey'} />}
+                      {el.volunteer === true && <Status role={'blue'} />}
                     </div>
                   </TableCell>
                 </TableRow>

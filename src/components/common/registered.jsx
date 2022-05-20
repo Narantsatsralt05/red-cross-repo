@@ -14,7 +14,7 @@ export const Registered = ({ e }) => {
     0,
   ];
   return (
-    <Stack width="94%" height="100%" justifyContent="space-between" direction="column">
+    <Stack width="100%" height="100%" justifyContent="space-between" direction="column">
       <Stack width="100%" height="7%" justifyContent="flex-end" alignItems="center">
         <Margin size={[0, 80, 0, 0]}>
           <Stack justifyContent="space-evenly" gap="35">

@@ -6,32 +6,50 @@ import plus from '../../assets/icon/plus.svg';
 import shape from '../../assets/icon/Shape.svg';
 import Styledinput from '../core/input';
 import excel from '../../assets/icon/excel.svg';
+import { useAuthContext } from '../../common/context/AuthContext';
+import { useTheme } from '../../theme/theme';
+import { useCollection } from '../../common/services/firebase';
+import { TableCell } from '@mui/material';
+import { InformationTable } from './informationSections/table';
+
+export const ListOfRegisteredVolunteersTable = ({ admin }) => {
+  const { user } = useAuthContext();
+  const { color } = useTheme();
+  const data = useCollection('/user').data;
+
+  const headers = [
+    'Регистрийн дугаар',
+    'Овог',
+    'Нэр',
+    'Төрөл',
+    'Он сар өдөр',
+    'Сайн дурын ажил хийсэн хугацаа',
+    'Нэмэлт мэдээлэл',
+  ];
+  const tableHeadCell = {
+    border: 'none',
+    color: color.primary.black,
+    fontStyle: 'normal',
+    padding: '10px',
+    width: '20vw',
+    align: 'left',
+  };
+  const row = headers.map((el) => {
+    return (
+      <TableCell style={tableHeadCell}>
+        <Text type="T1">{el}</Text>
+      </TableCell>
+    );
+  });
+  const body = data.map((el) => {
+    return ['УК94092597', 'Даваа', 'Нямсамбуу', 'Гэрийн эргэлт', '2018.05.01', '2 цаг', 'Халамжлуулагч Ц.Батынд'];
+  });
+  return <InformationTable admin={admin} row={row} body={body} headers={headers} />;
+};
 
 export const VolunteerInformation = () => {
-  const HeadNames = ({ text }) => {
-    return (
-      <Padding size={[0, 0, 5, 0]}>
-        <Border
-          style={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)' }}
-          borderColor="#EDEDED"
-          borderRadius="10px"
-          overFlow="hidden"
-        >
-          <Stack bg="#FFFFFF" width="100%" height="80px" justifyContent="flex-start" alignItems="center">
-            <Margin size={[0, 0, 0, 30]}>
-              <Stack direction="column" gap="10px">
-                <Text type="H2">{text}</Text>
-                <Stack bg="#0066B3" width="100%" height="1px" />
-              </Stack>
-            </Margin>
-          </Stack>
-        </Border>
-      </Padding>
-    );
-  };
   return (
-    <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 115px)" direction="column">
-      <HeadNames text="САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ" />
+    <Stack bg="#FAFAFA" height="100%" width="100%" direction="column">
       <Margin size={[20, 0, 0, 35]}>
         <Stack width="100%" justifyContent="space-between" alignItems="center">
           <Stack width="24%" justifyContent="space-between" alignItems="center">
@@ -51,6 +69,7 @@ export const VolunteerInformation = () => {
           </Margin>
         </Stack>
       </Margin>
+      <ListOfRegisteredVolunteersTable />
     </Stack>
   );
 };

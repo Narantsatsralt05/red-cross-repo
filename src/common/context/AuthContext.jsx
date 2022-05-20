@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
             auth
                 .createUserWithEmailAndPassword(email, password1)
                 .then(() => {
-                    router.push('/home');
+                    router.push('/login');
                     alert('signUp successfully');
                     console.log('signUp amjilttai XD');
                 })
