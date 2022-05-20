@@ -27,11 +27,6 @@ const UseOnTablet = () => {
         // which is pressed
         setEvent(event.key);
     };
-
-    const test = async () => {
-        setLoader(true)
-        await login(form.email, form.password, setTrue)
-    }
     useEffect(() => {
         if (isTrue) {
             setLoader(false)
@@ -46,7 +41,7 @@ const UseOnTablet = () => {
     };
 
     if (event === 'Enter') {
-        login(form.email, form.password);
+        login(form.email, form.password, setTrue);
     }
     return (
         <Stack direction="row" width="100%" height="100vh">
@@ -154,7 +149,7 @@ const UseOnTablet = () => {
                         borderRadius="5px"
                         bgColor="#0066B3"
                         color="#fff"
-                        onClick={() => login(form.email, form.password)}
+                        onClick={() => login(form.email, form.password, setTrue)}
                     >
                         <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={() => login(form.email, form.password)}>
                             НЭВТРЭХ
