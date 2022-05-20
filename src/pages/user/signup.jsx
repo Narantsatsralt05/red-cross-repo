@@ -66,17 +66,17 @@ const SignUp = () => {
     phoneNumber: YupShape({ max: 8, min: 8, match: 1 }),
     password: YupShape({ max: 100, min: 6, pass: 1 }),
     passwordConfirm: YupShape({ max: 100, min: 6, pass: 1 }),
-    email: YupShape({ max: 100, email: true}),
+    email: YupShape({ max: 100, email: true }),
   });
   const checker = () => {
     setCheck(!check);
   };
-  const [genderValue , setGender] = useState()
+  const [genderValue, setGender] = useState();
   const option = ['Эр', 'Эм'];
   const onClickChange = (values) => {
     signUp(values);
     setShowModal(true);
-  }
+  };
   return (
     <Formik
       initialValues={{
@@ -96,10 +96,6 @@ const SignUp = () => {
       {(formik) => {
         const { isValid, dirty, values } = formik;
         values.gender = genderValue;
-        // console.log(values)
-        // const AddDoc = () => {
-        // setDocument(`/user/${user.uid}` , values)
-        // }
         return (
           <Form>
             <Stack width="100vw" height="100vh" fontFamily="Roboto">
@@ -174,7 +170,7 @@ const SignUp = () => {
                       <Border borderColor="#1890FF" borderRadius="8px">
                         <Stack direction="row">
                           <Padding size={[22, 0, 0, 15]}>
-                            <img src={Info.src} width={35} height="35px"/>
+                            <img src={Info.src} width={35} height="35px" />
                           </Padding>
                           <Padding size={[25, 10, 10, 10]}>
                             <Text type="T1">Үйлчилгээний нөхцөл</Text>
@@ -199,35 +195,25 @@ const SignUp = () => {
                     </Margin>
                   </Stack>
                   <Margin size={[40, 0, 0, 0]}>
-                        <Button
-                          borderRadius="8px"
-                          bgColor="#0066B3"
-                          width="500px"
-                          height="40px"
-                          bc="#0066B3"
-                          color="white"
-                          fontSize="20px"
-                          onClick={() => onClickChange(values)}
-                        >
-                          {/* <Text
-                            color="#fff"
-                            type="H3"
-                            onClick={() =>
-                              signUp(
-                                values
-                              )
-                            }
-                          > */}
-                            БҮРТГҮҮЛЭХ
-                          {/* </Text> */}
-                        </Button>
+                    <Button
+                      borderRadius="8px"
+                      bgColor="#0066B3"
+                      width="500px"
+                      height="40px"
+                      bc="#0066B3"
+                      color="white"
+                      fontSize="20px"
+                      onClick={() => onClickChange(values)}
+                    >
+                      БҮРТГҮҮЛЭХ
+                    </Button>
                   </Margin>
                 </Stack>
                 <Position position="fixed" bottom="3vh" left="4vw">
                   <Text color="#757575" type="T2">
                     @ 2018-2021 Монголын улаан загалмай нийгэмлэг
                   </Text>
-                  {showModal && <BasicModal/>}
+                  {showModal && <BasicModal showModal={showModal} />}
                 </Position>
               </Stack>
               <Stack
