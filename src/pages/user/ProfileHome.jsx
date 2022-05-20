@@ -1,96 +1,96 @@
-
 import { Stack, Text, Padding, Border, Margin } from '../../components';
-import {FullShadow,WarningShadow} from "../../components/core/shadow"
-import {Header} from '../../components/common/header';
+import { FullShadow, WarningShadow } from '../../components/core/shadow';
+import { Header } from '../../components/common/header';
 import { Tabs } from '../../components/common/tabs';
 import {
   MembershipInformationTable,
   VolunteerWorkInformationTable,
   HelpInformationTable,
 } from '../../components/common/informationSections/sections';
-import { useCollection } from '../../common/services/firebase';
+import { useCollection, useDocument } from '../../common/services/firebase';
+import { useAuthContext } from '../../common/context/AuthContext';
 
 const ProfileHome = () => {
-  const { data: volunteercount } = useCollection(`/user/Y2Aiw9KPlijMFfTHIpsy/volunteerWorkInformation`);
-  const { data: membership } = useCollection('/user/Y2Aiw9KPlijMFfTHIpsy/membershipInformation');
-  const startDate = membership[0]?.startDate?.split('.').map((e) => parseInt(e, 10));
-  const endDate = membership[0]?.endDate?.split('.').map((e) => parseInt(e, 10));
-
+  const { user } = useAuthContext();
+  const { data: volunteercount } = useCollection(`/user/${user?.uid}/volunteerWorkInformation`);
+  const { data: membership } = useCollection(`/user/${user?.uid}/membershipInformation`);
+  const { data: helpNumer } = useCollection(`user/${user?.uid}/help`);
+  const { data: document } = useDocument(`/user/${user?.uid}`);
+  const { data: help } = useCollection(`/user/${user?.uid}/helpInformation`);
+  const date = membership[0]?.startDate;
+  const memberType = membership[0]?.membershipType;
   const tabData = {
     headers: [{ text: 'Нүүр' }, { text: 'Үндсэн мэдээлэл' }],
     body: [
       <Stack width="100vw" direction="column">
-        <Padding size={[0,0, 0, 0]}>
-          <Stack direction="column" gap="40px">
+        <Padding size={[0, 0, 0, 0]}>
+          <Stack direction="column" gap="40">
             <Padding size={[20, 20, 20, 20]}>
-              <Stack width="100%" direction="row" gap="50px" flexWrap="wrap">
+              <Stack width="100%" direction="row" gap="50" flexWrap="wrap">
                 <FullShadow>
-                <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
-                  
+                  <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
                     <Stack
-                    width="300px"
-                    height="170px"
-                    direction="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="15"
-                  >
-                    <Text type={'H3'} color="#0358A7">
-                      {volunteercount.length}
-                    </Text>
-                    <Stack textAlign="center" width="80%">
-                      <Text type={'ThinH1'}>Сайн дурын ажил хийсэн тоо</Text>
+                      width="300px"
+                      height="170px"
+                      direction="column"
+                      justifyContent="center"
+                      alignItems="center"
+                      gap="15"
+                    >
+                      <Text type={'H3'} color="#0358A7">
+                        {volunteercount?.length}
+                      </Text>
+                      <Stack textAlign="center" width="80%">
+                        <Text type={'ThinH1'}>Сайн дурын ажил хийсэн тоо</Text>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                  
-                  
-                </Border>
+                  </Border>
                 </FullShadow>
                 <FullShadow>
-                <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
-                  <Stack
-                    width="300px"
-                    height="170px"
-                    direction="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="15"
-                  >
-                    <Text
-                      type={'H3'}
-                      color="#0358A7
-"
+                  <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
+                    <Stack
+                      width="300px"
+                      height="170px"
+                      direction="column"
+                      justifyContent="center"
+                      alignItems="center"
+                      gap="15"
                     >
-                      {startDate && startDate[0] + '.' + startDate[1] + '.' + startDate[2]}
-                    </Text>
-                    <Stack textAlign="center" width="80%">
-                      <Text type={'ThinH1'}>Гишүүнчлэлийн мэдээлэл</Text>
+                      <Text
+                        type={'H3'}
+                        color="#0358A7
+"
+                      >
+                        {membership[0]?.startDate}
+                      </Text>
+                      <Stack textAlign="center" width="80%">
+                        <Text type={'ThinH1'}>Гишүүнчлэлийн мэдээлэл</Text>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                </Border>
+                  </Border>
                 </FullShadow>
                 <FullShadow>
-                <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
-                  <Stack
-                    width="300px"
-                    height="170px"
-                    direction="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    gap="15"
-                  >
-                    <Text
-                      type={'H3'}
-                      color="#0358A7
-"
+                  <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
+                    <Stack
+                      width="300px"
+                      height="170px"
+                      direction="column"
+                      justifyContent="center"
+                      alignItems="center"
+                      gap="15"
                     >
-                      1
-                    </Text>
-                    <Stack textAlign="center" width="80%">
-                      <Text type={'ThinH1'}>Тусламжийн тоон мэдээлэл</Text>
+                      <Text
+                        type={'H3'}
+                        color="#0358A7
+"
+                      >
+                        {help.length}
+                      </Text>
+                      <Stack textAlign="center" width="80%">
+                        <Text type={'ThinH1'}>Тусламжийн тоон мэдээлэл</Text>
+                      </Stack>
                     </Stack>
-                  </Stack>
-                </Border>
+                  </Border>
                 </FullShadow>
               </Stack>
             </Padding>
@@ -126,44 +126,31 @@ const ProfileHome = () => {
                 </Text>
               </Stack>
               <Stack gap="5px">
-                <Text type="ThinH2">
-                  Харьяалал:  
-                </Text>
+                <Text type="ThinH2">Харьяалал:</Text>
                 <Text type="ThinH2"> Баянзүрх дүүргийн Улаан загалмай хороо</Text>
               </Stack>
-              
             </Stack>
           </Margin>
-          <Margin size={[20,40,20,20]}>
+          <Margin size={[20, 40, 20, 20]}>
             <Stack direction="column" gap="4">
-            <Text color="#0066B3">Төлөв</Text>
-            <Stack alignItems='center' direction="row" gap="5px">
-              <Text type="H2">Сайн дурын идэвхтэн:</Text>
-              <Text type="ThinH2">true</Text>
-            </Stack>
+              <Text color="#0066B3">Төлөв</Text>
+              <Stack alignItems="center" direction="row" gap="5px">
+                <Text type="H2">Сайн дурын идэвхтэн:</Text>
+                <Text type="ThinH2">{document?.volunteer}</Text>
+              </Stack>
 
-            <Stack alignItems='center' direction="row" gap="5px">
-              <Text type="H2">Гишүүнчлэл:</Text>
-              <Text type="ThinH2">
-                {endDate &&
-                  membership[0]?.membershipType +
-                    '/' +
-                    endDate[0] +
-                    '.' +
-                    endDate[1] +
-                    '.' +
-                    endDate[2] +
-                    '/' +
-                    'дуусна'}
-              </Text>
+              <Stack alignItems="center" direction="row" gap="5px">
+                <Text type="H2">Гишүүнчлэл:</Text>
+                <Text type="ThinH2">
+                  {memberType}/{date}/?
+                </Text>
+              </Stack>
+              <Stack alignItems="center" direction="row" gap="5px">
+                <Text type="H2">Цусны донор:</Text>
+                <Text type="ThinH2">{document?.bloodDonor}</Text>
+              </Stack>
             </Stack>
-            <Stack alignItems='center' direction="row" gap="5px">
-              <Text type="H2">Цусны донор:</Text>
-              <Text type="ThinH2">NONE</Text>
-            </Stack>
-          </Stack>
           </Margin>
-          
         </Stack>
         <Tabs data={tabData} type="row" />
       </Stack>

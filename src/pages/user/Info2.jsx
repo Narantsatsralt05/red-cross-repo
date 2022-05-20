@@ -29,7 +29,7 @@ const StyledCheckBox = styled.input.attrs({ type: 'checkbox' })`
         background-image: url('${icon.src}');
     }
 `
-export const UserInfo2 = () => {
+const UserInfo2 = () => {
     return (
         <Stack direction='column' style={{ height: 'fit-content', width: '100vw', backgroundColor: 'rgb(245, 247, 249)', paddingLeft: '30px' }}>
             <Stack style={{ marginBottom: '30px', marginTop: '30px' }} direction='row'><Text type="H4">2. САЙН ДУРЫН АЖЛЫН ТУРШЛАГА</Text></Stack>
@@ -59,3 +59,5 @@ export const UserInfo2 = () => {
         </Stack>
     )
 }
+
+export default UserInfo2;

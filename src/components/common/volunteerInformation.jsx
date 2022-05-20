@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+
 import { Margin, Stack, Text, Border, Padding } from '..';
 import line from '../../assets/icon/line.svg';
 import plus from '../../assets/icon/plus.svg';
@@ -56,15 +56,15 @@ export const VolunteerInformation = () => {
             <Text type="T2" style={{ textAlign: 'center' }}>
               Бүртгэлтэй сайн дурын ажлын жагсаалт (5)
             </Text>
-            <Image src={line}></Image>
-            <Image src={plus}></Image>
+            <img src={line.src}/>
+            <img src={plus.src}/>
             <Text type="T2">Нэмэх</Text>
           </Stack>
           <Margin size={[0, 80, 0, 0]}>
             <Stack justifyContent="space-evenly" gap="25">
-              <Image src={shape}></Image>
+              <img src={shape.src}/>
               <Styledinput width="350px" placeholder="хайх"></Styledinput>
-              <Image src={excel}></Image>
+              <img src={excel.src}/>
             </Stack>
           </Margin>
         </Stack>

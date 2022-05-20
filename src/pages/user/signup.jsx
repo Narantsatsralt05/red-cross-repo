@@ -5,7 +5,6 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { Border, Position, Padding } from '../../components';
 import Logo from '../../assets/icon/logo.svg';
-import Image from 'next/image';
 import SignUpBg from '../../assets/image/signupBg.png';
 import Info from '../../assets/icon/info.svg';
 import Input from '../../components/core/input';
@@ -101,7 +100,7 @@ console.log(user.uid)
             <Stack width="100vw" height="100vh" fontFamily="Roboto">
               <Stack width="100vw" justifyContent="center">
                 <Stack direction="column" alignItems="center">
-                  <Image src={Logo} width={90} height={90} />
+                  <img src={Logo.src} width={90} height={90} />
                   <Margin size={[30, 0, 0, 0]}>
                     <Text color="#0066B3" type="T1" cursor="pointer">
                       МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
@@ -170,7 +169,7 @@ console.log(user.uid)
                       <Border borderColor="#1890FF" borderRadius="8px">
                         <Stack direction="row">
                           <Padding size={[22, 0, 0, 15]}>
-                            <Image src={Info} width={35} height="35px" />
+                            <img src={Info.src} width={35} height="35px"/>
                           </Padding>
                           <Padding size={[25, 10, 10, 10]}>
                             <Text type="T1">Үйлчилгээний нөхцөл</Text>

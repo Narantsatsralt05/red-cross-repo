@@ -1,6 +1,6 @@
 import { Button, Margin, Stack, Text, Border } from '../components';
 import React from 'react';
-import Header from '../components/common/header'
+import {Header} from '../components/common/header'
 import { CorrectIcon } from '../assets/icon/correctIcon'
 
 const Success = () => {

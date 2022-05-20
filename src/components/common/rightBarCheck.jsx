@@ -10,7 +10,7 @@ import {
     Text,
 } from '../index';
 import Select from '../common/dropdown'
-import Image from 'next/image';
+
 import exit from '../../assets/icon/Group 5 (1).svg'
 import Styledinput from '../core/input';
 import Trash from '../../assets/icon/image 1.svg'
@@ -125,7 +125,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                             <Margin size={[4, 40, 0, 0]} style={{ width: '280px' }} >
                                                                 {title} ЗАСАХ
                                                             </Margin>
-                                                            <Image src={exit} onClick={() => { setCheckBar(false), setBar(false) }} />
+                                                            <img src={exit.src} onClick={() => { setCheckBar(false), setBar(false) }} />
                                                         </Stack>
                                                     </Margin>
                                                     <Margin size={[30, 0, 0, 0]}>
@@ -232,7 +232,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                 <Margin size={[0, 0, 0, 0]}>
                                                                     <Padding size={[20, 0, 0, 0]}>
                                                                         {el ? <Stack direction='row' width='21vw' >
-                                                                            <Image width='20px' height='20px' src={Trash} onClick={() => setDeleteDoc(true)} />
+                                                                            <img width='20px' height='20px' src={Trash.src} onClick={() => setDeleteDoc(true)} />
                                                                             <Position position='absolute' bottom='30px' left='-110px'>
                                                                                 {deleteDoc && <Delete DataVolunteer={DataVolunteer} setDeleteDoc={setDeleteDoc} DataSkill={DataSkill} DataTrain={DataTrain} DataMember={DataMember} DataHelp={DataHelp} DataEmergency={DataEmergency} title={title} ind={ind} setCheckBar={setCheckBar} />}
                                                                             </Position>

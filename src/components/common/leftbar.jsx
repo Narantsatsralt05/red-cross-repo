@@ -4,7 +4,6 @@ import Arrow from "../../assets/icon/arrow.svg"
 import Logo from "../../assets/icon/logo.svg"
 import line from "../../assets/icon/line.svg"
 import { Box } from "../core/box";
-import Image from "next/image";
 import { Button } from "../core/button";
 import { Text } from "../core/text";
 import { Margin } from "../core/margin";
@@ -54,7 +53,7 @@ const Leftbar = () => {
                     <Border borderWidth={info.length > 1 ? [0, 0, 0, 1] : [0, 0, 0, 0]} borderColor={info[1]}>
                         <Stack direction='row'  width="120%"height="100%" onClick={Info}cursor="pointer" alignItems="center">
                             <Margin size={[2, 0, 0, 10]}>
-                                <Image src={Pic}></Image>
+                                <img src={Pic.src}/>
                             </Margin>
                             <Margin size={[2, 0, 4, 10]}>
                                 <Text fontWeight={info.length > 1 ? "400" : "200"} color={info[0]}>Хувь хүний мэдээлэл</Text>
@@ -66,7 +65,7 @@ const Leftbar = () => {
                     <Border borderWidth={work.length > 1 ? [0, 0, 0, 1] : [0, 0, 0, 0]} borderColor={work[1]}>
                         <Stack direction='row' height="140%" onClick={Work} cursor="pointer" alignItems="center">
                             <Margin size={[2, 0, 0, 10]}>
-                                <Image src={tuslamj}></Image>
+                                <img src={tuslamj.src}/>
                             </Margin>
                             <Margin size={[2, 0, 4, 10]}>
                                 <Text fontWeight={work.length > 1 ? "400" : "200"} color={work[0]}>Сайн дурын ажлын мэдээлэл</Text>
@@ -78,7 +77,7 @@ const Leftbar = () => {
                     <Border borderWidth={per.length > 1 ? [0, 0, 0, 1] : [0, 0, 0, 0]} borderColor={per[1]}>
                         <Stack direction='row' height="140%" onClick={Perinfo}  cursor="pointer" alignItems="center">
                              <Margin size={[2, 0, 0, 10]}>
-                                <Image src={ gishuunInfo}></Image>
+                                <img src={ gishuunInfo.src}/>
                             </Margin>
                             <Margin size={[2, 0, 4, 10]}>
                                 <Text fontWeight={per.length > 1 ? "400" : "200"} color={per[0 ]}>Гишүүнчлэлийн мэдээлэл</Text>
@@ -90,7 +89,7 @@ const Leftbar = () => {
                     <Border borderWidth={help.length > 1 ? [0, 0, 0, 1] : [0, 0, 0, 0]} borderColor={help[1]}>
                         <Stack direction='row'  height="140%" onClick={Help}  cursor="pointer" alignItems="center" >
                             <Margin size={[2, 0, 0, 10]}>
-                                <Image src={tuslamjInfo}></Image>
+                                <img src={tuslamjInfo.src}/>
                             </Margin>
                             <Margin size={[2, 0, 4, 10]}>
                                 <Text fontWeight={help.length > 1 ? "400" : "200"}  color={help[0]}>Тусламжийн мэдээлэл</Text>

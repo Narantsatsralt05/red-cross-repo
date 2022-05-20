@@ -6,26 +6,26 @@ import { Loading } from '../components';
 import { LoaderContext, useLoaderContext } from '../common/context/LoaderContext';
 
 const Checker = () => {
-  const { setLoader } = useLoaderContext()
+  const { setLoader } = useLoaderContext();
   const { user } = useAuthContext();
   const router = useRouter();
+  const userData = useCollection('/user');
 
   useEffect(() => {
     if (user === null) {
       router.push('/login');
+    } else if (user && userData) {
+      userData.data.map((el) => {
+        if (user.email === el.email) {
+          if (el.admin === true) {
+            router.push('/admin/home');
+          } else {
+            router.push('/user/home');
+          }
+        }
+      });
     }
-  }, [user]);
-
-  const userData = useCollection('/user');
-  userData.data.map((el) => {
-    if (user.email === el.email) {
-      if (el.admin === true) {
-        router.push('/admin/home');
-      } else {
-        router.push('/user/home');
-      }
-    }
-  });
+  }, [user, userData]);
 
   return <Loading />;
 };

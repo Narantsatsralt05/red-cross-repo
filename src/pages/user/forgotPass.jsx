@@ -1,7 +1,7 @@
 import { Button, Margin, Position, Stack, StyledInput, Text } from '../../components';
 import React, { useEffect, useState } from 'react';
 import Background from '../../assets/image/forgotPassBg.png';
-import Image from 'next/image';
+
 import Logo from '../../assets/icon/logo.svg';
 import { useAuthContext } from '../../common/context/AuthContext';
 import { useLoaderContext } from '../../common/context/LoaderContext';
@@ -38,7 +38,7 @@ const Login = () => {
     <Stack direction="row" width="100%" height="100vh">
       <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
         <Stack height="15vh" width="35%" />
-        <Image src={Logo} width={90} height={90} />
+        <img src={Logo.src} width={90} height={90} />
         <Margin size={[30, 0, 0, 0]}>
           <Text color="#0066B3" fontSize="0.9vw" cursor="pointer">
             МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
@@ -112,7 +112,7 @@ const Login = () => {
       </Position>
 
       <Stack width="65%" height="100vh">
-        <Image src={Background} width={1700} height={300} />
+        <img src={Background.src} width={1700} height={300} />
       </Stack>
     </Stack>
   );
