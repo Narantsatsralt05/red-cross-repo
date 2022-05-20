@@ -85,7 +85,7 @@ const Admin = () => {
   };
   const tabs = {
     headers: [
-      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '', headName: '' },
+      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '"ene hesegt add hiideg pagiinhaa path iig ugnu"', headName: '' },
       { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, path: '', headName: 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ' },
       { text: 'Гишүүдийн жагсаалт', photo: grey, path: '', headName: 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ' },
       { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, path: '', headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
