@@ -2,7 +2,7 @@ export const FontSizes = {
   onDesktop: {
     Header:'35px',
     Quote: '64px',
-    ThinH1: '30px',
+    ThinH1: '20px',
     H1: '30px',
     H2Semi: '24px',
     H2: '18px',
@@ -42,7 +42,7 @@ export const fontWeight = {
   onDesktop: {
     Quote: '700',
     H1: '700',
-    ThinH1: '100',
+    ThinH1: '400',
     H2Semi: '600',
     H2: '300',
     H3: '600',

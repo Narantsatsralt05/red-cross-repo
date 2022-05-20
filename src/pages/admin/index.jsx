@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+
 import search from '../../assets/icon/search.svg';
 import { useState } from 'react';
 import {
@@ -150,13 +150,13 @@ const Admin = () => {
                                   <Stack bg="#0358A7" height="40px" width="1px" />
                                 </Border>
                                 <Stack width="40px" height="40px">
-                                  <Image src={item.photo} width={150} height={150} />
+                                  <img src={item.photo.src} width={150} height={150} />
                                 </Stack>
                               </Stack>
                             </Border>
                           ) : (
                             <Stack width="50px" height="50px">
-                              <Image src={item.photo} width={200} height={200} />
+                              <img src={item.photo.src} width={200} height={200} />
                             </Stack>
                           )}
                         </Margin>
@@ -182,7 +182,7 @@ const Admin = () => {
                   </Text>
                 ) : (
                   <Stack width="50px" height="50px">
-                    <Image src={textGrammer} width={200} height={200} />
+                    <img src={textGrammer.src} width={200} height={200} />
                   </Stack>
                 )}
               </Margin>
@@ -245,7 +245,7 @@ const Admin = () => {
                     bc="none"
                     onClick={searchButton}
                   >
-                    <Image src={search}></Image>
+                    <img src={search.src}/>
                   </Button>
                 </Stack>
               </Stack>

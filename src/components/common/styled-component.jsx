@@ -10,7 +10,7 @@ const StackQueue = styled.div`
   flex-direction: ${(props) => props.direction};
 `;
 
-const Image = styled.div`
+const img = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background: url(${(props) => props.url});
@@ -53,4 +53,4 @@ const DataCon = styled.div`
   justify-content: space-around;
 `;
 
-export { StackQueue, Image, DataCon, Text };
+export { StackQueue, img, DataCon, Text };

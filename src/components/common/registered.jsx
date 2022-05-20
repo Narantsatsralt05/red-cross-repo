@@ -3,7 +3,6 @@ import upline from '../../assets/icon/upline.svg';
 import shape from '../../assets/icon/Shape.svg';
 import warning from '../../assets/icon/warning.svg';
 import excel from '../../assets/icon/excel.svg';
-import Image from 'next/image';
 import Styledinput from '../core/input';
 import { useTheme } from '../../theme/theme';
 
@@ -18,13 +17,13 @@ export const Registered = ({ e }) => {
       <Stack width="100%" height="7%" justifyContent="flex-end" alignItems="center">
         <Margin size={[0, 80, 0, 0]}>
           <Stack justifyContent="space-evenly" gap="35">
-            <Image src={shape}></Image>
+            <img src={shape.src}/>
             <Styledinput width="350px" placeholder="хайх"></Styledinput>
-            <Image src={excel}></Image>
+            <img src={excel.src}/>
           </Stack>
         </Margin>
       </Stack>
-      <Image src={upline}></Image>
+      <img src={upline.src}/>
       <Stack
         width="100%"
         height="7%"
@@ -117,7 +116,7 @@ export const Registered = ({ e }) => {
                 </Stack>
                 <Stack width="10%" alignItems="center">
                   <Margin size={[0, 10, 0, 0]}>
-                    <Image src={warning}></Image>
+                    <img src={warning.src}/>
                   </Margin>
                   <Text type="ThinH2" color={color.secondary.orange}>
                     2019.05.01

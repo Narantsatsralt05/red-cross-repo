@@ -1,34 +1,31 @@
-import styled from 'styled-components';
+
 import { Stack } from '../core/stack';
 import { Border } from '../core/border';
 import { useState } from 'react';
 import { Text } from '../core/text';
-import { RowButton } from '..';
-// Ex:
-// const dataH = {
-//     headers: [
-//       { text: 'Хувь хүний мэдээлэл', icon: profile },
-//       { text: 'Сайн дурын ажлын мэдээлэл', icon: saindur },
-//       { text: 'Гишүүнчлэлийн мэдээлэл', icon: people },
-//       { text: 'Тусламжийн мэдээлэл', icon: help }
-//     ],
-//     body: [
-//        <div>Хувь хүний мэдээлэл</div> ,
-//        <div>Сайн дурын ажлын мэдээлэл</div> ,
-//        <div>Гишүүнчлэлийн мэдээлэл</div> ,
-//        <div>Тусламжийн мэдээлэл</div> ,
-//     ]
-//   }
-//   const data = {
-//     headers: [
-//       { text: 'Нүүр' },
-//       { text: 'Үндсэн мэдээлэл' }
-//     ],
-//     body: [
-//       <div>nuur</div>,
-//       <Tabs type={'column'} data={dataH} />
-//     ]
-//   }
+import styled from 'styled-components';
+const RowButton = styled.button`
+  height: ${(props) => (props.column ? 'fit-content' : '100%')};
+  width: ${(props) => (props.column ? '320px' : 'fit-content')};
+  border: none;
+  display: flex;
+  align-items: center;
+  margin-right: ${(props) => (props.column ? '0px' : '20px')};
+  margin-left: ${(props) => (props.column ? 'px' : '20px')};
+  margin-top: ${(props) => (props.column ? '30px' : '20px')};
+  padding-bottom: ${(props) => (props.column ? '0px' : '20px')};
+  background: none;
+  font-size: ${(props) => (props.column ? '18px' : '20px')};
+  font-weight: 200;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  &:focus {
+    border-bottom: ${(props) => (props.row ? '2px solid #0066B3' : 'none')};
+    border-left: ${(props) => (props.column ? '2px solid #0066B3' : 'none')};
+    font-weight: 600;
+  }
+`;
 
 export const Tabs = ({ type, data }) => {
   const [activeTab, setactiveTab] = useState();

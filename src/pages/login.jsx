@@ -4,7 +4,7 @@ import Background from '../assets/image/loginBg.png';
 import Login1 from "../assets/icon/login1.png";
 import Login2 from "../assets/icon/login2.png";
 import Login3 from "../assets/icon/login3.png";
-import Image from 'next/image';
+
 import Logo from '../assets/icon/logo.svg';
 import { useAuthContext } from '../common/context/AuthContext';
 import { useRouter } from 'next/router';
@@ -58,7 +58,7 @@ const Login = () => {
     <Stack direction="row" width="100%" height="100vh">
       <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
         <Stack height="15vh" width="35%" />
-        <Image src={Logo} width={90} height={90} />
+        <img src={Logo.src} width={90} height={90} />
         <Margin size={[30, 0, 0, 0]}>
           <Text color="#0066B3" fontSize="0.9vw" cursor="pointer">
             МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
@@ -174,15 +174,15 @@ const Login = () => {
       </Position>
 
       <Stack width="65%" height="100vh">
-        <Image src={Background} width={1700} height={300} />
+        <img src={Background.src} width={1700} height={300} />
         <Position position="absolute" bottom="3vh" right="3.5vw">
           <Border borderColor="#0066B3" borderRadius="20px" overFlow="hidden">
             <Stack bg="#0066B3" direction="row" width="60vw" alignItems="center" justifyContent="space-around" heigth="5vh">
-              <Image src={Login1} width={80} height={80} />
+              <img src={Login1.src} width={80} height={80} />
               <Text color="#fff" type="T2">САЙН ДУРЫН ИДЭВХТНИЙ БҮРТГЭЛ</Text>
-              <Image src={Login2} width={80} height={80} />
+              <img src={Login2.src} width={80} height={80} />
               <Text color="#fff" type="T2">ГИШҮҮН, ДЭМЖЭГЧДИЙН БҮРТГЭЛ</Text>
-              <Image src={Login3} width={80} height={80} />
+              <img src={Login3.src} width={80} height={80} />
               <Text color="#fff" type="T2">ТУСЛАМЖ ХҮРТЭГЧИЙН БҮРТГЭЛ</Text>
             </Stack>
           </Border>

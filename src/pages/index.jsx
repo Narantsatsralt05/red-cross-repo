@@ -15,5 +15,5 @@ export default function Home() {
       router.push('/checker');
     }
   }, [user]);
-  return <Loading/>;
+  return <Loading />;
 }

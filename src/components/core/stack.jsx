@@ -11,4 +11,5 @@ export const Stack = style.div`
     gap: ${({ gap }) => gap}px;
     background-color: ${({ bg }) => bg};
     cursor:${({cursor}) => cursor};
+    text-align:${({textAlign}) => textAlign};
 `;

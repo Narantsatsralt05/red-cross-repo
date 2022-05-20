@@ -3,7 +3,7 @@ import blue from '../../assets/icon/blue.svg';
 // import grey from '../../assets/icon/grey.svg';
 // import green from '../../assets/icon/green.svg';
 // import female from "../../assets/icon/female.svg"
-import Image from 'next/image';
+
 
 export const Usercard = ({  firstName, lastName, register, age, gender ,bluebadge,greenbadge,greybadge }) => {
   return (
@@ -14,7 +14,7 @@ export const Usercard = ({  firstName, lastName, register, age, gender ,bluebadg
             <Stack direction="row" borderColor="#E3E3E3" width="100%" alignItems="center" gap="10">
               <Border borderRadius="50%" overFlow="hidden" borderColor="#E3E3E3">
                 <Stack bg="#E3E3E3" height="65px" width="65px" justifyContent="center" alignItems="center">
-                  {/* <Image src={female} height="45%" width="45%"></Image> */}
+                  {/* <img src={female.src} height="45%" width="45%"/> */}
                 </Stack>
               </Border>
               <Stack direction="column" gap="10">
@@ -52,21 +52,21 @@ export const Usercard = ({  firstName, lastName, register, age, gender ,bluebadg
                   {
                       bluebadge ? <Border borderRadius="5px" borderColor="#0066B3CC">
                     <Stack height={'35px'} width={'35px'} bg="#0066B3CC" justifyContent="center" alignItems="center">
-                      <Image src={blue} height={'65%'} width={'65%'} ></Image>
+                      <img src={blue.src} height={'65%'} width={'65%'} />
                     </Stack>
                   </Border> : ""
                   }
                   {
                       greybadge ? <Border borderRadius="5px" borderColor="#626262">
                     <Stack height={'35px'} width={'35px'} bg="#626262" justifyContent="center" alignItems="center">
-                      {/* <Image src={grey} height={'65%'} width={'65%'} ></Image> */}
+                      {/* <img src={grey.src} height={'65%'} width={'65%'} /> */}
                     </Stack>
                   </Border> : ""
                   }
                   {
                       greenbadge ? <Border borderRadius="5px" borderColor="#1A9461">
                     <Stack height={'35px'} width={'35px'} bg="#1A9461" justifyContent="center" alignItems="center">
-                      {/* <Image src={green} height={'65%'} width={'65%'} ></Image> */}
+                      {/* <img src={green.src} height={'65%'} width={'65%'} /> */}
                     </Stack>
                   </Border> : ""
                   }

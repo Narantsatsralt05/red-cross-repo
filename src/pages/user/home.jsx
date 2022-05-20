@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../../common/context/AuthContext';
+import ProfileHome from './ProfileHome'
 
 const UserHome = () => {
     const { user } = useAuthContext();
@@ -11,6 +12,6 @@ const UserHome = () => {
             router.push('/login');
         }
     }, [user]);
-    return <>thats user home</>;
+    return <ProfileHome/>;
 };
 export default UserHome;

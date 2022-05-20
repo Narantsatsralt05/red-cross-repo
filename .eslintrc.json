@@ -5,35 +5,19 @@
     "node": true
   },
   "extends": "eslint:recommended",
+  "parser": "babel-eslint" ,
   "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
-  "globals": {
-    "BigInt": true,
-    "Metacom": true
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
   },
   "rules": {
-    "no-unused-vars": "error",
+    "no-unused-vars": "warn",
     "no-undef": "error",
     "no-await-in-loop": "warn",
     "no-duplicate-case": "warn",
-    "no-duplicate-imports": "warn",
-    "comma-style": [
-      "warn",
-      "last"
-    ],
-    "comma-spacing": [
-      "error",
-      {
-        "before": false,
-        "after": true
-      }
-    ],
-    "array-bracket-spacing": [
-      "error",
-      "always"
-    ],
-    "brace-style": "warn"
+    "no-duplicate-imports": "warn"
   }
 }
