@@ -26,6 +26,7 @@ import textGrammer from '../../assets/icon/textGrammer.svg';
 import { useRef } from 'react';
 import styled from 'styled-components';
 import { useDocument } from '../../common/services/firebase';
+import { useEffect } from 'react';
 
 const Admin = () => {
   let a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -44,15 +45,17 @@ const Admin = () => {
   const searchButton = () => {
     setReadySearch(true);
   };
-  const firstInput = useRef(null);
-  const secondInput = useRef(null);
-  const thirdInput = useRef(null);
-  if (searchValue.value1.length >= 1) {
-    secondInput.current.focus();
-  }
-  if (searchValue.value2.length >= 1) {
-    thirdInput.current.focus();
-  }
+  const firstInput = useRef();
+  const secondInput = useRef();
+  const thirdInput = useRef();
+  useEffect(() => {
+    if (searchValue.value1.length >= 1) {
+      secondInput.current.focus();
+    }
+    if (searchValue.value2.length >= 1) {
+      thirdInput.current.focus();
+    }
+  }, [searchValue.value1, searchValue.value2]);
 
   const ResponseInMobile = styled.div`
     @media (max-width: 1570px) {
