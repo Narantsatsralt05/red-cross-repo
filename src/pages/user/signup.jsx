@@ -9,9 +9,10 @@ import SignUpBg from '../../assets/image/signupBg.png';
 import Info from '../../assets/icon/info.svg';
 import Input from '../../components/core/input';
 import Dropdown from '../../components/common/dropdown';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { useAuthContext } from '../../common/context/AuthContext';
 import { addDocument, setDocument } from '../../common/services/firebase';
+import BasicModal from '../user/signupModal';
 
 const Parent = styled.div`
   & > div {
@@ -22,7 +23,7 @@ const Parent = styled.div`
 const SignUp = () => {
   const [check, setCheck] = useState(false);
   const { user, signUp, signUpError } = useAuthContext();
-console.log(user.uid)
+  const [showModal, setShowModal] = useState(false);
   const YupShape = ({ max, match, min = 0, mongol, pass, email, number }) => {
     return Yup.string()
       .max(max, `Дээд хязгаар нь ${max} үсэг`)
@@ -72,6 +73,10 @@ console.log(user.uid)
   };
   const [genderValue , setGender] = useState()
   const option = ['Эр', 'Эм'];
+  const onClickChange = (values) => {
+    signUp(values);
+    setShowModal(true);
+  }
   return (
     <Formik
       initialValues={{
@@ -202,7 +207,7 @@ console.log(user.uid)
                           bc="#0066B3"
                           color="white"
                           fontSize="20px"
-                          onClick={() =>(signUp(values))}
+                          onClick={() => onClickChange(values)}
                         >
                           {/* <Text
                             color="#fff"
@@ -222,6 +227,7 @@ console.log(user.uid)
                   <Text color="#757575" type="T2">
                     @ 2018-2021 Монголын улаан загалмай нийгэмлэг
                   </Text>
+                  {showModal && <BasicModal/>}
                 </Position>
               </Stack>
               <Stack
