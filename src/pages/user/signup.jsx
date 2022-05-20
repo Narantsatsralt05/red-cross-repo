@@ -76,7 +76,7 @@ const SignUp = () => {
   const onClickChange = (values) => {
     signUp(values);
     setShowModal(true);
-  }
+  };
   return (
     <Formik
       initialValues={{
