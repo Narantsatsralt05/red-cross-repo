@@ -28,7 +28,7 @@ const Success = () => {
                         color="#fff"
                         onClick={() => {}}
                     >
-                        <Link href="/user/profileHome">
+                        <Link href="/user/ProfileHome">
                             <Text type="T2Bold" >
                                 Үндсэн хуудас руу шилжих
                             </Text> 

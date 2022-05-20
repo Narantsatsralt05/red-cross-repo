@@ -106,7 +106,7 @@ const UserInfo = ({ isStep }) => {
                 <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='disabilities' value={value?.disabilities} setdropValue={setValue} dropValue={value} width='400px' />
               </Stack>
             </Stack>
-            <Button width='140px' height='33px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' onClick={add} >Дараагийн алхам</Button>
+            {/* <Button width='140px' height='33px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' onClick={add} >Дараагийн алхам</Button> */}
           </Stack>
         </Padding>
       </Stack>

@@ -4,14 +4,13 @@ import { useAuthContext } from '../../common/context/AuthContext';
 import UserInfo from './Info';
 import UserInfo2 from './Info2';
 import { Stepper } from '../../components/common/stepper'
-import Success from '../successPage';
 import {Header} from '../../components/common/header';
 
 
 const data = {
   header: 'ХЭРЭГЛЭГЧИЙН ДЭЛГЭРЭНГҮЙ МЭДЭЭЛЭЛ БҮРТГЭХ',
   headers: ['ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ', 'САЙН ДУРЫН АЖЛЫН ТУРШЛАГА', 'ХАМРАГДСАН СУРГАЛТ', 'УР ЧАДВАР'],
-  body: [<UserInfo />, <UserInfo2 />, <div>ene bol 3r step</div>, <div>ene bol 4r step</div>],
+  body: [<UserInfo isStep={true} />, <UserInfo2 />, <div>ene bol 3r step</div>, <div>ene bol 4r step</div>],
 };
 <Stepper data={data} />;
 const Register = () => {
