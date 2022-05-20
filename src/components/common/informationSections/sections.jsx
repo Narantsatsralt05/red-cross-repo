@@ -18,11 +18,7 @@ export const SkillTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-<<<<<<< HEAD
-    width: '20vw',
-=======
     width: '300px',
->>>>>>> 2d0bb94 (userInfo)
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -50,11 +46,7 @@ export const CoveredTrainingTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-<<<<<<< HEAD
-    width: '20vw',
-=======
     width: '300px',
->>>>>>> 2d0bb94 (userInfo)
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -82,11 +74,7 @@ export const MembershipInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-<<<<<<< HEAD
-    width: '20vw',
-=======
     width: '300px',
->>>>>>> 2d0bb94 (userInfo)
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -114,11 +102,7 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-<<<<<<< HEAD
-    width: '20vw',
-=======
     width: '300px',
->>>>>>> 2d0bb94 (userInfo)
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -146,11 +130,7 @@ export const HelpInformationTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-<<<<<<< HEAD
-    width: '20vw',
-=======
     width: '300px',
->>>>>>> 2d0bb94 (userInfo)
     align: 'left',
   };
   const row = headers.map((el) => {
@@ -178,11 +158,7 @@ export const EmergencyContactPersonTable = ({ admin }) => {
     color: color.primary.black,
     fontStyle: 'normal',
     padding: '10px',
-<<<<<<< HEAD
-    width: '20vw',
-=======
     width: '300px',
->>>>>>> 2d0bb94 (userInfo)
     align: 'left',
   };
   const row = headers.map((el) => {
