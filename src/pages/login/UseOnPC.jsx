@@ -35,7 +35,7 @@ const UseOnPC = () => {
     useEffect(() => {
         if (isTrue) {
             setLoader(false)
-            router.push('/user/checker')
+            router.push('/checker')
         } else {
             setLoader(false)
         }
@@ -46,7 +46,7 @@ const UseOnPC = () => {
     };
 
     if (event === 'Enter') {
-        login(form.email, form.password);
+        login(form.email, form.password, setTrue);
     }
     return (
         <Stack direction="row" width="100%" height="100vh" className='bigCOn'>
@@ -154,9 +154,9 @@ const UseOnPC = () => {
                         borderRadius="5px"
                         bgColor="#0066B3"
                         color="#fff"
-                        onClick={() => login(form.email, form.password)}
+                        onClick={() => login(form.email, form.password, setTrue)}
                     >
-                        <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={() => login(form.email, form.password)}>
+                        <Text color="#fff" cursor="pointer" fontSize="1.2vw" onClick={() => login(form.email, form.password, setTrue)}>
                             НЭВТРЭХ
                         </Text>
                     </Button>

@@ -42,11 +42,11 @@ export const AuthProvider = ({ children }) => {
         const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
         const user = userCredential.user;
         console.log(user);
-         addDocument(`user/${user.uid}`, {
+        setDocument(`user/${user.uid}`, {
           email: values.email,
           firstName: values.firstName,
           lastName: values.lastName,
-          uid: values.uid,
+          uid: user.uid,
           RD: values.RD,
           gender: values.gender,
           date: values.date,
@@ -57,28 +57,6 @@ export const AuthProvider = ({ children }) => {
       } catch (err) {
         console.log(err);
       }
-
-      // .then((userCredential) => {
-      //     firestore.collection('user').doc(userCredential.user.uid).set({
-      //       email: values.email,
-      //       RD: values.RD,
-      //       lastName: values.lastName,
-      //       firstName: values.firstName,
-      //     // gender: values.gender,
-      //     // date: values.date,
-      //     // location: values.location,
-      //     // phoneNumber: values.phoneNumber,
-      //   }).then(() => {
-      //     // window.location = '/';
-      //     console.log('success')
-      //     alert('signUp successfully');
-      //   })
-      // })
-      // .catch((error) => {
-      //   console.log(error.message);
-      //   setSignUpError(error.message);
-      //   console.log('heelo')
-      // });
     } else {
       console.log('repeat pass buruu bn!!!');
     }
