@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import ArrowDown from '../../assets/icon/ArrowDown.jsx';
 import { Stack, Text } from '../index';
 import ArrowDownSecond from '../../assets/icon/arrDown.jsx';
+import { Border } from '../core/border.jsx';
 
 const OnDesktop = styled.div`
   @media (max-width: 1050px) {
@@ -26,7 +27,6 @@ const DropDownContent = styled.div`
   min-width: 160px;
   z-index: 1;
   background-color: black;
-  border: 0.5px solid rgba(0, 0, 0, 0.5);
   border-radius: 2px;
   box-sizing: border-box;
   background-color: white;
@@ -47,12 +47,13 @@ const ToUseOptions = styled(StyledATag)`
   background-color: white;
   padding: 10px;
   color: black;
-  width: ${({ width }) => (width ? width : '300px')};
-  border-radius: 10%;
+  /* border:black 1px solid; */
+  border-radius: 3px;
+  border: 0.4px solid #d9e6f2;
+
   &:hover {
     background-color: #d9e6f2;
     border-radius: 4px;
-    border: 0.4px solid #d9e6f2;
   }
 `;
 const StyledSelect = styled.div`
@@ -60,7 +61,7 @@ const StyledSelect = styled.div`
     width: '250px';
   }
   width: ${({ width }) => width};
-  height: ${({ height }) => (height ? height : '35px')};
+  height: ${({ height }) => (height )};
   background-color: white;
   border: 0.5px solid rgba(0, 0, 0, 0.5);
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '2px')};

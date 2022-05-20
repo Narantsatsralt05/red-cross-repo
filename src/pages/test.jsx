@@ -12,8 +12,7 @@ import {
   Border,
   Text,
   StyledInput,
-  Styledoneletter,
-  InformationSection,
+  Styledoneletter
 } from '../components';
 
 const Test = () => {
@@ -120,9 +119,7 @@ const Test = () => {
             </Margin>
           </div>
         </Margin>
-        <Stack width='100vw' direction='column'>
-          <InformationSection path={`user/${user.uid}/helpType`} />
-        </Stack>
+        
       </Stack>
     </Center>
   );

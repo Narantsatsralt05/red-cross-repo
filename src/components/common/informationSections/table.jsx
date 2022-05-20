@@ -80,7 +80,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
           <>
             <Stack justifyContent="flex-start" direction="row" alignItems="center">
               <Margin size={[0, 0, 10, 0]}>
-                <Text color={color.primary.blue} type="Quote">
+                <Text color={color.primary.blue} fontSize="50px" onClick={() => setBar(true)} style={{ cursor: 'pointer' }} q >
                   +
                 </Text>
               </Margin>
@@ -109,13 +109,13 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
     border: 'none',
     fontStyle: 'normal',
     padding: '10px',
-    width: '20vw',
+    width: '300px',
     align: 'left',
     first: {
       border: 'none',
       fontStyle: 'normal',
       padding: '10px',
-      width: '20vw',
+      width: '300px',
       align: 'left',
       color: color.primary.blue,
     },
@@ -196,4 +196,9 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
 };
 
 //<SkillTable admin={true} />
-//<SkillTable admin={false} />
+{/* <SkillTable admin={false} /> */ }
+
+
+
+
+

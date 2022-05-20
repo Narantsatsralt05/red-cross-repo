@@ -13,7 +13,6 @@ export * from './paginationtext';
 export * from './dropdown';
 export * from './status';
 export * from './informationSections/sections';
-export * from './informationSection';
 export * from './registered';
 export * from './header';
 export * from './volunteerInformation';

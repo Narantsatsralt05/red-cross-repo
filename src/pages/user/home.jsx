@@ -12,6 +12,6 @@ const UserHome = () => {
             router.push('/login');
         }
     }, [user]);
-    return <ProfileHome/>;
+    return <ProfileHome />;
 };
 export default UserHome;
