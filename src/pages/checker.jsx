@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { useCollection } from '../../common/services/firebase';
+import { useCollection } from '../common/services/firebase';
 import { useRouter } from 'next/router';
-import { useAuthContext } from '../../common/context/AuthContext';
-import { Loading } from '../../components';
-import { LoaderContext, useLoaderContext } from '../../common/context/LoaderContext';
+import { useAuthContext } from '../common/context/AuthContext';
+import { Loading } from '../components';
+import { LoaderContext, useLoaderContext } from '../common/context/LoaderContext';
 
 const Checker = () => {
   const { setLoader } = useLoaderContext()
@@ -20,9 +20,9 @@ const Checker = () => {
   userData.data.map((el) => {
     if (user.email === el.email) {
       if (el.admin === true) {
-        router.push('/adminHome');
+        router.push('/admin/home');
       } else {
-        router.push('/userHome');
+        router.push('/user/home');
       }
     }
   });

@@ -12,17 +12,17 @@ const AdminHome = () => {
 
   useEffect(() => {
     if (user === null) {
-      // router.push('/user');
+      router.push('/login');
     }
   }, [user]);
 
   userData.data.map((el) => {
     if (user.email === el.email) {
       if (el.admin === false) {
-        // router.push('/user');
+        router.push('/user/home');
       }
     }
   });
-  return <Admin />
+  return <Admin />;
 };
 export default AdminHome;
