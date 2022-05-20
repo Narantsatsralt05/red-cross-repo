@@ -26,7 +26,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
   };
   const AddSectionOnPc = () => {
     return (
-      <Stack justifyContent="flex-start" direction="row" alignItems="center">
+      <Stack justifyContent="flex-start" direction="row" alignItems="center" width='100%' >
         {title && (
           <Margin size={[20, 10, 20, 5]}>
             <Text color={color.primary.black} type="H2">
@@ -68,7 +68,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
   };
   const AddSectionOnMobile = () => {
     return (
-      <Stack width="100%" justifyContent="flex-start" direction="column">
+      <Stack width="100%" justifyContent="flex-start" direction="column">  
         {title && (
           <Margin size={[20, 10, admin ? 0 : 20, 5]}>
             <Text color={color.primary.black} type="H3">
