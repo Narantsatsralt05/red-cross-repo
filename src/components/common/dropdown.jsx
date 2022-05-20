@@ -64,7 +64,7 @@ const StyledSelect = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => (height )};
   background-color: white;
-  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "2px")};
   box-sizing: border-box;
   display: flex;

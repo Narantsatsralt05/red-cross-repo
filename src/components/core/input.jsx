@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../theme/theme';
 export const StyledInput = styled.input`
   width: ${(props) => props.width ? props.width : '400px'};
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid black;
   @media (max-width: 400px) {
     width:'200px' !important
   }
@@ -15,7 +14,7 @@ export const StyledInput = styled.input`
     } if (props.status == 'undefined') {
       return 'black'
     }
-    return 'rgba(196, 196, 196, 0.5)'
+    return 'black'
   }};
   background-color: ${(props) => {
     if (props.disabled) {

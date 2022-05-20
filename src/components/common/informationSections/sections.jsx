@@ -171,5 +171,5 @@ export const EmergencyContactPersonTable = ({ admin }) => {
   const body = data.map((el) => {
     return [el.information, el.name, el.phoneNumber];
   });
-  return <InformationTable admin={admin} title={title} row={row} body={body} headers={headers} />;
+  return <InformationTable admin={admin} title={title} row={row} body={body} headers={headers} style={{width:'100%'}} />;
 };
