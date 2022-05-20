@@ -3,30 +3,28 @@ import { useCollection, useDocumentWithUserOnce } from '../common/services/fireb
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../common/context/AuthContext';
 import { Loading } from '../components';
-import { useLoaderContext } from '../common/context/LoaderContext';
+import { useCollection } from '../common/services/firebase';
 
 const Checker = () => {
-  const { setLoader } = useLoaderContext();
   const { user } = useAuthContext();
   const router = useRouter();
-  const userData = useCollection('/user');
 
   useEffect(() => {
     if (user === null) {
       router.push('/login');
     }
-  }, [user]);
+  }, [user])
 
-  const userData = useCollection('/user');
-  userData.data.map((el) => {
-    if (user?.email === el.email) {
-      if (el.admin === true) {
-        router.push('/admin/home');
-      } else {
-        router.push('/user/home');
+    const userData = useCollection('/user');
+    userData.data.map((el) => {
+      if (user?.email === el.email) {
+        if (el.admin === true) {
+          router.push('/admin/home');
+        } else {
+          router.push('/user/home');
+        }
       }
-    }
-  });
+    });
 
   return <Loading />;
 };

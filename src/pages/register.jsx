@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useAuthContext } from '../../common/context/AuthContext';
-import UserInfo from './Info';
-import UserInfo2 from './Info2';
-import { Stepper } from '../../components/common/stepper'
-import {Header} from '../../components/common/header';
+import { useAuthContext } from '../common/context/AuthContext';
+import UserInfo from './user/Info';
+import UserInfo2 from './user/Info2';
+import { Stepper } from '../components/common/stepper'
+import {Header} from '../components/common/header';
 
 
 const data = {
