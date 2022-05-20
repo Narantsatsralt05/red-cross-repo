@@ -6,6 +6,7 @@ import people from '../../assets/icon/people.svg'
 import help from '../../assets/icon/help.svg'
 import { VolunteerWorkInformationTable, CoveredTrainingTable, SkillTable, MembershipInformationTable, HelpInformationTable } from '.'
 import UserInfo from '../../pages/user/Info'
+import { Stack } from '..'
 const PersonalUserInfo = () => {
     const dataH = {
         headers: [
@@ -15,19 +16,19 @@ const PersonalUserInfo = () => {
             { text: 'Тусламжийн мэдээлэл', icon: help }
         ],
         body: [
-            <div style={{width:''}}>
-                <UserInfo isStep={false}  />
+            <div >
+                <UserInfo isStep={false} />
             </div>,
-            <div>
-                <VolunteerWorkInformationTable  admin={true}/>
+            <div style={{ width: '83vw' }}>
+                <VolunteerWorkInformationTable admin={true} />
                 <CoveredTrainingTable admin={true} />
                 <SkillTable admin={true} />
             </div>,
-            <div>
-                <MembershipInformationTable admin={true}/>
+            <div  style={{ width: '83vw' }}>
+                <VolunteerWorkInformationTable admin={true} />
             </div>,
-            <div>
-                <HelpInformationTable  admin={true}/>
+            <div  style={{ width: '83vw' }}>
+                <HelpInformationTable admin={true} />
             </div>,
         ]
     }
@@ -43,9 +44,9 @@ const PersonalUserInfo = () => {
     }
     return (
 
-        <div >
+        <Stack justifyContent='start' >
             <Tabs type='row' data={data} />
-        </div>
+        </Stack>
     )
 }
 export default PersonalUserInfo

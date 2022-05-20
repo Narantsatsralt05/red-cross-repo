@@ -80,7 +80,11 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
           <>
             <Stack justifyContent="flex-start" direction="row" alignItems="center">
               <Margin size={[0, 0, 10, 0]}>
+<<<<<<< HEAD
                 <Text color={color.primary.blue} type="Quote">
+=======
+                <Text color={color.primary.blue} fontSize="50px" onClick={() => setBar(true)} style={{ cursor: 'pointer' }} q >
+>>>>>>> 2d0bb94 (userInfo)
                   +
                 </Text>
               </Margin>
@@ -109,13 +113,21 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
     border: 'none',
     fontStyle: 'normal',
     padding: '10px',
+<<<<<<< HEAD
     width: '20vw',
+=======
+    width: '300px',
+>>>>>>> 2d0bb94 (userInfo)
     align: 'left',
     first: {
       border: 'none',
       fontStyle: 'normal',
       padding: '10px',
+<<<<<<< HEAD
       width: '20vw',
+=======
+      width: '300px',
+>>>>>>> 2d0bb94 (userInfo)
       align: 'left',
       color: color.primary.blue,
     },
@@ -196,4 +208,13 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
 };
 
 //<SkillTable admin={true} />
+<<<<<<< HEAD
 //<SkillTable admin={false} />
+=======
+{/* <SkillTable admin={false} /> */ }
+
+
+
+
+
+>>>>>>> 2d0bb94 (userInfo)
