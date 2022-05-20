@@ -151,7 +151,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
                 <TableRow>{row}</TableRow>
               </TableHead>
             </Margin>
-            <Stack width="100%" height="1px" bg={color.secondary.white} />
+            <Stack width="80vw" height="1px" bg={color.secondary.white} />
             <TableBody>
               {body.map((el, ind) => {
                 return (

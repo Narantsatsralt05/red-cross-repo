@@ -4,7 +4,7 @@ import profile from '../../assets/icon/profile.svg'
 import saindur from '../../assets/icon/saindur.svg'
 import people from '../../assets/icon/people.svg'
 import help from '../../assets/icon/help.svg'
-import { VolunteerWorkInformationTable, CoveredTrainingTable, SkillTable, MembershipInformationTable, HelpInformationTable } from '.'
+import { VolunteerWorkInformationTable, CoveredTrainingTable, SkillTable, MembershipInformationTable, HelpInformationTable, EmergencyContactPersonTable } from '.'
 import UserInfo from '../../pages/user/Info'
 import { Stack } from '..'
 const PersonalUserInfo = () => {
@@ -16,8 +16,9 @@ const PersonalUserInfo = () => {
             { text: 'Тусламжийн мэдээлэл', icon: help }
         ],
         body: [
-            <div >
+            <div>
                 <UserInfo isStep={false} />
+                <EmergencyContactPersonTable  style={{width:'100vw'}} />
             </div>,
             <div style={{ width: '83vw' }}>
                 <VolunteerWorkInformationTable admin={true} />

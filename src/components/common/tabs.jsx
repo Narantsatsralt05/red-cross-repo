@@ -55,7 +55,6 @@ export const Tabs = ({ type, data }) => {
       border-bottom: ${props => props.row ? '2px solid #0066B3' : 'none'};
       border-left: ${props => props.column ? '2px solid #0066B3' : 'none'};
       font-weight: 600;
-   
   }`
   const Hidden = styled.div`
       @media(max-width : 1000px) {
@@ -100,18 +99,19 @@ export const Tabs = ({ type, data }) => {
         ) : type == 'column' ? (
           <div style={{ marginLeft: '10px', marginTop: '1%' }}>
             <Border borderColor="#E5E5E5" borderRadius="10px" >
-              <Stack height="75vh" direction="column" >
+              <Stack height="75vh"  direction="column" >
                 {data ? (
                   data.headers.map((item, index) => {
                     return (
                       <RowButton
                         column
-                        key={index}
+                        // key={index}
                         onClick={() => {
                           setactiveTab(index);
                         }}
+                        
                       >
-                        <img style={{ marginRight: '10px', width: '25px' }} src={item.icon.src} />
+                        <img style={{ margin: '10px', width: '25px'}} src={item.icon.src} />
                         <Hidden>{item.text}</Hidden>
                       </RowButton>
                     );
@@ -129,9 +129,7 @@ export const Tabs = ({ type, data }) => {
           <div>give the type of tabs</div>
         )}
       </div>
-      <Stack width='100%'>
         {data ? data.body[activeTab] : ''}
-      </Stack>
     </Stack>
   );
 };

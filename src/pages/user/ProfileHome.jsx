@@ -23,7 +23,7 @@ const ProfileHome = () => {
   const tabData = {
     headers: [{ text: 'Нүүр' }, { text: 'Үндсэн мэдээлэл' }],
     body: [
-      <Stack width="100vw" direction="column">
+      <Stack width="100vw" direction="column" >
         <Padding size={[0, 0, 0, 0]}>
           <Stack direction="column" gap="40">
             <Padding size={[20, 20, 20, 20]}>
@@ -104,7 +104,7 @@ const ProfileHome = () => {
           </Stack>
         </Padding>
       </Stack>,
-      <div><UserInfo /></div>,
+      <div ><UserInfo /></div>,
     ],
   };
   return (
