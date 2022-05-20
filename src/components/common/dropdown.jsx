@@ -60,11 +60,12 @@ const StyledSelect = styled.div`
   @media (max-width: 400px) {
     width: '250px';
   }
+  
   width: ${({ width }) => width};
   height: ${({ height }) => (height )};
   background-color: white;
-  border: 0.5px solid rgba(0, 0, 0, 0.5);
-  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : '2px')};
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "2px")};
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -75,12 +76,7 @@ const Dropdown = (props) => {
   const Select = ({ value, onClick }) => {
     return (
       <Stack>
-        <StyledSelect
-          onClick={onClick}
-          width={props.width ? props.width : '311px'}
-          height={props.height ? props.height : '25px'}
-          borderRadius={props.borderRadius ? props.borderRadius : '2px'}
-        >
+        <StyledSelect onClick={onClick} width={props.width ? props.width : '311px'} height={props.height ? props.height : '25px'}>
           <Text style={{ marginLeft: '10px' }}>{value}</Text>
           <div
             style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
