@@ -89,16 +89,12 @@ console.log(user.uid)
       validationSchema={validate}
     >
       {(formik) => {
-<<<<<<< Updated upstream
         const { isValid, dirty, values } = formik;
         values.gender = genderValue;
         // console.log(values)
         // const AddDoc = () => {
         // setDocument(`/user/${user.uid}` , values)
         // }
-=======
-        const { isValid, dirty } = formik;
->>>>>>> Stashed changes
         return (
           <Form>
             <Stack width="100vw" height="100vh" fontFamily="Roboto">
