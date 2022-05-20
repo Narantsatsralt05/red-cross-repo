@@ -1,4 +1,3 @@
-import React from "react";;
 import { Button, Margin, Padding, Stack, Text } from "../../components"
 import Styledinput from "../../components/core/input";
 import styled from 'styled-components';
@@ -55,7 +54,6 @@ const UserInfo2 = () => {
 		    </Stack>
                 </Stack>
             </Margin>
-            <Button width='fit-content' bgColor="#0066B3" color="white" borderRadius='3px'><Padding size={[10, 25, 10, 25]}><b>Дараагийн алхам</b></Padding></Button>
         </Stack>
     )
 }
