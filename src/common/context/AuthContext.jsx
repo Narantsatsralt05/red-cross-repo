@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../services/firebase';
+import { addDocument, auth, useCollection, firestore } from '../services/firebase';
 import { createContext } from 'react';
-import { sendPasswordResetEmail, signInWithEmailAndPassword } from '@firebase/auth';
+import { sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '@firebase/auth';
 import Router, { useRouter } from 'next/router';
+import { addDoc, collection } from 'firebase/firestore';
 
 export const AuthContext = createContext({
     user: {},
@@ -21,7 +22,6 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             setUser(user);
-            console.log(user.uid)
         });
     }, [auth]);
 
@@ -36,23 +36,46 @@ export const AuthProvider = ({ children }) => {
             });
     };
 
-    const signUp = (email, password1, password2) => {
-        if (password1 === password2) {
-            auth
-                .createUserWithEmailAndPassword(email, password1)
-                .then(() => {
-                    router.push('/login');
-                    alert('signUp successfully');
-                    console.log('signUp amjilttai XD');
+    const signUp = async (values) => {
+        if (values.password === values.passwordConfirm) {
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+                const user = userCredential.user;
+                await firestore.collection('user').doc(user.uid).set({
+                    email: values.email,
+                    lastName: values.lastName
                 })
-                .catch((error) => {
-                    console.log(error.message);
-                    setSignUpError(error.message);
-                });
+                console.log('saved')
+            } catch(err) {
+                console.log('error')
+            }
+
+            // .then((userCredential) => {
+            //     firestore.collection('user').doc(userCredential.user.uid).set({
+            //       email: values.email,
+            //       RD: values.RD,
+            //       lastName: values.lastName,
+            //       firstName: values.firstName,
+            //     // gender: values.gender,
+            //     // date: values.date,
+            //     // location: values.location,
+            //     // phoneNumber: values.phoneNumber,
+            //   }).then(() => {
+            //     // window.location = '/';
+            //     console.log('success')
+            //     alert('signUp successfully');
+            //   })
+            // })
+            // .catch((error) => {
+            //   console.log(error.message);
+            //   setSignUpError(error.message);
+            //   console.log('heelo')
+            // });
+            
         } else {
-            console.log('repeat pass buruu bn!!!');
+          console.log('repeat pass buruu bn!!!');
         }
-    };
+      };
     const logOut = () => {
         auth
             .signOut()
