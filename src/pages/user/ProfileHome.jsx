@@ -24,9 +24,9 @@ const ProfileHome = () => {
     headers: [{ text: 'Нүүр' }, { text: 'Үндсэн мэдээлэл' }],
     body: [
       <Stack width="100vw" direction="column" >
-        <Padding size={[0, 0, 0, 0]}>
+        <Padding size={[50, 0, 0, 40]}>
           <Stack direction="column" gap="40">
-            <Padding size={[20, 20, 20, 20]}>
+            <Padding size={[20, 20, 20, 100]}>
               <Stack width="100%" direction="row" gap="50" flexWrap="wrap">
                 <FullShadow>
                   <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">

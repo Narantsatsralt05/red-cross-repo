@@ -25,14 +25,15 @@ export const AuthProvider = ({ children }) => {
     });
   }, [auth]);
 
-  const login = (email, password, setTrue) => {
+  const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        setTrue(true);
+        router.push('/checker');
+        alert('login successfully');
       })
       .catch((error) => {
         setLoginError(error.message);
-        setTrue(false);
+        console.log(error.message);
       });
   };
 

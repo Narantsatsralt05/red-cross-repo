@@ -9,7 +9,7 @@ const AdminHome = () => {
   const { user } = useAuthContext();
   const router = useRouter();
   const userData = useCollection('/user');
-  
+
   useEffect(() => {
     if (user === null) {
       router.push('/user');
@@ -19,7 +19,7 @@ const AdminHome = () => {
   userData.data.map((el) => {
     if (user.email === el.email) {
       if (el.admin === false) {
-        router.push('/user');
+        router.push('/login');
       }
     }
   });

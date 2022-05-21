@@ -15,6 +15,7 @@ import {
   Padding,
   VolunteerInformation,
   Registered,
+  Loading,
 } from '../../components';
 import { Header } from '../../components';
 import addPhoto from '../../assets/icon/add.svg';
@@ -85,13 +86,13 @@ const Admin = () => {
   };
   const tabs = {
     headers: [
-      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '', headName: '' },
+      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '/register', headName: '' },
       { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, path: '', headName: 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ' },
       { text: 'Гишүүдийн жагсаалт', photo: grey, path: '', headName: 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ' },
       { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, path: '', headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
     ],
     body: [
-      <>1</>,
+      <Loading/>,
       <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 130px)" direction="column">
         <VolunteerInformation />
       </Stack>,
@@ -150,13 +151,13 @@ const Admin = () => {
                                   <Stack bg="#0358A7" height="40px" width="1px" />
                                 </Border>
                                 <Stack width="40px" height="40px">
-                                  <img src={item.photo.src} width={150} height={150} />
+                                  <img src={item.photo.src} />
                                 </Stack>
                               </Stack>
                             </Border>
                           ) : (
                             <Stack width="50px" height="50px">
-                              <img src={item.photo.src} width={200} height={200} />
+                              <img src={item.photo.src} />
                             </Stack>
                           )}
                         </Margin>
@@ -182,7 +183,7 @@ const Admin = () => {
                   </Text>
                 ) : (
                   <Stack width="50px" height="50px">
-                    <img src={textGrammer.src} width={200} height={200} />
+                    <img src={textGrammer.src}/>
                   </Stack>
                 )}
               </Margin>
@@ -196,7 +197,7 @@ const Admin = () => {
               <Stack justifyContent="space-between" flexWrap="wrap">
                 <Data value={dataValue?.all} text="НИЙТ " color={'#0066B3'}></Data>
                 <Data value={dataValue?.volunteerActivist} text="САЙН ДУРЫН ИДЭВХТЭН" color={'#626262'}></Data>
-                <Data value={dataValue?.helper} text="ТУСЛАМЖ ХҮРТЭГЧ" color={'#DD5D00'}></Data>
+                <Data value={dataValue?.helper} text="ТУСЛАМЖ  ХҮРТЭГЧ" color={'#DD5D00'}></Data>
                 <Data value={dataValue?.member} text="ГИШҮҮН" color={'#D90000'}></Data>
               </Stack>
             </Margin>
@@ -245,7 +246,7 @@ const Admin = () => {
                     bc="none"
                     onClick={searchButton}
                   >
-                    <img src={search.src}/>
+                    <img src={search.src} />
                   </Button>
                 </Stack>
               </Stack>

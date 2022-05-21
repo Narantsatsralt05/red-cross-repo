@@ -15,7 +15,8 @@ import { InformationTable } from './informationSections/table';
 export const ListOfRegisteredVolunteersTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection('/user').data;
+  // const data = useCollection('/user').data;
+  const data = useCollection('/count').data; //ene bish shuu tur ashiglasan 18r murniihiig ashigana shuu
 
   const headers = [
     'Регистрийн дугаар',

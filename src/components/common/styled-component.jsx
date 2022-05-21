@@ -30,7 +30,7 @@ const Text = styled.text`
   font-weight: 700;
   color: white;
   width: 50%;
-  text-align: left;
+  text-align: ${(props) => (props.align ? props.align : 'left')};;
   padding-left: ${(props) => (props.number ? '10px' : '2px')};
 `;
 

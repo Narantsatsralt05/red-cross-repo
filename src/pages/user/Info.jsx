@@ -116,7 +116,7 @@ const UserInfo = ({ isStep }) => {
         <Padding size="30" width="100%">
           <Stack width="100%" direction="column" gap="75">
             <Stack direction="row">
-              <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ </Text>2
+              <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ </Text>
             </Stack>
 
             <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='83vw' >
