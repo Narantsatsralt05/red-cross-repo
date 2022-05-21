@@ -35,8 +35,8 @@ const Login = () => {
     if (isTrue) setLoader(false)
   }, [isTrue])
   return (
-    <Stack direction="row" width="100%" height="100vh">
-      <Stack direction="column" alignItems="center" width="35%" height="100vh" bg="#fff">
+    <Stack direction="row" width="100vw" height="100vh">
+      <Stack direction="column" alignItems="center" width="35vw" height="100vh" bg="#fff">
         <Stack height="15vh" width="35%" />
         <img src={Logo.src} width={90} height={90} />
         <Margin size={[30, 0, 0, 0]}>
@@ -111,9 +111,7 @@ const Login = () => {
         </Text>
       </Position>
 
-      <Stack width="65%" height="100vh">
-        <img src={Background.src} width={1700} height={300} />
-      </Stack>
+        <img src={Background.src} />
     </Stack>
   );
 };

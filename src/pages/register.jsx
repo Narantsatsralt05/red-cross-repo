@@ -5,12 +5,13 @@ import UserInfo from './user/Info';
 import UserInfo2 from './user/Info2';
 import { Stepper } from '../components/common/stepper'
 import {Header} from '../components/common/header';
-
+import { CoveredTrainingTable, SkillTable } from '../components';
+import {Stack} from "../components"
 
 const data = {
   header: 'ХЭРЭГЛЭГЧИЙН ДЭЛГЭРЭНГҮЙ МЭДЭЭЛЭЛ БҮРТГЭХ',
   headers: ['ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ', 'САЙН ДУРЫН АЖЛЫН ТУРШЛАГА', 'ХАМРАГДСАН СУРГАЛТ', 'УР ЧАДВАР'],
-  body: [<UserInfo isStep={true} />, <UserInfo2 />, <div>ene bol 3r step</div>, <div>ene bol 4r step</div>],
+  body: [<UserInfo isStep={true} />, <UserInfo2 />, <CoveredTrainingTable admin={true}/>, <SkillTable admin={true}/>],
 };
 <Stepper data={data} />;
 const Register = () => {
@@ -24,9 +25,9 @@ const Register = () => {
     }
   }, [user]);
 
-  return <div>
+  return <Stack width="100vw" direction='column'>
       <Header/>
       <Stepper data={data} />
-    </div>;
+      </Stack>
 };
 export default Register;

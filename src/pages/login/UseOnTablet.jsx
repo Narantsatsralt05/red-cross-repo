@@ -113,7 +113,7 @@ const UseOnTablet = () => {
                             <Text color="#1B1B1B" type='T1' cursor="pointer">
                                 Нууц үг
                             </Text>
-                            <Text color="#757575" fontSize="0.8vw" cursor="pointer" onClick={() => router.push('/forgotPass')}>
+                            <Text color="#757575" fontSize="0.8vw" cursor="pointer" onClick={() => router.push('/user/forgotPass')}>
                                 Нууц үг мартсан?
                             </Text>
                         </Stack>

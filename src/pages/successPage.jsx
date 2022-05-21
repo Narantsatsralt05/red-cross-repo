@@ -1,5 +1,5 @@
 import { Button, Margin, Stack, Text, Border } from '../components';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CorrectIcon } from '../assets/icon/correctIcon';
 import Link from 'next/link';
 import { useAuthContext } from '../common/context/AuthContext';
@@ -13,6 +13,7 @@ const Success = () => {
   const [isAdmin, setIsAdmin] = useState("");
   const router = useRouter();
 
+ useEffect(() => {
   userData.data.map((el) => {
     if (user?.email === el.email) {
       if (el.admin === true) {
@@ -24,6 +25,7 @@ const Success = () => {
       }
     }
   });
+ }, [])
 
   return (
     <Stack direction="column">

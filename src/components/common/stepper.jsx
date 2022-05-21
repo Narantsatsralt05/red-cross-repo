@@ -84,7 +84,7 @@ export const Stepper = ({ data }) => {
       </Border>
       <Margin size={[10, 0, 0, 0]}>
         <Border borderColor="#E5E5E5" borderRadius="10px" overFlow="hidden">
-          <Stack width="99.9vw" bg="#FAFAFA" direction="column">
+          <Stack width="99.9vw" bg="#FAFAFA" height="80vh" direction="column">
             {step === 1 ? (
               <div>{data.body[0]}</div>
             ) : step === 2 ? (

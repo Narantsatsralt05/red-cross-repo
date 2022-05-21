@@ -3,7 +3,6 @@ import { useCollection, useDocumentWithUserOnce } from '../common/services/fireb
 import { useRouter } from 'next/router';
 import { useAuthContext } from '../common/context/AuthContext';
 import { Loading } from '../components';
-import { useCollection } from '../common/services/firebase';
 
 const Checker = () => {
   const { user } = useAuthContext();

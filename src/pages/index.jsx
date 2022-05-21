@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     if (user === null) {
-      router.push('./user/login');
+      router.push('/login');
     } else if (user != null) {
       router.push('/checker');
     }
