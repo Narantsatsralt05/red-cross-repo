@@ -9,7 +9,7 @@ import { useAuthContext } from '../../../common/context/AuthContext';
 export const SkillTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/skills`).data;
+  const data = useCollection(`/user/${user?.uid}/skills`).data;
   const headers = ['Ур чадвар', 'Ур чадварын түвшин', 'Тайлбар'];
   const title = 'УР ЧАДВАР';
 
@@ -38,7 +38,7 @@ export const SkillTable = ({ admin }) => {
 export const CoveredTrainingTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/ coveredTraining`).data;
+  const data = useCollection(`/user/${user?.uid}/ coveredTraining`).data;
   const headers = ['Сургалтын төрөл', 'Хэзээ', 'Хаана', 'Сургалтын хугацаа /цагаар/', 'Нэмэлт мэдээлэл'];
   const title = 'СУРГАЛТ';
   const tableHeadCell = {
@@ -66,7 +66,7 @@ export const CoveredTrainingTable = ({ admin }) => {
 export const MembershipInformationTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/membershipInformation`).data;
+  const data = useCollection(`/user/${user?.uid}/membershipInformation`).data;
   const headers = ['Гишүүнчлэлийн төрөл', 'Эхэлсэн', 'Дууссан', 'Нэмэлт мэдээлэл'];
   const title = 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ';
   const tableHeadCell = {
@@ -94,7 +94,7 @@ export const MembershipInformationTable = ({ admin }) => {
 export const VolunteerWorkInformationTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/volunteerWorkInformation`).data;
+  const data = useCollection(`/user/${user?.uid}/volunteerWorkInformation`).data;
   const headers = ['Сайн дурын ажил', 'Хугацаа', 'Он сар өдөр', 'Нэмэлт мэдээлэл'];
   const title = 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ';
   const tableHeadCell = {
@@ -122,7 +122,7 @@ export const VolunteerWorkInformationTable = ({ admin }) => {
 export const HelpInformationTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/helpInformation`).data;
+  const data = useCollection(`/user/${user?.uid}/helpInformation`).data;
   const headers = ['Тусламжийн төрөл', 'Эхэлсэн', 'Дууссан', 'Нэмэлт мэдээлэл'];
   const title = 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ';
   const tableHeadCell = {
@@ -150,7 +150,7 @@ export const HelpInformationTable = ({ admin }) => {
 export const EmergencyContactPersonTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user.uid}/EmergencyContactPerson`).data;
+  const data = useCollection(`/user/${user?.uid}/EmergencyContactPerson`).data;
   const headers = ['Таны юу болох', 'Овог, нэр', 'Утасны дугаар'];
   const title = 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл';
   const tableHeadCell = {

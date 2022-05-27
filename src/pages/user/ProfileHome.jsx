@@ -24,12 +24,12 @@ const ProfileHome = () => {
     headers: [{ text: 'Нүүр' }, { text: 'Үндсэн мэдээлэл' }],
     body: [
       <Stack width="100vw" direction="column" >
-        <Padding size={[50, 0, 0, 40]}>
+        <Padding size={[50, 0, 0, 10]}>
           <Stack direction="column" gap="40">
             <Padding size={[20, 20, 20, 100]}>
               <Stack width="100%" direction="row" gap="50" flexWrap="wrap">
                 <FullShadow>
-                  <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
+                  <Border borderColor="#00000022" borderRadius="8" borderWidth="1">
                     <Stack
                       width="300px"
                       height="170px"
@@ -48,7 +48,7 @@ const ProfileHome = () => {
                   </Border>
                 </FullShadow>
                 <FullShadow>
-                  <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
+                  <Border borderColor="#00000022" borderRadius="8" borderWidth="1">
                     <Stack
                       width="300px"
                       height="170px"
@@ -71,7 +71,7 @@ const ProfileHome = () => {
                   </Border>
                 </FullShadow>
                 <FullShadow>
-                  <Border borderColor="#00000022" borderRadius="5px" borderWidth="1">
+                  <Border borderColor="#00000022" borderRadius="8" borderWidth="1">
                     <Stack
                       width="300px"
                       height="170px"
@@ -97,7 +97,7 @@ const ProfileHome = () => {
             </Padding>
 
             <Stack direction="column" width="100vw" gap="30">
-              <VolunteerWorkInformationTable/>
+              <VolunteerWorkInformationTable />
               <MembershipInformationTable />
               <HelpInformationTable />
             </Stack>
@@ -115,18 +115,18 @@ const ProfileHome = () => {
         <Stack direction="row" justifyContent="space-between" height="120px" width="100vw">
           <Margin size={[30, 20, 0, 40]}>
             <Stack direction="column" gap="20px">
-              <Stack gap="5px">
+              <Stack gap="8">
                 <Text textTransform="uppercase" type="H2">
-                  Даваа
+                  {document?.lastName}
                 </Text>
                 <Text textTransform="uppercase" type="H2">
                   овогтой
                 </Text>
                 <Text textTransform="uppercase" type="H2">
-                  Hямсамбуу
+                  {document?.firstName}
                 </Text>
               </Stack>
-              <Stack gap="5px">
+              <Stack gap="8">
                 <Text type="ThinH2">Харьяалал:</Text>
                 <Text type="ThinH2"> Баянзүрх дүүргийн Улаан загалмай хороо</Text>
               </Stack>
@@ -135,18 +135,18 @@ const ProfileHome = () => {
           <Margin size={[20, 40, 20, 20]}>
             <Stack direction="column" gap="4">
               <Text color="#0066B3">Төлөв</Text>
-              <Stack alignItems="center" direction="row" gap="5px">
+              <Stack alignItems="center" direction="row" gap="8">
                 <Text type="H2">Сайн дурын идэвхтэн:</Text>
                 <Text type="ThinH2">{document?.volunteer}</Text>
               </Stack>
 
-              <Stack alignItems="center" direction="row" gap="5px">
+              <Stack alignItems="center" direction="row" gap="8">
                 <Text type="H2">Гишүүнчлэл:</Text>
                 <Text type="ThinH2">
-                  {memberType}/{date}/?
+                  {document?.memberType}/{document?.date}/
                 </Text>
               </Stack>
-              <Stack alignItems="center" direction="row" gap="5px">
+              <Stack alignItems="center" direction="row" gap="8">
                 <Text type="H2">Цусны донор:</Text>
                 <Text type="ThinH2">{document?.bloodDonor}</Text>
               </Stack>

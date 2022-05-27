@@ -104,8 +104,7 @@ export const useDocumentWithUser = () => {
     if (!firestore || !auth || !user) {
       return;
     }
-    console.log(userData)
-    const subscription = docData(doc(firestore, `${USER_HOME}/${user.uid}`), { idField: 'uid' }).subscribe(
+    const subscription = docData(doc(firestore, `${USER_HOME}/${user?.uid}`), { idField: 'uid' }).subscribe(
       (documentData) => {
         documentData && setUserData(documentData);
         setLoading(false);
@@ -126,7 +125,7 @@ export const useDocumentWithUserOnce = () => {
       if (!firestore || !auth || !user || userData) {
         return;
       }
-      getDoc(doc(firestore, `${USER_HOME}/${user.uid}`))
+      getDoc(doc(firestore, `${USER_HOME}/${user?.uid}`))
         .then((documentSnap) => {
           setUserData({ ...documentSnap.data(), uid: user.uid });
         })

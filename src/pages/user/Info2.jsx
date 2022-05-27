@@ -35,7 +35,8 @@ const UserInfo2 = () => {
             <Styledinput size={'16px'} label={<Stack directoin='row'><Text style={{ marginBottom: '10px' }} type="T2">Жил</Text><Text color="red">*</Text></Stack>} height={'40px'} width={'400px'} />
             <Text style={{ marginTop: '30px' }} type="T2">Сонголт (Олон сонголт сонгох боломжтой)<Text color="red">*</Text></Text>
             <Margin size={[30, 0, 60, 0]}>
-                <Stack style={{ width: 'fit-content', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}} direction='row' gap={'50'}>
+            {/* style={{ width: 'fit-content', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}} */}
+                <Stack direction='row' gap={'50'} width='100vw' justifyContent='space-between'>
                     <Stack style={{width: 'fit-content'}} direction='column' gap="50">
                         <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}><StyledCheckBox/><Text type="T2"> Гамшгийн менежментийн чиглэлээр</Text></div>
                         <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Халамжийн үйлчилгээ (Гэрийн эргэлт)</Text></div>
@@ -48,10 +49,10 @@ const UserInfo2 = () => {
                         <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Ус, орчны эрүүл ахуй</Text></div>
                         <div style={{display: 'flex', alignItems: 'center', gap: '12px' }}><StyledCheckBox /><Text type="T2"> Хүүхэд, залуучуудын хөдөлгөөний чиглэлээр</Text></div>
                     </Stack>
-		    <Stack height={'fit-content'} width={'fit-content'} style={{flexWrap: 'wrap'}} gap={'70'}>
+                    <Stack style={{width: 'fit-content'}} direction='column' gap="50">
 				<div style={{ width: 'fit-content', height: '30px', display: 'flex', flexDirection: 'row', alignItems: 'center' }}><StyledCheckBox /><Text style={{marginLeft: '10px'}} type="T2"> Цусны донор</Text></div>
 				<div style={{ width: 'fit-content', height: '30px', display: 'flex', flexDirection: 'row', alignItems: 'center' }}><StyledCheckBox /><Text style={{marginLeft: '10px'}} type="T2"> Халдварт болон халдварт бус өвчин</Text></div>
-		    </Stack>
+                </Stack>
                 </Stack>
             </Margin>
         </Stack>

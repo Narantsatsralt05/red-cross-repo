@@ -7,14 +7,14 @@ import { addDoc, collection } from 'firebase/firestore';
 
 export const AuthContext = createContext({
   user: {},
-  login: () => {},
-  signUp: () => {},
-  logOut: () => {},
-  forgetPass: () => {},
+  login: () => { },
+  signUp: () => { },
+  logOut: () => { },
+  forgetPass: () => { },
 });
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState('');
   const [loginError, setLoginError] = useState('');
   const [signUpError, setSignUpError] = useState('');
   const [forgotPassError, setForgotPassError] = useState('');
@@ -33,28 +33,26 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         setLoginError(error.message);
-        console.log(error.message);
+        console.log(error.message, 'hasdkhf');
       });
   };
 
-  const signUp = async (values) => {
+  const signUp = (values) => {
     if (values.password === values.passwordConfirm) {
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
-        const user = userCredential.user;
-        console.log(user);
-        setDocument(`user/${user.uid}`, {
-          email: values.email,
-          firstName: values.firstName,
-          lastName: values.lastName,
-          uid: user.uid,
-          RD: values.RD,
-          gender: values.gender,
-          date: values.date,
-          location: values.location,
-          phoneNumber: values.phoneNumber,
+        createUserWithEmailAndPassword(auth, values?.email, values?.password);
+        setDocument(`user/${user?.uid}`, {
+          email: values?.email,
+          firstName: values?.firstName,
+          lastName: values?.lastName,
+          uid: user?.uid,
+          RD: values?.RD,
+          gender: values?.gender,
+          date: values?.date,
+          location: values?.location,
+          phoneNumber: values?.phoneNumber,
         });
-        console.log('saved');
+        router.push('/checker');
       } catch (err) {
         console.log(err);
       }

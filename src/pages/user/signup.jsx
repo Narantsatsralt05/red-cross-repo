@@ -94,7 +94,7 @@ const SignUp = () => {
       validationSchema={validate}
     >
       {(formik) => {
-        const { isValid, dirty, values } = formik;
+        const { isValid, dirty, values, isSubmitting } = formik;
         values.gender = genderValue;
         return (
           <Form>
@@ -131,7 +131,7 @@ const SignUp = () => {
                     >
                       <Stack direction="column">
                         <Parent>
-                          <InputTask name="firstName" input="Эцэг/эх-ийн нэр"></InputTask>
+                          <InputTask name="lastName" input="Эцэг/эх-ийн нэр"></InputTask>
                           <label>
                             <Stack direction="row">
                               <div>Хүйс </div>
@@ -156,7 +156,7 @@ const SignUp = () => {
                       </Stack>
                       <Stack direction="column">
                         <Parent>
-                          <InputTask name="lastName" input="Нэр"></InputTask>
+                          <InputTask name="firstName" input="Нэр"></InputTask>
                           <InputTask name="RD" input="Регистрийн дугаар" type="text"></InputTask>
                           <InputTask name="email" input="И-мэйл хаяг" type="email"></InputTask>
                           <InputTask name="location" input="Аймаг/Дүүрэг"></InputTask>

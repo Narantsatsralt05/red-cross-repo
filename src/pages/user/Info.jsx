@@ -1,14 +1,14 @@
 import Dropdown from '../../components/common/dropdown';
 import { useState, useEffect } from 'react';
-import { Stack, Text, StyledInput, Padding, Button } from '../../components';
+import { Stack, Text, StyledInput, Padding, Button, EmergencyContactPersonTable } from '../../components';
 import { addDocument, setDocument, useDocument } from '../../common/services/firebase';
 import { useAuthContext } from '../../common/context/AuthContext';
 import { useRouter } from 'next/router';
 
-const UserInfo = ({ isStep }) => {
+const UserInfo = ({ isStep, setStep, step, next }) => {
   const [dist, setDistrict] = useState('Улаанбаатар');
   const { user } = useAuthContext();
-  const { data: Info } = useDocument(`/user/${user.uid}`);
+  const { data: Info } = useDocument(`/user/${user?.uid}`);
   const router = useRouter();
   useEffect(() => {
     if (user === null) {
@@ -32,8 +32,8 @@ const UserInfo = ({ isStep }) => {
         gender: isStep ? '' : Info?.gender,
         city: isStep ? '' : Info?.city,
         district: isStep ? '' : Info?.district,
-        moreInfo: isStep ? '' : Info?.moreInfzo,
-        email: isStep ? '' : Info?.email,
+        moreInfo: isStep ? '' : Info?.moreInfo,
+        email:   Info?.email,
         birthdate: isStep ? '' : Info?.birthdate,
         BloodType: Info?.BloodType
       })
@@ -49,67 +49,72 @@ const UserInfo = ({ isStep }) => {
   };
 
   const add = () => {
-    console.log(value)
-    setDocument(`/user/${user.uid}`, value)
+    setDocument(`/user/${user?.uid}`, value)
+    next()
   }
-  console.log(value)
   return (
     isStep ?
-      <Stack width="100%" justifyContent="center" alignItems="center" >
+      <>
         <Padding size="30">
           <Stack width="100%" direction="column" gap="75">
             <Stack direction="row">
               <Text fontSize="14px">1. ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ</Text>
             </Stack>
-            <Stack direction="row" gap="25" flexWrap="wrap" width='78vw' justifyContent='space-between'>
+            <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between'>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Сайн дурын идэвхтэн{<Text color="red">*</Text>} </Text>
-                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='volunteer' value={value?.volunteer} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='volunteer' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Гишүүнчлэл{<Text color="red">*</Text>}</Text>
-                <Dropdown height='35px' arr={['Алтан гишүүн']} id='member' value={value?.member} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={['Алтан гишүүн']} id='member' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Цусны донор{<Text color="red">*</Text>}</Text>
-                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='bloodDonor' value={value?.bloodDonor} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='bloodDonor' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">
                   Хүүхэд залуучуудын хөдөлгөөний гишүүн {<Text color="red">*</Text>}
                 </Text>
-                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='youthMovementMember' value={value?.youthMovementMember} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='youthMovementMember' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
             </Stack>
 
             <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' >
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Цусны бүлэг{<Text color="red">*</Text>}</Text>
-                <Dropdown height='35px' arr={BloodType?.BloodType} id='BloodType' value={value?.BloodType} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={BloodType?.BloodType} id='BloodType' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Амьдарч буй, аймаг/хот{<Text color="red">*</Text>}</Text>
-                <Dropdown height='35px' arr={StateData && Object.keys(StateData)} onClick={setdist} id='city' value={value?.city} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={StateData && Object.keys(StateData)} onClick={setdist} id='city' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Сум/дүүрэг{<Text color="red">*</Text>}</Text>
-                <Dropdown height='35px' arr={StateData && StateData[dist].district} id='district' value={value?.district} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={StateData && StateData[dist].district} id='district' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Байр, орц, гудамж{<Text color="red">*</Text>}</Text>
-                <StyledInput height='35px' onChange={handleChange} value={value?.moreInfo} id="moreInfo" width='390px' />
+                <StyledInput height='35px' onChange={handleChange} id="moreInfo" width='390px' />
               </Stack>
             </Stack>
             <Stack direction="row" gap="25">
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Хөгжлийн бэрхшээлтэй иргэн эсэх{<Text color="red">*</Text>}</Text>
-                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='disabilities' value={value?.disabilities} setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={['Тийм', 'Үгүй']} id='disabilities' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
             </Stack>
-            {/* <Button width='140px' height='33px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' onClick={add} >Дараагийн алхам</Button> */}
+
           </Stack>
         </Padding>
-      </Stack>
+        <EmergencyContactPersonTable admin={true} />
+        <Button style={{ margin: '70px 0 0 30px' }} width="230px" height="40px" bc='1px solid #0066B3' bgColor="#0066B3" borderRadius="5px" onClick={add}>
+          <Text cursor="pointer" color="#fff" >
+            Дараагийн алхам
+          </Text>
+        </Button>
+      </>
       :
 
       <Stack width="100%" justifyContent="center" alignItems="center" >
@@ -122,7 +127,7 @@ const UserInfo = ({ isStep }) => {
             <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='83vw' >
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Регистрийн дугаар{<Text color="red">*</Text>} </Text>
-                <StyledInput  height='35px' width='390px' disabled value={Info?.RD} />
+                <StyledInput height='35px' width='390px' disabled value={Info?.RD} />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Овог{<Text color="red">*</Text>}</Text>
@@ -143,7 +148,7 @@ const UserInfo = ({ isStep }) => {
             <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='100%'>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Төрсөн он/сар/өдөр{<Text color="red">*</Text>} </Text>
-                <StyledInput width='390px' height='35px' border='3px solid black' id='birthdate' value={value?.birthdate} onChange={(e) => {handleChange ,setValue({ ...value, birthdate: e.target.value })} } />
+                <StyledInput width='390px' height='35px' border='3px solid black' id='birthdate' value={value?.birthdate} onChange={(e) => { handleChange, setValue({ ...value, birthdate: e.target.value }) }} />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">И-мэйл хаяг*{<Text color="red">*</Text>}</Text>
@@ -156,12 +161,12 @@ const UserInfo = ({ isStep }) => {
               <Stack direction="column" gap="12">
                 <Stack direction="column" gap="12">
                   <Text fontSize="12px">Амьдарч буй, аймаг/хот{<Text color="red">*</Text>}</Text>
-                  <Dropdown height='35px' arr={StateData && Object.keys(StateData)} width='390px'  value={value?.city} onClick={(e) => {setValue({ ...value, city: e }) , setdist}} />
+                  <Dropdown height='35px' arr={StateData && Object.keys(StateData)} width='390px' value={value?.city} onClick={(e) => { setValue({ ...value, city: e }), setdist }} />
                 </Stack>
               </Stack>
             </Stack>
 
-            <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between'  width='100%'>
+            <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='100%'>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Сум/дүүрэг{<Text color="red">*</Text>}</Text>
                 <Dropdown height='35px' arr={StateData && StateData[dist].district} id='district' width='390px' value={value?.district} setdropValue={setValue} dropValue={value} onClick={(e) => setValue({ ...value, district: e })} />

@@ -68,7 +68,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
   };
   const AddSectionOnMobile = () => {
     return (
-      <Stack width="100%" justifyContent="flex-start" direction="column">  
+      <Stack width="100%" justifyContent="flex-start" direction="column">
         {title && (
           <Margin size={[20, 10, admin ? 0 : 20, 5]}>
             <Text color={color.primary.black} type="H3">
@@ -136,62 +136,63 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
     setEl(el);
   };
   return (
-    <Stack>
-      <Margin size={[35, 30, 10, 10]}>
-        <OnPc>
-          <AddSectionOnPc />
-        </OnPc>
-        <OnMobile>
-          <AddSectionOnMobile />
-        </OnMobile>
-        <TableContainer style={tableContainerStyle}>
-          <Table>
-            <Margin size={[5, 0, 5, 10]}>
-              <TableHead style={{ fontSize: '12px' }}>
-                <TableRow>{row}</TableRow>
-              </TableHead>
-            </Margin>
-            <Stack width="80vw" height="1px" bg={color.secondary.white} />
-            <TableBody>
-              {body.map((el, ind) => {
-                return (
-                  <Margin size={[0, 0, 5, 10]}>
-                    <TableRow
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                      onClick={() => Details({ el, ind })}
-                    >
-                      {el.map((element, index) => {
-                        return (
-                          <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell}>
-                            <Text type={index === 0 ? 'T2Caps' : 'T2'}>
-                              {index === 0 ? <Hover>{element}</Hover> : element}
-                            </Text>
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  </Margin>
-                );
-              })}
-              {checkBar ? (
-                <RightBarCheck
-                  headers={headers}
-                  checkBar={checkBar}
-                  setCheckBar={setCheckBar}
-                  el={elData}
-                  ind={number}
-                  title={title}
-                  bar={bar}
-                  setBar={setBar}
-                />
-              ) : (
-                ''
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Margin>
-    </Stack>
+    <Margin size={[0, 0, 0, 20]}>
+      <Stack>
+        <Margin size={[35, 30, 10, 10]}>
+          <OnPc>
+            <AddSectionOnPc />
+          </OnPc>
+          <OnMobile>
+            <AddSectionOnMobile />
+          </OnMobile>
+          <TableContainer style={tableContainerStyle}>
+            <Table>
+              <Margin size={[5, 0, 5, 10]}>
+                <TableHead style={{ fontSize: '12px' }}>
+                  <TableRow>{row}</TableRow>
+                </TableHead>
+              </Margin>
+              <Stack width="80vw" height="1px" bg={color.secondary.white} />
+              <TableBody>
+                {body.length != 0 ? body.map((el, ind) => {
+                  return (
+                    <Margin size={[0, 0, 5, 10]}>
+                      <TableRow
+                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                      >
+                        {el.map((element, index) => {
+                          return (
+                            <TableCell style={index === 0 ? tableBodyCell.first : tableBodyCell}>
+                              <Text type={index === 0 ? 'x  T2Caps' : 'T2'}>
+                                {index === 0 ? <Hover style={{ cursor: 'pointer' }} onClick={() => Details({ el, ind })}>{element}</Hover> : element}
+                              </Text>
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    </Margin>
+                  );
+                }) : <Margin size={[20, 0, 20, 20]}> {`Та ${title} оруулна уу?`}  </Margin>}
+                {checkBar ? (
+                  <RightBarCheck
+                    headers={headers}
+                    checkBar={checkBar}
+                    setCheckBar={setCheckBar}
+                    el={elData}
+                    ind={number}
+                    title={title}
+                    bar={bar}
+                    setBar={setBar}
+                  />
+                ) : (
+                  ''
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Margin>
+      </Stack>
+    </Margin>
   );
 };
 

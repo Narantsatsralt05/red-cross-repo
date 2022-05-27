@@ -37,7 +37,6 @@ const DataTable = () => {
         borderRadius: '5px',
         display: 'flex',
         alignItems: 'flex-start',
-        justifyContent: 'center',
         flexDirection: 'column',
       }}
     >

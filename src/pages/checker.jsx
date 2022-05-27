@@ -14,16 +14,20 @@ const Checker = () => {
     }
   }, [user])
 
-    const userData = useCollection('/user');
-    userData.data.map((el) => {
-      if (user?.email === el.email) {
+  const userData = useCollection('/user');
+  userData.data.map((el) => {
+    if (user?.email === el.email) {
+      if (el.BloodType == undefined)
+        router.push('/register')
+      else
         if (el.admin === true) {
           router.push('/admin/home');
         } else {
           router.push('/user/home');
         }
-      }
-    });
+    }
+
+  });
 
   return <Loading />;
 };

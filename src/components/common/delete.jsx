@@ -5,14 +5,13 @@ import { deleteDocument } from '../../common/services/firebase'
 
 const Delete = ({ DataVolunteer, DataSkill, DataTrain, DataMember, DataHelp, DataEmergency, title, setBar, setDeleteDoc, setCheckBar }) => {
     const { user } = useAuthContext()
-    console.log(DataEmergency, DataHelp, DataVolunteer, DataSkill, DataMember, DataTrain)
     const DeleteDoc = () => {
-        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') { deleteDocument(`/user/${user.uid}/volunteerWorkInformation/${DataVolunteer}`), setCheckBar(false) }
-        if (title === 'УР ЧАДВАР') { deleteDocument(`/user/${user.uid}/skills/${DataSkill}`), setCheckBar(false) }
-        if (title === 'СУРГАЛТ') { deleteDocument(`/user/${user.uid}/coveredTraining/${DataTrain}`), setCheckBar(false) }
-        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') { deleteDocument(`/user/${user.uid}/membershipInformation/${DataMember}`), setCheckBar(false) }
-        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') { deleteDocument(`/user/${user.uid}/helpInformation/${DataHelp}`), setCheckBar(false) }
-        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') { deleteDocument(`/user/${user.uid}/EmergencyContactPerson/${DataEmergency}`), setCheckBar(false) }
+        if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') { deleteDocument(`/user/${user?.uid}/volunteerWorkInformation/${DataVolunteer}`), setCheckBar(false) }
+        if (title === 'УР ЧАДВАР') { deleteDocument(`/user/${user?.uid}/skills/${DataSkill}`), setCheckBar(false) }
+        if (title === 'СУРГАЛТ') { deleteDocument(`/user/${user?.uid}/coveredTraining/${DataTrain}`), setCheckBar(false) }
+        if (title === 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ') { deleteDocument(`/user/${user?.uid}/membershipInformation/${DataMember}`), setCheckBar(false) }
+        if (title === 'ТУСЛАМЖИЙН МЭДЭЭЛЭЛ') { deleteDocument(`/user/${user?.uid}/helpInformation/${DataHelp}`), setCheckBar(false) }
+        if (title === 'Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл') { deleteDocument(`/user/${user?.uid}/EmergencyContactPerson/${DataEmergency}`), setCheckBar(false) }
     }
     return (<>
         <Text fontSize='12px' fontFamily='Roboto' lineHeight='12px' fontWeight='300'>
