@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { Border, Box, Button, Margin, Position, Stack, Text } from '..';
 import theme from "../../theme/theme"
 import Success from '../../pages/successPage';
+import UserInfo from '../../pages/user/Info';
 const OnDesktop = styled.div`
   @media (max-width: 1050px) {
     display: none;
@@ -19,13 +20,10 @@ const OnMobileText = styled.div`
   }
 `;
 
-export const Stepper = ({ data }) => {
-  const [step, setStep] = useState(1);
-  const next = () => {
-    setStep(step + 1);
-  };
+export const Stepper = ({ data, setStep, step, next }) => {
+
   if (step === 5) {
-    return <Success/>;
+    return <Success />;
   }
   return (
     <Box>
@@ -86,7 +84,7 @@ export const Stepper = ({ data }) => {
         <Border borderColor="#E5E5E5" borderRadius="10px" overFlow="hidden">
           <Stack width="99.9vw" bg="#FAFAFA" height="80vh" direction="column">
             {step === 1 ? (
-              <div>{data.body[0]}</div>
+              <UserInfo isStep={true} setStep={setStep} step={step} next={next} />
             ) : step === 2 ? (
               <div>{data.body[1]}</div>
             ) : step === 3 ? (
@@ -96,11 +94,14 @@ export const Stepper = ({ data }) => {
             ) : (
               ''
             )}
-            <Button style={{marginLeft: '30px'}} width="180px" height="50px" bgColor="#0066B3" borderRadius="5px" onClick={next}>
-              <Text cursor="pointer" color="#fff">
-                Дараагийн алхам
-              </Text>
-            </Button>
+            {step != 1 && <Margin size={[50, 0, 0, 0]}>
+              <Button style={{ marginLeft: '30px' }} width="230px" height="40px" bc='1px solid #0066B3' bgColor="#0066B3" borderRadius="5px" onClick={next}>
+                <Text cursor="pointer" color="#fff" >
+                  Дараагийн алхам
+                </Text>
+              </Button>
+            </Margin>}
+
           </Stack>
         </Border>
       </Margin>

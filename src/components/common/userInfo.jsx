@@ -22,7 +22,7 @@ const PersonalUserInfo = () => {
             </div>,
             <div style={{ width: '83vw' }}>
                 <VolunteerWorkInformationTable admin={true} />
-                <CoveredTrainingTable admin={true} />
+                <MembershipInformationTable admin={true} />
                 <SkillTable admin={true} />
             </div>,
             <div  style={{ width: '83vw' }}>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../theme/theme';
 export const StyledInput = styled.input`
   width: ${(props) => props.width ? props.width : '400px'};
-  border: 1px solid black;
+  border: 0.4px solid gray;
   @media (max-width: 400px) {
     width:'200px' !important
   }

@@ -1,6 +1,5 @@
 import { Button, Margin, Position, Stack, StyledInput, Text, Border } from '../../components/core';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Background from '../../assets/image/loginBg.png';
 import Login1 from '../../assets/icon/login1.png';
 import Login2 from '../../assets/icon/login2.png';
@@ -60,7 +59,7 @@ const UseOnPhone = () => {
     <Stack direction="row" width="100%" height="100vh">
       <Stack direction="column" alignItems="center" width="100vw" height="100vh" bg="#fff">
         <Stack height="15vh" width="35%" />
-        <Image src={Logo} width={150} height={150} />
+        <img src={Logo.src} width={150} height={150} />
         <Margin size={[30, 0, 0, 0]}>
           <Text color="#0066B3" fontSize="3vw" cursor="pointer">
             МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
@@ -166,6 +165,9 @@ const UseOnPhone = () => {
             <Text color="#fff" cursor="pointer" fontSize="3.2vw" onClick={() => login(form.email, form.password)}>
               НЭВТРЭХ
             </Text>
+            <Margin size={[20, 0, 0, 430]}>
+        <Text type="ThinH2" onClick={() => router.push('/user/signup')}>Бүртгүүлэх</Text>
+        </Margin>
           </Button>
         </Margin>
       </Stack>

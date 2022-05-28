@@ -17,8 +17,7 @@ export const Header = () => {
       <Stack alignItems="center">
         <Margin size={[20, 0, 0, 30]}>
           <img src={hamburger.src} width={60} height={60} onClick={() => {
-            router.push('/admin');
-            location.reload();
+            router.push('admin');
           }} />
         </Margin>
         <Margin size={[0, 0, 0, 10]}>
@@ -37,7 +36,7 @@ export const Header = () => {
         </Margin>
       </Stack>
       <Margin size={[0, 50, 0, 0]}>
-        <Text type="T2" color="#fff">
+        <Text type="T2" color="#fff" style={{cursor : 'pointer'}} >
           {user?.email}
         </Text>
       </Margin>

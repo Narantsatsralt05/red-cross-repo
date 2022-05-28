@@ -17,7 +17,6 @@ const InputTask = ({ input, placeholder, type , label, ...props}) => {
                             <div style={{ color: 'red', marginBottom: '5px' }}>*</div>
                         </Stack>
                     </Text>
-                    {/* {console.log(field.value)} */}
                         <StyledInput width='300px' height='35px' font='Roboto' size='13px'
                             border='1px solid #D0D0D0' borderRadius='8px'
                             placeholder={placeholder} autoComplete='off'

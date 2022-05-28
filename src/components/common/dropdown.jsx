@@ -47,8 +47,7 @@ const ToUseOptions = styled(StyledATag)`
   background-color: white;
   padding: 10px;
   color: black;
-  /* border:black 1px solid; */
-  border-radius: 3px;
+  border-radius: 5px;
   border: 0.4px solid #d9e6f2;
 
   &:hover {
@@ -64,7 +63,7 @@ const StyledSelect = styled.div`
   width: ${({ width }) => width};
   height: ${({ height }) => (height )};
   background-color: white;
-  border: 1px solid black;
+  border:0.4px solid gray;
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "2px")};
   box-sizing: border-box;
   display: flex;
@@ -76,7 +75,7 @@ const Dropdown = (props) => {
   const Select = ({ value, onClick }) => {
     return (
       <Stack>
-        <StyledSelect onClick={onClick} width={props.width ? props.width : '311px'} height={props.height ? props.height : '25px'}>
+        <StyledSelect onClick={onClick} width={props.width ? props.width : '311px'} height={props.height ? props.height : '25px'} co>
           <Text style={{ marginLeft: '10px' }}>{value}</Text>
           <div
             style={{ width: '30px', height: '35px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
@@ -110,12 +109,10 @@ const Dropdown = (props) => {
           rightIcon={ArrowDownSecond}
         ></Select>
         {state && (
-          <DropDownContent onClick={Click} width={props.width ? props.width : '311px'} height={'35px'}>
-            {/* <Border borderColor="black" borderRadius="8px"> */}
+          <DropDownContent onClick={Click} width={props.width ? props.width : '311px'} height={'35px'} >
               {props.arr.map((Element) => (
                 <ToUseOptions onClick={() => handleClick(Element)}>{Element}</ToUseOptions>
               ))}
-            {/* </Border> */}
           </DropDownContent>
         )}
       </div>

@@ -1,6 +1,5 @@
 import { Button, Margin, Position, Stack, StyledInput, Text, Border } from '../../components/core';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Background from '../../assets/image/loginBg.png';
 import Login1 from '../../assets/icon/login1.png';
 import Login2 from '../../assets/icon/login2.png';
@@ -47,7 +46,7 @@ const UseOnTablet = () => {
         <Stack direction="row" width="100%" height="100vh">
             <Stack direction="column" alignItems="center" width="50%" height="100vh" bg="#fff">
                 <Stack height="15vh" width="35%" />
-                <Image src={Logo} width={90} height={90} />
+                <img src={Logo.src} width={90} height={90} />
                 <Margin size={[30, 0, 0, 0]}>
                     <Text color="#0066B3" fontSize="0.9vw" cursor="pointer">
                         МОНГОЛЫН УЛААН ЗАГАЛМАЙ НИЙГЭМЛЭГ
@@ -163,11 +162,10 @@ const UseOnTablet = () => {
                 </Text>
             </Position>
             <Stack width="50%" height="100vh">
-                <Image src={Background} width={1700} height={300} />
+                <img src={Background.src} width={1700} height={300} />
             </Stack>
         </Stack>
     )
 };
 
 export default UseOnTablet
-

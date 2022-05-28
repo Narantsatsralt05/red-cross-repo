@@ -46,32 +46,32 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
     const [fourthValue, setfourthValue] = useState(el ? el[3] : '')
     const [fifthValue, setfifthValue] = useState(el ? el[4] : '')
 
-    const DataVolunteer = useCollection(`/user/${user.uid}/volunteerWorkInformation`).data[ind]?.uid
-    const DataSkill = useCollection(`/user/${user.uid}/skills`).data[ind]?.uid
-    const DataTrain = useCollection(`/user/${user.uid}/coveredTraining`).data[ind]?.uid
-    const DataMember = useCollection(`/user/${user.uid}/membershipInformation`).data[ind]?.uid
-    const DataHelp = useCollection(`/user/${user.uid}/helpInformation`).data[ind]?.uid
-    const DataEmergency = useCollection(`/user/${user.uid}/EmergencyContactPerson`).data[ind]?.uid
+    const DataVolunteer = useCollection(`/user/${user?.uid}/volunteerWorkInformation`).data[ind]?.uid
+    const DataSkill = useCollection(`/user/${user?.uid}/skills`).data[ind]?.uid
+    const DataTrain = useCollection(`/user/${user?.uid}/coveredTraining`).data[ind]?.uid
+    const DataMember = useCollection(`/user/${user?.uid}/membershipInformation`).data[ind]?.uid
+    const DataHelp = useCollection(`/user/${user?.uid}/helpInformation`).data[ind]?.uid
+    const DataEmergency = useCollection(`/user/${user?.uid}/EmergencyContactPerson`).data[ind]?.uid
     const [isSucces, setSucces] = useState('')
     const Add = () => {
         if (title === 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ') {
-            el ? setDocument(`/user/${user.uid}/volunteerWorkInformation/${DataVolunteer}`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }) : addDocument(`/user/${user.uid}/volunteerWorkInformation`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue })
+            el ? setDocument(`/user/${user?.uid}/volunteerWorkInformation/${DataVolunteer}`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue }) : addDocument(`/user/${user?.uid}/volunteerWorkInformation`, { additionalInformation: fourthValue, date: thirdValue, time: secondValue, volunteering: firstValue })
         }
         if (title === `УР ЧАДВАР`) {
-            el ? setDocument(`/user/${user.uid}/skills/${DataSkill}`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }) : addDocument(`/user/${user.uid}/skills`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue })
+            el ? setDocument(`/user/${user?.uid}/skills/${DataSkill}`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue }) : addDocument(`/user/${user?.uid}/skills`, { skill: firstValue, skillLevel: secondValue, explanation: thirdValue })
         }
         if (title === `СУРГАЛТ`) {
-            el ? setDocument(`/user/${user.uid}/coveredTraining/${DataTrain}`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument(`/user/${user.uid}/coveredTraining`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue })
+            el ? setDocument(`/user/${user?.uid}/coveredTraining/${DataTrain}`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue }) : addDocument(`/user/${user?.uid}/coveredTraining`, { additionalInformation: fifthValue, trainingTime: fourthValue, trainingType: firstValue, when: secondValue, where: thirdValue })
         }
 
         if (title === `ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ`) {
-            el ? setDocument(`/user/${user.uid}/membershipInformation/${DataMember}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }) : addDocument(`/user/${user.uid}/membershipInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue })
+            el ? setDocument(`/user/${user?.uid}/membershipInformation/${DataMember}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue }) : addDocument(`/user/${user?.uid}/membershipInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, membershipType: firstValue })
         }
         if (title === `ТУСЛАМЖИЙН МЭДЭЭЛЭЛ`) {
-            el ? setDocument(`/user/${user.uid}/helpInformation/${DataHelp}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }) : addDocument(`/user/${user.uid}/helpInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue })
+            el ? setDocument(`/user/${user?.uid}/helpInformation/${DataHelp}`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue }) : addDocument(`/user/${user?.uid}/helpInformation`, { additionalInformation: fourthValue, endDate: thirdValue, startDate: secondValue, typeOfAssistance: firstValue })
         }
         if (title === `Яаралтай үед холбоо барих гэр бүлийн гишүүний мэдээлэл`) {
-            el ? setDocument(`/user/${user.uid}/EmergencyContactPerson/${DataEmergency}`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }) : addDocument(`/user/${user.uid}/EmergencyContactPerson`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }
+            el ? setDocument(`/user/${user?.uid}/EmergencyContactPerson/${DataEmergency}`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }) : addDocument(`/user/${user?.uid}/EmergencyContactPerson`, { information: firstValue, name: secondValue, phoneNumber: thirdValue }
             )
         }
         setBar(false)

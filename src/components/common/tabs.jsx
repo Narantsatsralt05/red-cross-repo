@@ -28,7 +28,7 @@ const RowButton = styled.button`
 `;
 
 export const Tabs = ({ type, data }) => {
-  const [activeTab, setactiveTab] = useState();
+  const [activeTab, setactiveTab] = useState(0);
   const RowButton = styled.button`
   height: ${props => props.column ? 'fit-content' : '100%'};
   width: ${props => props.column ? '' : 'fit-content'};

@@ -26,11 +26,12 @@ import { useRouter } from 'next/router';
 import textGrammer from '../../assets/icon/textGrammer.svg';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import { useDocument } from '../../common/services/firebase';
+import { useCollection, useDocument } from '../../common/services/firebase';
 import { useEffect } from 'react';
 
 const Admin = () => {
   let a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const { data } = useCollection('/user')
   const router = useRouter();
   const [activeTab, setactiveTab] = useState();
   const dataValue = useDocument('/count/8npCX1XzMKzfXDmeUlH0').data;
@@ -92,7 +93,7 @@ const Admin = () => {
       { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, path: '', headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
     ],
     body: [
-      <Loading/>,
+      <Loading />,
       <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 130px)" direction="column">
         <VolunteerInformation />
       </Stack>,
@@ -106,7 +107,7 @@ const Admin = () => {
   };
 
   return (
-    <Stack direction="column">
+    <Stack direction="column" >
       <Header />
       {activeTab &&
         tabs.headers.map((el, index) => {
@@ -183,7 +184,7 @@ const Admin = () => {
                   </Text>
                 ) : (
                   <Stack width="50px" height="50px">
-                    <img src={textGrammer.src}/>
+                    <img src={textGrammer.src} />
                   </Stack>
                 )}
               </Margin>
@@ -271,13 +272,15 @@ const Admin = () => {
                     flexWrap: 'wrap',
                   }}
                 >
-                  {a.map((el) => {
-                    return (
-                      <Margin size={[0, 0, 30, 40]}>
-                        <Usercard></Usercard>
-                      </Margin>
-                    );
-                  })}
+                  {
+                    a?.map((el) => {
+                      return (
+                        <Margin size={[0, 0, 30, 40]} >
+                          <Usercard el={el} />
+                        </Margin>
+                      )
+                    })
+                  }
                 </div>
               </Stack>
             </Margin>
@@ -293,6 +296,7 @@ const Admin = () => {
         )}
       </Stack>
     </Stack>
+
   );
 };
 export default Admin;

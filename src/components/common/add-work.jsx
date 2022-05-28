@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { Stack , Text ,Margin ,Border ,Button} from "../core"
 import exit from '../../assets/icon/Group 5 (1).svg'
 import Dropdown from "./dropdown";
@@ -7,7 +6,6 @@ import Styledinput from "../core/input";
 import { useState } from "react";
 export const Addwork = () => {
     const [hour, setHour] = useState('')
-    console.log(hour)
     const a = ["УК124093122","УК01092597","УК20091234","УК90955597"];
     const b = ["Гамшиг","Тусламж","Гэрийн эргэлт"];
     return   <Stack bg="white" width="55vw" height="100vh" justifyContent="space-between" direction="column" alignItems="center"> 
@@ -16,7 +14,7 @@ export const Addwork = () => {
                         <Text type="T2">
                             САЙН ДУРЫН АЖИЛ БҮРТГЭХ
                         </Text>
-                        <Image src={exit}></Image>
+                        <img src={exit.src}></img>
                     </Stack>
                     <Stack  width="51vw" height="10vh" justifyContent="space-evenly"  direction="column">
                         <Text>
@@ -29,7 +27,7 @@ export const Addwork = () => {
                                                 <Text type="T2">
                                                     {el}
                                                 </Text>
-                                                <Image src={exit}></Image>
+                                                <img src={exit.src}></img>
                                             </Stack>
                                         </Margin>
                                     })}
@@ -70,7 +68,7 @@ export const Addwork = () => {
                 </Stack>
                 <Margin size={[0,0,20,0]}> 
                     <Stack direction="column" justifyContent="space-between" width="51vw" height="10vh">
-                        <Image src={line}></Image>
+                        <img src={line.src}></img>
                         <Stack height="8vh" width="51vw" justifyContent="flex-end" alignItems="center">
                             <Margin size={[0,20,0,0]}>
                                 <Button bc="1px grey solid" bgColor="white" width="140px" height="30px" borderRadius="3px">
