@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useAuthContext } from '../common/context/AuthContext';
-import UserInfo from './user/Info';
-import UserInfo2 from './user/Info2';
-import { Stepper } from '../components/common/stepper'
-import { Header } from '../components/common/header';
-import { CoveredTrainingTable, EmergencyContactPersonTable, Margin, SkillTable } from '../components';
-import { Stack } from "../components"
+import { useAuthContext } from '../../common/context/AuthContext';
+import UserInfo from '../user/Info';
+import UserInfo2 from '../user/Info2';
+import { Stepper } from '../../components/common/stepper'
+import { Header } from '../../components/common/header';
+import { CoveredTrainingTable, EmergencyContactPersonTable, Margin, SkillTable } from '../../components';
+import { Stack } from "../../components"
 
 const data = {
   header: 'ХЭРЭГЛЭГЧИЙН ДЭЛГЭРЭНГҮЙ МЭДЭЭЛЭЛ БҮРТГЭХ',
@@ -30,7 +30,7 @@ const Register = () => {
   }, [user]);
 
   return <Stack width="100vw" direction='column'>
-    <Header />
+    <Header admin='true' />
     <Stepper data={data} setStep={setStep} step={step} next={next} />
   </Stack>
 };

@@ -225,7 +225,6 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                 </label>
                                                             </Center>
                                                         </Margin> : ''}
-                                                    {isSucces ? window.location.reload() : ''}
                                                     <Position position='fixed' bottom='50px'>
                                                         <Margin size={[0, 0, 0, 0]}>
                                                             <Border borderWidth={[1, 0, 0, 0]} borderColor='#DCDCDC' style={{ width: '340px' }} >

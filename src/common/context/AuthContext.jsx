@@ -33,14 +33,12 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         setLoginError(error.message);
-        console.log(error.message, 'hasdkhf');
       });
   };
 
-  const signUp = (values) => {
-    if (values.password === values.passwordConfirm) {
-      try {
-        createUserWithEmailAndPassword(auth, values?.email, values?.password);
+  const signUp = (values, setUser) => {
+    if (values.phoneNumber && values.password === values.passwordConfirm) {
+      createUserWithEmailAndPassword(auth, values?.email, values?.password).then(() => {
         setDocument(`user/${user?.uid}`, {
           email: values?.email,
           firstName: values?.firstName,
@@ -53,11 +51,10 @@ export const AuthProvider = ({ children }) => {
           phoneNumber: values?.phoneNumber,
         });
         router.push('/checker');
-      } catch (err) {
-        console.log(err);
-      }
+        setUser(true)
+      }).catch((el) => console.log(el));
     } else {
-      console.log('repeat pass buruu bn!!!');
+      alert('buglunuu');
     }
   };
   const logOut = () => {
@@ -69,7 +66,6 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
       })
       .catch((error) => {
-        console.log(error.message);
       });
   };
   const forgetPass = (email, setTrue) => {
@@ -79,7 +75,6 @@ export const AuthProvider = ({ children }) => {
         setTrue(true);
       })
       .catch((error) => {
-        console.log(error.message);
         setForgotPassError(error.message);
       });
   };

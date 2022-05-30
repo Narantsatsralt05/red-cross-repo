@@ -17,7 +17,7 @@ const Checker = () => {
   const userData = useCollection('/user');
   userData.data.map((el) => {
     if (user?.email === el.email) {
-      if (el.BloodType == undefined)
+      if (el.admin == false && el.BloodType == undefined)
         router.push('/register')
       else
         if (el.admin === true) {

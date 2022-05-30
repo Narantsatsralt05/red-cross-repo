@@ -109,7 +109,7 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
           </Stack>
         </Padding>
         <EmergencyContactPersonTable admin={true} />
-        <Button style={{ margin: '70px 0 0 30px' }} width="230px" height="40px" bc='1px solid #0066B3' bgColor="#0066B3" borderRadius="5px" onClick={add}>
+        <Button style={{ margin: '40px 0 0 30px' }} width="230px" height="40px" bc='1px solid #0066B3' bgColor="#0066B3" borderRadius="5px" onClick={add}>
           <Text cursor="pointer" color="#fff" >
             Дараагийн алхам
           </Text>

@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useAuthContext } from '../../common/context/AuthContext';
 import { useDocument } from '../../common/services/firebase';
 
-export const Header = () => {
+export const Header = (admin) => {
   const { user } = useAuthContext();
   const router = useRouter();
   const userLocation = useDocument(`/user/${user?.uid}`).data;
@@ -17,11 +17,11 @@ export const Header = () => {
       <Stack alignItems="center">
         <Margin size={[20, 0, 0, 30]}>
           <img src={hamburger.src} width={60} height={60} onClick={() => {
-            router.push('admin');
+            admin ? router.push('/admin/home') : ''
           }} />
         </Margin>
         <Margin size={[0, 0, 0, 10]}>
-          <img src={Logo.src}/>
+          <img src={Logo.src} />
         </Margin>
         <Margin size={[0, 20, 0, 10]}>
           <Text type="T1" color="white">
@@ -36,7 +36,7 @@ export const Header = () => {
         </Margin>
       </Stack>
       <Margin size={[0, 50, 0, 0]}>
-        <Text type="T2" color="#fff" style={{cursor : 'pointer'}} >
+        <Text type="T2" color="#fff" style={{ cursor: 'pointer' }} >
           {user?.email}
         </Text>
       </Margin>

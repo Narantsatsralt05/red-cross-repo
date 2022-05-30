@@ -72,10 +72,11 @@ const SignUp = () => {
     setCheck(!check);
   };
   const [genderValue, setGender] = useState();
+  const [isUser, setUser] = useState(false)
   const option = ['Эр', 'Эм'];
   const onClickChange = (values) => {
-    signUp(values);
-    setShowModal(true);
+    signUp(values, setUser);
+    isUser ? setShowModal(true) : ''
   };
   return (
     <Formik

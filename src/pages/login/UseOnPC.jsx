@@ -70,7 +70,7 @@ const UseOnPC = () => {
           </Text>
         </Margin>
         <>
-          <Stack width="67%" justifyContent="flex-start">
+          <Stack width="70%" justifyContent="flex-start">
             <Text color="#1B1B1B" fontSize="0.8vw" cursor="pointer">
               И-мэйл хаяг
             </Text>
@@ -90,7 +90,7 @@ const UseOnPC = () => {
             />
             {form.email.length >= 10 ? (
               loginError ===
-              'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
+                'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).' ? (
                 <Text color="red">и-мэйл бүртгэлгүй байна.</Text>
               ) : (
                 ''
@@ -100,7 +100,7 @@ const UseOnPC = () => {
             )}
             {form.email.length >= 10 ? (
               loginError ===
-              'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' ? (
+                'Firebase: Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later. (auth/too-many-requests).' ? (
                 <Text color="red">хэт олон буруу оролдлого</Text>
               ) : (
                 ''
@@ -135,7 +135,7 @@ const UseOnPC = () => {
                 onKeyPress={(e) => handler(e)}
               />
               {loginError ===
-              'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).' ? (
+                'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).' ? (
                 <Text color="red">нууц үг буруу байна</Text>
               ) : (
                 ''
@@ -164,7 +164,9 @@ const UseOnPC = () => {
           </Button>
         </Margin>
         <Margin size={[20, 0, 0, 430]}>
-        <Text type="ThinH2" onClick={() => router.push('/user/signup')} style={{cursor: 'pointer'}}>Бүртгүүлэх</Text>
+          <Text color="#757575" fontSize="0.8vw" cursor="pointer" onClick={() => router.push('/user/signup')}>
+            Бүртгүүлэх
+          </Text>
         </Margin>
       </Stack>
       <Position position="fixed" bottom="3vh" left="4vw">
