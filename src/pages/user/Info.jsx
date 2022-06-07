@@ -28,8 +28,8 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
         volunteer: isStep ? '' : Info?.volunteer,
         bloodDonor: isStep ? '' : Info?.bloodDonor,
         disabilities: isStep ? '' : Info?.disabilities,
-        phoneNumber: isStep ? '' : Info?.phoneNumber,
-        gender: isStep ? '' : Info?.gender,
+        phoneNumber: Info?.phoneNumber,
+        gender: Info?.gender,
         city: isStep ? '' : Info?.city,
         district: isStep ? '' : Info?.district,
         moreInfo: isStep ? '' : Info?.moreInfo,
@@ -50,7 +50,7 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
 
   const add = () => {
     setDocument(`/user/${user?.uid}`, value)
-    next()
+    isStep ? next() : ''
   }
   return (
     isStep ?
@@ -148,7 +148,7 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
             <Stack direction="row" gap="25" flexWrap="wrap" justifyContent='space-between' width='100%'>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Төрсөн он/сар/өдөр{<Text color="red">*</Text>} </Text>
-                <StyledInput width='390px' height='35px' border='3px solid black' id='birthdate' value={value?.birthdate} onChange={(e) => { handleChange, setValue({ ...value, birthdate: e.target.value }) }} />
+                <StyledInput width='390px' height='35px' border='3px solid black' id='birthdate' value={Info?.date} onChange={(e) => { handleChange, setValue({ ...value, date: e.target.value }) }} />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">И-мэйл хаяг*{<Text color="red">*</Text>}</Text>
@@ -156,7 +156,7 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Утасны дугаар{<Text color="red">*</Text>}</Text>
-                <StyledInput width='390px' height='35px' value={value?.phoneNumber} onChange={(e) => setValue({ ...value, phoneNumber: e.target.value })} />
+                <StyledInput width='390px' height='35px' value={Info?.phoneNumber} onChange={(e) => setValue({ ...value, phoneNumber: e.target.value })} />
               </Stack>
               <Stack direction="column" gap="12">
                 <Stack direction="column" gap="12">

@@ -10,11 +10,11 @@ const Login = () => {
   const { user } = useAuthContext();
   const router = useRouter();
 
-  useEffect(() => {
-    if (user != null) {
-      router.push('/checker');
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user != null) {
+  //     router.push('/checker');
+  //   }
+  // }, [user]);
 
   const OnMobile = styled.div`
     @media (min-width: 450px) {

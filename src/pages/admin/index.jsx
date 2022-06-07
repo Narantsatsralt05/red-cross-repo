@@ -210,7 +210,7 @@ const Admin = () => {
                   <StyledInput
                     onChange={handleChange}
                     value={searchValue.value1}
-                    id="value1"
+                    id="value1" 
                     ref={firstInput}
                     width="45px"
                     height="45px"
@@ -270,10 +270,11 @@ const Admin = () => {
                     overflow: 'scroll',
                     display: 'flex',
                     flexWrap: 'wrap',
+                    width: '82vw',
                   }}
                 >
                   {
-                    a?.map((el) => {
+                    data?.map((el) => {
                       return (
                         <Margin size={[0, 0, 30, 40]} >
                           <Usercard el={el} />

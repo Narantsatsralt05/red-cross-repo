@@ -29,7 +29,7 @@ const UseOnPC = () => {
 
   const test = async () => {
     setLoader(true);
-    await login(form.email, form.password, setTrue);
+    await login(form.email, form.password);
   };
   useEffect(() => {
     if (isTrue) {
@@ -44,7 +44,7 @@ const UseOnPC = () => {
   };
 
   if (event === 'Enter') {
-    login(form.email, form.password, setTrue);
+    login(form.email, form.password);
   }
   return (
     <Stack direction="row" width="100vw" height="100vh" className="bigCOn">
@@ -151,13 +151,13 @@ const UseOnPC = () => {
             borderRadius="5px"
             bgColor="#0066B3"
             color="#fff"
-            onClick={() => login(form.email, form.password, setTrue)}
+            onClick={() => login(form.email, form.password)}
           >
             <Text
               color="#fff"
               cursor="pointer"
               fontSize="1.2vw"
-              onClick={() => login(form.email, form.password, setTrue)}
+              onClick={() => login(form.email, form.password)}
             >
               НЭВТРЭХ
             </Text>

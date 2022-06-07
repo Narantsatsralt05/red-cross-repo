@@ -80,7 +80,7 @@ const DataTable = () => {
         </TableHead>
         <TableBody>
           {Users.map((el) => {
-            if (el) {
+            if (el?.admin === false ) {
               return (
                 <TableRow key={el.phoneNumber} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell style={tableCellStyle}>{el.id}</TableCell>

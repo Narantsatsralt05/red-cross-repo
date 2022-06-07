@@ -75,7 +75,7 @@ const SignUp = () => {
   const [isUser, setUser] = useState(false)
   const option = ['Эр', 'Эм'];
   const onClickChange = (values) => {
-    signUp(values, setUser);
+    signUp(values);
     isUser ? setShowModal(true) : ''
   };
   return (
@@ -189,7 +189,7 @@ const SignUp = () => {
                       </Border>
                     </Stack>
                   </Margin>
-                  <Stack direction="row" alignItems="center" style={{ alignSelf: 'flex-start', marginLeft: '5%' }}>
+                  <Stack direction="row" alignItems="center"  style={{ alignSelf: 'flex-start', marginLeft: '5%' }}>
                     <Input type="checkbox" width="20px" />
                     <Margin size={[0, 0, 0, 20]}>
                       <Text type="T1">Нөхцөлийг хүлээн зөвшөөрч байна.</Text>

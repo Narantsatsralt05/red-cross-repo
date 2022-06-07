@@ -17,8 +17,8 @@ const AdminHome = () => {
   }, [user]);
 
   userData.data.map((el) => {
-    if (user.email === el.email) {
-      if (el.admin === false) {
+    if (user?.email === el?.email) {
+      if (el?.admin === false) {
         router.push('/login');
       }
     }

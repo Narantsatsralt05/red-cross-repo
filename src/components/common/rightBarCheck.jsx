@@ -208,7 +208,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                         <Margin size={[30, 0, 0, 0]}>
                                                             <Center>
                                                                 <label>
-                                                                    {headers[3]}
+                                                                    {headers[4]}
                                                                     <Margin size={[10, 0, 0, 0]}>
                                                                         <Styledinput style={{ fontSize: '12px', border: '0.4px solid gray' }} width='311px' height='25px'
                                                                             onBlur={handleBlur} id='fifthText'
@@ -239,17 +239,17 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                                 <Button width='60px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' onClick={() => setCheckBar(false)}>Болих</Button>
                                                                             </Margin>
                                                                             <Margin size={[0, 5, 0, 5]}>
-                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
                                                                             </Margin>
                                                                             <Margin size={[0, 0, 0, 0]}>
-                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? '' : 'not-allowed' }} onClick={Add} >Хадгалах</Button>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? '' : 'not-allowed' }} onClick={Add} >Хадгалах</Button>
                                                                             </Margin>
                                                                         </Stack>
                                                                             :
                                                                             <Stack direction='row' width=''>
-                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
+                                                                                <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
                                                                                 <Margin size={[0, 0, 0, 20]} >
-                                                                                    <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[3] ? 1 : headers[4] ? 0 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={Add}>Хадгалах</Button>
+                                                                                    <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : (headers[4] ? 0 : 2)) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={Add}>Хадгалах</Button>
                                                                                 </Margin>
                                                                             </Stack>
                                                                         }

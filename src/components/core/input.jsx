@@ -37,6 +37,8 @@ export const StyledInput = styled.input`
         -webkit-appearance:  none; 
         margin: 0; 
     }
+    padding:15px;
+
 `;
 export const Styledoneletter = styled.input`
   width: ${(props) => props.width};
@@ -50,6 +52,7 @@ export const Styledoneletter = styled.input`
   justify-content: center;
   text-align: center;
   text-transform: uppercase;
+
 `;
 
 
