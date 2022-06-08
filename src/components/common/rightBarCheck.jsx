@@ -88,8 +88,8 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                 <Border style={{ border: '1px solid black' }}>
                     <Position position='fixed' top='0' right='0' style={{ zIndex: 1 }}>
                         <Stack justifyContent='right' width='100vw' height='106vh' >
-                            <Stack height='100vh' bg='white' direction='column' className='media' bg='white'>
-                                <Padding size={[10, 50, 0, 50]}>
+                            <Stack height='100vh'  direction='column' className='media' >
+                                <Padding size={[10, 50, 0, 50]} style={{backgroundColor: '#f0f4f878'}} >
                                     <Formik
                                         initialValues={{ fourthText: '', thirdText: '', fifthText: '', secondText: '' }}
 
@@ -249,7 +249,7 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                                                                             <Stack direction='row' width=''>
                                                                                 <Button width='120px' height='23px' bc='0.5px solid #00000033' color='black' bgColor='white' borderRadius='2px' disabled={Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={New}>Хадгалаад шинэ</Button>
                                                                                 <Margin size={[0, 0, 0, 20]} >
-                                                                                    <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[3] ? 1 : (headers[4] ? 0 : 2)) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={Add}>Хадгалах</Button>
+                                                                                    <Button width='120px' height='23px' bc='0.5px solid #00000033' color='white' bgColor='#0066B3' borderRadius='2px' disabled={Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? false : true} style={{ cursor: Object.keys(errors).length === (headers[4] ? 0 : headers[3] ? 1 : 2) && dirty ? 'pointer' : 'not-allowed' }} onClick={Add}>Хадгалах</Button>
                                                                                 </Margin>
                                                                             </Stack>
                                                                         }

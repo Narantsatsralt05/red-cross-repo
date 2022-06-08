@@ -9,6 +9,9 @@ import man from "../../assets/icon/men 1.svg"
 
 
 export const Usercard = ({ el, bluebadge, greenbadge, greybadge }) => {
+  const today = new Date();
+  if (el.RD.slice(2, 3) === 0 || 1) {
+  }
   return (
     <Box>
       <Border borderRadius="10px" width="280px" overFlow="hidden" borderColor="#F9F9F9">
@@ -17,7 +20,7 @@ export const Usercard = ({ el, bluebadge, greenbadge, greybadge }) => {
             <Stack direction="row" borderColor="#E3E3E3" width="100%" alignItems="center" gap="10">
               <Border borderRadius="50%" overFlow="hidden" borderColor="#E3E3E3">
                 <Stack bg="#E3E3E3" height="65px" width="65px" justifyContent="center" alignItems="center">
-                  {el.gender == 'Эм' ? <img src={female.src} height="45%" width="45%" /> :  <img src={man.src} height="45%" width="45%" />}
+                  {el.gender == 'Эм' ? <img src={female.src} height="45%" width="45%" /> : <img src={man.src} height="45%" width="45%" />}
                 </Stack>
               </Border>
               <Stack direction="column" gap="10">
@@ -40,7 +43,7 @@ export const Usercard = ({ el, bluebadge, greenbadge, greybadge }) => {
                   </Margin>
                   <Margin size={[0, 0, 0, 10]}>
                     <Text fontSize="15px" fontFamily="Roboto" fontWeight="300 Light">
-                      НАС:  {el.age}
+                      НАС:  {el.RD.slice(2, 3) === 0 || 1 ? today.getFullYear() - (20 + el.RD.slice(2, 4)) : today.getFullYear() - (19 + el.RD.slice(2, 4))}
                     </Text>
                   </Margin>
                   <Margin size={[0, 0, 0, 0]}>

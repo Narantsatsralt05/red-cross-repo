@@ -88,13 +88,11 @@ const Admin = () => {
   };
   const tabs = {
     headers: [
-      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '/admin/register', headName: '' },
-      { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, path: '', headName: 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ' },
-      { text: 'Гишүүдийн жагсаалт', photo: grey, path: '', headName: 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ' },
-      { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, path: '', headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
+      { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, headName: 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ' },
+      { text: 'Гишүүдийн жагсаалт', photo: grey, headName: 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ' },
+      { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
     ],
     body: [
-      <Loading />,
       <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 130px)" direction="column">
         <VolunteerInformation />
       </Stack>,
@@ -109,7 +107,7 @@ const Admin = () => {
 
   return (
     <Stack direction="column" >
-      <Header />
+      <Header admin="true"/>
       {activeTab &&
         tabs.headers.map((el, index) => {
           if (index === activeTab) {
@@ -133,7 +131,7 @@ const Admin = () => {
                         direction="row"
                         key={index}
                         onClick={() => {
-                          setactiveTab(index), router.push(item.path);
+                          setactiveTab(index)
                         }}
                         alignItems="center"
                       >
@@ -194,7 +192,7 @@ const Admin = () => {
         </Stack>
 
         {activeTab === undefined ? (
-          <Stack height="93vh" bg="#F6F6F6" justifyContent="space-evenly" direction="column">
+          <Stack height="93vh" bg="#f0f4f878" justifyContent="space-evenly" direction="column">
             <Margin size={[0, 30, 0, 40]}>
               <Stack justifyContent="space-around" flexWrap="wrap" gap='15'>
                 <Data value={dataValue?.all} text="НИЙТ " color={'#0066B3'}></Data>
@@ -205,7 +203,7 @@ const Admin = () => {
             </Margin>
 
             <Margin size={[0, 0, 0, 40]}>
-              <Stack direction="column" height="75px" justifyContent="space-between">
+              <Stack direction="column" height="75px" > 
                 <Text fontSize="14px">РЕГИСТРИЙН ДУГААР БИЧНЭ ҮҮ.</Text>
                 <Stack gap={'15'}>
                   <Styledoneletter
@@ -271,16 +269,18 @@ const Admin = () => {
                     overflow: 'scroll',
                     display: 'flex',
                     flexWrap: 'wrap',
-                    width: '82vw',
+                    width: '81vw',
                   }}
                 >
                   {
                     data?.map((el) => {
-                      return (
-                        <Margin size={[0, 0, 30, 40]} >
-                          <Usercard el={el} />
-                        </Margin>
-                      )
+                      if ( el.admin == false ) {
+                        return (
+                          <Margin size={[0, 0, 30, 40]} >
+                            <Usercard el={el} />
+                          </Margin>
+                        )
+                      }
                     })
                   }
                 </div>

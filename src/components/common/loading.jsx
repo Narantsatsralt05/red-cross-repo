@@ -12,15 +12,6 @@ export const Loading = () => {
     };
 
     const [open, setOpen] = React.useState(true);
-    
-    // const [loading, setLoading] = useState(false)
-    // const Change = () => {
-    //   setLoading(!loading)
-    // }
-            
-            
-    // {loading ? <Loading /> : ''}
-    // <button onClick={Change}>heleo</button>
     return (
         <div>
             <Modal

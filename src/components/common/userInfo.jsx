@@ -6,7 +6,7 @@ import people from '../../assets/icon/people.svg'
 import help from '../../assets/icon/help.svg'
 import { VolunteerWorkInformationTable, CoveredTrainingTable, SkillTable, MembershipInformationTable, HelpInformationTable, EmergencyContactPersonTable } from '.'
 import UserInfo from '../../pages/user/Info'
-import { Stack } from '..'
+import { Margin, Stack } from '..'
 const PersonalUserInfo = () => {
     const dataH = {
         headers: [
@@ -18,28 +18,28 @@ const PersonalUserInfo = () => {
         body: [
             <div>
                 <UserInfo isStep={false} />
-                <EmergencyContactPersonTable  style={{width:'100vw'}} />
+                <EmergencyContactPersonTable  />
             </div>,
             <div style={{ width: '83vw' }}>
                 <VolunteerWorkInformationTable admin={true} />
                 <MembershipInformationTable admin={true} />
                 <SkillTable admin={true} />
             </div>,
-            <div  style={{ width: '83vw' }}>
+            <div style={{ width: '83vw' }}>
                 <MembershipInformationTable admin={true} />
             </div>,
-            <div  style={{ width: '83vw' }}>
+            <div style={{ width: '83vw' }}>
                 <HelpInformationTable admin={true} />
-                <CoveredTrainingTable admin={true}/>
             </div>,
         ]
     }
 
     return (
-
-        <Stack justifyContent='start' >
-            <Tabs type='column' data={dataH} />
-        </Stack>
+        <Margin size={[0,0,0,10]} >
+            <Stack justifyContent='start' >
+                <Tabs type='column' data={dataH} />
+            </Stack>
+        </Margin>
     )
 }
 export default PersonalUserInfo

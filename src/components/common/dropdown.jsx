@@ -22,8 +22,7 @@ const OnMobileText = styled.div`
   }
 `;
 const DropDownContent = styled.div`
-  display: block;
-  position: absolute;
+
   min-width: 160px;
   z-index: 1;
   background-color: black;
@@ -92,6 +91,7 @@ const Dropdown = (props) => {
   };
   const [options, setOptions] = useState('');
   const handleClick = (action) => {
+    console.log(props.arr.length )
     setOptions(action);
     if (!action) return;
     if (props.onClick) props.onClick(action);
@@ -109,7 +109,7 @@ const Dropdown = (props) => {
           rightIcon={ArrowDownSecond}
         ></Select>
         {state && (
-          <DropDownContent onClick={Click} width={props.width ? props.width : '311px'} height={'35px'} >
+          <DropDownContent onClick={Click} width={props.width ? props.width : '311px'} height={'35px'} style={{overflow: "scroll" , height: "80px"}} >
               {props.arr.map((Element) => (
                 <ToUseOptions onClick={() => handleClick(Element)}>{Element}</ToUseOptions>
               ))}
