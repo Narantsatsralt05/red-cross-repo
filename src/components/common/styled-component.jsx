@@ -40,10 +40,10 @@ const DataCon = styled.div`
   padding-right: 1px;
   height: 75px;
   @media (min-width: 1300px) {
-    width: 270px;
+    width: 290px;
   }
   @media (max-width: 1300px) {
-    width: 180px;
+    width: 200px;
   }
   border-radius: 5px;
   background-color: ${(props) => (props ? props.color : 'blue')};

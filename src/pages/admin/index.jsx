@@ -16,6 +16,7 @@ import {
   VolunteerInformation,
   Registered,
   Loading,
+  Styledoneletter
 } from '../../components';
 import { Header } from '../../components';
 import addPhoto from '../../assets/icon/add.svg';
@@ -195,7 +196,7 @@ const Admin = () => {
         {activeTab === undefined ? (
           <Stack height="93vh" bg="#F6F6F6" justifyContent="space-evenly" direction="column">
             <Margin size={[0, 30, 0, 40]}>
-              <Stack justifyContent="space-between" flexWrap="wrap">
+              <Stack justifyContent="space-around" flexWrap="wrap" gap='15'>
                 <Data value={dataValue?.all} text="НИЙТ " color={'#0066B3'}></Data>
                 <Data value={dataValue?.volunteerActivist} text="САЙН ДУРЫН ИДЭВХТЭН" color={'#626262'}></Data>
                 <Data value={dataValue?.helper} text="ТУСЛАМЖ  ХҮРТЭГЧ" color={'#DD5D00'}></Data>
@@ -207,7 +208,7 @@ const Admin = () => {
               <Stack direction="column" height="75px" justifyContent="space-between">
                 <Text fontSize="14px">РЕГИСТРИЙН ДУГААР БИЧНЭ ҮҮ.</Text>
                 <Stack gap={'15'}>
-                  <StyledInput
+                  <Styledoneletter
                     onChange={handleChange}
                     value={searchValue.value1}
                     id="value1"
@@ -216,8 +217,8 @@ const Admin = () => {
                     height="45px"
                     placeholder="X"
                     type="string"
-                  ></StyledInput>
-                  <StyledInput
+                  ></Styledoneletter>
+                  <Styledoneletter
                     onChange={handleChange}
                     value={searchValue.value2}
                     id="value2"
@@ -226,7 +227,7 @@ const Admin = () => {
                     height="45px"
                     placeholder="X"
                     type="text"
-                  ></StyledInput>
+                  ></Styledoneletter>
                   <StyledInput
                     onChange={handleChange}
                     value={searchValue.value3}
