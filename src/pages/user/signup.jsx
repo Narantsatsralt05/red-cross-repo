@@ -72,10 +72,11 @@ const SignUp = () => {
     setCheck(!check);
   };
   const [genderValue, setGender] = useState();
+  const [isUser, setUser] = useState(false)
   const option = ['Эр', 'Эм'];
   const onClickChange = (values) => {
     signUp(values);
-    setShowModal(true);
+    isUser ? setShowModal(true) : ''
   };
   return (
     <Formik
@@ -188,7 +189,7 @@ const SignUp = () => {
                       </Border>
                     </Stack>
                   </Margin>
-                  <Stack direction="row" alignItems="center" style={{ alignSelf: 'flex-start', marginLeft: '5%' }}>
+                  <Stack direction="row" alignItems="center"  style={{ alignSelf: 'flex-start', marginLeft: '5%' }}>
                     <Input type="checkbox" width="20px" />
                     <Margin size={[0, 0, 0, 20]}>
                       <Text type="T1">Нөхцөлийг хүлээн зөвшөөрч байна.</Text>

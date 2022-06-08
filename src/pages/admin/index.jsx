@@ -88,7 +88,7 @@ const Admin = () => {
   };
   const tabs = {
     headers: [
-      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '/register', headName: '' },
+      { text: 'Бүртгэл нэмэх', photo: addPhoto, path: '/admin/register', headName: '' },
       { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, path: '', headName: 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ' },
       { text: 'Гишүүдийн жагсаалт', photo: grey, path: '', headName: 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ' },
       { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, path: '', headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
@@ -211,7 +211,7 @@ const Admin = () => {
                   <Styledoneletter
                     onChange={handleChange}
                     value={searchValue.value1}
-                    id="value1"
+                    id="value1" 
                     ref={firstInput}
                     width="45px"
                     height="45px"
@@ -271,10 +271,11 @@ const Admin = () => {
                     overflow: 'scroll',
                     display: 'flex',
                     flexWrap: 'wrap',
+                    width: '82vw',
                   }}
                 >
                   {
-                    a?.map((el) => {
+                    data?.map((el) => {
                       return (
                         <Margin size={[0, 0, 30, 40]} >
                           <Usercard el={el} />

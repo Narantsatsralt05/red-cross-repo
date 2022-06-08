@@ -8,17 +8,12 @@ const Checker = () => {
   const { user } = useAuthContext();
   const router = useRouter();
 
-  useEffect(() => {
-    if (user === null) {
-      router.push('/login');
-    }
-  }, [user])
 
-  const userData = useCollection('/user');
-  userData.data.map((el) => {
+  const { data: userData } = useCollection('/user');
+  userData.map((el) => {
     if (user?.email === el.email) {
-      if (el.BloodType == undefined)
-        router.push('/register')
+      if (el.admin == undefined && el.BloodType == undefined)
+        router.push('/user/register')
       else
         if (el.admin === true) {
           router.push('/admin/home');

@@ -97,21 +97,20 @@ export const Tabs = ({ type, data }) => {
             </div>
           </Border>
         ) : type == 'column' ? (
-          <div style={{ marginLeft: '10px', marginTop: '1%' }}>
+          <div style={{ marginTop: '1%' }}>
             <Border borderColor="#E5E5E5" borderRadius="10px" >
-              <Stack height="75vh"  direction="column" >
+              <Stack height="72vh" direction="column" >
                 {data ? (
                   data.headers.map((item, index) => {
                     return (
                       <RowButton
                         column
-                        // key={index}
                         onClick={() => {
                           setactiveTab(index);
                         }}
-                        
+
                       >
-                        <img style={{ margin: '10px', width: '25px'}} src={item.icon.src} />
+                        <img style={{ margin: '10px', width: '25px' }} src={item.icon.src} />
                         <Hidden>{item.text}</Hidden>
                       </RowButton>
                     );
@@ -129,7 +128,9 @@ export const Tabs = ({ type, data }) => {
           <div>give the type of tabs</div>
         )}
       </div>
+      <Stack height='77vh' style={{overflow:'scroll'}}>
         {data ? data.body[activeTab] : ''}
+      </Stack>
     </Stack>
   );
 };

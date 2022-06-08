@@ -18,46 +18,45 @@ export const AuthProvider = ({ children }) => {
   const [loginError, setLoginError] = useState('');
   const [signUpError, setSignUpError] = useState('');
   const [forgotPassError, setForgotPassError] = useState('');
-  const router = useRouter();
+  const [userData, setUserData] = useState({});
+  const router = useRouter()
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      setUser(user);
+      Object.keys(userData).length != 0 && setDocument(`user/${user?.uid}`, {
+        email: userData?.email,
+        firstName: userData?.firstName,
+        lastName: userData?.lastName,
+        uid: user?.uid,
+        RD: userData?.RD,
+        gender: userData?.gender,
+        date: userData?.date,
+        location: userData?.location,
+        phoneNumber: userData?.phoneNumber,
+      })
+      setUser(user)
     });
-  }, [auth]);
+  }, [auth, userData]);
 
   const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+        console.log("heelo")
         router.push('/checker');
-        alert('login successfully');
       })
       .catch((error) => {
         setLoginError(error.message);
-        console.log(error.message, 'hasdkhf');
       });
   };
 
   const signUp = (values) => {
-    if (values.password === values.passwordConfirm) {
-      try {
-        createUserWithEmailAndPassword(auth, values?.email, values?.password);
-        setDocument(`user/${user?.uid}`, {
-          email: values?.email,
-          firstName: values?.firstName,
-          lastName: values?.lastName,
-          uid: user?.uid,
-          RD: values?.RD,
-          gender: values?.gender,
-          date: values?.date,
-          location: values?.location,
-          phoneNumber: values?.phoneNumber,
-        });
+    if (values.phoneNumber && values.password === values.passwordConfirm) {
+      createUserWithEmailAndPassword(auth, values?.email, values?.password).then((userCredential) => {
+        setUser(userCredential.user)
+        setUserData({ ...values });
         router.push('/checker');
-      } catch (err) {
-        console.log(err);
-      }
+      }).catch((el) => console.log(el));
     } else {
-      console.log('repeat pass buruu bn!!!');
+      alert('buglunuu');
     }
   };
   const logOut = () => {
@@ -65,12 +64,8 @@ export const AuthProvider = ({ children }) => {
       .signOut()
       .then(() => {
         router.push('/login');
-        alert('logOut successfully');
         setUser(null);
       })
-      .catch((error) => {
-        console.log(error.message);
-      });
   };
   const forgetPass = (email, setTrue) => {
     sendPasswordResetEmail(auth, email)
@@ -79,7 +74,6 @@ export const AuthProvider = ({ children }) => {
         setTrue(true);
       })
       .catch((error) => {
-        console.log(error.message);
         setForgotPassError(error.message);
       });
   };
