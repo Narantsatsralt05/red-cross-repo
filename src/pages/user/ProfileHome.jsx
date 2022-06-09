@@ -20,79 +20,41 @@ const ProfileHome = () => {
   const { data: help } = useCollection(`/user/${user?.uid}/helpInformation`);
   const date = membership[0]?.startDate;
   const memberType = membership[0]?.membershipType;
+  const NewsFeed = (text, data) => {
+    return (
+      <FullShadow>
+        <Border borderColor="#00000022" borderRadius="8" borderWidth="1">
+          <Stack
+            width="300px"
+            height="170px"
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            gap="15"
+            bg='white'
+          >
+            <Text type={'H3'} color="#0358A7">
+              {data}
+            </Text>
+            <Stack textAlign="center" width="80%">
+              <Text type={'ThinH1'}>{text}</Text>
+            </Stack>
+          </Stack>
+        </Border>
+      </FullShadow>
+    )
+  }
   const tabData = {
     headers: [{ text: 'Нүүр' }, { text: 'Үндсэн мэдээлэл' }],
     body: [
       <Stack width="100vw" direction="column" >
-        <Padding size={[50, 0, 0, 10]}>
+        <Padding size={[50, 0, 0, 10]} style={{backgroundColor : '#f0f4f878'}}>
           <Stack direction="column" gap="40">
             <Padding size={[20, 20, 20, 100]}>
               <Stack width="100%" direction="row" gap="50" flexWrap="wrap">
-                <FullShadow>
-                  <Border borderColor="#00000022" borderRadius="8" borderWidth="1">
-                    <Stack
-                      width="300px"
-                      height="170px"
-                      direction="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="15"
-                    >
-                      <Text type={'H3'} color="#0358A7">
-                        {volunteercount?.length}
-                      </Text>
-                      <Stack textAlign="center" width="80%">
-                        <Text type={'ThinH1'}>Сайн дурын ажил хийсэн тоо</Text>
-                      </Stack>
-                    </Stack>
-                  </Border>
-                </FullShadow>
-                <FullShadow>
-                  <Border borderColor="#00000022" borderRadius="8" borderWidth="1">
-                    <Stack
-                      width="300px"
-                      height="170px"
-                      direction="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="15"
-                    >
-                      <Text
-                        type={'H3'}
-                        color="#0358A7
-"
-                      >
-                        {membership[0]?.startDate}
-                      </Text>
-                      <Stack textAlign="center" width="80%">
-                        <Text type={'ThinH1'}>Гишүүнчлэлийн мэдээлэл</Text>
-                      </Stack>
-                    </Stack>
-                  </Border>
-                </FullShadow>
-                <FullShadow>
-                  <Border borderColor="#00000022" borderRadius="8" borderWidth="1">
-                    <Stack
-                      width="300px"
-                      height="170px"
-                      direction="column"
-                      justifyContent="center"
-                      alignItems="center"
-                      gap="15"
-                    >
-                      <Text
-                        type={'H3'}
-                        color="#0358A7
-"
-                      >
-                        {help.length}
-                      </Text>
-                      <Stack textAlign="center" width="80%">
-                        <Text type={'ThinH1'}>Тусламжийн тоон мэдээлэл</Text>
-                      </Stack>
-                    </Stack>
-                  </Border>
-                </FullShadow>
+                {NewsFeed("Сайн дурын ажил хийсэн тоо", volunteercount?.length)}
+                {NewsFeed("Гишүүнчлэлийн мэдээлэл", membership[0]?.startDate)}
+                {NewsFeed("Тусламжийн тоон мэдээлэл", help.length)}
               </Stack>
             </Padding>
 
@@ -110,12 +72,12 @@ const ProfileHome = () => {
   return (
     <>
       <Stack width="100%" direction="column">
-        <Header></Header>
+        <Header admin={false} />
 
         <Stack direction="row" justifyContent="space-between" height="120px" width="100vw">
           <Margin size={[30, 20, 0, 40]}>
             <Stack direction="column" gap="20px">
-              <Stack gap="8">
+              <Stack gap="8" flexWrap='wrap' >
                 <Text textTransform="uppercase" type="H2">
                   {document?.lastName}
                 </Text>
@@ -126,9 +88,9 @@ const ProfileHome = () => {
                   {document?.firstName}
                 </Text>
               </Stack>
-              <Stack gap="8">
-                <Text type="ThinH2">Харьяалал:</Text>
-                <Text type="ThinH2"> Баянзүрх дүүргийн Улаан загалмай хороо</Text>
+              <Stack gap="8" >
+                <Text type="ThinH2"  className="media540">Харьяалал:</Text>
+                <Text type="ThinH2"  className="media540"> Баянзүрх дүүргийн Улаан загалмай хороо</Text>
               </Stack>
             </Stack>
           </Margin>
@@ -136,7 +98,7 @@ const ProfileHome = () => {
             <Stack direction="column" gap="4">
               <Text color="#0066B3">Төлөв</Text>
               <Stack alignItems="center" direction="row" gap="8">
-                <Text type="H2">Сайн дурын идэвхтэн:</Text>
+                <Text type="H2">СайнДурынИдэвхтэн:</Text>
                 <Text type="ThinH2">{document?.volunteer}</Text>
               </Stack>
 

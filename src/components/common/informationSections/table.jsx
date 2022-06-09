@@ -23,6 +23,7 @@ export const InformationTable = ({ admin, title, row, body, data, headers }) => 
     alignItems: 'flex-start',
     justifyContent: 'center',
     flexDirection: 'column',
+    backgroundColor:'white'
   };
   const AddSectionOnPc = () => {
     return (

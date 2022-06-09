@@ -13,7 +13,7 @@ const data = {
   headers: ['ХУВЬ ХҮНИЙ ТАЛААРХ МЭДЭЭЛЭЛ', 'САЙН ДУРЫН АЖЛЫН ТУРШЛАГА', 'ХАМРАГДСАН СУРГАЛТ', 'УР ЧАДВАР'],
   body: [<></>, <UserInfo2 />, <CoveredTrainingTable admin={true} />, <SkillTable admin={true} />],
 };
-<Stepper data={data} />;
+  <Stepper data={data} />;
 const Register = () => {
   const [step, setStep] = useState(1);
   const next = () => {
@@ -30,7 +30,7 @@ const Register = () => {
   }, [user]);
 
   return <Stack width="100vw" direction='column'>
-    <Header  admin='false'/>
+    <Header admin='false' />
     <Stepper data={data} setStep={setStep} step={step} next={next} />
   </Stack>
 };

@@ -32,38 +32,37 @@ const LogoutText = (logOut, setLogout, isLogout) => {
   )
 }
 
-export const Header = (admin) => {
+export const Header = ({admin}) => {
   const { user, logOut } = useAuthContext();
   const router = useRouter();
   const userLocation = useDocument(`/user/${user?.uid}`).data;
   const [isLogout, setLogout] = useState(false)
-
   return (
     <Stack bg="#0066B3" width="100vw" height="80px" justifyContent="space-between" alignItems="center">
       <Stack alignItems="center">
         <Margin size={[20, 0, 0, 30]}>
           <img src={hamburger.src} width={60} height={60} onClick={() => {
-            admin ? router.push('/admin/home') : ''
+            admin ? router.push('/admin/home') : router.push('/user/home')
           }} />
         </Margin>
         <Margin size={[0, 0, 0, 10]}>
           <img src={Logo.src} />
         </Margin>
         <Margin size={[0, 20, 0, 10]}>
-          <Text type="T1" color="white">
+          <Text type="T1" color="white" className="media540">
             МУЗН
           </Text>
         </Margin>
         <Stack width="1px" height="4vh" bg="#fff" />
-        <Margin size={[0, 0, 0, 20]}>
-          <Text type="T1" color="white">
+        <Margin size={[0, 0, 0, 20]}> 
+          <Text type="T1" color="white" className="media540" >
             {userLocation?.location}
           </Text>
         </Margin>
       </Stack>
       <Margin size={[0, 50, 0, 0]}>
         <Stack direction='row' alignItems="center">
-          <Text type="T2" color="#fff" >
+          <Text type="T2" color="#fff" className="media540" >
             {user?.email}
           </Text>
           <Margin size={[0,0,0,30]}  onClick={() => setLogout(!isLogout)} style={{ cursor: 'pointer' }}>

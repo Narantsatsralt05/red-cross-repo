@@ -55,7 +55,7 @@ export const VolunteerInformation = () => {
         <Stack width="100%" justifyContent="space-between" alignItems="center">
           <Stack width="24%" justifyContent="space-between" alignItems="center">
             <Text type="T2" style={{ textAlign: 'center' }}>
-              Бүртгэлтэй сайн дурын ажлын жагсаалт (5)
+              Бүртгэлтэй сайн дурын ажлын жагсаалт
             </Text>
             <img src={line.src}/>
             <img src={plus.src}/>

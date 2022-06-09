@@ -38,7 +38,7 @@ export const SkillTable = ({ admin }) => {
 export const CoveredTrainingTable = ({ admin }) => {
   const { user } = useAuthContext();
   const { color } = useTheme();
-  const data = useCollection(`/user/${user?.uid}/ coveredTraining`).data;
+  const data = useCollection(`/user/${user?.uid}/coveredTraining`).data;
   const headers = ['Сургалтын төрөл', 'Хэзээ', 'Хаана', 'Сургалтын хугацаа /цагаар/', 'Нэмэлт мэдээлэл'];
   const title = 'СУРГАЛТ';
   const tableHeadCell = {

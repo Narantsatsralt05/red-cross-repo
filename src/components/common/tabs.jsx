@@ -68,7 +68,7 @@ export const Tabs = ({ type, data }) => {
           <Border
             borderColor="#E5E5E5"
             borderRadius="10px"
-            style={{ width: '100%', paddingBottom: '10px', borderTop: 'none', borderLeft: 'none', borderRight: 'none' }}
+            style={{ width: '100%', paddingBottom: '10px', borderTop: 'none', borderLeft: 'none', borderRight: 'none', boxShadow: "0 5px 4px 2px #dadada", marginBottom: '10px' }}
           >
             <div
               style={{
@@ -97,10 +97,10 @@ export const Tabs = ({ type, data }) => {
             </div>
           </Border>
         ) : type == 'column' ? (
-          <div style={{ marginTop: '1%' }}>
+          <div style={{ marginTop: '1%', backgroundColor: 'white' , borderRadius:"10px"}}>
             <Border borderColor="#E5E5E5" borderRadius="10px" >
-              <Stack height="72vh" direction="column" >
-                {data ? (
+              <Stack height="74vh" direction="column" >
+                {data && (
                   data.headers.map((item, index) => {
                     return (
                       <RowButton
@@ -110,16 +110,18 @@ export const Tabs = ({ type, data }) => {
                         }}
 
                       >
-                        <img style={{ margin: '10px', width: '25px' }} src={item.icon.src} />
-                        <Hidden>{item.text}</Hidden>
+                        <img style={{ margin: ' 0 7px '}} src={item.icon.src} />
+                        <Hidden>
+                          <Text>
+                            {item.text}
+                          </Text>
+                        </Hidden>
                       </RowButton>
                     );
                   })
-                ) : (
-                  <div> give data</div>
                 )}
               </Stack>
-              <p style={{ fontSize: '10px', color: '#757575', fontWeight: '300', left: '14px', bottom: '12px' }}>
+              <p style={{ fontSize: '10px', color: '#757575', fontWeight: '300' }}>
                 @ 2018-2021 Монголын улаан загалмай нийгэмлэг
               </p>
             </Border>
@@ -128,7 +130,7 @@ export const Tabs = ({ type, data }) => {
           <div>give the type of tabs</div>
         )}
       </div>
-      <Stack height='77vh' style={{overflow:'scroll'}}>
+      <Stack  style={{ overflow: 'scroll' }} bg='#f0f4f878'>
         {data ? data.body[activeTab] : ''}
       </Stack>
     </Stack>

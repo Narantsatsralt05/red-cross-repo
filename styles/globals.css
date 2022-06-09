@@ -226,7 +226,13 @@ a {
 
 @media (max-width: 1600px) {
   .textHidden {
-    width:0;
+    width: 0;
   }
- 
+
+}
+
+@media (max-width: 570px) {
+  .media540 {
+    display: none;
+  }
 }

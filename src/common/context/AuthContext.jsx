@@ -4,7 +4,6 @@ import { createContext } from 'react';
 import { sendPasswordResetEmail, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '@firebase/auth';
 import Router, { useRouter } from 'next/router';
 import { addDoc, collection } from 'firebase/firestore';
-
 export const AuthContext = createContext({
   user: {},
   login: () => { },
@@ -19,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [signUpError, setSignUpError] = useState('');
   const [forgotPassError, setForgotPassError] = useState('');
   const [userData, setUserData] = useState({});
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       Object.keys(userData).length != 0 && setDocument(`user/${user?.uid}`, {
@@ -32,6 +31,7 @@ export const AuthProvider = ({ children }) => {
         date: userData?.date,
         location: userData?.location,
         phoneNumber: userData?.phoneNumber,
+        admin: false
       })
       setUser(user)
     });
@@ -40,7 +40,6 @@ export const AuthProvider = ({ children }) => {
   const login = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        console.log("heelo")
         router.push('/checker');
       })
       .catch((error) => {
@@ -54,7 +53,7 @@ export const AuthProvider = ({ children }) => {
         setUser(userCredential.user)
         setUserData({ ...values });
         router.push('/checker');
-      }).catch((el) => console.log(el));
+      })
     } else {
       alert('buglunuu');
     }

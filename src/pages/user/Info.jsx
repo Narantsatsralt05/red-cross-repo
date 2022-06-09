@@ -1,7 +1,7 @@
 import Dropdown from '../../components/common/dropdown';
 import { useState, useEffect } from 'react';
 import { Stack, Text, StyledInput, Padding, Button, EmergencyContactPersonTable } from '../../components';
-import { addDocument, setDocument, useDocument } from '../../common/services/firebase';
+import { addDocument, setDocument, useCollection, useDocument } from '../../common/services/firebase';
 import { useAuthContext } from '../../common/context/AuthContext';
 import { useRouter } from 'next/router';
 
@@ -18,6 +18,7 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
 
   const { data: StateData } = useDocument('/staticData/state');
   const { data: BloodType } = useDocument('/staticData/BloodType');
+  const { data: member } = useDocument('/staticData/skillProps')
   const [value, setValue] = useState()
   useEffect(() => {
     if (Info) {
@@ -33,7 +34,7 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
         city: isStep ? '' : Info?.city,
         district: isStep ? '' : Info?.district,
         moreInfo: isStep ? '' : Info?.moreInfo,
-        email:   Info?.email,
+        email: Info?.email,
         birthdate: isStep ? '' : Info?.birthdate,
         BloodType: Info?.BloodType
       })
@@ -67,7 +68,7 @@ const UserInfo = ({ isStep, setStep, step, next }) => {
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Гишүүнчлэл{<Text color="red">*</Text>}</Text>
-                <Dropdown height='35px' arr={['Алтан гишүүн']} id='member' setdropValue={setValue} dropValue={value} width='390px' />
+                <Dropdown height='35px' arr={member?.membershipNames} id='member' setdropValue={setValue} dropValue={value} width='390px' />
               </Stack>
               <Stack direction="column" gap="12">
                 <Text fontSize="12px">Цусны донор{<Text color="red">*</Text>}</Text>
