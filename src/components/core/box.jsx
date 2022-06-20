@@ -35,7 +35,7 @@ const Container = styled.div`
 
   return (
     <Container>
-      <Image url={url} width={width} height={height}>
+      <Image url={'https://acegif.com/wp-content/uploads/loading-96.gif'} width={width} height={height}>
         <InnerContainer>{children}</InnerContainer>
       </Image>
     </Container>
