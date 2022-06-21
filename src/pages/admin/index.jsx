@@ -29,11 +29,15 @@ import { useRef } from 'react';
 import styled from 'styled-components';
 import { useCollection, useDocument } from '../../common/services/firebase';
 import { useEffect } from 'react';
+import { user } from 'rxfire/auth';
+import { useAuthContext } from '../../common/context/AuthContext';
 
 const Admin = () => {
   let a = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   const { data } = useCollection('/user')
   const router = useRouter();
+  const { user } = useAuthContext();
+  const {data : userLocation} = useDocument(`/user/${user?.uid}`);
   const [activeTab, setactiveTab] = useState();
   const dataValue = useDocument('/count/8npCX1XzMKzfXDmeUlH0').data;
   const [searchValue, setSearchValue] = useState({
@@ -274,7 +278,7 @@ const Admin = () => {
                 >
                   {
                     data?.map((el) => {
-                      if ( el.admin == false ) {
+                      if ( el.admin == false && el.location === userLocation?.location ) {
                         return (
                           <Margin size={[0, 0, 30, 40]} >
                             <Usercard el={el} />

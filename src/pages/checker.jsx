@@ -15,6 +15,7 @@ const Checker = () => {
 
   const { data: userData } = useCollection('/user');
   userData.map((el) => {
+    console.log(user?.email, el.email)
     if (user?.email === el.email) {
       if (el.admin == false && el.BloodType == undefined)
         router.push('/user/register')
@@ -23,7 +24,7 @@ const Checker = () => {
           router.push('/admin/home');
         } else {
           router.push('/user/home');
-        }
+        } 
     }
 
   });
