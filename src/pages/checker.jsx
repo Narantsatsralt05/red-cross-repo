@@ -7,12 +7,16 @@ import { Loading } from '../components';
 const Checker = () => {
   const { user } = useAuthContext();
   const router = useRouter();
-
+  useEffect(() => {
+    if (user === null) {
+      router.push('/login')
+    }
+  }, [user])
 
   const { data: userData } = useCollection('/user');
   userData.map((el) => {
     if (user?.email === el.email) {
-      if (el.admin == undefined && el.BloodType == undefined)
+      if (el.admin == false && el.BloodType == undefined)
         router.push('/user/register')
       else
         if (el.admin === true) {

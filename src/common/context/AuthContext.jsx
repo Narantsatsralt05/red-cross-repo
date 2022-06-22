@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      Object.keys(userData).length != 0 && setDocument(`user/${user?.uid}`, {
+      user?.admin && Object.keys(userData).length != 0 && setDocument(`user/${user?.uid}`, {
         email: userData?.email,
         firstName: userData?.firstName,
         lastName: userData?.lastName,

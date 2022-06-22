@@ -88,8 +88,8 @@ const RightBarCheck = ({ checkBar, setCheckBar, bar, setBar, title, el, headers,
                 <Border style={{ border: '1px solid black' }}>
                     <Position position='fixed' top='0' right='0' style={{ zIndex: 1 }}>
                         <Stack justifyContent='right' width='100vw' height='106vh' >
-                            <Stack height='100vh'  direction='column' className='media' >
-                                <Padding size={[10, 50, 0, 50]} style={{backgroundColor: '#f0f4f878'}} >
+                            <Stack height='100vh'  direction='column' bg='white' className='media' >
+                                <Padding size={[10, 50, 0, 50]} >
                                     <Formik
                                         initialValues={{ fourthText: '', thirdText: '', fifthText: '', secondText: '' }}
 

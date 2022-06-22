@@ -12,7 +12,7 @@ const AdminHome = () => {
 
   useEffect(() => {
     if (user === null) {
-      router.push('/user');
+      router.push('/login');
     }
   }, [user]);
 
