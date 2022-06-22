@@ -92,11 +92,112 @@ const Admin = () => {
   };
   const tabs = {
     headers: [
+      { text: 'Dashboard', photo: sainDur, headName: 'Ерөнхий мэдээлэл' },
       { text: 'Бүртгэлтэй хэрэглэгчийн жагсаалт', photo: sainDur, headName: 'САЙН ДУРЫН АЖЛЫН МЭДЭЭЛЭЛ' },
       { text: 'Гишүүдийн жагсаалт', photo: grey, headName: 'ГИШҮҮНЧЛЭЛИЙН МЭДЭЭЛЭЛ' },
       { text: 'Тусламж хүртэгчдийн жагсаалт', photo: green, headName: 'ТУСЛАМЖ ХҮРТЭГЧДИЙН МЭДЭЭЛЭЛ' },
     ],
     body: [
+      <Stack height="100%" bg="#f0f4f878" justifyContent="space-evenly" direction="column" width="100%">
+            <Margin size={[0, 30, 0, 40]}>
+              <Stack justifyContent="space-around" flexWrap="wrap" gap='15'>
+                <Data value={dataValue?.all} text="НИЙТ " color={'#0066B3'}></Data>
+                <Data value={dataValue?.volunteerActivist} text="САЙН ДУРЫН ИДЭВХТЭН" color={'#626262'}></Data>
+                <Data value={dataValue?.helper} text="ТУСЛАМЖ  ХҮРТЭГЧ" color={'#DD5D00'}></Data>
+                <Data value={dataValue?.member} text="ГИШҮҮН" color={'#D90000'}></Data>
+              </Stack>
+            </Margin>
+
+            <Margin size={[0, 0, 0, 40]}>
+              <Stack direction="column" height="75px" > 
+                <Text fontSize="14px">РЕГИСТРИЙН ДУГААР БИЧНЭ ҮҮ.</Text>
+                <Stack gap={'15'}>
+                  <Styledoneletter
+                    onChange={handleChange}
+                    value={searchValue.value1}
+                    id="value1" 
+                    ref={firstInput}
+                    width="45px"
+                    height="45px"
+                    placeholder="X"
+                    type="string"
+                  ></Styledoneletter>
+                  <Styledoneletter
+                    onChange={handleChange}
+                    value={searchValue.value2}
+                    id="value2"
+                    ref={secondInput}
+                    width="45px"
+                    height="45px"
+                    placeholder="X"
+                    type="text"
+                  ></Styledoneletter>
+                  <StyledInput
+                    onChange={handleChange}
+                    value={searchValue.value3}
+                    id="value3"
+                    ref={thirdInput}
+                    width="220px"
+                    height="45px"
+                    placeholder="XXXXXXXX"
+                    type="number"
+                  ></StyledInput>
+                  <Button
+                    width="45px"
+                    height="45px"
+                    borderRadius="5px"
+                    bgColor="#1890FF"
+                    justifyContent="center"
+                    alignItems="center"
+                    bc="none"
+                    onClick={searchButton}
+                  >
+                    <img src={search.src} />
+                  </Button>
+                </Stack>
+              </Stack>
+            </Margin>
+            <Margin size={[0, 30, 0, 40]}>
+              <Stack
+                bg="#FFFFFF"
+                height="30vh"
+                style={{ borderRadius: '5px', border: '1px solid #EDEDED' }}
+                direction="column"
+              >
+                <Margin size={[0, 0, 0, 0]}>
+                  <Stack width="200px" height="50px" justifyContent="center" alignItems="center">
+                    <Text type="T3">ХАЙЛТЫН ҮР ДҮН</Text>
+                  </Stack>
+                </Margin>
+                <div
+                  style={{
+                    overflow: 'scroll',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    width: '81vw',
+                  }}
+                >
+                  {
+                    data?.map((el) => {
+                      if ( el.admin == false && el.location === userLocation?.location ) {
+                        return (
+                          <Margin size={[0, 0, 30, 40]} >
+                            <Usercard el={el} />
+                          </Margin>
+                        )
+                      }
+                    })
+                  }
+                </div>
+              </Stack>
+            </Margin>
+
+            <Margin size={[0, 30, 0, 40]}>
+              <Stack height="30%">
+                <DataTable></DataTable>
+              </Stack>
+            </Margin>
+          </Stack>,
       <Stack bg="#FAFAFA" height="calc(100vh - 180px)" width="calc(100vw - 130px)" direction="column">
         <VolunteerInformation />
       </Stack>,
@@ -112,7 +213,7 @@ const Admin = () => {
   return (
     <Stack direction="column" >
       <Header admin="true"/>
-      {activeTab &&
+      {
         tabs.headers.map((el, index) => {
           if (index === activeTab) {
             return <HeadNames key={index} text={el.headName} />;
@@ -128,6 +229,7 @@ const Admin = () => {
           <Padding style={{ height: '100%', boxShadow: `0px 0px 8px rgba(0, 0, 0, 0.15)` }} size={[0, 30, 0, 30]}>
             <Stack height="100%" direction="column" justifyContent="space-between" alignItems="center">
               <Stack direction="column">
+                
                 {tabs &&
                   tabs.headers.map((item, index) => {
                     return (
@@ -195,111 +297,9 @@ const Admin = () => {
           </Padding>
         </Stack>
 
-        {activeTab === undefined ? (
-          <Stack height="93vh" bg="#f0f4f878" justifyContent="space-evenly" direction="column">
-            <Margin size={[0, 30, 0, 40]}>
-              <Stack justifyContent="space-around" flexWrap="wrap" gap='15'>
-                <Data value={dataValue?.all} text="НИЙТ " color={'#0066B3'}></Data>
-                <Data value={dataValue?.volunteerActivist} text="САЙН ДУРЫН ИДЭВХТЭН" color={'#626262'}></Data>
-                <Data value={dataValue?.helper} text="ТУСЛАМЖ  ХҮРТЭГЧ" color={'#DD5D00'}></Data>
-                <Data value={dataValue?.member} text="ГИШҮҮН" color={'#D90000'}></Data>
-              </Stack>
-            </Margin>
-
-            <Margin size={[0, 0, 0, 40]}>
-              <Stack direction="column" height="75px" > 
-                <Text fontSize="14px">РЕГИСТРИЙН ДУГААР БИЧНЭ ҮҮ.</Text>
-                <Stack gap={'15'}>
-                  <Styledoneletter
-                    onChange={handleChange}
-                    value={searchValue.value1}
-                    id="value1" 
-                    ref={firstInput}
-                    width="45px"
-                    height="45px"
-                    placeholder="X"
-                    type="string"
-                  ></Styledoneletter>
-                  <Styledoneletter
-                    onChange={handleChange}
-                    value={searchValue.value2}
-                    id="value2"
-                    ref={secondInput}
-                    width="45px"
-                    height="45px"
-                    placeholder="X"
-                    type="text"
-                  ></Styledoneletter>
-                  <StyledInput
-                    onChange={handleChange}
-                    value={searchValue.value3}
-                    id="value3"
-                    ref={thirdInput}
-                    width="220px"
-                    height="45px"
-                    placeholder="XXXXXXXX"
-                    type="number"
-                  ></StyledInput>
-                  <Button
-                    width="45px"
-                    height="45px"
-                    borderRadius="5px"
-                    bgColor="#1890FF"
-                    justifyContent="center"
-                    alignItems="center"
-                    bc="none"
-                    onClick={searchButton}
-                  >
-                    <img src={search.src} />
-                  </Button>
-                </Stack>
-              </Stack>
-            </Margin>
-
-            <Margin size={[0, 30, 0, 40]}>
-              <Stack
-                bg="#FFFFFF"
-                height="30vh"
-                style={{ borderRadius: '5px', border: '1px solid #EDEDED' }}
-                direction="column"
-              >
-                <Margin size={[0, 0, 0, 0]}>
-                  <Stack width="200px" height="50px" justifyContent="center" alignItems="center">
-                    <Text type="T3">ХАЙЛТЫН ҮР ДҮН</Text>
-                  </Stack>
-                </Margin>
-                <div
-                  style={{
-                    overflow: 'scroll',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    width: '81vw',
-                  }}
-                >
-                  {
-                    data?.map((el) => {
-                      if ( el.admin == false && el.location === userLocation?.location ) {
-                        return (
-                          <Margin size={[0, 0, 30, 40]} >
-                            <Usercard el={el} />
-                          </Margin>
-                        )
-                      }
-                    })
-                  }
-                </div>
-              </Stack>
-            </Margin>
-
-            <Margin size={[0, 30, 0, 40]}>
-              <Stack height="30%">
-                <DataTable></DataTable>
-              </Stack>
-            </Margin>
-          </Stack>
-        ) : (
-          tabs.body[activeTab]
-        )}
+        
+          {tabs.body[activeTab]
+        }
       </Stack>
     </Stack>
 

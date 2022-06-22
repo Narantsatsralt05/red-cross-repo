@@ -22,7 +22,7 @@ const OnMobileText = styled.div`
   }
 `;
 const DropDownContent = styled.div`
-
+ position : absolute;
   min-width: 160px;
   z-index: 1;
   background-color: black;
@@ -109,7 +109,7 @@ const Dropdown = (props) => {
           rightIcon={ArrowDownSecond}
         ></Select>
         {state && (
-          <DropDownContent onClick={Click} width={props.width ? props.width : '311px'} height={'35px'} style={{overflow: "scroll" , height: "80px"}} >
+          <DropDownContent onClick={Click} width={props.width ? props.width : '311px'} height={'35px'}  >
               {props.arr.map((Element) => (
                 <ToUseOptions onClick={() => handleClick(Element)}>{Element}</ToUseOptions>
               ))}

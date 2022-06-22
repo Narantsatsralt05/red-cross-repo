@@ -29,6 +29,6 @@ const Checker = () => {
 
   });
 
-  return <Loading />;
+  return <Loading />;  
 };
 export default Checker;

@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      user?.admin && Object.keys(userData).length != 0 && setDocument(`user/${user?.uid}`, {
+user&&      Object.keys(userData).length != 0 && setDocument(`user/${user?.uid}`, {
         email: userData?.email,
         firstName: userData?.firstName,
         lastName: userData?.lastName,
@@ -51,10 +51,14 @@ export const AuthProvider = ({ children }) => {
     if (values.phoneNumber && values.password === values.passwordConfirm) {
       createUserWithEmailAndPassword(auth, values?.email, values?.password).then((userCredential) => {
         setUser(userCredential.user)
+        console.log(values)
         setUserData({ ...values });
         router.push('/checker');
+      }).then(resp=>{
+        console.log(resp)
       })
     } else {
+      console.log(values.phoneNumber , values.password , values.passwordConfirm)
       alert('buglunuu');
     }
   };
