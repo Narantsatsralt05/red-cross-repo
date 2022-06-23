@@ -28,16 +28,16 @@ export const StyledInput = styled.input`
   height: ${(props) => props.height ? props.height : '35px'};
   color: ${(props) => props.color};
   font: ${(props) => props.font};
+  /* font-family: 'Roboto'
+  font-style:'light' */
   animation-name: ${(props) => props.animation};
-  padding-left: 0.25vw;
-  padding-right: 0.25vw;
   display: flex;
   align-items: center;
   ::-webkit-inner-spin-button{
         -webkit-appearance:  none; 
         margin: 0; 
     }
-    padding:15px;
+    padding:20px 20px;
 
 `;
 export const Styledoneletter = styled.input`

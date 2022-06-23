@@ -16,7 +16,7 @@ const PersonalUserInfo = () => {
             { text: 'Тусламжийн мэдээлэл', icon: help }
         ],
         body: [
-            <div>
+            <div> 
                 <UserInfo isStep={false} />
                 <EmergencyContactPersonTable  />
             </div>,
